@@ -32,17 +32,21 @@ export const TestimonialsColumn = (props: {
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, name, role }, i) => (
                 <div
-                  className="p-10 rounded-3xl border border-white/20 shadow-lg bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] backdrop-blur-sm max-w-xs w-full shadow-gray-500/10"
+                  className="p-8 rounded-2xl border border-[#222222] bg-[#111111] max-w-xs w-full"
                   style={{
-                    boxShadow:
-                      "0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(156, 163, 175, 0.1), 0 0 20px rgba(156, 163, 175, 0.05)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
                   }}
                   key={i}
                 >
-                  <div className="text-gray-200 text-sm leading-relaxed">{text}</div>
-                  <div className="mt-5">
-                    <div className="font-medium tracking-tight leading-5 text-gray-100">{name}</div>
-                    <div className="leading-5 opacity-60 tracking-tight text-gray-300">{role}</div>
+                  <div className="text-[#888888] text-sm leading-relaxed">{text}</div>
+                  <div className="mt-5 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#FF6B00]/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#FF6B00] text-xs font-bold">{name.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm text-white">{name}</div>
+                      <div className="text-xs text-[#555555]">{role}</div>
+                    </div>
                   </div>
                 </div>
               ))}

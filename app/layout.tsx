@@ -5,24 +5,25 @@ import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Dancing_Script, Caveat } from "next/font/google"
+import { Inter, Barlow_Condensed } from "next/font/google"
 
-const dancingScript = Dancing_Script({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dancing-script",
+  variable: "--font-inter",
   display: "swap",
 })
 
-const caveat = Caveat({
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-caveat",
+  variable: "--font-barlow-condensed",
+  weight: ["400", "600", "700", "800", "900"],
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Cliste - AI Automation for Enterprise",
+  title: "The Burn — Menos bla, más marketing.",
   description:
-    "Transform your business with intelligent AI automation solutions. Empower your organization to operate at the speed of thought.",
+    "The Burn implementa sistemas de automatización de marketing con IA para empresas B2B en Chile. Sin agencias tradicionales. Sin bla bla.",
   generator: "v0.app",
 }
 
@@ -32,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`font-sans antialiased ${dancingScript.variable} ${caveat.variable}`}>
+    <html lang="es" className="dark bg-background">
+      <body className={`font-sans antialiased ${inter.variable} ${barlowCondensed.variable}`}>
         <Suspense fallback={null}>
           <NavigationTransition />
           <PageTransition>{children}</PageTransition>

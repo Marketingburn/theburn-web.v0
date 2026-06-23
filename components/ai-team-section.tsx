@@ -1,386 +1,261 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { MessageCircle, Clock, Zap } from "lucide-react"
 
-const conversations = [
+const flowSteps = [
   {
-    title: "Luxury Sedan Inquiry & Test Drive Booking",
-    messages: [
-      { text: "Hi! I'm interested in the new Premium Sedan. Do you have any in stock?", sender: "customer", delay: 0 },
-      {
-        text: "We have several 2024 Premium Sedans available. Are you looking for a specific trim level or color?",
-        sender: "ai",
-        delay: 1000,
-      },
-      {
-        text: "I'd prefer the Premium Plus trim in black or white. What's the price range?",
-        sender: "customer",
-        delay: 2500,
-      },
-      {
-        text: "Great choice! The Premium Plus starts at €42,500. We have both black and white available. Would you like to schedule a test drive to experience it yourself?",
-        sender: "ai",
-        delay: 3500,
-      },
-      { text: "Yes, that would be perfect! When are you available?", sender: "customer", delay: 5000 },
-      {
-        text: "I can book you for tomorrow at 2pm, Thursday at 11am, or Friday at 4pm. All test drives are completely free and include a full vehicle walkthrough.",
-        sender: "ai",
-        delay: 6000,
-      },
-      { text: "Thursday at 11am works great!", sender: "customer", delay: 7500 },
-      {
-        text: "Perfect! I've booked your free test drive for Thursday at 11:00 AM. You'll receive a confirmation text shortly. Just bring your driver's license and we'll have the sedan ready for you!",
-        sender: "ai",
-        delay: 8500,
-      },
-    ],
+    id: 1,
+    label: "Lead entra al CRM",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    ),
+    color: "#FF6B00",
+    detail: "Formulario web o LinkedIn",
   },
   {
-    title: "Vehicle Features & Financing",
-    messages: [
-      { text: "What's the fuel economy on the Luxury SUV?", sender: "customer", delay: 0 },
-      {
-        text: "The 2024 Luxury SUV gets an EPA-estimated 23 city/28 highway MPG. It also comes with all-wheel drive standard!",
-        sender: "ai",
-        delay: 1000,
-      },
-      {
-        text: "That's good! What about financing options?",
-        sender: "customer",
-        delay: 2500,
-      },
-      {
-        text: "We have excellent financing available! Current rates start at 2.9% APR for qualified buyers, and we also offer lease options starting at €379/month.",
-        sender: "ai",
-        delay: 4000,
-      },
-      { text: "Can I get pre-approved online?", sender: "customer", delay: 5500 },
-      {
-        text: "I can start your pre-approval right now. It takes just 2 minutes and won't affect your credit score. Would you like me to send you the secure link?",
-        sender: "ai",
-        delay: 6500,
-      },
-    ],
+    id: 2,
+    label: "Auto-calificado por IA",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    color: "#FF8C00",
+    detail: "Score basado en industria y cargo",
   },
   {
-    title: "After-Hours Service Inquiry",
-    messages: [
-      {
-        text: "Hi, it's 11 PM. My car's check engine light just came on. What should I do?",
-        sender: "customer",
-        delay: 0,
-      },
-      {
-        text: "I'm here to help! First, is the light solid or flashing? And is the car running normally?",
-        sender: "ai",
-        delay: 1000,
-      },
-      { text: "It's solid, and the car seems to be running fine", sender: "customer", delay: 2500 },
-      {
-        text: "That's good news! A solid light usually isn't urgent. You can continue driving normally, but I'd recommend bringing it in within the next few days. I can schedule your service appointment right now if you'd like.",
-        sender: "ai",
-        delay: 3500,
-      },
-      {
-        text: "Yes please! And do you offer loaner cars?",
-        sender: "customer",
-        delay: 5000,
-      },
-      {
-        text: "I've scheduled you for Tuesday at 9 AM and reserved a loaner vehicle. You'll get a confirmation email with all the details. Drive safely!",
-        sender: "ai",
-        delay: 6000,
-      },
-    ],
+    id: 3,
+    label: "Secuencia de nurturing",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    color: "#25D366",
+    detail: "Email + WhatsApp automático",
+  },
+  {
+    id: 4,
+    label: "Alerta al equipo comercial",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg>
+    ),
+    color: "#3B82F6",
+    detail: "Notificación instantánea en Slack/email",
+  },
+  {
+    id: 5,
+    label: "Reunión agendada",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    color: "#FF6B00",
+    detail: "Calendly integrado al flujo",
   },
 ]
 
+function AutomationFlow({ isVisible }: { isVisible: boolean }) {
+  const [activeStep, setActiveStep] = useState(0)
+  const [completedSteps, setCompletedSteps] = useState<number[]>([])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    const interval = setInterval(() => {
+      setActiveStep((prev) => {
+        const next = (prev + 1) % flowSteps.length
+        if (next === 0) {
+          setCompletedSteps([])
+        } else {
+          setCompletedSteps((c) => [...c, prev])
+        }
+        return next
+      })
+    }, 1500)
+
+    return () => clearInterval(interval)
+  }, [isVisible])
+
+  return (
+    <div className="relative">
+      {/* Flow visualization */}
+      <div className="bg-[#0A0A0A] rounded-2xl border border-[#222222] p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-6">
+          <div className="w-2 h-2 bg-[#FF6B00] rounded-full animate-pulse" />
+          <span className="text-[#888888] text-xs font-medium uppercase tracking-wider">Flujo activo en tiempo real</span>
+        </div>
+
+        <div className="space-y-3">
+          {flowSteps.map((step, index) => {
+            const isActive = activeStep === index
+            const isDone = completedSteps.includes(index)
+
+            return (
+              <div key={step.id} className="relative">
+                <div
+                  className={`flex items-center gap-4 p-3 sm:p-4 rounded-xl border transition-all duration-500 ${
+                    isActive
+                      ? "border-[#FF6B00]/50 bg-[#FF6B00]/10"
+                      : isDone
+                        ? "border-green-900/40 bg-green-950/20"
+                        : "border-[#1A1A1A] bg-[#111111]"
+                  }`}
+                >
+                  {/* Step number/icon */}
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${
+                      isActive
+                        ? "bg-[#FF6B00] text-white"
+                        : isDone
+                          ? "bg-green-600/30 text-green-400"
+                          : "bg-[#1A1A1A] text-[#444444]"
+                    }`}
+                  >
+                    {isDone ? (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      step.icon
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className={`font-semibold text-sm transition-colors duration-500 ${
+                        isActive ? "text-white" : isDone ? "text-green-400" : "text-[#444444]"
+                      }`}
+                    >
+                      {step.label}
+                    </div>
+                    <div className="text-[#555555] text-xs mt-0.5">{step.detail}</div>
+                  </div>
+
+                  {isActive && (
+                    <div className="w-2 h-2 bg-[#FF6B00] rounded-full animate-pulse flex-shrink-0" />
+                  )}
+                </div>
+
+                {/* Connector line */}
+                {index < flowSteps.length - 1 && (
+                  <div className="flex justify-start ml-7 my-1">
+                    <div
+                      className={`w-px h-3 transition-colors duration-500 ${
+                        completedSteps.includes(index) ? "bg-green-600/40" : "bg-[#222222]"
+                      }`}
+                    />
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Progress bar */}
+        <div className="mt-6 bg-[#1A1A1A] rounded-full h-1.5">
+          <div
+            className="bg-[#FF6B00] h-1.5 rounded-full transition-all duration-500"
+            style={{ width: `${((activeStep + 1) / flowSteps.length) * 100}%` }}
+          />
+        </div>
+        <div className="flex justify-between mt-1.5">
+          <span className="text-[#444444] text-xs">Lead ingresa</span>
+          <span className="text-[#444444] text-xs">Reunión agendada</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function AITeamSection() {
-  const sectionRef = useRef<HTMLElement>(null) // Added section ref for intersection observer
+  const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [currentConversation, setCurrentConversation] = useState(0)
-  const [displayedMessages, setDisplayedMessages] = useState<any[]>([])
-  const [isTyping, setIsTyping] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const chatContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          console.log("[v0] AI Team Section is now visible")
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current)
     }
   }, [])
 
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
-    }
-  }, [displayedMessages, isTyping])
-
-  useEffect(() => {
-    const conversation = conversations[currentConversation]
-    setDisplayedMessages([])
-    setIsTyping(false)
-
-    // Clear any existing timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
-
-    let messageIndex = 0
-
-    const showNextMessage = () => {
-      if (messageIndex >= conversation.messages.length) {
-        // Wait 3 seconds then move to next conversation
-        timeoutRef.current = setTimeout(() => {
-          setCurrentConversation((prev) => (prev + 1) % conversations.length)
-        }, 3000)
-        return
-      }
-
-      const message = conversation.messages[messageIndex]
-
-      timeoutRef.current = setTimeout(() => {
-        if (message.sender === "ai") {
-          setIsTyping(true)
-          timeoutRef.current = setTimeout(() => {
-            setDisplayedMessages((prev) => [...prev, message])
-            setIsTyping(false)
-            messageIndex++
-            showNextMessage()
-          }, 800) // Reduced typing delay from 1500ms to 800ms for faster replies
-        } else {
-          setDisplayedMessages((prev) => [...prev, message])
-          messageIndex++
-          showNextMessage()
-        }
-      }, message.delay)
-    }
-
-    showNextMessage()
-
-    // Cleanup timeout on unmount or conversation change
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
-    }
-  }, [currentConversation])
-
   return (
-    <section id="ai-team" ref={sectionRef} className="relative z-10">
-      <div className="bg-white rounded-b-[3rem] pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <div
-              className={`inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium mb-6 transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <MessageCircle className="w-4 h-4" />
-              AI Car Sales Assistant Demo
-            </div>
-
+    <section id="ai-team" ref={sectionRef} className="relative z-10 bg-white">
+      <div className="rounded-b-[3rem] pt-0 pb-16 sm:pb-24 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div
+            className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <h2
-              className={`text-4xl md:text-5xl font-bold text-slate-900 mb-4 transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight text-gray-900 text-balance mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
             >
-              See AI Handle{" "}
-              <span className="bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent">
-                Real Car Sales
-              </span>
+              Así trabaja{" "}
+              <span className="text-[#FF6B00]">The Burn</span>{" "}
+              por ti
             </h2>
-
-            <p
-              className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              Watch how our AI handles car inquiries, books test drives, and provides 24/7 automotive support.
+            <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+              Cada lead que entra activa un flujo automático. Sin humanos, sin demoras, sin leads perdidos.
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
-            {/* Left side - Text content */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center lg:h-[600px] space-y-6 lg:space-y-8 order-2 lg:order-1">
-              <div
-                className={`transition-all duration-1000 delay-600 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            {/* Left — copy */}
+            <div
+              className={`w-full lg:w-1/2 order-2 lg:order-1 transition-all duration-1000 delay-300 ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+              }`}
+            >
+              <h3
+                className="text-2xl lg:text-3xl font-black uppercase text-gray-900 mb-6"
+                style={{ fontFamily: "var(--font-barlow-condensed)" }}
               >
-                <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 lg:mb-6">
-                  This is what your car buyers see
-                </h3>
+                Lo que antes tomaba días, ahora pasa en minutos
+              </h3>
 
-                <div className="space-y-3 lg:space-y-4 text-base lg:text-lg text-slate-700 leading-relaxed">
-                  <p>
-                    While you're closed, your AI assistant is answering car questions, booking test drives, and helping
-                    customers 24/7.
-                  </p>
-
-                  <p>
-                    Every conversation you're watching could be happening at midnight, on Sundays, or when your sales
-                    team is with other customers.
-                  </p>
-
-                  <p className="text-lg lg:text-xl font-semibold text-slate-900">
-                    Your competitors are losing these car sales.
-                  </p>
-                </div>
+              <div className="space-y-4 text-gray-500 text-sm leading-relaxed mb-8">
+                <p>
+                  Cuando un lead llena tu formulario o te escribe por LinkedIn, The Burn lo captura, lo califica con IA
+                  y dispara la secuencia de nurturing adecuada — todo sin que tu equipo haga nada.
+                </p>
+                <p>
+                  Si el lead está listo para comprar, tu equipo recibe una alerta instantánea con todo el contexto para
+                  cerrar la reunión.
+                </p>
+                <p className="font-semibold text-gray-900">
+                  Resultado: más reuniones, menos esfuerzo, cero leads perdidos.
+                </p>
               </div>
 
-              <div
-                className={`transition-all duration-1000 delay-800 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <div className="p-4 lg:p-6 bg-slate-50 rounded-xl border-l-4 border-slate-900">
-                  <p className="text-slate-800 font-medium text-sm lg:text-base">
-                    "We went from missing 70% of after-hours car inquiries to capturing every single lead. Our test
-                    drive bookings increased 50% in the first month."
-                  </p>
-                  <p className="text-xs lg:text-sm text-slate-600 mt-2">— Mike Rodriguez, Car Dealership Owner</p>
-                </div>
+              <div className="p-5 bg-gray-50 rounded-xl border-l-4 border-[#FF6B00]">
+                <p className="text-gray-700 font-medium text-sm leading-relaxed">
+                  &ldquo;Pasamos de responder leads en 3 días a hacerlo en minutos. El equipo ahora cierra, no persigue.&rdquo;
+                </p>
+                <p className="text-gray-400 text-xs mt-2">— Carlos M., Gerente General</p>
               </div>
             </div>
 
-            {/* Right side - Phone mockup */}
-            <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2">
-              <div className="max-w-md w-full">
-                <div
-                  className={`relative transition-all duration-1000 delay-600 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
-                >
-                  <div className="bg-slate-900 rounded-[2.5rem] p-2 shadow-2xl">
-                    <div className="bg-black rounded-[2rem] p-1">
-                      <div className="bg-white rounded-[1.5rem] overflow-hidden">
-                        {/* Status bar */}
-                        <div className="bg-slate-50 px-6 py-3 flex justify-between items-center text-sm">
-                          <div className="flex items-center gap-1">
-                            <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
-                            <span className="font-medium text-slate-700">Car Dealership AI</span>
-                          </div>
-                          <div className="flex items-center gap-1 text-slate-500">
-                            <Clock className="w-3 h-3" />
-                            <span className="text-xs">24/7</span>
-                          </div>
-                        </div>
-
-                        <div className="bg-slate-900 px-6 py-4 text-white">
-                          <div className="flex items-center gap-3">
-                            <img
-                              src="/images/michael-ai-agent.jpg"
-                              alt="Michael - AI Agent"
-                              className="w-8 h-8 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
-                            />
-                            <div className="flex-1">
-                              <h3 className="font-semibold text-sm">Michael - AI Sales Agent</h3>
-                              <p className="text-xs text-slate-300">Chat with 087 234 5678</p>
-                            </div>
-                            <div className="text-xs text-green-400 flex items-center gap-1">
-                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                              Online
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Chat messages */}
-                        <div
-                          ref={chatContainerRef}
-                          className="h-96 overflow-y-scroll scrollbar-hide p-4 space-y-3 bg-slate-50"
-                          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                        >
-                          {displayedMessages.map((message, index) => (
-                            <div
-                              key={index}
-                              className={`flex ${message.sender === "customer" ? "justify-end" : "justify-start"}`}
-                            >
-                              {message.sender === "ai" && (
-                                <img
-                                  src="/images/michael-ai-agent.jpg"
-                                  alt="Michael"
-                                  className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
-                                />
-                              )}
-                              <div
-                                className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${
-                                  message.sender === "customer"
-                                    ? "bg-slate-900 text-white rounded-br-md"
-                                    : "bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-md"
-                                }`}
-                              >
-                                {message.text.split("\n").map((line, i) => (
-                                  <div key={i}>{line}</div>
-                                ))}
-                              </div>
-                              {message.sender === "customer" && (
-                                <div className="w-6 h-6 rounded-full bg-slate-400 ml-2 mt-1 flex-shrink-0 flex items-center justify-center text-xs text-white font-medium">
-                                  C
-                                </div>
-                              )}
-                            </div>
-                          ))}
-
-                          {/* Typing indicator */}
-                          {isTyping && (
-                            <div className="flex justify-start items-start">
-                              <img
-                                src="/images/michael-ai-agent.jpg"
-                                alt="Michael"
-                                className="w-6 h-6 rounded-full object-cover mr-2 mt-1 flex-shrink-0"
-                              />
-                              <div className="bg-white p-3 rounded-2xl rounded-bl-md shadow-sm border border-slate-200">
-                                <div className="flex space-x-1">
-                                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                                  <div
-                                    className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
-                                    style={{ animationDelay: "0.1s" }}
-                                  ></div>
-                                  <div
-                                    className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
-                                    style={{ animationDelay: "0.2s" }}
-                                  ></div>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="p-4 bg-white border-t border-slate-200">
-                          <div className="flex items-center gap-3 bg-slate-100 rounded-full px-4 py-2">
-                            <span className="text-slate-500 text-sm lg:text-base flex-1">Michael is responding...</span>
-                            <div className="w-6 h-6 bg-slate-900 rounded-full flex items-center justify-center">
-                              <Zap className="w-3 h-3 text-white" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Right — flow */}
+            <div
+              className={`w-full lg:w-1/2 order-1 lg:order-2 transition-all duration-1000 delay-500 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <AutomationFlow isVisible={isVisible} />
             </div>
           </div>
         </div>

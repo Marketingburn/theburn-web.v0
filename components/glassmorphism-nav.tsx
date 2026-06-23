@@ -2,14 +2,13 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Menu, X, ArrowRight } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
 const navigation = [
-  { name: "Dentists", href: "#features" },
-  { name: "Barbers & Salons", href: "#ai-team" },
-  { name: "Restaurants", href: "#testimonials" },
-  { name: "Car Dealerships", href: "/car-dealerships" },
+  { name: "Estudios Jurídicos", href: "#features" },
+  { name: "Distribuidoras", href: "#ai-team" },
+  { name: "Empresas B2B", href: "#testimonials" },
+  { name: "Farmacias", href: "#roi-calculator" },
 ]
 
 export function GlassmorphismNav() {
@@ -26,76 +25,40 @@ export function GlassmorphismNav() {
     const controlNavbar = () => {
       if (typeof window !== "undefined") {
         const currentScrollY = window.scrollY
-
-        console.log("[v0] Scroll event - currentScrollY:", currentScrollY, "lastScrollY:", lastScrollY.current)
-
-        // Only hide/show after scrolling past 50px to avoid flickering at top
         if (currentScrollY > 50) {
           if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 5) {
-            // Scrolling down - hide navbar
-            console.log("[v0] Hiding navbar - scrolling down")
             setIsVisible(false)
           } else if (lastScrollY.current - currentScrollY > 5) {
-            // Scrolling up - show navbar
-            console.log("[v0] Showing navbar - scrolling up")
             setIsVisible(true)
           }
         } else {
-          // Always show navbar when near top
-          console.log("[v0] Showing navbar - near top")
           setIsVisible(true)
         }
-
         lastScrollY.current = currentScrollY
       }
     }
 
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", controlNavbar, { passive: true })
-      console.log("[v0] Scroll listener added")
-
       return () => {
         window.removeEventListener("scroll", controlNavbar)
         clearTimeout(timer)
-        console.log("[v0] Scroll listener removed")
       }
     }
 
     return () => clearTimeout(timer)
-  }, []) // Removed lastScrollY dependency to prevent infinite re-renders
-
-  const scrollToTop = () => {
-    console.log("[v0] Scrolling to top")
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+  }, [])
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith("/")) {
-      return
-    }
-
-    console.log("[v0] Attempting to scroll to:", href)
+    if (href.startsWith("/")) return
     const element = document.querySelector(href)
     if (element) {
-      console.log("[v0] Found element:", element)
-
       const rect = element.getBoundingClientRect()
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop
       const elementAbsoluteTop = rect.top + currentScrollY
       const navbarHeight = 100
       const targetPosition = Math.max(0, elementAbsoluteTop - navbarHeight)
-
-      console.log("[v0] Element rect.top:", rect.top)
-      console.log("[v0] Current scroll position:", currentScrollY)
-      console.log("[v0] Element absolute top:", elementAbsoluteTop)
-      console.log("[v0] Target scroll position:", targetPosition)
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      })
-    } else {
-      console.log("[v0] Element not found for:", href)
+      window.scrollTo({ top: targetPosition, behavior: "smooth" })
     }
     setIsOpen(false)
   }
@@ -110,57 +73,40 @@ export function GlassmorphismNav() {
           transition: hasLoaded ? "all 0.5s ease-out" : "opacity 0.8s ease-out, transform 0.8s ease-out",
         }}
       >
-        {/* Main Navigation */}
         <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 md:px-6 md:py-2">
+          <div className="bg-[#111111]/80 backdrop-blur-md border border-[#222222] rounded-full px-4 py-3 md:px-6 md:py-2">
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <Link
-                href="/"
-                className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                  <Image
-                    src="/images/cliste-logo.png"
-                    alt="Cliste"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+              <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200 cursor-pointer">
+                <span
+                  className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#FF6B00]"
+                  style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                >
+                  THE BURN
+                </span>
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-8">
-                {navigation.map((item) =>
-                  item.href.startsWith("/") ? (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer"
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.href)}
-                      className="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer"
-                    >
-                      {item.name}
-                    </button>
-                  ),
-                )}
+              <div className="hidden md:flex items-center space-x-6">
+                {navigation.map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-[#888888] hover:text-white transition-all duration-200 text-sm font-medium cursor-pointer"
+                  >
+                    {item.name}
+                  </button>
+                ))}
               </div>
 
-              {/* Desktop CTA Button */}
+              {/* Desktop CTA */}
               <div className="hidden md:block">
                 <button
-                  className="relative bg-white hover:bg-gray-50 text-black font-medium px-6 py-2 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
+                  className="bg-white hover:bg-gray-100 text-black font-semibold px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group text-sm"
                   onClick={() => scrollToSection("#contact")}
                 >
-                  <span className="mr-2">Get Started</span>
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  Agendar Diagnóstico
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </div>
 
@@ -188,66 +134,37 @@ export function GlassmorphismNav() {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <div className="md:hidden relative">
-          {/* Backdrop overlay */}
-          <div
-            className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${
-              isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-            onClick={() => setIsOpen(false)}
-            style={{ top: "0", left: "0", right: "0", bottom: "0", zIndex: -1 }}
-          />
-
-          {/* Menu container */}
           <div
             className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
           >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-2xl">
+            <div className="bg-[#111111]/90 backdrop-blur-md border border-[#222222] rounded-2xl p-4 shadow-2xl">
               <div className="flex flex-col space-y-1">
-                {navigation.map((item, index) =>
-                  item.href.startsWith("/") ? (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
-                        isOpen ? "animate-mobile-menu-item" : ""
-                      }`}
-                      style={{
-                        animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms",
-                      }}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${
-                        isOpen ? "animate-mobile-menu-item" : ""
-                      }`}
-                      style={{
-                        animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms",
-                      }}
-                    >
-                      {item.name}
-                    </button>
-                  ),
-                )}
-                <div className="h-px bg-white/10 my-2" />
+                {navigation.map((item, index) => (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`text-[#888888] hover:text-white hover:bg-white/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
+                      isOpen ? "animate-mobile-menu-item" : ""
+                    }`}
+                    style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms" }}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+                <div className="h-px bg-[#222222] my-2" />
                 <button
-                  className={`relative bg-white hover:bg-gray-50 text-black font-medium px-6 py-3 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group transform ${
+                  className={`bg-white hover:bg-gray-100 text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group ${
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
-                  style={{
-                    animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms",
-                  }}
+                  style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms" }}
                   onClick={() => scrollToSection("#contact")}
                 >
-                  <span className="mr-2">Get Started</span>
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  Agendar Diagnóstico
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </div>
             </div>
