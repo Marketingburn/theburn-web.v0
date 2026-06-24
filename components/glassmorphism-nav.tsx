@@ -8,10 +8,10 @@ import { useRouter } from "next/navigation"
 
 const services = [
   {
-    icon: "🔍",
-    title: "Diagnóstico Comercial",
-    description: "El primer paso. 3 semanas, $500k CLP.",
-    href: "/servicios/diagnostico-comercial",
+    icon: "🎯",
+    title: "Consultoría Comercial",
+    description: "Vende con un proceso claro.",
+    href: "/servicios/consultoria-comercial",
   },
   {
     icon: "📊",
@@ -32,10 +32,10 @@ const services = [
     href: "/servicios/automatizacion-marketing",
   },
   {
-    icon: "🎯",
-    title: "Consultoría Comercial",
-    description: "Proceso de ventas que escala.",
-    href: "/servicios/consultoria-comercial",
+    icon: "🔍",
+    title: "Diagnóstico Comercial",
+    description: "Descubre qué está frenando tu crecimiento.",
+    href: "/diagnostico",
   },
 ]
 
