@@ -5,6 +5,8 @@ import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { ContactProvider } from "@/app/contact-context"
+import { ContactModal } from "@/components/contact-modal"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Barlow_Condensed, Barlow, JetBrains_Mono } from "next/font/google"
 
@@ -44,11 +46,14 @@ export default function RootLayout({
   return (
     <html lang="es" className="bg-background">
       <body className={`font-sans antialiased ${barlowCondensed.variable} ${barlow.variable} ${jetbrainsMono.variable}`}>
-        <Suspense fallback={null}>
-          <NavigationTransition />
-          <PageTransition>{children}</PageTransition>
-        </Suspense>
-        <WhatsAppFloat />
+        <ContactProvider>
+          <Suspense fallback={null}>
+            <NavigationTransition />
+            <PageTransition>{children}</PageTransition>
+          </Suspense>
+          <ContactModal />
+          <WhatsAppFloat />
+        </ContactProvider>
         <SpeedInsights />
       </body>
     </html>

@@ -1,6 +1,9 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import RotatingText from "./RotatingText"
 import Image from "next/image"
+import { useContactModal } from "@/app/contact-context"
 
 const ArrowRight = () => (
   <svg
@@ -29,6 +32,8 @@ const companies = [
 ]
 
 export function HeroSection() {
+  const { openContactModal } = useContactModal()
+  
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative bg-[#F5F1EA] overflow-hidden">
       {/* Fire glow ambient blurs */}
@@ -78,6 +83,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
           <Button
             size="lg"
+            onClick={openContactModal}
             className="bg-[#0A0A0A] text-white rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#1B1917] hover:scale-105 hover:shadow-lg group cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >

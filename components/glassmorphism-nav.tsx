@@ -229,7 +229,7 @@ export function GlassmorphismNav() {
                                 </p>
                               </div>
                               <button
-                                onClick={() => router.push("/servicios/diagnostico-comercial")}
+                                onClick={() => router.push("/diagnostico")}
                                 className="mt-4 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-4 py-2.5 rounded-full text-xs transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-2"
                                 style={{ fontFamily: "var(--font-barlow-condensed)" }}
                               >
