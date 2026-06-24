@@ -962,33 +962,10 @@
   }
 
   .whatsapp-popup {
-    width: calc(100vw - 32px) !important;
+    width: calc(100vw - 2rem) !important;
     max-width: 320px !important;
-    right: 16px !important;
-    left: 16px !important;
-    bottom: 80px !important;
-  }
-
-  /* Nav on mobile */
-  nav {
-    padding: 12px 16px !important;
-    margin: 12px 16px !important;
-    width: calc(100% - 32px) !important;
-    box-sizing: border-box !important;
-  }
-
-  nav .logo,
-  nav [class*="logo"] {
-    font-size: 16px !important;
-  }
-
-  nav .hamburger,
-  nav button[aria-label*="menu"] {
-    width: 44px !important;
-    height: 44px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    right: 1rem !important;
+    left: auto !important;
   }
 
   /* Hamburger icon tap target */
@@ -1029,128 +1006,20 @@
   }
 
   /* Hero section mobile layout */
-  .hero-container {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 100px 0px 40px 0px !important;
-    min-height: auto !important;
-    overflow: hidden !important;
-  }
-
-  .hero-left, [class*="hero-content"] {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  /* Hide right column visual/card on mobile */
-  .hero-right, [class*="hero-visual"], [class*="dashboard"] {
-    display: none !important;
-  }
-
-  /* H1 text visibility and sizing */
-  h1 {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    font-size: clamp(36px, 11vw, 64px) !important;
-    line-height: 0.92 !important;
-    color: #0A0A0A !important;
-    width: 100% !important;
-    padding: 0 16px !important;
-  }
-
   .hero-text {
     display: flex;
     flex-direction: column;
   }
 
   .hero-h1 {
-    font-size: clamp(36px, 11vw, 64px) !important;
-    line-height: 0.92 !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Rotating pill visibility and sizing */
-  .rotating-pill,
-  [class*="pill"],
-  [class*="rotate"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    max-width: calc(100vw - 32px) !important;
-    overflow: hidden !important;
-    margin: 12px 16px 0 16px !important;
-    font-size: clamp(32px, 10vw, 60px) !important;
-    padding: 6px 20px !important;
-    background: #FF4500 !important;
-    color: #FFFFFF !important;
-    border-radius: 12px !important;
-    white-space: nowrap !important;
+    font-size: clamp(40px, 10vw, 80px) !important;
+    line-height: 0.95 !important;
   }
 
   .rotating-word-pill {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    max-width: calc(100vw - 32px) !important;
+    max-width: calc(100vw - 2rem) !important;
     overflow: hidden !important;
-    font-size: clamp(32px, 10vw, 60px) !important;
-    padding: 6px 20px !important;
-    background: #FF4500 !important;
-    color: #FFFFFF !important;
-    margin: 12px 16px 0 16px !important;
-  }
-
-  /* Body text on mobile */
-  .hero-body, [class*="hero"] p {
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    color: #938B82 !important;
-    padding: 0 16px !important;
-    margin-top: 16px !important;
-  }
-
-  /* CTA buttons on mobile */
-  .hero-ctas,
-  [class*="cta-group"],
-  .flex.flex-col.sm\:flex-row.gap-4 {
-    flex-direction: column !important;
-    padding: 0 16px !important;
-    gap: 12px !important;
-    margin-top: 24px !important;
-  }
-
-  .hero-ctas a,
-  .hero-ctas button,
-  [class*="cta"] button,
-  [class*="cta"] a {
-    width: 100% !important;
-    text-align: center !important;
-    justify-content: center !important;
-  }
-
-  /* Orange blur on mobile */
-  .orange-blur,
-  [class*="blur"],
-  [class*="glow"] {
-    width: 280px !important;
-    height: 280px !important;
-    opacity: 0.10 !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
-
-  /* Marquee strip on mobile */
-  .marquee-container,
-  [class*="marquee"] {
-    display: flex !important;
-    overflow: hidden !important;
-    font-size: 12px !important;
-    padding: 10px 0 !important;
+    font-size: clamp(36px, 9vw, 72px) !important;
   }
 
   .hero-cta-buttons {
