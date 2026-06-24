@@ -93,13 +93,13 @@ function DiagnosticoHero() {
             </h1>
 
             <p
-              className="text-base sm:text-lg text-[#938B82] leading-relaxed mb-10 max-w-lg"
+              className="text-base sm:text-lg text-[#938B82] leading-relaxed mb-16 max-w-lg"
               style={{ fontFamily: "var(--font-barlow)" }}
             >
               La mayoría de las empresas invierte en marketing sin saber qué está frenando sus ventas. El diagnóstico lo descubre en 3 semanas, con datos reales y un roadmap concreto.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 relative z-20">
               <button
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
