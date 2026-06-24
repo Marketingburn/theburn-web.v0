@@ -31,12 +31,6 @@ const services = [
     description: "Tu equipo cierra. El sistema prospecta.",
     href: "/servicios/automatizacion-marketing",
   },
-  {
-    icon: "🔍",
-    title: "Diagnóstico Comercial",
-    description: "Descubre qué está frenando tu crecimiento.",
-    href: "/diagnostico",
-  },
 ]
 
 const navigation = [
