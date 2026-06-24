@@ -36,6 +36,31 @@ export const metadata: Metadata = {
   description:
     "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Santiago, Chile.",
   generator: "v0.app",
+  charset: "UTF-8",
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
+  metadataBase: new URL("https://theburn.cl"),
+  openGraph: {
+    type: "website",
+    locale: "es_CL",
+    url: "https://theburn.cl",
+    siteName: "The Burn",
+    title: "The Burn | Consultoría Comercial y Marketing Digital",
+    description: "Sistemas de crecimiento comercial con inteligencia de negocio y automatización de marketing.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Burn",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@theburn",
+    creator: "@theburn",
+  },
 }
 
 export default function RootLayout({
