@@ -260,7 +260,10 @@ export function GlassmorphismNav() {
                 <button
                   className="bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold px-6 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
                   style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
-                  onClick={() => router.push("/diagnostico")}
+                  onClick={() => {
+                    console.log("[v0] Nav desktop Agendar clicked, pushing /diagnostico")
+                    router.push("/diagnostico")
+                  }}
                 >
                   Agendar Diagnóstico
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -368,7 +371,10 @@ export function GlassmorphismNav() {
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
                   style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)" }}
-                  onClick={() => router.push("/diagnostico")}
+                  onClick={() => {
+                    console.log("[v0] Nav mobile Agendar clicked, pushing /diagnostico")
+                    router.push("/diagnostico")
+                  }}
                 >
                   Agendar Diagnóstico
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
