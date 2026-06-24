@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
+import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Barlow_Condensed, Barlow, JetBrains_Mono } from "next/font/google"
 
@@ -47,6 +48,7 @@ export default function RootLayout({
           <NavigationTransition />
           <PageTransition>{children}</PageTransition>
         </Suspense>
+        <WhatsAppFloat />
         <SpeedInsights />
       </body>
     </html>
