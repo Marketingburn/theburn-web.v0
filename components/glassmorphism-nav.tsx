@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const navigation = [
   { name: "Servicios", href: "#features" },
-  { name: "Diagnóstico", href: "#ai-team" },
+  { name: "Diagnóstico", href: "/diagnostico" },
   { name: "Casos", href: "#testimonials" },
   { name: "Blog", href: "#" },
 ]
@@ -17,6 +18,7 @@ export function GlassmorphismNav() {
   const [isVisible, setIsVisible] = useState(true)
   const [hasLoaded, setHasLoaded] = useState(false)
   const lastScrollY = useRef(0)
+  const router = useRouter()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,7 +53,12 @@ export function GlassmorphismNav() {
   }, [])
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith("/") || href === "#") return
+    if (href === "#") return
+    if (href.startsWith("/")) {
+      router.push(href)
+      setIsOpen(false)
+      return
+    }
     const element = document.querySelector(href)
     if (element) {
       const rect = element.getBoundingClientRect()
