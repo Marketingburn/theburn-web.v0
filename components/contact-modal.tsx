@@ -7,11 +7,7 @@ import { X } from 'lucide-react';
 export function ContactModal() {
   const { isOpen, closeContactModal } = useContactModal();
 
-  console.log("[v0] ContactModal isOpen:", isOpen)
-
   if (!isOpen) return null;
-
-  console.log("[v0] ContactModal rendering")
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
