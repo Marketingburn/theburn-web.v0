@@ -117,110 +117,310 @@ function BIHero() {
             </div>
           </div>
 
-          {/* Right — dashboard mockup card */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="bg-[#1B1917] rounded-2xl border border-[#2A2725] p-8 w-full max-w-sm shadow-2xl">
-              <p
-                className="text-[#FF4500] text-xs font-semibold mb-8 uppercase tracking-widest"
-                style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.12em" }}
-              >
-                EJEMPLO REAL DE DASHBOARD THE BURN
-              </p>
+          {/* Right — Power BI dashboard mockup */}
+          <div className="flex flex-col items-center lg:items-end gap-3">
+            {/* Label above card */}
+            <p
+              className="text-[#938B82] text-xs uppercase tracking-widest self-start lg:self-auto"
+              style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
+            >
+              <span className="text-[#FF4500] mr-2">■</span>
+              EJEMPLO REAL DE DASHBOARD THE BURN
+            </p>
 
-              {/* Dashboard metrics */}
-              <div className="space-y-6">
-                {/* Margen neto */}
-                <div>
-                  <div className="flex items-baseline justify-between mb-2">
-                    <span
-                      className="text-[#938B82] text-xs uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      MARGEN NETO
-                    </span>
-                    <span
-                      className="text-white text-sm font-bold"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      23.4%
-                    </span>
-                  </div>
-                  <div className="h-2 bg-[#2A2725] rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full"
-                      style={{ width: "23.4%", background: "linear-gradient(to right, #FF4500, #D6862C)" }}
-                    />
-                  </div>
-                </div>
-
-                {/* Stock crítico */}
-                <div>
-                  <div className="flex items-baseline justify-between mb-2">
-                    <span
-                      className="text-[#938B82] text-xs uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      STOCK CRÍTICO
-                    </span>
-                    <span
-                      className="text-[#FF4500] text-sm font-bold"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      3 productos
-                    </span>
-                  </div>
-                  <div className="h-2 bg-[#2A2725] rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-[#FF4500]/60"
-                      style={{ width: "15%" }}
-                    />
-                  </div>
-                  <p
-                    className="text-[#FF4500]/60 text-xs mt-1"
-                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                  >
-                    ▲ ALERTA — bajo mínimo
-                  </p>
-                </div>
-
-                {/* Pipeline */}
-                <div>
-                  <div className="flex items-baseline justify-between mb-2">
-                    <span
-                      className="text-[#938B82] text-xs uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      PIPELINE
-                    </span>
-                    <span
-                      className="text-white text-sm font-bold"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      $4.2M
-                    </span>
-                  </div>
-                  <div className="h-2 bg-[#2A2725] rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full"
-                      style={{ width: "68%", background: "linear-gradient(to right, #FF4500, #D6862C)" }}
-                    />
-                  </div>
-                  <p
-                    className="text-[#938B82]/50 text-xs mt-1"
-                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                  >
-                    68% de meta mensual
-                  </p>
-                </div>
+            {/* Dashboard card */}
+            <div
+              className="bg-[#1B1917] rounded-xl w-full overflow-hidden transition-transform duration-500 hover:scale-[1.01]"
+              style={{
+                boxShadow: "0 24px 48px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,69,0,0.3)",
+              }}
+            >
+              {/* Dashboard header bar */}
+              <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.08]">
+                <span
+                  className="text-white text-xs font-bold uppercase tracking-wider"
+                  style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.08em" }}
+                >
+                  Análisis Comercial — Retail General
+                </span>
+                <span
+                  className="text-[#938B82] text-[10px]"
+                  style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                >
+                  Q2 2025
+                </span>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#2A2725]">
-                <p
-                  className="text-[#938B82]/50 text-xs"
-                  style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
-                >
-                  THEBURN.CL · SANTIAGO, CHILE
-                </p>
+              <div className="p-4 space-y-4">
+                {/* TOP ROW — 6 KPI pills */}
+                <div className="grid grid-cols-6 gap-1">
+                  {[
+                    { value: "2.847",  label: "VENTA",       highlight: false },
+                    { value: "5.213",  label: "STOCK",       highlight: false },
+                    { value: "8.060",  label: "SELL IN",     highlight: false },
+                    { value: "35,3%",  label: "SELL THRU",   highlight: true  },
+                    { value: "0,04",   label: "ROTACIÓN",    highlight: false },
+                    { value: "1,71",   label: "MARKUP",      highlight: false },
+                  ].map(({ value, label, highlight }) => (
+                    <div
+                      key={label}
+                      className="bg-[#0A0A0A]/60 rounded-md px-1.5 py-2 text-center"
+                      style={{ border: "1px solid rgba(255,255,255,0.06)" }}
+                    >
+                      <div
+                        className="text-sm font-bold leading-none mb-1"
+                        style={{
+                          fontFamily: "var(--font-jetbrains-mono)",
+                          color: highlight ? "#FF4500" : "#FFFFFF",
+                        }}
+                      >
+                        {value}
+                      </div>
+                      <div
+                        className="text-[8px] uppercase tracking-wide leading-none"
+                        style={{ fontFamily: "var(--font-jetbrains-mono)", color: "#938B82" }}
+                      >
+                        {label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* MIDDLE ROW — bar chart + line chart + table */}
+                <div className="grid grid-cols-12 gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
+                  {/* Bar chart — Venta por Categoría */}
+                  <div className="col-span-5">
+                    <p
+                      className="text-[#938B82] text-[9px] uppercase tracking-widest mb-2"
+                      style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.1em" }}
+                    >
+                      Venta por Categoría
+                    </p>
+                    <div className="space-y-1.5">
+                      {[
+                        { cat: "Vest. Mujer",  val: 8432, pct: 100 },
+                        { cat: "Vest. Hombre", val: 7891, pct: 93  },
+                        { cat: "Calzado",      val: 5234, pct: 62  },
+                        { cat: "Accesorios",   val: 3127, pct: 37  },
+                        { cat: "Infantil",     val: 1843, pct: 22  },
+                      ].map(({ cat, val, pct }) => (
+                        <div key={cat}>
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span
+                              className="text-[#938B82] text-[8px] truncate w-20"
+                              style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                            >
+                              {cat}
+                            </span>
+                            <span
+                              className="text-white text-[8px]"
+                              style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                            >
+                              ${(val / 1000).toFixed(0)}k
+                            </span>
+                          </div>
+                          <div className="h-1.5 bg-[#2A2725] rounded-full overflow-hidden">
+                            <div
+                              className="h-full rounded-full"
+                              style={{
+                                width: `${pct}%`,
+                                background: "linear-gradient(to right, #FF4500, #D6862C)",
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Line chart — Venta por Semana */}
+                  <div className="col-span-4">
+                    <p
+                      className="text-[#938B82] text-[9px] uppercase tracking-widest mb-2"
+                      style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.1em" }}
+                    >
+                      Venta por Semana
+                    </p>
+                    <div className="relative h-[68px]">
+                      {/* Grid lines */}
+                      {[0, 33, 66, 100].map((y) => (
+                        <div
+                          key={y}
+                          className="absolute w-full"
+                          style={{ top: `${y}%`, borderTop: "1px solid rgba(255,255,255,0.06)" }}
+                        />
+                      ))}
+                      {/* SVG sparkline */}
+                      <svg
+                        viewBox="0 0 100 60"
+                        preserveAspectRatio="none"
+                        className="absolute inset-0 w-full h-full"
+                      >
+                        {/* Area fill */}
+                        <defs>
+                          <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#FF4500" stopOpacity="0.3" />
+                            <stop offset="100%" stopColor="#FF4500" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                        {/* Points: 580→743→698→826 mapped to 0–100 range (min 580, max 826) */}
+                        {/* x: 10,40,70,90 y: invert((val-580)/(826-580)*50)+5 */}
+                        <path
+                          d="M10,55 L40,25 L70,31 L90,5"
+                          fill="none"
+                          stroke="#FF4500"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M10,55 L40,25 L70,31 L90,5 L90,60 L10,60 Z"
+                          fill="url(#sparkGrad)"
+                        />
+                        {/* Peak dot */}
+                        <circle cx="90" cy="5" r="2.5" fill="#FF4500" />
+                        {/* Other dots */}
+                        <circle cx="10" cy="55" r="1.5" fill="#938B82" />
+                        <circle cx="40" cy="25" r="1.5" fill="#938B82" />
+                        <circle cx="70" cy="31" r="1.5" fill="#938B82" />
+                      </svg>
+                    </div>
+                    {/* X-axis labels */}
+                    <div className="flex justify-between mt-1">
+                      {["S1", "S2", "S3", "S4"].map((s, i) => (
+                        <span
+                          key={s}
+                          className="text-[7px]"
+                          style={{
+                            fontFamily: "var(--font-jetbrains-mono)",
+                            color: i === 3 ? "#FF4500" : "#938B82",
+                          }}
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex justify-between mt-0.5">
+                      {["580", "743", "698", "826"].map((v, i) => (
+                        <span
+                          key={v}
+                          className="text-[7px] font-bold"
+                          style={{
+                            fontFamily: "var(--font-jetbrains-mono)",
+                            color: i === 3 ? "#FF4500" : "#938B82",
+                          }}
+                        >
+                          {v}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Table — Por Sucursal */}
+                  <div className="col-span-3">
+                    <p
+                      className="text-[#938B82] text-[9px] uppercase tracking-widest mb-2"
+                      style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.1em" }}
+                    >
+                      Por Sucursal
+                    </p>
+                    <table className="w-full text-[7.5px]" style={{ borderCollapse: "collapse" }}>
+                      <thead>
+                        <tr style={{ background: "#FF4500" }}>
+                          <th className="text-white text-left px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>SUC.</th>
+                          <th className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>VTA</th>
+                          <th className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>S.T.</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { suc: "Stgo",  vta: "1.847", st: "42,1%" },
+                          { suc: "Provi", vta: "1.203", st: "38,7%" },
+                          { suc: "Maipú", vta: "892",   st: "29,4%" },
+                          { suc: "Ñuñoa", vta: "648",   st: "25,8%" },
+                          { suc: "Vita",  vta: "257",   st: "22,3%" },
+                        ].map(({ suc, vta, st }, i) => (
+                          <tr
+                            key={suc}
+                            style={{ background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.03)" }}
+                          >
+                            <td className="text-[#938B82] px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{suc}</td>
+                            <td className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{vta}</td>
+                            <td className="text-[#FF4500] text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{st}</td>
+                          </tr>
+                        ))}
+                        <tr style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                          <td className="text-white font-bold px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Total</td>
+                          <td className="text-white font-bold text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>4.847</td>
+                          <td className="text-[#FF4500] font-bold text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>35,3%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* BOTTOM — Top Productos table */}
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "10px" }}>
+                  <p
+                    className="text-[#938B82] text-[9px] uppercase tracking-widest mb-2"
+                    style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.1em" }}
+                  >
+                    Top Productos
+                  </p>
+                  <table className="w-full text-[7.5px]" style={{ borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr style={{ background: "#FF4500" }}>
+                        <th className="text-white text-left px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Producto</th>
+                        <th className="text-white text-left px-1 py-0.5 hidden sm:table-cell" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Familia</th>
+                        <th className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Uni.</th>
+                        <th className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>$</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { prod: "Polera Básica M. Blanca",    fam: "Poleras",  uni: "312",   val: "$2.184k" },
+                        { prod: "Jeans Slim H. Azul",         fam: "Pantalón", uni: "287",   val: "$3.157k" },
+                        { prod: "Zapatilla Running Gris",     fam: "Calzado",  uni: "198",   val: "$3.564k" },
+                        { prod: "Parka M. Verde Oliva",       fam: "Abrigos",  uni: "156",   val: "$4.212k" },
+                        { prod: "Poleron Hoodie Unisex",      fam: "Poleron",  uni: "143",   val: "$1.859k" },
+                      ].map(({ prod, fam, uni, val }, i) => (
+                        <tr
+                          key={prod}
+                          style={{ background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.03)" }}
+                        >
+                          <td className="text-[#938B82] px-1 py-0.5 truncate max-w-[80px]" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{prod}</td>
+                          <td className="text-[#938B82] px-1 py-0.5 hidden sm:table-cell" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{fam}</td>
+                          <td className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{uni}</td>
+                          <td className="text-white text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{val}</td>
+                        </tr>
+                      ))}
+                      <tr style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                        <td className="text-white font-bold px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Total</td>
+                        <td className="hidden sm:table-cell" />
+                        <td className="text-white font-bold text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>1.096</td>
+                        <td className="text-[#FF4500] font-bold text-right px-1 py-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>$14.97k</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Bottom-right sync badge */}
+                <div className="flex justify-end" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "8px" }}>
+                  <div className="text-right">
+                    <p
+                      className="text-[#938B82] text-[8px] uppercase tracking-widest"
+                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                    >
+                      ■ DATOS ACTUALIZADOS
+                    </p>
+                    <p
+                      className="text-[#938B82]/50 text-[7px]"
+                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                    >
+                      Última sync: hace 2 horas
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
