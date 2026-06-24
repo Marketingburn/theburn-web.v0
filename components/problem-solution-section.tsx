@@ -20,7 +20,7 @@ export function ProblemSolutionSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-24 px-4 relative z-10 bg-[#0A0A0A]">
+    <section ref={sectionRef} className="py-16 sm:py-24 px-4 relative z-10 bg-[#FFFFFF]">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div
@@ -28,12 +28,12 @@ export function ProblemSolutionSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] text-[#938B82] text-sm font-medium mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#F5F1EA] border border-[#E8E3DA] text-[#938B82] text-sm font-medium mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
             <span className="w-2 h-2 bg-red-500 rounded-sm mr-2 animate-pulse" />
             EL PROBLEMA
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white text-balance mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance mb-4 sm:mb-6"
             style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.95" }}
           >
             Tu empresa vende. Pero no sabe{" "}

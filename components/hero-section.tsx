@@ -30,10 +30,19 @@ const companies = [
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative bg-[#0A0A0A]">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative bg-[#F5F1EA] overflow-hidden">
+      {/* Fire glow ambient blurs */}
+      <div
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none animate-fire-glow"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.15 }}
+      />
+      <div
+        className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none animate-fire-glow-2"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.12 }}
+      />
       <div className="max-w-5xl mx-auto relative z-10 animate-fade-in-hero">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] text-[#938B82] text-sm mb-8 mt-12 animate-fade-in-badge" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm mb-8 mt-12 animate-fade-in-badge" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
           <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0" />
           Consultoría Comercial &amp; Marketing — Chile
         </div>
@@ -43,7 +52,7 @@ export function HeroSection() {
           className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black uppercase text-balance mb-6 animate-fade-in-heading leading-none"
           style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
         >
-          <span className="text-white block">Haz crecer tu</span>
+          <span className="text-[#0A0A0A] block">Haz crecer tu</span>
           <span className="flex items-center flex-wrap gap-3 mt-3 sm:mt-4 md:mt-5">
             <RotatingText
               texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
@@ -69,7 +78,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
           <Button
             size="lg"
-            className="bg-white text-[#0A0A0A] rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#F5F1EA] hover:scale-105 hover:shadow-lg group cursor-pointer"
+            className="bg-[#0A0A0A] text-white rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#1B1917] hover:scale-105 hover:shadow-lg group cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
             Agendar Diagnóstico
@@ -79,7 +88,7 @@ export function HeroSection() {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 py-4 text-lg font-medium border-[#2A2725] text-[#938B82] hover:bg-[#1B1917] hover:border-[#FF4500]/50 hover:text-white transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            className="rounded-full px-8 py-4 text-lg font-medium border-[#E8E3DA] text-[#938B82] hover:bg-white hover:border-[#FF4500]/40 hover:text-[#0A0A0A] transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
             style={{ fontFamily: "var(--font-barlow)" }}
           >
             <Play />
@@ -95,23 +104,23 @@ export function HeroSection() {
           <div className="relative overflow-hidden w-full max-w-3xl">
             <div
               className="absolute left-0 top-0 w-16 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #0A0A0A, transparent)" }}
+              style={{ background: "linear-gradient(to right, #F5F1EA, transparent)" }}
             />
             <div
               className="absolute right-0 top-0 w-16 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, #0A0A0A, transparent)" }}
+              style={{ background: "linear-gradient(to left, #F5F1EA, transparent)" }}
             />
             <div className="flex items-center gap-10 animate-slide-left">
               <div className="flex items-center gap-10 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c} className="text-sm font-semibold text-[#2A2725] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                  <div key={c} className="text-sm font-semibold text-[#938B82] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-10 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-sm font-semibold text-[#2A2725] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                  <div key={c + "-dup"} className="text-sm font-semibold text-[#938B82] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
@@ -126,23 +135,23 @@ export function HeroSection() {
           <div className="relative overflow-hidden w-full max-w-sm">
             <div
               className="absolute left-0 top-0 w-8 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #0A0A0A, transparent)" }}
+              style={{ background: "linear-gradient(to right, #F5F1EA, transparent)" }}
             />
             <div
               className="absolute right-0 top-0 w-8 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, #0A0A0A, transparent)" }}
+              style={{ background: "linear-gradient(to left, #F5F1EA, transparent)" }}
             />
             <div className="flex items-center gap-6 animate-slide-left-mobile">
               <div className="flex items-center gap-6 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c} className="text-xs font-semibold text-[#2A2725] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                  <div key={c} className="text-xs font-semibold text-[#938B82] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-6 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-xs font-semibold text-[#2A2725] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                  <div key={c + "-dup"} className="text-xs font-semibold text-[#938B82] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}

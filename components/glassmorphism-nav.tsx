@@ -75,13 +75,13 @@ export function GlassmorphismNav() {
         }}
       >
         <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
-          <div className="bg-[#0A0A0A]/90 backdrop-blur-md border border-[#2A2725] rounded-full px-4 py-2.5 md:px-6 md:py-2">
+          <div className="bg-[#F5F1EA]/90 backdrop-blur-md border border-black/8 rounded-full px-4 py-2.5 md:px-6 md:py-2" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
             <div className="flex items-center justify-between">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity duration-200 cursor-pointer">
                 <Image src="/logo-theburn.png" alt="The Burn flame logo" width={28} height={28} className="w-7 h-7" />
                 <span
-                  className="text-xl md:text-2xl font-black uppercase tracking-wider text-white"
+                  className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#0A0A0A]"
                   style={{ fontFamily: "var(--font-barlow-condensed)" }}
                 >
                   THE BURN
@@ -94,7 +94,7 @@ export function GlassmorphismNav() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-[#938B82] hover:text-white transition-all duration-200 text-sm font-medium cursor-pointer"
+                    className="text-[#938B82] hover:text-[#0A0A0A] transition-all duration-200 text-sm font-medium cursor-pointer"
                     style={{ fontFamily: "var(--font-barlow)" }}
                   >
                     {item.name}
@@ -105,7 +105,7 @@ export function GlassmorphismNav() {
               {/* Desktop CTA */}
               <div className="hidden md:block">
                 <button
-                  className="bg-white hover:bg-[#F5F1EA] text-[#0A0A0A] font-bold px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
+                  className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
                   style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
                   onClick={() => scrollToSection("#contact")}
                 >
@@ -119,7 +119,7 @@ export function GlassmorphismNav() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer"
+                className="md:hidden text-[#0A0A0A] hover:scale-110 transition-transform duration-200 cursor-pointer"
                 aria-label="Toggle menu"
               >
                 <div className="relative w-6 h-6">
@@ -148,13 +148,13 @@ export function GlassmorphismNav() {
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
           >
-            <div className="bg-[#0A0A0A]/95 backdrop-blur-md border border-[#2A2725] rounded-2xl p-4 shadow-2xl">
+            <div className="bg-[#F5F1EA]/95 backdrop-blur-md border border-black/8 rounded-2xl p-4 shadow-xl" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`text-[#938B82] hover:text-white hover:bg-white/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
+                    className={`text-[#938B82] hover:text-[#0A0A0A] hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
                       isOpen ? "animate-mobile-menu-item" : ""
                     }`}
                     style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)" }}
@@ -162,9 +162,9 @@ export function GlassmorphismNav() {
                     {item.name}
                   </button>
                 ))}
-                <div className="h-px bg-[#2A2725] my-2" />
+                <div className="h-px bg-black/10 my-2" />
                 <button
-                  className={`bg-white hover:bg-[#F5F1EA] text-[#0A0A0A] font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer ${
+                  className={`bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer ${
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
                   style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)" }}

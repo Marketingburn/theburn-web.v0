@@ -11,73 +11,38 @@
   --char: #1B1917;
   --smoke: #938B82;
 
-  --background: #0A0A0A;
-  --foreground: #FFFFFF;
-  --card: #1B1917;
-  --card-foreground: #FFFFFF;
-  --popover: #1B1917;
-  --popover-foreground: #FFFFFF;
+  --background: #F5F1EA;
+  --foreground: #0A0A0A;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0A;
   --primary: #FF4500;
-  --primary-foreground: #0A0A0A;
-  --secondary: #1B1917;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1B1917;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFFFFF;
+  --secondary-foreground: #0A0A0A;
+  --muted: #F5F1EA;
   --muted-foreground: #938B82;
   --accent: #FF4500;
-  --accent-foreground: #0A0A0A;
+  --accent-foreground: #FFFFFF;
   --destructive: #ef4444;
   --destructive-foreground: #FFFFFF;
-  --border: #2A2725;
-  --input: #1B1917;
+  --border: #E8E3DA;
+  --input: #FFFFFF;
   --ring: #FF4500;
   --chart-1: #FF4500;
   --chart-2: #D6862C;
   --chart-3: #938B82;
-  --chart-4: #F5F1EA;
+  --chart-4: #0A0A0A;
   --chart-5: #1B1917;
   --radius: 0.75rem;
-  --sidebar: #1B1917;
-  --sidebar-foreground: #FFFFFF;
+  --sidebar: #F5F1EA;
+  --sidebar-foreground: #0A0A0A;
   --sidebar-primary: #FF4500;
-  --sidebar-primary-foreground: #0A0A0A;
-  --sidebar-accent: #0A0A0A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #2A2725;
-  --sidebar-ring: #FF4500;
-}
-
-.dark {
-  --background: #0A0A0A;
-  --foreground: #FFFFFF;
-  --card: #1B1917;
-  --card-foreground: #FFFFFF;
-  --popover: #1B1917;
-  --popover-foreground: #FFFFFF;
-  --primary: #FF4500;
-  --primary-foreground: #0A0A0A;
-  --secondary: #1B1917;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1B1917;
-  --muted-foreground: #938B82;
-  --accent: #FF4500;
-  --accent-foreground: #0A0A0A;
-  --destructive: #ef4444;
-  --destructive-foreground: #FFFFFF;
-  --border: #2A2725;
-  --input: #1B1917;
-  --ring: #FF4500;
-  --chart-1: #FF4500;
-  --chart-2: #D6862C;
-  --chart-3: #938B82;
-  --chart-4: #F5F1EA;
-  --chart-5: #1B1917;
-  --sidebar: #1B1917;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #FF4500;
-  --sidebar-primary-foreground: #0A0A0A;
-  --sidebar-accent: #0A0A0A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #2A2725;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFFFFF;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: #E8E3DA;
   --sidebar-ring: #FF4500;
 }
 
@@ -884,4 +849,55 @@
 .animate-fade-in-section {
   animation: fade-in-section 1s ease-out forwards;
   opacity: 0;
+}
+
+/* Fire glow ambient animation for hero */
+@keyframes fire-glow-drift {
+  0% {
+    transform: translate(-20%, -20%) scale(1);
+    opacity: 0.15;
+  }
+  25% {
+    transform: translate(10%, -30%) scale(1.1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate(20%, 10%) scale(0.95);
+    opacity: 0.12;
+  }
+  75% {
+    transform: translate(-10%, 20%) scale(1.05);
+    opacity: 0.17;
+  }
+  100% {
+    transform: translate(-20%, -20%) scale(1);
+    opacity: 0.15;
+  }
+}
+
+@keyframes fire-glow-drift-2 {
+  0% {
+    transform: translate(30%, 20%) scale(1.1);
+    opacity: 0.12;
+  }
+  33% {
+    transform: translate(-10%, 30%) scale(0.9);
+    opacity: 0.18;
+  }
+  66% {
+    transform: translate(-30%, -10%) scale(1.15);
+    opacity: 0.14;
+  }
+  100% {
+    transform: translate(30%, 20%) scale(1.1);
+    opacity: 0.12;
+  }
+}
+
+.animate-fire-glow {
+  animation: fire-glow-drift 12s ease-in-out infinite;
+}
+
+.animate-fire-glow-2 {
+  animation: fire-glow-drift-2 16s ease-in-out infinite;
 }

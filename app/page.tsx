@@ -10,7 +10,7 @@ import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] overflow-hidden">
+    <div className="min-h-screen bg-[#F5F1EA] overflow-hidden">
       <main className="min-h-screen relative overflow-hidden">
         <div className="relative z-10">
           <GlassmorphismNav />
