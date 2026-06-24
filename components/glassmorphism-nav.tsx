@@ -186,8 +186,10 @@ export function GlassmorphismNav() {
                                   <button
                                     key={service.title}
                                     onClick={() => {
-                                      router.push(service.href)
                                       setIsServiciosOpen(false)
+                                      setTimeout(() => {
+                                        router.push(service.href)
+                                      }, 150)
                                     }}
                                     className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
                                   >
@@ -324,9 +326,11 @@ export function GlassmorphismNav() {
                             <button
                               key={service.title}
                               onClick={() => {
-                                router.push(service.href)
                                 setIsOpen(false)
                                 setIsServiciosOpen(false)
+                                setTimeout(() => {
+                                  router.push(service.href)
+                                }, 150)
                               }}
                               className="w-full text-left text-sm p-2 rounded-lg hover:bg-black/5 transition-all duration-150"
                               style={{ fontFamily: "var(--font-barlow)" }}
