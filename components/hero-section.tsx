@@ -56,13 +56,13 @@ export function HeroSection() {
           <span className="flex items-center flex-wrap gap-3 mt-3 sm:mt-4 md:mt-5">
             <RotatingText
               texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
-              mainClassName="px-3 sm:px-4 md:px-5 bg-[#FF4500] text-[#0A0A0A] overflow-hidden py-1 sm:py-2 justify-center rounded-lg"
+              mainClassName="px-6 sm:px-8 md:px-10 bg-[#FF4500] text-[#FFFFFF] overflow-hidden py-2 sm:py-3 md:py-4 justify-center rounded-lg inline-block"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-120%" }}
               staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-1"
+              splitLevelClassName="overflow-hidden"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={2000}
             />
