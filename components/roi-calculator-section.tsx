@@ -77,13 +77,13 @@ export function ROICalculatorSection() {
             className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-4 text-balance"
             style={{ fontFamily: "var(--font-barlow-condensed)" }}
           >
-            Calcula tu potencial
+            Calcula tu crecimiento
             <br />
-            <span className="text-[#FF6B00]">de crecimiento</span>
+            <span className="text-[#FF6B00]">potencial</span>
           </h2>
 
           <p className="text-lg text-[#888888] max-w-2xl mx-auto">
-            Ingresa tus métricas actuales y ve cuánto puede crecer tu negocio con automatización.
+            Calcula cuántos ingresos adicionales puede generar tu empresa con automatización de marketing.
           </p>
         </div>
 
@@ -198,7 +198,7 @@ export function ROICalculatorSection() {
               <div className="space-y-4 flex-1">
                 {[
                   {
-                    label: "Leads adicionales proyectados",
+                    label: "Leads adicionales",
                     value: `+${additionalLeads}`,
                     icon: (
                       <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,7 +207,7 @@ export function ROICalculatorSection() {
                     ),
                   },
                   {
-                    label: "Ingresos adicionales mensuales",
+                    label: "Ingresos adicionales (CLP)",
                     value: formatCLP(additionalMonthlyRevenue),
                     icon: (
                       <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,7 +216,7 @@ export function ROICalculatorSection() {
                     ),
                   },
                   {
-                    label: "Mejora en conversión",
+                    label: "% Aumento en conversión",
                     value: `+${conversionImprovement}%`,
                     icon: (
                       <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,8 +225,8 @@ export function ROICalculatorSection() {
                     ),
                   },
                   {
-                    label: "Tiempo de respuesta",
-                    value: `${responseSpeedImprovement}% más rápido`,
+                    label: "Velocidad de respuesta",
+                    value: `${responseSpeedImprovement}% más rápida`,
                     icon: (
                       <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -249,7 +249,7 @@ export function ROICalculatorSection() {
                 {/* Annual projection highlight */}
                 <div className="mt-2 p-5 md:p-6 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/30">
                   <div className="text-center">
-                    <div className="text-xs text-[#888888] mb-2 uppercase tracking-wide">Proyección anual</div>
+                    <div className="text-xs text-[#888888] mb-2 uppercase tracking-wide">Proyección anual en CLP</div>
                     <div
                       className="text-3xl md:text-4xl font-black text-[#FF6B00] mb-1"
                       style={{ fontFamily: "var(--font-barlow-condensed)" }}

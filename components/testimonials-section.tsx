@@ -33,12 +33,12 @@ export function TestimonialsSection() {
       role: "Gerente General",
     },
     {
-      text: "El diagnóstico nos mostró exactamente dónde se perdían los leads. En 30 días ya teníamos el sistema funcionando.",
+      text: "El diagnóstico nos mostró exactamente dónde perdíamos leads. En 30 días el sistema ya estaba funcionando.",
       name: "Valentina R.",
       role: "Gerente de Marketing",
     },
     {
-      text: "Nunca pensé que una consultora pudiera montar todo esto en menos de dos meses.",
+      text: "Con The Burn automatizamos todo el seguimiento post-reunión. Nuestra tasa de cierre subió 40%.",
       name: "Jorge P.",
       role: "Director Comercial",
     },
@@ -69,6 +69,12 @@ export function TestimonialsSection() {
     },
   ]
 
+  const stats = [
+    { value: "70%", label: "menos tiempo en seguimiento manual" },
+    { value: "85%", label: "tasa de respuesta a leads" },
+    { value: "40%", label: "aumento en conversión" },
+  ]
+
   return (
     <section id="testimonials" ref={sectionRef} className="relative pt-16 pb-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
       {/* Subtle grid bg */}
@@ -90,7 +96,7 @@ export function TestimonialsSection() {
         <div className="text-center mb-16 md:mb-24">
           <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-[#888888] text-sm font-medium tracking-wider uppercase mb-6">
             <div className="w-8 h-px bg-[#333333]" />
-            Casos de Éxito
+            Success Stories
             <div className="w-8 h-px bg-[#333333]" />
           </div>
           <h2
@@ -101,7 +107,7 @@ export function TestimonialsSection() {
             <span className="text-[#FF6B00]">automatizaron</span>
           </h2>
           <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-lg text-[#888888] max-w-2xl mx-auto leading-relaxed">
-            Equipos B2B en Chile que dejaron de perder leads y empezaron a cerrar más
+            Descubre cómo empresas B2B están transformando su pipeline con The Burn
           </p>
         </div>
 
@@ -128,6 +134,24 @@ export function TestimonialsSection() {
               className="flex-1 hidden lg:block"
             />
           </div>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-16 max-w-3xl mx-auto">
+          {stats.map((stat) => (
+            <div
+              key={stat.value}
+              className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-center bg-[#111111] border border-[#222222] rounded-xl p-6 hover:border-[#FF6B00]/30 transition-all duration-300"
+            >
+              <div
+                className="text-3xl font-black text-[#FF6B00] mb-1"
+                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+              >
+                {stat.value}
+              </div>
+              <p className="text-[#888888] text-xs leading-relaxed">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

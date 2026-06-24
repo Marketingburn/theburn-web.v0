@@ -40,15 +40,15 @@ export function CTASection() {
               className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-4 text-balance"
               style={{ fontFamily: "var(--font-barlow-condensed)" }}
             >
-              Obtén tu Diagnóstico Gratuito
+              Deja de Perder Clientes Hoy
             </h3>
             <p className="text-base md:text-lg text-[#888888] mb-8 max-w-2xl mx-auto leading-relaxed">
-              Analizamos tu funnel actual y te mostramos exactamente dónde se pierden tus leads.
+              Obtén un diagnóstico gratuito y descubre exactamente cuántos leads estás perdiendo ahora mismo.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button className="group inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 bg-[#FF6B00] hover:bg-[#FF8C00] text-white rounded-full font-bold text-base md:text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-900/30">
-                Agendar Diagnóstico
+                Obtener Diagnóstico Gratuito
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
                   fill="none"

@@ -21,10 +21,10 @@ const Play = () => (
 const companies = [
   "Droguería Michelson",
   "GDM Abogados",
-  "Farmacias Cruz Verde",
-  "Holding Empresarial",
-  "Clínica Legal",
-  "Distribuciones Sur",
+  "The Mob",
+  "Blue Wave",
+  "Droguería Michelson",
+  "GDM Abogados",
 ]
 
 export function HeroSection() {
@@ -94,7 +94,7 @@ export function HeroSection() {
 
         {/* Trust Indicators */}
         <div className="text-center px-4 hidden sm:block overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-[#888888] mb-6">Usado por equipos como:</p>
+          <p className="text-sm text-[#888888] mb-6">Confiado por equipos como:</p>
           <div className="relative overflow-hidden w-full max-w-3xl mx-auto">
             <div
               className="absolute left-0 top-0 w-16 h-full z-10 pointer-events-none"
@@ -125,7 +125,7 @@ export function HeroSection() {
 
         {/* Mobile Trust Indicators */}
         <div className="text-center px-4 mb-8 sm:hidden overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-[#888888] mb-4">Usado por equipos como:</p>
+          <p className="text-sm text-[#888888] mb-4">Confiado por equipos como:</p>
           <div className="relative overflow-hidden w-full max-w-sm mx-auto">
             <div
               className="absolute left-0 top-0 w-8 h-full z-10 pointer-events-none"

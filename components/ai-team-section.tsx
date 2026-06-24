@@ -200,16 +200,19 @@ export function AITeamSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-[#FF6B00] rounded-full mr-2 animate-pulse"></span>
+              Demo — Así Trabaja The Burn
+            </div>
             <h2
               className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight text-gray-900 text-balance mb-4"
               style={{ fontFamily: "var(--font-barlow-condensed)" }}
             >
-              Así trabaja{" "}
-              <span className="text-[#FF6B00]">The Burn</span>{" "}
-              por ti
+              Ve cómo la IA gestiona{" "}
+              <span className="text-[#FF6B00]">leads reales</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Cada lead que entra activa un flujo automático. Sin humanos, sin demoras, sin leads perdidos.
+              Mientras tu equipo duerme, el sistema califica prospectos, envía seguimientos y agenda reuniones.
             </p>
           </div>
 
@@ -224,17 +227,17 @@ export function AITeamSection() {
                 className="text-2xl lg:text-3xl font-black uppercase text-gray-900 mb-6"
                 style={{ fontFamily: "var(--font-barlow-condensed)" }}
               >
-                Lo que antes tomaba días, ahora pasa en minutos
+                De consulta entrante a reunión agendada — sin intervención humana
               </h3>
 
               <div className="space-y-4 text-gray-500 text-sm leading-relaxed mb-8">
                 <p>
-                  Cuando un lead llena tu formulario o te escribe por LinkedIn, The Burn lo captura, lo califica con IA
-                  y dispara la secuencia de nurturing adecuada — todo sin que tu equipo haga nada.
+                  Un lead llega por formulario, LinkedIn o WhatsApp. El sistema lo captura, lo califica con IA según
+                  industria y cargo, y dispara la secuencia de nurturing correcta — automáticamente.
                 </p>
                 <p>
-                  Si el lead está listo para comprar, tu equipo recibe una alerta instantánea con todo el contexto para
-                  cerrar la reunión.
+                  Cuando el lead demuestra intención de compra, tu vendedor recibe una alerta inmediata con todo el
+                  contexto para cerrar. El prospecto ya encontró su hueco en el calendario.
                 </p>
                 <p className="font-semibold text-gray-900">
                   Resultado: más reuniones, menos esfuerzo, cero leads perdidos.

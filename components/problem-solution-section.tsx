@@ -41,7 +41,7 @@ export function ProblemSolutionSection() {
             nunca reciben seguimiento
           </h2>
           <p className="text-base sm:text-lg text-[#888888] max-w-2xl mx-auto leading-relaxed">
-            Mientras tu equipo está cerrando, los leads nuevos se enfrían. The Burn lo resuelve automáticamente.
+            Tu equipo está ocupado ejecutando, no sistematizando. Aquí es donde perdés dinero.
           </p>
         </div>
 
@@ -79,9 +79,9 @@ export function ProblemSolutionSection() {
 
             <div className="space-y-3">
               {[
-                "Tu equipo está ocupado cerrando, no prospectando",
-                "Los leads fríos no se recuperan solos",
-                "El CRM está desactualizado por falta de tiempo",
+                "Tu equipo persigue leads en vez de cerrar",
+                "El CRM está desactualizado",
+                "El presupuesto de marketing no tiene trazabilidad",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
@@ -120,8 +120,8 @@ export function ProblemSolutionSection() {
             <div className="space-y-3">
               {[
                 "Seguimiento automático por email y WhatsApp",
-                "Calificación de leads sin intervención humana",
-                "Reportes semanales en Power BI",
+                "Leads calificados sin intervención humana",
+                "Reportes semanales listos en Power BI",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <svg className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

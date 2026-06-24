@@ -18,24 +18,23 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
-    label: "Servicios",
-    links: [
-      { title: "Automatización CRM", href: "#features" },
-      { title: "Flujos de Nurturing", href: "#features" },
-      { title: "Reportería Power BI", href: "#features" },
-    ],
-  },
-  {
     label: "Empresa",
     links: [
-      { title: "Casos de Éxito", href: "#testimonials" },
-      { title: "Diagnóstico Gratuito", href: "#contact" },
+      { title: "Servicios", href: "#features" },
+      { title: "Casos", href: "#testimonials" },
+      { title: "Diagnóstico", href: "#contact" },
     ],
   },
   {
     label: "Redes",
     links: [
       { title: "LinkedIn", href: "#", icon: LinkedinIcon },
+    ],
+  },
+  {
+    label: "Legal",
+    links: [
+      { title: "Santiago, Chile", href: "#" },
     ],
   },
 ]
