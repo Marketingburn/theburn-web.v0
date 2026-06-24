@@ -8,10 +8,10 @@ import { useRouter } from "next/navigation"
 
 const services = [
   {
-    icon: "🔍",
-    title: "Diagnóstico Comercial",
-    description: "El primer paso. 3 semanas, $500k CLP.",
-    href: "/servicios/diagnostico-comercial",
+    icon: "🎯",
+    title: "Consultoría Comercial",
+    description: "Vende con un proceso claro.",
+    href: "/servicios/consultoria-comercial",
   },
   {
     icon: "📊",
@@ -30,12 +30,6 @@ const services = [
     title: "Automatización de Marketing",
     description: "Tu equipo cierra. El sistema prospecta.",
     href: "/servicios/automatizacion-marketing",
-  },
-  {
-    icon: "🎯",
-    title: "Consultoría Comercial",
-    description: "Proceso de ventas que escala.",
-    href: "/servicios/consultoria-comercial",
   },
 ]
 
@@ -191,7 +185,12 @@ export function GlassmorphismNav() {
                                 {services.map((service) => (
                                   <button
                                     key={service.title}
-                                    onClick={() => scrollToSection(service.href)}
+                                    onClick={() => {
+                                      setIsServiciosOpen(false)
+                                      setTimeout(() => {
+                                        router.push(service.href)
+                                      }, 150)
+                                    }}
                                     className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
                                   >
                                     <div className="text-lg mb-1 group-hover:scale-110 transition-transform duration-150">{service.icon}</div>
@@ -326,7 +325,13 @@ export function GlassmorphismNav() {
                           {services.map((service) => (
                             <button
                               key={service.title}
-                              onClick={() => scrollToSection(service.href)}
+                              onClick={() => {
+                                setIsOpen(false)
+                                setIsServiciosOpen(false)
+                                setTimeout(() => {
+                                  router.push(service.href)
+                                }, 150)
+                              }}
                               className="w-full text-left text-sm p-2 rounded-lg hover:bg-black/5 transition-all duration-150"
                               style={{ fontFamily: "var(--font-barlow)" }}
                             >
