@@ -4,6 +4,7 @@ import type React from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { LinkedinIcon } from "lucide-react"
+import Image from "next/image"
 
 interface FooterLink {
   title: string
@@ -21,8 +22,9 @@ const footerLinks: FooterSection[] = [
     label: "Empresa",
     links: [
       { title: "Servicios", href: "#features" },
+      { title: "Diagnóstico", href: "#ai-team" },
       { title: "Casos", href: "#testimonials" },
-      { title: "Diagnóstico", href: "#contact" },
+      { title: "Blog", href: "#" },
     ],
   },
   {
@@ -35,26 +37,30 @@ const footerLinks: FooterSection[] = [
     label: "Legal",
     links: [
       { title: "Santiago, Chile", href: "#" },
+      { title: "theburn.cl", href: "#" },
     ],
   },
 ]
 
 export function Footer() {
   return (
-    <footer className="relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-3xl border-t border-[#1A1A1A] bg-[#0A0A0A] px-6 py-12 lg:py-16">
+    <footer className="relative w-full max-w-6xl mx-auto flex flex-col items-start justify-center rounded-t-3xl border-t border-[#2A2725] bg-[#0A0A0A] px-6 py-12 lg:py-16">
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
         <AnimatedContainer className="space-y-4">
-          <span
-            className="text-2xl font-black uppercase tracking-wider text-[#FF6B00]"
-            style={{ fontFamily: "var(--font-barlow-condensed)" }}
-          >
-            THE BURN
-          </span>
-          <p className="text-[#888888] text-sm leading-relaxed max-w-xs">
-            Menos bla, más marketing.
+          <div className="flex items-center gap-2.5">
+            <Image src="/logo-theburn.png" alt="The Burn logo" width={32} height={32} className="w-8 h-8" />
+            <span
+              className="text-2xl font-black uppercase tracking-wider text-white"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              THE BURN
+            </span>
+          </div>
+          <p className="text-[#938B82] text-sm leading-relaxed max-w-xs" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.08em" }}>
+            MENOS BLA, MÁS MARKETING.
           </p>
-          <p className="text-[#444444] text-xs mt-4 hidden md:block">
-            © {new Date().getFullYear()} The Burn SpA · Santiago, Chile
+          <p className="text-[#2A2725] text-xs mt-4 hidden md:block" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+            © {new Date().getFullYear()} THE BURN SpA · SANTIAGO, CHILE · THEBURN.CL
           </p>
         </AnimatedContainer>
 
@@ -62,7 +68,7 @@ export function Footer() {
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
               <div>
-                <h3 className="text-xs uppercase tracking-wider text-[#888888] font-semibold mb-4">
+                <h3 className="text-xs uppercase tracking-widest text-[#938B82] font-semibold mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                   {section.label}
                 </h3>
                 <ul className="space-y-2 text-sm">
@@ -70,7 +76,8 @@ export function Footer() {
                     <li key={link.title}>
                       <a
                         href={link.href}
-                        className="text-[#555555] hover:text-white inline-flex items-center gap-1.5 transition-colors duration-200"
+                        className="text-[#938B82]/60 hover:text-white inline-flex items-center gap-1.5 transition-colors duration-200"
+                        style={{ fontFamily: "var(--font-barlow)" }}
                       >
                         {link.icon && <link.icon className="w-3.5 h-3.5" />}
                         {link.title}
@@ -84,9 +91,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="md:hidden mt-8 text-center">
-        <p className="text-[#444444] text-xs">
-          © {new Date().getFullYear()} The Burn SpA · Santiago, Chile
+      <div className="md:hidden mt-8">
+        <p className="text-[#2A2725] text-xs" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+          © {new Date().getFullYear()} THE BURN SpA · SANTIAGO, CHILE
         </p>
       </div>
     </footer>

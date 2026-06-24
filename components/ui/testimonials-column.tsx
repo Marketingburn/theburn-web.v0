@@ -32,20 +32,20 @@ export const TestimonialsColumn = (props: {
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, name, role }, i) => (
                 <div
-                  className="p-8 rounded-2xl border border-[#222222] bg-[#111111] max-w-xs w-full"
+                  className="p-8 rounded-2xl border border-[#2A2725] bg-[#1B1917] max-w-xs w-full"
                   style={{
                     boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
                   }}
                   key={i}
                 >
-                  <div className="text-[#888888] text-sm leading-relaxed">{text}</div>
+                  <div className="text-[#938B82] text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>{text}</div>
                   <div className="mt-5 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#FF6B00]/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[#FF6B00] text-xs font-bold">{name.charAt(0)}</span>
+                    <div className="w-8 h-8 rounded-full bg-[#FF4500]/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#FF4500] text-xs font-bold" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{name.charAt(0)}</span>
                     </div>
                     <div>
-                      <div className="font-semibold text-sm text-white">{name}</div>
-                      <div className="text-xs text-[#555555]">{role}</div>
+                      <div className="font-semibold text-sm text-white" style={{ fontFamily: "var(--font-barlow)" }}>{name}</div>
+                      <div className="text-xs text-[#938B82]/60" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{role}</div>
                     </div>
                   </div>
                 </div>

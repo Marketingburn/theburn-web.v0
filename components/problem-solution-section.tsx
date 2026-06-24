@@ -24,24 +24,23 @@ export function ProblemSolutionSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div
-          className={`text-center mb-12 sm:mb-20 transition-all duration-1000 ${
+          className={`mb-12 sm:mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1A1A1A] border border-[#333333] text-[#888888] text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
-            El problema de toda empresa B2B
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] text-[#938B82] text-sm font-medium mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+            <span className="w-2 h-2 bg-red-500 rounded-sm mr-2 animate-pulse" />
+            EL PROBLEMA
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight text-white text-balance mb-4 sm:mb-6"
-            style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white text-balance mb-4 sm:mb-6"
+            style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.95" }}
           >
-            El <span className="text-red-500">70%</span> de tus leads
-            <br />
-            nunca reciben seguimiento
+            Tu empresa vende. Pero no sabe{" "}
+            <span className="text-[#FF4500]">EXACTAMENTE</span> por qué.
           </h2>
-          <p className="text-base sm:text-lg text-[#888888] max-w-2xl mx-auto leading-relaxed">
-            Tu equipo está ocupado ejecutando, no sistematizando. Aquí es donde perdés dinero.
+          <p className="text-base sm:text-lg text-[#938B82] max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+            Sin datos claros, sin procesos definidos y sin un funnel que funcione solo, cada venta depende del esfuerzo de una persona. Eso no escala.
           </p>
         </div>
 
@@ -52,7 +51,7 @@ export function ProblemSolutionSection() {
           }`}
         >
           {/* Problem Card */}
-          <div className="bg-[#111111] border border-red-900/40 rounded-2xl p-6 sm:p-8 hover:border-red-500/40 transition-all duration-500">
+          <div className="bg-[#1B1917] border border-red-900/40 rounded-2xl p-6 sm:p-8 hover:border-red-500/40 transition-all duration-500">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg bg-red-900/30 flex items-center justify-center">
                 <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,29 +69,29 @@ export function ProblemSolutionSection() {
             <div className="bg-red-950/30 border border-red-900/30 rounded-xl p-4 sm:p-6 mb-6">
               <div
                 className="text-4xl sm:text-5xl font-black text-red-400 mb-2"
-                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                style={{ fontFamily: "var(--font-jetbrains-mono)" }}
               >
-                72 horas
+                Intuición
               </div>
-              <p className="text-[#888888] text-sm">tiempo promedio de respuesta a un lead inbound</p>
+              <p className="text-[#938B82] text-sm" style={{ fontFamily: "var(--font-barlow)" }}>así toma decisiones la mayoría de las empresas sin sistema</p>
             </div>
 
             <div className="space-y-3">
               {[
-                "Tu equipo persigue leads en vez de cerrar",
-                "El CRM está desactualizado",
+                "Sin métricas de pipeline ni conversión",
+                "El equipo de ventas trabaja sin proceso definido",
                 "El presupuesto de marketing no tiene trazabilidad",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-[#888888] text-sm leading-relaxed">{point}</p>
+                  <p className="text-[#938B82] text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>{point}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Solution Card */}
-          <div className="bg-[#111111] border border-green-900/40 rounded-2xl p-6 sm:p-8 hover:border-green-500/40 transition-all duration-500">
+          <div className="bg-[#1B1917] border border-green-900/40 rounded-2xl p-6 sm:p-8 hover:border-green-500/40 transition-all duration-500">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg bg-green-900/30 flex items-center justify-center">
                 <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,24 +109,24 @@ export function ProblemSolutionSection() {
             <div className="bg-green-950/30 border border-green-900/30 rounded-xl p-4 sm:p-6 mb-6">
               <div
                 className="text-4xl sm:text-5xl font-black text-green-400 mb-2"
-                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                style={{ fontFamily: "var(--font-jetbrains-mono)" }}
               >
-                Automatizado
+                Datos
               </div>
-              <p className="text-[#888888] text-sm">el sistema trabaja mientras tu equipo vende</p>
+              <p className="text-[#938B82] text-sm" style={{ fontFamily: "var(--font-barlow)" }}>cada decisión respaldada por números reales de tu negocio</p>
             </div>
 
             <div className="space-y-3">
               {[
-                "Seguimiento automático por email y WhatsApp",
-                "Leads calificados sin intervención humana",
-                "Reportes semanales listos en Power BI",
+                "Dashboard Power BI con tus márgenes, stock y pipeline",
+                "Funnel digital que genera y califica leads",
+                "Proceso comercial que funciona sin depender de una persona",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <svg className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <p className="text-[#888888] text-sm leading-relaxed">{point}</p>
+                  <p className="text-[#938B82] text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>{point}</p>
                 </div>
               ))}
             </div>
@@ -141,21 +140,21 @@ export function ProblemSolutionSection() {
           }`}
         >
           {[
-            { value: "$500k CLP", label: "diagnóstico inicial" },
-            { value: "48h", label: "para activar primer flujo" },
-            { value: "2–3 clientes/mes", label: "capacidad actual" },
+            { value: "$500k CLP", label: "diagnóstico inicial de 3 semanas" },
+            { value: "3 semanas", label: "para entender tu negocio en profundidad" },
+            { value: "1 equipo", label: "estrategia, marketing y datos juntos" },
           ].map((stat) => (
             <div
               key={stat.value}
-              className="text-center bg-[#111111] border border-[#222222] rounded-xl p-4 sm:p-6 hover:border-[#FF6B00]/30 transition-all duration-300"
+              className="bg-[#1B1917] border border-[#2A2725] rounded-xl p-4 sm:p-6 hover:border-[#FF4500]/30 transition-all duration-300"
             >
               <div
                 className="text-2xl sm:text-3xl font-black text-white mb-2"
-                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                style={{ fontFamily: "var(--font-jetbrains-mono)" }}
               >
                 {stat.value}
               </div>
-              <p className="text-[#888888] text-xs sm:text-sm">{stat.label}</p>
+              <p className="text-[#938B82] text-xs sm:text-sm" style={{ fontFamily: "var(--font-barlow)" }}>{stat.label}</p>
             </div>
           ))}
         </div>

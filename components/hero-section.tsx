@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import RotatingText from "./RotatingText"
+import Image from "next/image"
 
 const ArrowRight = () => (
   <svg
@@ -21,8 +22,8 @@ const Play = () => (
 const companies = [
   "Droguería Michelson",
   "GDM Abogados",
-  "The Mob",
   "Blue Wave",
+  "The Mob",
   "Droguería Michelson",
   "GDM Abogados",
 ]
@@ -30,30 +31,23 @@ const companies = [
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative bg-[#0A0A0A]">
-      {/* Subtle orange radial glow at top center */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-15 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, #FF6B00 0%, transparent 70%)" }}
-      />
-
-      <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero">
+      <div className="max-w-5xl mx-auto relative z-10 animate-fade-in-hero">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1A1A1A] border border-[#333333] text-[#888888] text-sm font-medium mb-8 mt-12 animate-fade-in-badge">
-          <span className="w-2 h-2 bg-[#FF6B00] rounded-full mr-2 animate-pulse"></span>
-          Automatización de marketing con IA
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] text-[#938B82] text-sm mb-8 mt-12 animate-fade-in-badge" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+          <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0" />
+          Consultoría Comercial &amp; Marketing — Chile
         </div>
 
         {/* Main Heading */}
         <h1
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-balance mb-6 animate-fade-in-heading leading-none"
-          style={{ fontFamily: "var(--font-barlow-condensed)" }}
+          className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black uppercase text-balance mb-6 animate-fade-in-heading leading-none"
+          style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
         >
-          <span className="text-white">Transforma tu</span>
-          <br />
-          <span className="inline-flex items-center justify-center flex-wrap gap-3 mt-3 sm:mt-4 md:mt-6">
+          <span className="text-white block">Haz crecer tu</span>
+          <span className="flex items-center flex-wrap gap-3 mt-3 sm:mt-4 md:mt-5">
             <RotatingText
-              texts={["Departamento", "Pipeline", "Conversión", "Marketing"]}
-              mainClassName="px-3 sm:px-4 md:px-5 bg-[#FF6B00] text-white overflow-hidden py-1 sm:py-2 justify-center rounded-lg"
+              texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
+              mainClassName="px-3 sm:px-4 md:px-5 bg-[#FF4500] text-[#0A0A0A] overflow-hidden py-1 sm:py-2 justify-center rounded-lg"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -67,16 +61,16 @@ export function HeroSection() {
         </h1>
 
         {/* Subheading */}
-        <p className="text-base sm:text-lg md:text-xl text-[#888888] text-balance max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 animate-fade-in-subheading font-normal">
-          The Burn implementa sistemas de automatización de marketing con IA para empresas B2B en Chile. Sin agencias
-          tradicionales. Sin bla bla.
+        <p className="text-base sm:text-lg md:text-xl text-[#938B82] max-w-2xl mb-8 sm:mb-12 leading-relaxed animate-fade-in-subheading font-normal" style={{ fontFamily: "var(--font-barlow)" }}>
+          The Burn diseña e implementa el sistema comercial y de marketing que tu empresa necesita para vender más y decidir con datos. Sin humo. Sin jerga.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
+        <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 sm:mb-16 animate-fade-in-buttons">
           <Button
             size="lg"
-            className="bg-white text-black rounded-full px-8 py-4 text-lg font-semibold transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-lg group cursor-pointer"
+            className="bg-white text-[#0A0A0A] rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#F5F1EA] hover:scale-105 hover:shadow-lg group cursor-pointer"
+            style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
             Agendar Diagnóstico
             <ArrowRight />
@@ -85,17 +79,20 @@ export function HeroSection() {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 py-4 text-lg font-medium border-[#333333] text-white hover:bg-[#1A1A1A] hover:border-[#FF6B00] transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            className="rounded-full px-8 py-4 text-lg font-medium border-[#2A2725] text-[#938B82] hover:bg-[#1B1917] hover:border-[#FF4500]/50 hover:text-white transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            style={{ fontFamily: "var(--font-barlow)" }}
           >
             <Play />
-            Ver cómo funciona
+            Ver cómo trabajamos
           </Button>
         </div>
 
         {/* Trust Indicators */}
-        <div className="text-center px-4 hidden sm:block overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-[#888888] mb-6">Confiado por equipos como:</p>
-          <div className="relative overflow-hidden w-full max-w-3xl mx-auto">
+        <div className="px-0 hidden sm:block overflow-hidden animate-fade-in-trust">
+          <p className="text-xs text-[#938B82] mb-5 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.15em" }}>
+            TRABAJAN CON NOSOTROS
+          </p>
+          <div className="relative overflow-hidden w-full max-w-3xl">
             <div
               className="absolute left-0 top-0 w-16 h-full z-10 pointer-events-none"
               style={{ background: "linear-gradient(to right, #0A0A0A, transparent)" }}
@@ -107,14 +104,14 @@ export function HeroSection() {
             <div className="flex items-center gap-10 animate-slide-left">
               <div className="flex items-center gap-10 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c} className="text-sm font-semibold text-[#444444] uppercase tracking-wide">
+                  <div key={c} className="text-sm font-semibold text-[#2A2725] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-10 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-sm font-semibold text-[#444444] uppercase tracking-wide">
+                  <div key={c + "-dup"} className="text-sm font-semibold text-[#2A2725] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
@@ -124,9 +121,9 @@ export function HeroSection() {
         </div>
 
         {/* Mobile Trust Indicators */}
-        <div className="text-center px-4 mb-8 sm:hidden overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-[#888888] mb-4">Confiado por equipos como:</p>
-          <div className="relative overflow-hidden w-full max-w-sm mx-auto">
+        <div className="mb-8 sm:hidden overflow-hidden animate-fade-in-trust">
+          <p className="text-xs text-[#938B82] mb-4 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>TRABAJAN CON NOSOTROS</p>
+          <div className="relative overflow-hidden w-full max-w-sm">
             <div
               className="absolute left-0 top-0 w-8 h-full z-10 pointer-events-none"
               style={{ background: "linear-gradient(to right, #0A0A0A, transparent)" }}
@@ -138,14 +135,14 @@ export function HeroSection() {
             <div className="flex items-center gap-6 animate-slide-left-mobile">
               <div className="flex items-center gap-6 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c} className="text-xs font-semibold text-[#444444] uppercase tracking-wide">
+                  <div key={c} className="text-xs font-semibold text-[#2A2725] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}
               </div>
               <div className="flex items-center gap-6 whitespace-nowrap">
                 {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-xs font-semibold text-[#444444] uppercase tracking-wide">
+                  <div key={c + "-dup"} className="text-xs font-semibold text-[#2A2725] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     {c}
                   </div>
                 ))}

@@ -5,25 +5,33 @@ import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Inter, Barlow_Condensed } from "next/font/google"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
+import { Barlow_Condensed, Barlow, JetBrains_Mono } from "next/font/google"
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
   variable: "--font-barlow-condensed",
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+})
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600"],
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "The Burn — Menos bla, más marketing.",
+  title: "The Burn | Consultoría Comercial y Marketing Digital Chile",
   description:
-    "The Burn implementa sistemas de automatización de marketing con IA para empresas B2B en Chile. Sin agencias tradicionales. Sin bla bla.",
+    "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Santiago, Chile.",
   generator: "v0.app",
 }
 
@@ -34,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark bg-background">
-      <body className={`font-sans antialiased ${inter.variable} ${barlowCondensed.variable}`}>
+      <body className={`font-sans antialiased ${barlowCondensed.variable} ${barlow.variable} ${jetbrainsMono.variable}`}>
         <Suspense fallback={null}>
           <NavigationTransition />
           <PageTransition>{children}</PageTransition>

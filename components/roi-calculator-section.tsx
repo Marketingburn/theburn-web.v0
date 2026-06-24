@@ -6,19 +6,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 interface CalculatorInputs {
   businessType: string
-  monthlyLeads: number
+  monthlySalesCLP: number
   currentConversionRate: number
   averageTicketCLP: number
 }
 
-const businessImprovements: Record<string, { conversion: number; responseSpeed: number }> = {
-  juridico: { conversion: 40, responseSpeed: 85 },
-  distribuidora: { conversion: 35, responseSpeed: 80 },
-  farmacia: { conversion: 30, responseSpeed: 75 },
-  "otro-b2b": { conversion: 38, responseSpeed: 82 },
+const businessImprovements: Record<string, { conversion: number; timeToResults: string }> = {
+  "b2b": { conversion: 35, timeToResults: "30–45 días" },
+  "ecommerce": { conversion: 28, timeToResults: "30–60 días" },
+  "servicios": { conversion: 40, timeToResults: "45–60 días" },
+  "distribuidora": { conversion: 32, timeToResults: "30–45 días" },
+  "retail": { conversion: 25, timeToResults: "45–60 días" },
 }
 
 function formatCLP(value: number): string {
+  if (value >= 1_000_000_000) return `$${(value / 1_000_000_000).toFixed(1)}B CLP`
   if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M CLP`
   if (value >= 1_000) return `$${Math.round(value / 1_000)}k CLP`
   return `$${value} CLP`
@@ -27,9 +29,9 @@ function formatCLP(value: number): string {
 export function ROICalculatorSection() {
   const [inputs, setInputs] = useState<CalculatorInputs>({
     businessType: "distribuidora",
-    monthlyLeads: 80,
+    monthlySalesCLP: 20_000_000,
     currentConversionRate: 5,
-    averageTicketCLP: 800000,
+    averageTicketCLP: 500_000,
   })
   const [isVisible, setIsVisible] = useState(false)
 
@@ -47,43 +49,37 @@ export function ROICalculatorSection() {
     return () => observer.disconnect()
   }, [])
 
-  const config = businessImprovements[inputs.businessType] || businessImprovements["otro-b2b"]
+  const config = businessImprovements[inputs.businessType] || businessImprovements["b2b"]
 
-  const currentLeadsConverted = Math.round((inputs.monthlyLeads * inputs.currentConversionRate) / 100)
-  const currentRevenue = currentLeadsConverted * inputs.averageTicketCLP
-
-  const newConversionRate = inputs.currentConversionRate * (1 + config.conversion / 100)
-  const additionalLeads = Math.round((inputs.monthlyLeads * newConversionRate) / 100) - currentLeadsConverted
-  const additionalMonthlyRevenue = additionalLeads * inputs.averageTicketCLP
-  const additionalAnnualRevenue = additionalMonthlyRevenue * 12
-  const conversionImprovement = config.conversion
-  const responseSpeedImprovement = config.responseSpeed
+  const additionalSalesPct = config.conversion / 100
+  const additionalMonthlySales = Math.round(inputs.monthlySalesCLP * additionalSalesPct)
+  const additionalAnnualSales = additionalMonthlySales * 12
+  const improvedConversion = parseFloat((inputs.currentConversionRate * (1 + config.conversion / 100)).toFixed(1))
 
   return (
     <section id="roi-calculator" className="py-16 md:py-24 px-4 relative bg-[#0A0A0A]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
-          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-12 md:mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A1A1A] border border-[#333333] mb-6">
-            <svg className="w-4 h-4 text-[#FF6B00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+            <svg className="w-4 h-4 text-[#FF4500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
-            <span className="text-sm font-medium text-[#888888]">Calculadora de ROI</span>
+            <span className="text-sm font-medium text-[#938B82]">CALCULADORA DE CRECIMIENTO</span>
           </div>
 
           <h2
-            className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-4 text-balance"
-            style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            className="text-3xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 text-balance"
+            style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.95" }}
           >
-            Calcula tu crecimiento
-            <br />
-            <span className="text-[#FF6B00]">potencial</span>
+            Cuánto vale tener{" "}
+            <span className="text-[#FF4500]">CLARIDAD</span> en tu negocio.
           </h2>
 
-          <p className="text-lg text-[#888888] max-w-2xl mx-auto">
-            Calcula cuántos ingresos adicionales puede generar tu empresa con automatización de marketing.
+          <p className="text-lg text-[#938B82] max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+            Calcula el impacto potencial de ordenar tu proceso comercial y activar un funnel digital.
           </p>
         </div>
 
@@ -92,7 +88,7 @@ export function ROICalculatorSection() {
           <div
             className={`transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <div className="bg-[#111111] border border-[#222222] rounded-2xl p-6 md:p-8 h-full flex flex-col">
+            <div className="bg-[#1B1917] border border-[#2A2725] rounded-2xl p-6 md:p-8 h-full flex flex-col">
               <h3
                 className="text-xl md:text-2xl font-black uppercase text-white mb-6"
                 style={{ fontFamily: "var(--font-barlow-condensed)" }}
@@ -103,48 +99,49 @@ export function ROICalculatorSection() {
               <div className="space-y-7 flex-1">
                 {/* Business Type */}
                 <div>
-                  <label className="block text-sm font-medium text-[#888888] mb-3">Tipo de empresa</label>
+                  <label className="block text-xs font-medium text-[#938B82] mb-3 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Tipo de empresa</label>
                   <Select
                     value={inputs.businessType}
                     onValueChange={(value) => setInputs((prev) => ({ ...prev, businessType: value }))}
                   >
-                    <SelectTrigger className="bg-[#1A1A1A] border-[#333333] text-white">
+                    <SelectTrigger className="bg-[#0A0A0A] border-[#2A2725] text-white" style={{ fontFamily: "var(--font-barlow)" }}>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1A1A1A] border-[#333333]">
-                      <SelectItem value="juridico">Estudio Jurídico</SelectItem>
+                    <SelectContent className="bg-[#1B1917] border-[#2A2725]">
+                      <SelectItem value="b2b">Empresa B2B</SelectItem>
+                      <SelectItem value="ecommerce">E-commerce</SelectItem>
+                      <SelectItem value="servicios">Servicios Profesionales</SelectItem>
                       <SelectItem value="distribuidora">Distribuidora</SelectItem>
-                      <SelectItem value="farmacia">Farmacia</SelectItem>
-                      <SelectItem value="otro-b2b">Otro B2B</SelectItem>
+                      <SelectItem value="retail">Retail</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                {/* Monthly Leads */}
+                {/* Monthly Sales */}
                 <div>
-                  <label className="block text-sm font-medium text-[#888888] mb-3">
-                    Leads mensuales actuales:{" "}
-                    <span className="text-white font-semibold">{inputs.monthlyLeads}</span>
+                  <label className="block text-xs font-medium text-[#938B82] mb-3 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                    Ventas mensuales actuales:{" "}
+                    <span className="text-white">{formatCLP(inputs.monthlySalesCLP)}</span>
                   </label>
                   <Slider
-                    value={[inputs.monthlyLeads]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, monthlyLeads: value }))}
-                    max={500}
-                    min={10}
-                    step={5}
-                    className="w-full [&_[role=slider]]:bg-[#FF6B00] [&_[role=slider]]:border-[#FF6B00]"
+                    value={[inputs.monthlySalesCLP]}
+                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, monthlySalesCLP: value }))}
+                    max={100_000_000}
+                    min={1_000_000}
+                    step={1_000_000}
+                    className="w-full [&_[role=slider]]:bg-[#FF4500] [&_[role=slider]]:border-[#FF4500]"
                   />
-                  <div className="flex justify-between text-xs text-[#555555] mt-1">
-                    <span>10</span>
-                    <span>500</span>
+                  <div className="flex justify-between text-xs text-[#938B82]/50 mt-1" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                    <span>$1M</span>
+                    <span>$100M</span>
                   </div>
                 </div>
 
                 {/* Conversion Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-[#888888] mb-3">
+                  <label className="block text-xs font-medium text-[#938B82] mb-3 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     Tasa de conversión actual:{" "}
-                    <span className="text-white font-semibold">{inputs.currentConversionRate}%</span>
+                    <span className="text-white">{inputs.currentConversionRate}%</span>
                   </label>
                   <Slider
                     value={[inputs.currentConversionRate]}
@@ -152,9 +149,9 @@ export function ROICalculatorSection() {
                     max={20}
                     min={1}
                     step={0.5}
-                    className="w-full [&_[role=slider]]:bg-[#FF6B00] [&_[role=slider]]:border-[#FF6B00]"
+                    className="w-full [&_[role=slider]]:bg-[#FF4500] [&_[role=slider]]:border-[#FF4500]"
                   />
-                  <div className="flex justify-between text-xs text-[#555555] mt-1">
+                  <div className="flex justify-between text-xs text-[#938B82]/50 mt-1" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     <span>1%</span>
                     <span>20%</span>
                   </div>
@@ -162,20 +159,20 @@ export function ROICalculatorSection() {
 
                 {/* Ticket Promedio */}
                 <div>
-                  <label className="block text-sm font-medium text-[#888888] mb-3">
+                  <label className="block text-xs font-medium text-[#938B82] mb-3 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                     Ticket promedio:{" "}
-                    <span className="text-white font-semibold">{formatCLP(inputs.averageTicketCLP)}</span>
+                    <span className="text-white">{formatCLP(inputs.averageTicketCLP)}</span>
                   </label>
                   <Slider
                     value={[inputs.averageTicketCLP]}
                     onValueChange={([value]) => setInputs((prev) => ({ ...prev, averageTicketCLP: value }))}
-                    max={5000000}
-                    min={100000}
-                    step={100000}
-                    className="w-full [&_[role=slider]]:bg-[#FF6B00] [&_[role=slider]]:border-[#FF6B00]"
+                    max={5_000_000}
+                    min={50_000}
+                    step={50_000}
+                    className="w-full [&_[role=slider]]:bg-[#FF4500] [&_[role=slider]]:border-[#FF4500]"
                   />
-                  <div className="flex justify-between text-xs text-[#555555] mt-1">
-                    <span>$100k</span>
+                  <div className="flex justify-between text-xs text-[#938B82]/50 mt-1" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                    <span>$50k</span>
                     <span>$5M</span>
                   </div>
                 </div>
@@ -187,7 +184,7 @@ export function ROICalculatorSection() {
           <div
             className={`transition-all duration-700 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <div className="bg-[#111111] border border-[#222222] rounded-2xl p-6 md:p-8 h-full flex flex-col">
+            <div className="bg-[#1B1917] border border-[#2A2725] rounded-2xl p-6 md:p-8 h-full flex flex-col">
               <h3
                 className="text-xl md:text-2xl font-black uppercase text-white mb-6"
                 style={{ fontFamily: "var(--font-barlow-condensed)" }}
@@ -198,65 +195,38 @@ export function ROICalculatorSection() {
               <div className="space-y-4 flex-1">
                 {[
                   {
-                    label: "Leads adicionales",
-                    value: `+${additionalLeads}`,
-                    icon: (
-                      <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    ),
+                    label: "Ventas adicionales proyectadas (mes)",
+                    value: formatCLP(additionalMonthlySales),
                   },
                   {
-                    label: "Ingresos adicionales (CLP)",
-                    value: formatCLP(additionalMonthlyRevenue),
-                    icon: (
-                      <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    ),
+                    label: "Mejora en conversión estimada",
+                    value: `${improvedConversion}%`,
                   },
                   {
-                    label: "% Aumento en conversión",
-                    value: `+${conversionImprovement}%`,
-                    icon: (
-                      <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    label: "Velocidad de respuesta",
-                    value: `${responseSpeedImprovement}% más rápida`,
-                    icon: (
-                      <svg className="w-4 h-4 text-[#888888]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    ),
+                    label: "Tiempo para ver primeros resultados",
+                    value: config.timeToResults,
                   },
                 ].map((metric) => (
                   <div
                     key={metric.label}
-                    className="flex items-center justify-between p-3 md:p-4 rounded-xl bg-[#0A0A0A] border border-[#1A1A1A]"
+                    className="flex items-center justify-between p-3 md:p-4 rounded-xl bg-[#0A0A0A] border border-[#2A2725]"
                   >
-                    <div className="flex items-center gap-3">
-                      {metric.icon}
-                      <span className="text-sm text-[#888888]">{metric.label}</span>
-                    </div>
-                    <span className="text-base md:text-lg font-bold text-white">{metric.value}</span>
+                    <span className="text-sm text-[#938B82]" style={{ fontFamily: "var(--font-barlow)" }}>{metric.label}</span>
+                    <span className="text-base md:text-lg font-black text-white ml-4 text-right" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>{metric.value}</span>
                   </div>
                 ))}
 
                 {/* Annual projection highlight */}
-                <div className="mt-2 p-5 md:p-6 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/30">
-                  <div className="text-center">
-                    <div className="text-xs text-[#888888] mb-2 uppercase tracking-wide">Proyección anual en CLP</div>
+                <div className="mt-2 p-5 md:p-6 rounded-xl bg-[#FF4500]/10 border border-[#FF4500]/30">
+                  <div>
+                    <div className="text-xs text-[#938B82] mb-2 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Proyección anual de crecimiento</div>
                     <div
-                      className="text-3xl md:text-4xl font-black text-[#FF6B00] mb-1"
-                      style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                      className="text-3xl md:text-4xl font-black text-[#FF4500] mb-1"
+                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
                     >
-                      {formatCLP(additionalAnnualRevenue)}
+                      {formatCLP(additionalAnnualSales)}
                     </div>
-                    <div className="text-xs text-[#888888]">en ingresos adicionales proyectados</div>
+                    <div className="text-xs text-[#938B82]" style={{ fontFamily: "var(--font-barlow)" }}>en ventas adicionales proyectadas</div>
                   </div>
                 </div>
               </div>
@@ -264,9 +234,9 @@ export function ROICalculatorSection() {
           </div>
         </div>
 
-        <div className="text-center mt-8">
-          <p className="text-xs text-[#444444]">
-            * Proyecciones basadas en benchmarks de la industria B2B en Chile. Los resultados reales pueden variar.
+        <div className="mt-8">
+          <p className="text-xs text-[#2A2725]" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+            * Proyecciones basadas en benchmarks de la industria en Chile. Los resultados reales pueden variar.
           </p>
         </div>
       </div>

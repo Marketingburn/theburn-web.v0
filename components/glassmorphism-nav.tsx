@@ -1,14 +1,15 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Menu, X, ArrowRight } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const navigation = [
-  { name: "Estudios Jurídicos", href: "#features" },
-  { name: "Distribuidoras", href: "#ai-team" },
-  { name: "Empresas B2B", href: "#testimonials" },
-  { name: "Farmacias", href: "#roi-calculator" },
+  { name: "Servicios", href: "#features" },
+  { name: "Diagnóstico", href: "#ai-team" },
+  { name: "Casos", href: "#testimonials" },
+  { name: "Blog", href: "#" },
 ]
 
 export function GlassmorphismNav() {
@@ -50,7 +51,7 @@ export function GlassmorphismNav() {
   }, [])
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith("/")) return
+    if (href.startsWith("/") || href === "#") return
     const element = document.querySelector(href)
     if (element) {
       const rect = element.getBoundingClientRect()
@@ -74,12 +75,13 @@ export function GlassmorphismNav() {
         }}
       >
         <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
-          <div className="bg-[#111111]/80 backdrop-blur-md border border-[#222222] rounded-full px-4 py-3 md:px-6 md:py-2">
+          <div className="bg-[#0A0A0A]/90 backdrop-blur-md border border-[#2A2725] rounded-full px-4 py-2.5 md:px-6 md:py-2">
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200 cursor-pointer">
+              <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity duration-200 cursor-pointer">
+                <Image src="/logo-theburn.png" alt="The Burn flame logo" width={28} height={28} className="w-7 h-7" />
                 <span
-                  className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#FF6B00]"
+                  className="text-xl md:text-2xl font-black uppercase tracking-wider text-white"
                   style={{ fontFamily: "var(--font-barlow-condensed)" }}
                 >
                   THE BURN
@@ -92,7 +94,8 @@ export function GlassmorphismNav() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-[#888888] hover:text-white transition-all duration-200 text-sm font-medium cursor-pointer"
+                    className="text-[#938B82] hover:text-white transition-all duration-200 text-sm font-medium cursor-pointer"
+                    style={{ fontFamily: "var(--font-barlow)" }}
                   >
                     {item.name}
                   </button>
@@ -102,11 +105,14 @@ export function GlassmorphismNav() {
               {/* Desktop CTA */}
               <div className="hidden md:block">
                 <button
-                  className="bg-white hover:bg-gray-100 text-black font-semibold px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group text-sm"
+                  className="bg-white hover:bg-[#F5F1EA] text-[#0A0A0A] font-bold px-5 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
+                  style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
                   onClick={() => scrollToSection("#contact")}
                 >
                   Agendar Diagnóstico
-                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </div>
 
@@ -114,6 +120,7 @@ export function GlassmorphismNav() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="md:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer"
+                aria-label="Toggle menu"
               >
                 <div className="relative w-6 h-6">
                   <Menu
@@ -141,30 +148,32 @@ export function GlassmorphismNav() {
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
           >
-            <div className="bg-[#111111]/90 backdrop-blur-md border border-[#222222] rounded-2xl p-4 shadow-2xl">
+            <div className="bg-[#0A0A0A]/95 backdrop-blur-md border border-[#2A2725] rounded-2xl p-4 shadow-2xl">
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`text-[#888888] hover:text-white hover:bg-white/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
+                    className={`text-[#938B82] hover:text-white hover:bg-white/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
                       isOpen ? "animate-mobile-menu-item" : ""
                     }`}
-                    style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms" }}
+                    style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)" }}
                   >
                     {item.name}
                   </button>
                 ))}
-                <div className="h-px bg-[#222222] my-2" />
+                <div className="h-px bg-[#2A2725] my-2" />
                 <button
-                  className={`bg-white hover:bg-gray-100 text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group ${
+                  className={`bg-white hover:bg-[#F5F1EA] text-[#0A0A0A] font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer ${
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
-                  style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms" }}
+                  style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)" }}
                   onClick={() => scrollToSection("#contact")}
                 >
                   Agendar Diagnóstico
-                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </div>
             </div>

@@ -28,51 +28,51 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      text: "Pasamos de responder leads en 3 días a hacerlo en minutos. El equipo ahora cierra, no persigue.",
+      text: "El diagnóstico nos mostró en 3 semanas lo que no habíamos visto en 3 años. Ahora sabemos exactamente de dónde viene cada peso que entra.",
       name: "Carlos M.",
       role: "Gerente General",
     },
     {
-      text: "El diagnóstico nos mostró exactamente dónde perdíamos leads. En 30 días el sistema ya estaba funcionando.",
+      text: "Implementaron el Power BI conectado a nuestro sistema en menos de un mes. Por primera vez veo los márgenes reales por producto.",
       name: "Valentina R.",
       role: "Gerente de Marketing",
     },
     {
-      text: "Con The Burn automatizamos todo el seguimiento post-reunión. Nuestra tasa de cierre subió 40%.",
+      text: "Antes el equipo de ventas corría sin dirección. Ahora tiene un proceso, métricas y sabe qué funciona.",
       name: "Jorge P.",
       role: "Director Comercial",
     },
     {
-      text: "The Burn conectó nuestro CRM con WhatsApp y los leads ahora se califican solos. Increíble.",
+      text: "The Burn conectó nuestro CRM con el funnel digital y los leads ahora se califican solos. El proceso comercial finalmente funciona.",
       name: "Daniela V.",
       role: "Jefa de Ventas",
     },
     {
-      text: "Nuestro costo por lead bajó un 40% en el primer trimestre. Los reportes de Power BI son una maravilla.",
+      text: "Nuestro costo por lead bajó significativamente en el primer trimestre. Los reportes de Power BI son una maravilla.",
       name: "Andrés F.",
       role: "CEO, Distribuidora Sur",
     },
     {
-      text: "Implementación rápida, sin burocracia. Exactamente lo que necesitábamos.",
+      text: "Implementación sin burocracia. Exactamente lo que necesitábamos: un sistema, no un PDF.",
       name: "Camila S.",
       role: "Directora de Operaciones",
     },
     {
-      text: "Ya no perdemos leads por falta de seguimiento. El sistema trabaja mientras nosotros dormimos.",
+      text: "Ya no dependemos de una sola persona para vender. El sistema trabaja mientras el equipo se enfoca en cerrar.",
       name: "Ricardo L.",
       role: "Gerente Comercial",
     },
     {
-      text: "El onboarding fue sencillo y el equipo de The Burn estuvo siempre disponible. Recomendado.",
+      text: "El onboarding fue claro y el equipo de The Burn estuvo siempre disponible. Recomendado sin dudar.",
       name: "Paula N.",
       role: "Marketing Manager",
     },
   ]
 
   const stats = [
-    { value: "70%", label: "menos tiempo en seguimiento manual" },
-    { value: "85%", label: "tasa de respuesta a leads" },
-    { value: "40%", label: "aumento en conversión" },
+    { value: "+10 años", label: "combinando estrategia, ejecución y tecnología" },
+    { value: "1 equipo", label: "comercial, marketing y datos juntos" },
+    { value: "0 humo", label: "jerga y promesas sin métricas" },
   ]
 
   return (
@@ -83,8 +83,8 @@ export function TestimonialsSection() {
           className="h-full w-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,107,0,0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,107,0,0.3) 1px, transparent 1px)
+              linear-gradient(rgba(255,69,0,0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,69,0,0.3) 1px, transparent 1px)
             `,
             backgroundSize: "80px 80px",
           }}
@@ -93,21 +93,20 @@ export function TestimonialsSection() {
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-[#888888] text-sm font-medium tracking-wider uppercase mb-6">
-            <div className="w-8 h-px bg-[#333333]" />
-            Success Stories
-            <div className="w-8 h-px bg-[#333333]" />
+        <div className="mb-16 md:mb-24">
+          <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center px-4 py-2 rounded-full bg-[#1B1917] border border-[#2A2725] text-[#938B82] text-sm font-medium mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+            <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2" />
+            SUCCESS STORIES
           </div>
           <h2
             className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white mb-6 text-balance"
-            style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
           >
-            Las empresas que ya{" "}
-            <span className="text-[#FF6B00]">automatizaron</span>
+            Las empresas que decidieron{" "}
+            <span className="text-[#FF4500]">AVANZAR.</span>
           </h2>
-          <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-lg text-[#888888] max-w-2xl mx-auto leading-relaxed">
-            Descubre cómo empresas B2B están transformando su pipeline con The Burn
+          <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-lg text-[#938B82] max-w-xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+            Sin vuelta atrás.
           </p>
         </div>
 
@@ -137,19 +136,19 @@ export function TestimonialsSection() {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-16 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-16 max-w-3xl">
           {stats.map((stat) => (
             <div
               key={stat.value}
-              className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-center bg-[#111111] border border-[#222222] rounded-xl p-6 hover:border-[#FF6B00]/30 transition-all duration-300"
+              className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out bg-[#1B1917] border border-[#2A2725] rounded-xl p-6 hover:border-[#FF4500]/30 transition-colors duration-300"
             >
               <div
-                className="text-3xl font-black text-[#FF6B00] mb-1"
-                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                className="text-2xl font-black text-[#FF4500] mb-1"
+                style={{ fontFamily: "var(--font-jetbrains-mono)" }}
               >
                 {stat.value}
               </div>
-              <p className="text-[#888888] text-xs leading-relaxed">{stat.label}</p>
+              <p className="text-[#938B82] text-xs leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>{stat.label}</p>
             </div>
           ))}
         </div>

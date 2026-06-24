@@ -2,65 +2,47 @@
 
 import { useState, useEffect, useRef } from "react"
 
-const flowSteps = [
+const phases = [
   {
     id: 1,
-    label: "Lead entra al CRM",
+    label: "Diagnóstico",
+    tag: "Semanas 1–3",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
       </svg>
     ),
-    color: "#FF6B00",
-    detail: "Formulario web o LinkedIn",
+    description: "Reuniones semanales por área. Análisis de datos actuales. Roadmap de mejora con prioridades claras.",
+    deliverable: "Entregable: análisis completo + roadmap",
   },
   {
     id: 2,
-    label: "Auto-calificado por IA",
+    label: "Implementación",
+    tag: "Fee mensual",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     ),
-    color: "#FF8C00",
-    detail: "Score basado en industria y cargo",
+    description: "Activamos los sistemas acordados: Power BI, funnel digital, automatizaciones. Adaptado a tu empresa, no un template.",
+    deliverable: "Fee mensual + % sobre resultados",
   },
   {
     id: 3,
-    label: "Secuencia de nurturing",
+    label: "Acompañamiento",
+    tag: "Retainer",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
     ),
-    color: "#25D366",
-    detail: "Email + WhatsApp automático",
-  },
-  {
-    id: 4,
-    label: "Alerta al equipo comercial",
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-      </svg>
-    ),
-    color: "#3B82F6",
-    detail: "Notificación instantánea en Slack/email",
-  },
-  {
-    id: 5,
-    label: "Reunión agendada",
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-    color: "#FF6B00",
-    detail: "Calendly integrado al flujo",
+    description: "Iteramos cada mes con datos reales. Lo que no funciona, lo cambiamos. Lo que funciona, lo escalamos.",
+    deliverable: "Retainer con métricas a la vista",
   },
 ]
 
-function AutomationFlow({ isVisible }: { isVisible: boolean }) {
+function PhaseFlow({ isVisible }: { isVisible: boolean }) {
   const [activeStep, setActiveStep] = useState(0)
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
 
@@ -69,7 +51,7 @@ function AutomationFlow({ isVisible }: { isVisible: boolean }) {
 
     const interval = setInterval(() => {
       setActiveStep((prev) => {
-        const next = (prev + 1) % flowSteps.length
+        const next = (prev + 1) % phases.length
         if (next === 0) {
           setCompletedSteps([])
         } else {
@@ -77,77 +59,91 @@ function AutomationFlow({ isVisible }: { isVisible: boolean }) {
         }
         return next
       })
-    }, 1500)
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [isVisible])
 
   return (
     <div className="relative">
-      {/* Flow visualization */}
-      <div className="bg-[#0A0A0A] rounded-2xl border border-[#222222] p-6 sm:p-8">
+      <div className="bg-[#0A0A0A] rounded-2xl border border-[#2A2725] p-6 sm:p-8">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-2 h-2 bg-[#FF6B00] rounded-full animate-pulse" />
-          <span className="text-[#888888] text-xs font-medium uppercase tracking-wider">Flujo activo en tiempo real</span>
+          <div className="w-2 h-2 bg-[#FF4500] rounded-sm animate-pulse" />
+          <span className="text-[#938B82] text-xs font-medium uppercase tracking-wider" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}>
+            Tres fases · Un sistema
+          </span>
         </div>
 
-        <div className="space-y-3">
-          {flowSteps.map((step, index) => {
+        <div className="space-y-4">
+          {phases.map((phase, index) => {
             const isActive = activeStep === index
             const isDone = completedSteps.includes(index)
 
             return (
-              <div key={step.id} className="relative">
+              <div key={phase.id} className="relative">
                 <div
-                  className={`flex items-center gap-4 p-3 sm:p-4 rounded-xl border transition-all duration-500 ${
+                  className={`p-4 sm:p-5 rounded-xl border transition-all duration-500 ${
                     isActive
-                      ? "border-[#FF6B00]/50 bg-[#FF6B00]/10"
+                      ? "border-[#FF4500]/50 bg-[#FF4500]/10"
                       : isDone
                         ? "border-green-900/40 bg-green-950/20"
-                        : "border-[#1A1A1A] bg-[#111111]"
+                        : "border-[#2A2725] bg-[#1B1917]"
                   }`}
                 >
-                  {/* Step number/icon */}
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${
-                      isActive
-                        ? "bg-[#FF6B00] text-white"
-                        : isDone
-                          ? "bg-green-600/30 text-green-400"
-                          : "bg-[#1A1A1A] text-[#444444]"
-                    }`}
-                  >
-                    {isDone ? (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      step.icon
-                    )}
-                  </div>
-
-                  <div className="flex-1 min-w-0">
+                  <div className="flex items-start gap-4">
                     <div
-                      className={`font-semibold text-sm transition-colors duration-500 ${
-                        isActive ? "text-white" : isDone ? "text-green-400" : "text-[#444444]"
+                      className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${
+                        isActive
+                          ? "bg-[#FF4500] text-white"
+                          : isDone
+                            ? "bg-green-600/30 text-green-400"
+                            : "bg-[#2A2725] text-[#938B82]"
                       }`}
                     >
-                      {step.label}
+                      {isDone ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        phase.icon
+                      )}
                     </div>
-                    <div className="text-[#555555] text-xs mt-0.5">{step.detail}</div>
-                  </div>
 
-                  {isActive && (
-                    <div className="w-2 h-2 bg-[#FF6B00] rounded-full animate-pulse flex-shrink-0" />
-                  )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-1">
+                        <span
+                          className={`font-black text-base uppercase transition-colors duration-500 ${
+                            isActive ? "text-white" : isDone ? "text-green-400" : "text-[#938B82]"
+                          }`}
+                          style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                        >
+                          {phase.label}
+                        </span>
+                        <span className="text-[#938B82] text-xs" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                          {phase.tag}
+                        </span>
+                      </div>
+                      {isActive && (
+                        <p className="text-[#938B82] text-sm leading-relaxed mb-2" style={{ fontFamily: "var(--font-barlow)" }}>
+                          {phase.description}
+                        </p>
+                      )}
+                      <div className={`text-xs transition-colors duration-500 ${isActive ? "text-[#FF4500]" : "text-[#2A2725]"}`} style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                        {phase.deliverable}
+                      </div>
+                    </div>
+
+                    {isActive && (
+                      <div className="w-2 h-2 bg-[#FF4500] rounded-sm animate-pulse flex-shrink-0 mt-1" />
+                    )}
+                  </div>
                 </div>
 
-                {/* Connector line */}
-                {index < flowSteps.length - 1 && (
-                  <div className="flex justify-start ml-7 my-1">
+                {index < phases.length - 1 && (
+                  <div className="flex justify-start ml-[1.1rem] my-1">
                     <div
                       className={`w-px h-3 transition-colors duration-500 ${
-                        completedSteps.includes(index) ? "bg-green-600/40" : "bg-[#222222]"
+                        completedSteps.includes(index) ? "bg-green-600/40" : "bg-[#2A2725]"
                       }`}
                     />
                   </div>
@@ -158,15 +154,15 @@ function AutomationFlow({ isVisible }: { isVisible: boolean }) {
         </div>
 
         {/* Progress bar */}
-        <div className="mt-6 bg-[#1A1A1A] rounded-full h-1.5">
+        <div className="mt-6 bg-[#1B1917] rounded-full h-1">
           <div
-            className="bg-[#FF6B00] h-1.5 rounded-full transition-all duration-500"
-            style={{ width: `${((activeStep + 1) / flowSteps.length) * 100}%` }}
+            className="bg-[#FF4500] h-1 rounded-full transition-all duration-700"
+            style={{ width: `${((activeStep + 1) / phases.length) * 100}%` }}
           />
         </div>
         <div className="flex justify-between mt-1.5">
-          <span className="text-[#444444] text-xs">Lead ingresa</span>
-          <span className="text-[#444444] text-xs">Reunión agendada</span>
+          <span className="text-[#938B82] text-xs" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Inicio</span>
+          <span className="text-[#938B82] text-xs" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>Sistema activo</span>
         </div>
       </div>
     </div>
@@ -191,28 +187,28 @@ export function AITeamSection() {
   }, [])
 
   return (
-    <section id="ai-team" ref={sectionRef} className="relative z-10 bg-white">
-      <div className="rounded-b-[3rem] pt-0 pb-16 sm:pb-24 px-4 bg-white">
+    <section id="ai-team" ref={sectionRef} className="relative z-10 bg-[#F5F1EA]">
+      <div className="rounded-b-[3rem] pt-0 pb-16 sm:pb-24 px-4 bg-[#F5F1EA]">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div
-            className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+            className={`mb-12 sm:mb-16 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-[#FF6B00] rounded-full mr-2 animate-pulse"></span>
-              Demo — Así Trabaja The Burn
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#0A0A0A] border border-[#2A2725] text-[#938B82] text-sm font-medium mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+              <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 animate-pulse" />
+              CÓMO TRABAJAMOS
             </div>
             <h2
-              className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight text-gray-900 text-balance mb-4"
-              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+              className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.95" }}
             >
-              Ve cómo la IA gestiona{" "}
-              <span className="text-[#FF6B00]">leads reales</span>
+              Tres fases. Un sistema que{" "}
+              <span className="text-[#FF4500]">CRECE</span> contigo.
             </h2>
-            <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Mientras tu equipo duerme, el sistema califica prospectos, envía seguimientos y agenda reuniones.
+            <p className="text-base sm:text-lg text-[#938B82] max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+              Empezamos entendiendo tu negocio en profundidad. Después implementamos. Después acompañamos.
             </p>
           </div>
 
@@ -224,41 +220,39 @@ export function AITeamSection() {
               }`}
             >
               <h3
-                className="text-2xl lg:text-3xl font-black uppercase text-gray-900 mb-6"
+                className="text-2xl lg:text-3xl font-black uppercase text-[#0A0A0A] mb-6"
                 style={{ fontFamily: "var(--font-barlow-condensed)" }}
               >
-                De consulta entrante a reunión agendada — sin intervención humana
+                De diagnóstico a sistema en funcionamiento — sin que dependas de nosotros para siempre
               </h3>
 
-              <div className="space-y-4 text-gray-500 text-sm leading-relaxed mb-8">
+              <div className="space-y-4 text-[#938B82] text-sm leading-relaxed mb-8" style={{ fontFamily: "var(--font-barlow)" }}>
                 <p>
-                  Un lead llega por formulario, LinkedIn o WhatsApp. El sistema lo captura, lo califica con IA según
-                  industria y cargo, y dispara la secuencia de nurturing correcta — automáticamente.
+                  Primero entendemos tu negocio en profundidad: cómo vendes, qué datos tienes, dónde pierdes oportunidades. Tres semanas de diagnóstico antes de tocar nada.
                 </p>
                 <p>
-                  Cuando el lead demuestra intención de compra, tu vendedor recibe una alerta inmediata con todo el
-                  contexto para cerrar. El prospecto ya encontró su hueco en el calendario.
+                  Después activamos los sistemas: el dashboard de Power BI, el funnel digital, las automatizaciones de marketing. Todo conectado a tus datos reales.
                 </p>
-                <p className="font-semibold text-gray-900">
-                  Resultado: más reuniones, menos esfuerzo, cero leads perdidos.
+                <p className="font-semibold text-[#0A0A0A]">
+                  Resultado: un sistema que trabaja, métricas que hablan y un equipo que sabe exactamente qué hacer.
                 </p>
               </div>
 
-              <div className="p-5 bg-gray-50 rounded-xl border-l-4 border-[#FF6B00]">
-                <p className="text-gray-700 font-medium text-sm leading-relaxed">
-                  &ldquo;Pasamos de responder leads en 3 días a hacerlo en minutos. El equipo ahora cierra, no persigue.&rdquo;
+              <div className="p-5 bg-white rounded-xl border-l-4 border-[#FF4500]">
+                <p className="text-[#0A0A0A] font-medium text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+                  &ldquo;El diagnóstico nos mostró en 3 semanas lo que no habíamos visto en 3 años. Ahora sabemos exactamente de dónde viene cada peso que entra.&rdquo;
                 </p>
-                <p className="text-gray-400 text-xs mt-2">— Carlos M., Gerente General</p>
+                <p className="text-[#938B82] text-xs mt-2" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>— Carlos M., Gerente General</p>
               </div>
             </div>
 
-            {/* Right — flow */}
+            {/* Right — phase flow */}
             <div
               className={`w-full lg:w-1/2 order-1 lg:order-2 transition-all duration-1000 delay-500 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <AutomationFlow isVisible={isVisible} />
+              <PhaseFlow isVisible={isVisible} />
             </div>
           </div>
         </div>
