@@ -893,6 +893,16 @@
   }
 }
 
+/* Brand positioning marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes fire-glow-drift-2 {
   0% {
     transform: translate(30%, 20%) scale(1.1);

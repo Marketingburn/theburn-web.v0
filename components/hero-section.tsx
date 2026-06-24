@@ -22,13 +22,17 @@ const Play = () => (
   </svg>
 )
 
-const companies = [
-  "Droguería Michelson",
-  "GDM Abogados",
-  "Blue Wave",
-  "The Mob",
-  "Droguería Michelson",
-  "GDM Abogados",
+const positioningPhrases = [
+  "ESTRATEGIA, MARKETING Y DATOS EN UN EQUIPO",
+  "SIN HUMO. SIN JERGA.",
+  "LO QUE NO SE MIDE, NO MEJORA.",
+  "EJECUTAMOS JUNTO A TU EQUIPO",
+  "MENOS BLA, MÁS MARKETING.",
+  "QUEMA LOS BARCOS.",
+  "DECIDE CON DATOS.",
+  "UNA CONSULTORA QUE TAMBIÉN EJECUTA",
+  "ESTRATEGIA SIN EJECUCIÓN ES SOLO UN PDF.",
+  "VENDE MÁS. DECIDE CON DATOS.",
 ]
 
 export function HeroSection() {
@@ -102,32 +106,52 @@ export function HeroSection() {
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="px-0 hidden sm:block overflow-hidden animate-fade-in-trust">
-          <p className="text-xs text-[#938B82] mb-5 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.15em" }}>
-            TRABAJAN CON NOSOTROS
-          </p>
-          <div className="relative overflow-hidden w-full max-w-3xl">
+        {/* Brand Positioning Marquee — Desktop */}
+        <div className="px-0 hidden sm:block overflow-hidden animate-fade-in-trust mt-12 sm:mt-16">
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "48px" }}>
+            {/* Left fade mask */}
             <div
-              className="absolute left-0 top-0 w-16 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #F5F1EA, transparent)" }}
+              className="absolute left-0 top-0 w-16 h-full z-20 pointer-events-none"
+              style={{ maskImage: "linear-gradient(to right, black, transparent)" }}
             />
+            {/* Right fade mask */}
             <div
-              className="absolute right-0 top-0 w-16 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, #F5F1EA, transparent)" }}
+              className="absolute right-0 top-0 w-16 h-full z-20 pointer-events-none"
+              style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            <div className="flex items-center gap-10 animate-slide-left">
-              <div className="flex items-center gap-10 whitespace-nowrap">
-                {companies.map((c) => (
-                  <div key={c} className="text-sm font-semibold text-[#938B82] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                    {c}
+            {/* Marquee container */}
+            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
+              {/* First set of phrases */}
+              <div className="flex items-center gap-4 whitespace-nowrap">
+                {positioningPhrases.map((phrase, idx) => (
+                  <div key={`phrase-1-${idx}`} className="flex items-center gap-4">
+                    <span
+                      className="text-sm font-bold uppercase tracking-wider"
+                      style={{
+                        fontFamily: "var(--font-barlow-condensed)",
+                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                      }}
+                    >
+                      {phrase}
+                    </span>
+                    <span className="text-[#FF4500] text-xs">■</span>
                   </div>
                 ))}
               </div>
-              <div className="flex items-center gap-10 whitespace-nowrap">
-                {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-sm font-semibold text-[#938B82] uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                    {c}
+              {/* Second set (seamless loop) */}
+              <div className="flex items-center gap-4 whitespace-nowrap">
+                {positioningPhrases.map((phrase, idx) => (
+                  <div key={`phrase-2-${idx}`} className="flex items-center gap-4">
+                    <span
+                      className="text-sm font-bold uppercase tracking-wider"
+                      style={{
+                        fontFamily: "var(--font-barlow-condensed)",
+                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                      }}
+                    >
+                      {phrase}
+                    </span>
+                    <span className="text-[#FF4500] text-xs">■</span>
                   </div>
                 ))}
               </div>
@@ -135,30 +159,54 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Mobile Trust Indicators */}
-        <div className="mb-8 sm:hidden overflow-hidden animate-fade-in-trust">
-          <p className="text-xs text-[#938B82] mb-4 uppercase tracking-widest" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>TRABAJAN CON NOSOTROS</p>
-          <div className="relative overflow-hidden w-full max-w-sm">
+        {/* Brand Positioning Marquee — Mobile */}
+        <div className="mb-8 sm:hidden overflow-hidden animate-fade-in-trust mt-8">
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "40px" }}>
+            {/* Left fade mask */}
             <div
-              className="absolute left-0 top-0 w-8 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, #F5F1EA, transparent)" }}
+              className="absolute left-0 top-0 w-8 h-full z-20 pointer-events-none"
+              style={{ maskImage: "linear-gradient(to right, black, transparent)" }}
             />
+            {/* Right fade mask */}
             <div
-              className="absolute right-0 top-0 w-8 h-full z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, #F5F1EA, transparent)" }}
+              className="absolute right-0 top-0 w-8 h-full z-20 pointer-events-none"
+              style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            <div className="flex items-center gap-6 animate-slide-left-mobile">
-              <div className="flex items-center gap-6 whitespace-nowrap">
-                {companies.map((c) => (
-                  <div key={c} className="text-xs font-semibold text-[#938B82] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                    {c}
+            {/* Marquee container */}
+            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
+              {/* First set of phrases */}
+              <div className="flex items-center gap-3 whitespace-nowrap">
+                {positioningPhrases.map((phrase, idx) => (
+                  <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3">
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider"
+                      style={{
+                        fontFamily: "var(--font-barlow-condensed)",
+                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                        fontSize: "11px",
+                      }}
+                    >
+                      {phrase}
+                    </span>
+                    <span className="text-[#FF4500] text-[8px]">■</span>
                   </div>
                 ))}
               </div>
-              <div className="flex items-center gap-6 whitespace-nowrap">
-                {companies.map((c) => (
-                  <div key={c + "-dup"} className="text-xs font-semibold text-[#938B82] uppercase tracking-wide" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                    {c}
+              {/* Second set (seamless loop) */}
+              <div className="flex items-center gap-3 whitespace-nowrap">
+                {positioningPhrases.map((phrase, idx) => (
+                  <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3">
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider"
+                      style={{
+                        fontFamily: "var(--font-barlow-condensed)",
+                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                        fontSize: "11px",
+                      }}
+                    >
+                      {phrase}
+                    </span>
+                    <span className="text-[#FF4500] text-[8px]">■</span>
                   </div>
                 ))}
               </div>
