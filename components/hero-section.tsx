@@ -51,20 +51,20 @@ export function HeroSection() {
       />
 
       {/* Left Content Column */}
-      <div className="w-full lg:w-1/2 flex flex-col gap-6 px-0 lg:px-16 items-start z-10 animate-fade-in-hero">
+      <div className="w-full lg:w-full flex flex-col gap-6 px-4 lg:px-0 items-start lg:items-center lg:justify-center z-10 animate-fade-in-hero lg:min-h-screen">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge lg:mx-auto" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
           <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0" />
           Consultoría Comercial &amp; Marketing — Chile
         </div>
 
         {/* Main Heading */}
         <h1
-          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading"
+          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
           <span className="block">Haz crecer tu</span>
-          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3">
+          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
             <RotatingText
               texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
               mainClassName="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl text-[clamp(36px,10vw,110px)] leading-[0.92] px-4 py-2 max-w-[calc(100vw-32px)] overflow-hidden"
@@ -82,14 +82,14 @@ export function HeroSection() {
 
         {/* Subheading */}
         <p 
-          className="text-[#938B82] text-base lg:text-lg leading-relaxed max-w-xl animate-fade-in-subheading font-normal" 
+          className="text-[#938B82] text-base lg:text-lg leading-relaxed max-w-xl animate-fade-in-subheading font-normal lg:text-center" 
           style={{ fontFamily: "var(--font-barlow)" }}
         >
           The Burn diseña e implementa el sistema comercial y de marketing que tu empresa necesita para vender más y decidir con datos. Sin humo. Sin jerga.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 w-full animate-fade-in-buttons">
+        <div className="flex flex-col sm:flex-row gap-3 w-full animate-fade-in-buttons lg:justify-center">
           <Button
             size="lg"
             onClick={openContactModal}
