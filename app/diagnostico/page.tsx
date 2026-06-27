@@ -89,8 +89,7 @@ function DiagnosticoHero() {
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Entiende tu negocio antes de{" "}
-              <span className="text-[#FF4500]">INVERTIR</span> en él.
+              Diagnóstico Comercial para Empresas B2B en Chile
             </h1>
 
             <p
