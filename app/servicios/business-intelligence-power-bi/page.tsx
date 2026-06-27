@@ -88,8 +88,7 @@ function BIHero() {
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Deja de gestionar tu empresa con{" "}
-              <span className="text-[#FF4500]">CORAZONADAS.</span>
+              Consultoría Power BI <span className="text-[#FF4500]">para Empresas</span> en Chile
             </h1>
 
             <p

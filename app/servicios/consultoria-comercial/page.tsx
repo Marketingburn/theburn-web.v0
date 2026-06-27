@@ -89,8 +89,7 @@ function ConsultoriaHero() {
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Vender más no es trabajar más. Es trabajar con un{" "}
-              <span className="text-[#FF4500]">PROCESO.</span>
+              Consultoría Comercial B2B <span className="text-[#FF4500]">en Chile</span> — Proceso y Ventas
             </h1>
 
             <p
