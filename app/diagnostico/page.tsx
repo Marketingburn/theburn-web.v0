@@ -102,6 +102,7 @@ function DiagnosticoHero() {
 
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
               <button
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -589,6 +590,7 @@ function FinalCTA() {
         </p>
 
         <button
+          onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
           className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-black uppercase px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
           style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
         >

@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import RotatingText from "./RotatingText"
 import Image from "next/image"
-import { useContactModal } from "@/app/contact-context"
 
 const ArrowRight = () => (
   <svg
@@ -36,8 +35,6 @@ const positioningPhrases = [
 ]
 
 export function HeroSection() {
-  const { openContactModal } = useContactModal()
-  
   return (
     <section className="min-h-screen flex flex-col lg:flex-row items-start lg:items-center justify-between pt-24 pb-12 px-4 lg:px-0 w-full overflow-hidden relative bg-[#F5F1EA]">
       {/* Fire glow ambient blurs */}
@@ -92,7 +89,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-3 w-full animate-fade-in-buttons lg:justify-center">
           <Button
             size="lg"
-            onClick={openContactModal}
+            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full sm:w-auto bg-[#0A0A0A] text-white rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#1B1917] hover:scale-105 hover:shadow-lg group cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
