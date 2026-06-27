@@ -1,5 +1,3 @@
-'use client'
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -95,22 +93,18 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
 
       {/* Article Content */}
       <section className="px-4 py-16 bg-white">
-        <div className="max-w-2xl mx-auto prose prose-sm md:prose-base max-w-none">
-          <div
+        <div className="max-w-2xl mx-auto">
+          <article
             dangerouslySetInnerHTML={{ __html: post.content }}
-            className="space-y-6"
+            className="prose-article space-y-6"
             style={{
               fontFamily: "var(--font-barlow)",
               color: "#0A0A0A",
               lineHeight: "1.75",
             }}
-          >
-            {/* Content is rendered via dangerouslySetInnerHTML */}
-          </div>
-
-          {/* Custom styles for rendered content */}
-          <style jsx>{`
-            :global(div.prose h2) {
+          />
+          <style>{`
+            .prose-article h2 {
               font-family: var(--font-barlow-condensed);
               font-size: 32px;
               font-weight: 900;
@@ -120,7 +114,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               line-height: 0.92;
             }
 
-            :global(div.prose h3) {
+            .prose-article h3 {
               font-family: var(--font-barlow-condensed);
               font-size: 24px;
               font-weight: 900;
@@ -130,7 +124,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               line-height: 0.92;
             }
 
-            :global(div.prose p) {
+            .prose-article p {
               font-family: var(--font-barlow);
               font-size: 16px;
               color: #0a0a0a;
@@ -138,13 +132,13 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               margin: 16px 0;
             }
 
-            :global(div.prose ul) {
+            .prose-article ul {
               list-style: disc;
               margin-left: 24px;
               margin: 16px 0;
             }
 
-            :global(div.prose li) {
+            .prose-article li {
               font-family: var(--font-barlow);
               font-size: 16px;
               color: #0a0a0a;
@@ -152,14 +146,14 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               margin: 8px 0;
             }
 
-            :global(div.prose table) {
+            .prose-article table {
               width: 100%;
               border-collapse: collapse;
               margin: 24px 0;
               border: 1px solid #e8e3da;
             }
 
-            :global(div.prose th) {
+            .prose-article th {
               background-color: #0a0a0a;
               color: white;
               padding: 12px;
@@ -168,7 +162,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               font-weight: 700;
             }
 
-            :global(div.prose td) {
+            .prose-article td {
               border: 1px solid #e8e3da;
               padding: 12px;
               font-family: var(--font-barlow);
@@ -176,7 +170,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
               color: #0a0a0a;
             }
 
-            :global(div.prose strong) {
+            .prose-article strong {
               font-weight: 700;
               color: #0a0a0a;
             }
