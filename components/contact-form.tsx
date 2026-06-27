@@ -6,16 +6,18 @@ import { Check } from 'lucide-react';
 interface ContactFormProps {
   isModal?: boolean;
   onSuccess?: () => void;
+  defaultNecesidad?: string;
 }
 
-export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
+export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nombre: '',
     empresa: '',
     email: '',
     telefono: '',
     tipoEmpresa: '',
-    necesidad: '',
+    necesidad: defaultNecesidad || '',
+    presupuesto: '',
     mensaje: '',
   });
 
@@ -52,7 +54,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
         email: '',
         telefono: '',
         tipoEmpresa: '',
-        necesidad: '',
+        necesidad: defaultNecesidad || '',
+        presupuesto: '',
         mensaje: '',
       });
 
@@ -96,13 +99,13 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Nombre completo */}
       <div>
         <label
           htmlFor="nombre"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Nombre completo *
         </label>
@@ -114,7 +117,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           onChange={handleChange}
           placeholder="Tu nombre"
           required
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#FF4500] transition-colors duration-200"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
@@ -123,8 +126,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor="empresa"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Empresa *
         </label>
@@ -136,7 +139,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           onChange={handleChange}
           placeholder="Nombre de tu empresa"
           required
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#FF4500] transition-colors duration-200"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
@@ -145,8 +148,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Email *
         </label>
@@ -158,7 +161,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           onChange={handleChange}
           placeholder="tu@empresa.cl"
           required
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#FF4500] transition-colors duration-200"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
@@ -167,8 +170,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor="telefono"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Teléfono
         </label>
@@ -179,7 +182,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           value={formData.telefono}
           onChange={handleChange}
           placeholder="+56 9 XXXX XXXX"
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#FF4500] transition-colors duration-200"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
@@ -188,8 +191,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor="tipoEmpresa"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Tipo de empresa
         </label>
@@ -198,15 +201,16 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           name="tipoEmpresa"
           value={formData.tipoEmpresa}
           onChange={handleChange}
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] bg-white focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all appearance-none"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm focus:outline-none focus:border-[#FF4500] transition-colors duration-200 appearance-none cursor-pointer"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           <option value="">Selecciona una opción</option>
-          <option value="Empresa B2B">Empresa B2B</option>
-          <option value="E-commerce">E-commerce</option>
-          <option value="Estudio Jurídico">Estudio Jurídico</option>
-          <option value="Distribuidora">Distribuidora</option>
-          <option value="Retail">Retail</option>
+          <option value="E-commerce / Tienda online">E-commerce / Tienda online</option>
+          <option value="Servicios profesionales (abogados, consultoras)">Servicios profesionales (abogados, consultoras)</option>
+          <option value="Distribuidora / Industrial">Distribuidora / Industrial</option>
+          <option value="Retail / Comercio">Retail / Comercio</option>
+          <option value="Inmobiliaria / Construcción">Inmobiliaria / Construcción</option>
+          <option value="SaaS / Tecnología">SaaS / Tecnología</option>
           <option value="Otro">Otro</option>
         </select>
       </div>
@@ -215,8 +219,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <div>
         <label
           htmlFor="necesidad"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           ¿Qué necesitas?
         </label>
@@ -225,7 +229,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           name="necesidad"
           value={formData.necesidad}
           onChange={handleChange}
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] bg-white focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all appearance-none"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm focus:outline-none focus:border-[#FF4500] transition-colors duration-200 appearance-none cursor-pointer"
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           <option value="">Selecciona una opción</option>
@@ -238,12 +242,37 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
         </select>
       </div>
 
+      {/* Presupuesto */}
+      <div>
+        <label
+          htmlFor="presupuesto"
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
+        >
+          Presupuesto mensual disponible
+        </label>
+        <select
+          id="presupuesto"
+          name="presupuesto"
+          value={formData.presupuesto}
+          onChange={handleChange}
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm focus:outline-none focus:border-[#FF4500] transition-colors duration-200 appearance-none cursor-pointer"
+          style={{ fontFamily: 'var(--font-barlow)' }}
+        >
+          <option value="">Selecciona una opción</option>
+          <option value="Menos de $500.000 CLP">Menos de $500.000 CLP</option>
+          <option value="$500.000 – $1.000.000 CLP">$500.000 – $1.000.000 CLP</option>
+          <option value="$1.000.000 – $3.000.000 CLP">$1.000.000 – $3.000.000 CLP</option>
+          <option value="Más de $3.000.000 CLP">Más de $3.000.000 CLP</option>
+        </select>
+      </div>
+
       {/* Mensaje */}
       <div>
         <label
           htmlFor="mensaje"
-          className="block text-sm font-medium text-[#0A0A0A] mb-2"
-          style={{ fontFamily: 'var(--font-barlow)' }}
+          className="block text-[10px] font-medium text-white/40 uppercase tracking-widest mb-1"
+          style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           Mensaje (opcional)
         </label>
@@ -254,7 +283,7 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           onChange={handleChange}
           placeholder="Cuéntanos brevemente sobre tu empresa..."
           rows={4}
-          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all resize-none"
+          className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#FF4500] transition-colors duration-200 resize-none"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
@@ -273,12 +302,12 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold py-3 px-6 rounded-full h-14 transition-all duration-300 flex items-center justify-center gap-2"
-        style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        className="w-full border border-[#FF4500] text-[#FF4500] hover:bg-[#FF4500] hover:text-black font-bold py-4 px-6 rounded-full text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 mt-8"
+        style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
       >
         {loading ? (
           <>
-            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            <div className="w-4 h-4 border-2 border-[#FF4500]/30 border-t-[#FF4500] rounded-full animate-spin" />
             Enviando...
           </>
         ) : (

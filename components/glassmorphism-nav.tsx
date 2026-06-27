@@ -36,8 +36,8 @@ const services = [
 const navigation = [
   { name: "Servicios", href: null, isDropdown: true },
   { name: "Diagnóstico", href: "/diagnostico" },
-  { name: "Casos", href: "/casos" },
-  { name: "Blog", href: "/blog" },
+  { name: "Casos", href: "/#testimonials" },
+  { name: "Blog", href: "#" },
 ]
 
 export function GlassmorphismNav() {
@@ -45,6 +45,7 @@ export function GlassmorphismNav() {
   const [isVisible, setIsVisible] = useState(true)
   const [hasLoaded, setHasLoaded] = useState(false)
   const [isServiciosOpen, setIsServiciosOpen] = useState(false)
+  const [isMobileServiciosOpen, setIsMobileServiciosOpen] = useState(false)
   const lastScrollY = useRef(0)
   const router = useRouter()
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -271,7 +272,10 @@ export function GlassmorphismNav() {
 
               {/* Mobile Menu Button */}
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                  setIsOpen(!isOpen)
+                  if (isOpen) setIsMobileServiciosOpen(false)
+                }}
                 className="md:hidden text-[#0A0A0A] hover:scale-110 transition-transform duration-200 cursor-pointer"
                 aria-label="Toggle menu"
               >
@@ -307,7 +311,7 @@ export function GlassmorphismNav() {
                   item.isDropdown ? (
                     <div key={item.name}>
                       <button
-                        onClick={() => setIsServiciosOpen(!isServiciosOpen)}
+                        onClick={() => setIsMobileServiciosOpen(!isMobileServiciosOpen)}
                         className={`w-full text-left text-[#938B82] hover:text-[#0A0A0A] hover:bg-black/5 rounded-lg px-3 py-3 transition-all duration-300 font-medium cursor-pointer text-sm flex items-center justify-between ${
                           isOpen ? "animate-mobile-menu-item" : ""
                         }`}
@@ -316,18 +320,18 @@ export function GlassmorphismNav() {
                         {item.name}
                         <ChevronDown
                           size={16}
-                          className={`transition-transform duration-300 ${isServiciosOpen ? "rotate-180" : ""}`}
+                          className={`transition-transform duration-300 ${isMobileServiciosOpen ? "rotate-180" : ""}`}
                         />
                       </button>
                       {/* Mobile Servicios submenu */}
-                      {isServiciosOpen && (
+                      {isMobileServiciosOpen && (
                         <div className="pl-4 space-y-2 mt-2">
                           {services.map((service) => (
                             <button
                               key={service.title}
                               onClick={() => {
                                 setIsOpen(false)
-                                setIsServiciosOpen(false)
+                                setIsMobileServiciosOpen(false)
                                 setTimeout(() => {
                                   router.push(service.href)
                                 }, 150)

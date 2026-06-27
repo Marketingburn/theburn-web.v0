@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { nombre, empresa, email, telefono, tipoEmpresa, necesidad, mensaje } = body;
+    const { nombre, empresa, email, telefono, tipoEmpresa, necesidad, presupuesto, mensaje } = body;
 
     // Email to The Burn team
     await resend.emails.send({
@@ -46,6 +46,10 @@ export async function POST(request: Request) {
               <tr style="border-bottom: 1px solid #F5F1EA;">
                 <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">NECESIDAD</td>
                 <td style="padding: 12px 0; color: #0A0A0A;">${necesidad || 'No indicado'}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #F5F1EA;">
+                <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">PRESUPUESTO</td>
+                <td style="padding: 12px 0; color: #0A0A0A;">${presupuesto || 'No indicado'}</td>
               </tr>
               <tr>
                 <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">MENSAJE</td>

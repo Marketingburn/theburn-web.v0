@@ -6,28 +6,27 @@ import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { ContactProvider } from "@/app/contact-context"
-import { ContactModal } from "@/components/contact-modal"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Barlow_Condensed, Barlow, JetBrains_Mono } from "next/font/google"
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
   variable: "--font-barlow-condensed",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["700", "800", "900"],
   display: "swap",
 })
 
 const barlow = Barlow({
   subsets: ["latin"],
   variable: "--font-barlow",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
   display: "swap",
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   display: "swap",
 })
 
@@ -80,7 +79,6 @@ export default function RootLayout({
             <NavigationTransition />
             <PageTransition>{children}</PageTransition>
           </Suspense>
-          <ContactModal />
           <WhatsAppFloat />
         </ContactProvider>
         <SpeedInsights />

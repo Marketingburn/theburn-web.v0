@@ -869,6 +869,17 @@
   opacity: 0;
 }
 
+@keyframes slideUp {
+  from { 
+    transform: translateY(40px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
 /* Fire glow ambient animation for hero */
 @keyframes fire-glow-drift {
   0% {

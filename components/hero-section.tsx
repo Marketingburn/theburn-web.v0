@@ -1,13 +1,12 @@
 'use client'
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import RotatingText from "./RotatingText"
 import Image from "next/image"
-import { useContactModal } from "@/app/contact-context"
 
 const ArrowRight = () => (
   <svg
-    className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+    className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -21,6 +20,35 @@ const Play = () => (
     <path d="M8 5v14l11-7z" />
   </svg>
 )
+
+function RotatingWords() {
+  const words = ["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]
+  const [index, setIndex] = useState(0)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const interval = setInterval(() => {
+      setIndex(prev => (prev + 1) % words.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <span
+      className="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl px-4 py-2 overflow-hidden"
+      style={{
+        fontFamily: "var(--font-barlow-condensed)",
+        fontSize: "clamp(36px, 10vw, 110px)",
+        lineHeight: "0.92",
+        animation: mounted ? "slideUp 0.4s ease-out" : "none",
+        minWidth: "200px",
+      }}
+    >
+      {mounted ? words[index] : words[0]}
+    </span>
+  )
+}
 
 const positioningPhrases = [
   "ESTRATEGIA, MARKETING Y DATOS EN UN EQUIPO",
@@ -36,10 +64,9 @@ const positioningPhrases = [
 ]
 
 export function HeroSection() {
-  const { openContactModal } = useContactModal()
-  
   return (
     <section className="min-h-screen flex flex-col lg:flex-row items-start lg:items-center justify-between pt-24 pb-12 px-4 lg:px-0 w-full overflow-hidden relative bg-[#F5F1EA]">
+      <h1 className="sr-only">Consultoría de Marketing Digital B2B en Santiago Chile</h1>
       {/* Fire glow ambient blurs */}
       <div
         className="absolute rounded-full bg-[#FF4500] opacity-10 blur-[80px] w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] -top-20 left-1/2 -translate-x-1/2 lg:top-auto lg:left-auto lg:translate-x-0 pointer-events-none animate-fire-glow"
@@ -59,26 +86,15 @@ export function HeroSection() {
         </div>
 
         {/* Main Heading */}
-        <h1
+        <p
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
           <span className="block">Haz crecer tu</span>
           <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
-            <RotatingText
-              texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
-              mainClassName="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl text-[clamp(36px,10vw,110px)] leading-[0.92] px-4 py-2 max-w-[calc(100vw-32px)] overflow-hidden"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
-            />
+            <RotatingWords />
           </span>
-        </h1>
+        </p>
 
         {/* Subheading */}
         <p 
@@ -92,7 +108,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-3 w-full animate-fade-in-buttons lg:justify-center">
           <Button
             size="lg"
-            onClick={openContactModal}
+            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full sm:w-auto bg-[#0A0A0A] text-white rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#1B1917] hover:scale-105 hover:shadow-lg group cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >

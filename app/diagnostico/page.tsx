@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { ContactForm } from "@/components/contact-form"
 import Image from "next/image"
 
 // ---------------------------------------------------------------------------
@@ -65,14 +66,15 @@ function useInView(threshold = 0.15) {
 function DiagnosticoHero() {
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
+      <h1 className="sr-only">Diagnóstico Comercial para Empresas B2B en Chile</h1>
       {/* Fire glow blurs */}
       <div
-        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none animate-fire-glow"
-        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.15 }}
+        className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.08 }}
       />
       <div
-        className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none animate-fire-glow-2"
-        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.12 }}
+        className="absolute bottom-1/3 right-1/4 w-[200px] h-[200px] rounded-full pointer-events-none animate-fire-glow-2"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.06 }}
       />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
@@ -84,13 +86,13 @@ function DiagnosticoHero() {
               PRIMER PASO &nbsp;·&nbsp; $500.000 CLP &nbsp;·&nbsp; 3 SEMANAS
             </Badge>
 
-            <h1
+            <p
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
               Entiende tu negocio antes de{" "}
               <span className="text-[#FF4500]">INVERTIR</span> en él.
-            </h1>
+            </p>
 
             <p
               className="text-base sm:text-lg text-[#938B82] leading-relaxed mb-16 max-w-lg"
@@ -101,6 +103,7 @@ function DiagnosticoHero() {
 
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
               <button
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -177,7 +180,7 @@ function ProblemSection() {
           className={`text-center mb-14 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <BadgeLight>
-            <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0 inline-block" />
+            <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 shrink-0 inline-block" />
             POR QUÉ PRIMERO EL DIAGNÓSTICO
           </BadgeLight>
           <h2
@@ -588,6 +591,7 @@ function FinalCTA() {
         </p>
 
         <button
+          onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
           className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-black uppercase px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
           style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
         >
@@ -620,6 +624,25 @@ export default function DiagnosticoPage() {
         <InvestmentSection />
         <FAQSection />
         <FinalCTA />
+        <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"
+               style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+              ■ HABLEMOS
+            </p>
+            <h2 className="text-4xl font-black uppercase text-white mb-4"
+                style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+              Sin Humo.<br />Sin Jerga.
+            </h2>
+            <p className="text-[#938B82] mb-8 text-sm"
+               style={{ fontFamily: 'var(--font-barlow)' }}>
+              Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
+            </p>
+            <div className="[&_label]:text-white/40 [&_input]:bg-transparent [&_input]:border-b [&_input]:border-white/20 [&_input]:rounded-none [&_input]:px-0 [&_input]:text-white [&_input::placeholder]:text-white/25 [&_select]:bg-transparent [&_select]:border-b [&_select]:border-white/20 [&_select]:rounded-none [&_select]:px-0 [&_select]:text-white [&_textarea]:bg-transparent [&_textarea]:border-b [&_textarea]:border-white/20 [&_textarea]:rounded-none [&_textarea]:px-0 [&_textarea]:text-white [&_textarea::placeholder]:text-white/25 [&_option]:bg-[#1B1917] [&_option]:text-white">
+              <ContactForm defaultNecesidad="Diagnóstico Comercial" />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
