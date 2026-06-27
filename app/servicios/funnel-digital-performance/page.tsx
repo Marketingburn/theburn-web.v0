@@ -484,6 +484,7 @@ function MetricsSection() {
 
 function FunnelCTA() {
   const { ref, visible } = useInView()
+  const { openContactModal } = useContactModal()
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
