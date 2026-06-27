@@ -21,9 +21,9 @@ const footerLinks: FooterSection[] = [
   {
     label: "Empresa",
     links: [
-      { title: "Servicios", href: "#features" },
-      { title: "Diagnóstico", href: "#ai-team" },
-      { title: "Casos", href: "#testimonials" },
+      { title: "Servicios", href: "/#features" },
+      { title: "Diagnóstico", href: "/diagnostico" },
+      { title: "Casos", href: "/#testimonials" },
       { title: "Blog", href: "#" },
     ],
   },
@@ -37,7 +37,7 @@ const footerLinks: FooterSection[] = [
     label: "Legal",
     links: [
       { title: "Santiago, Chile", href: "#" },
-      { title: "theburn.cl", href: "#" },
+      { title: "theburn.cl", href: "/" },
     ],
   },
 ]
