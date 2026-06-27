@@ -26,9 +26,9 @@ export function CTASection() {
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-8 px-4 sm:px-6 lg:px-8 mb-24 bg-[#0A0A0A]">
+    <section id="contact" ref={sectionRef} className="relative py-8 px-4 sm:px-6 lg:px-8 mb-0 bg-[#0A0A0A]">
       <div className="relative max-w-4xl mx-auto">
-        <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out p-8 md:p-12 rounded-3xl border border-[#FF4500]/30 bg-[#1B1917] relative overflow-hidden">
+        <div className="fade-in-element p-8 md:p-12 rounded-3xl border border-[#FF4500]/30 bg-[#1B1917] relative overflow-hidden">
           {/* Orange glow top */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 opacity-20 pointer-events-none"
@@ -36,22 +36,22 @@ export function CTASection() {
           />
 
           <div className="relative z-10">
-            <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-700 ease-out inline-flex items-center px-3 py-1.5 rounded-full bg-[#0A0A0A] border border-[#2A2725] text-[#938B82] text-xs mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}>
+            <div className="fade-in-element inline-flex items-center px-3 py-1.5 rounded-full bg-[#0A0A0A] border border-[#2A2725] text-[#938B82] text-xs mb-6" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}>
               DIAGNÓSTICO COMERCIAL
             </div>
 
             <h3
-              className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-3xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 text-balance"
+              className="fade-in-element text-3xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 text-balance"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
               Quema los barcos. Empieza a{" "}
               <span className="text-[#FF4500]">AVANZAR.</span>
             </h3>
-            <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-700 ease-out text-base md:text-lg text-[#938B82] mb-8 max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+            <p className="fade-in-element text-base md:text-lg text-[#938B82] mb-8 max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               El diagnóstico te muestra exactamente qué está frenando tu crecimiento y el roadmap para desbloquearlo. 3 semanas. $500.000 CLP.
             </p>
 
-            <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-700 ease-out flex flex-col sm:flex-row items-start gap-4">
+            <div className="fade-in-element flex flex-col sm:flex-row items-start gap-4">
               <button
                 onClick={() => {
                   const contactSection = document.getElementById('contacto')
