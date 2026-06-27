@@ -77,18 +77,21 @@ export function HeroSection() {
       {/* Left Content Column */}
       <div className="w-full lg:w-full flex flex-col gap-6 px-4 lg:px-0 items-start lg:items-center lg:justify-center z-10 animate-fade-in-hero lg:min-h-screen">
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge lg:mx-auto" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+        <h1 className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge lg:mx-auto" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
           <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0" />
           Consultoría Comercial &amp; Marketing — Chile
-        </div>
+        </h1>
 
         {/* Main Heading */}
-        <h1
+        <p
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
-          Consultoría de Marketing Digital B2B Santiago Chile
-        </h1>
+          <span className="block">Haz crecer tu</span>
+          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
+            <RotatingWords />
+          </span>
+        </p>
 
         {/* Subheading */}
         <p 

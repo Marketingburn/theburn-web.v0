@@ -11,12 +11,12 @@ import { ContactForm } from "@/components/contact-form"
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <div
+    <h1
       className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm mb-6"
       style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}
     >
       {children}
-    </div>
+    </h1>
   )
 }
 
@@ -84,12 +84,12 @@ function BIHero() {
               SERVICIO · BUSINESS INTELLIGENCE
             </Badge>
 
-            <h1
+            <p
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
               Consultoría Power BI para Empresas en Chile
-            </h1>
+            </p>
 
             <p
               className="text-base sm:text-lg text-[#938B82] leading-relaxed mb-10 max-w-lg"
