@@ -8,7 +8,7 @@ interface ContactSectionProps {
 
 export function ContactSection({ defaultNecesidad }: ContactSectionProps) {
   return (
-    <section className="bg-[#0A0A0A] py-24 px-4">
+    <section id="contacto" className="bg-[#0A0A0A] py-24 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Eyebrow */}
         <p className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"

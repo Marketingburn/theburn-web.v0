@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
-import { useContactModal } from "@/app/contact-context"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as /diagnostico)
@@ -64,7 +63,6 @@ function useInView(threshold = 0.15) {
 // ---------------------------------------------------------------------------
 
 function FunnelHero() {
-  const { openContactModal } = useContactModal()
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
       {/* Fire glow blurs */}
@@ -103,7 +101,7 @@ function FunnelHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={openContactModal}
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -485,7 +483,6 @@ function MetricsSection() {
 
 function FunnelCTA() {
   const { ref, visible } = useInView()
-  const { openContactModal } = useContactModal()
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
@@ -519,7 +516,7 @@ function FunnelCTA() {
             El diagnóstico revela tu CPL actual, dónde se pierden tus leads y qué cambiar primero. Con datos reales, no suposiciones.
           </p>
           <button
-            onClick={openContactModal}
+            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 cursor-pointer shadow-lg"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >

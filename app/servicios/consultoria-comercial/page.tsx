@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
-import { useContactModal } from "@/app/contact-context"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as other service pages)
@@ -64,7 +63,6 @@ function useInView(threshold = 0.15) {
 // ---------------------------------------------------------------------------
 
 function ConsultoriaHero() {
-  const { openContactModal } = useContactModal()
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
       {/* Fire glow blurs */}
@@ -104,7 +102,7 @@ function ConsultoriaHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={openContactModal}
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -555,7 +553,6 @@ function DifferentiatorSection() {
 
 function CTASection() {
   const { ref, visible } = useInView()
-  const { openContactModal } = useContactModal()
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
@@ -590,7 +587,7 @@ function CTASection() {
             En 30 minutos te mostramos exactamente qué está frenando tu proceso comercial y qué haríamos para solucionarlo.
           </p>
           <button
-            onClick={openContactModal}
+            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
