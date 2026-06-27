@@ -613,21 +613,21 @@ export default function ConsultoriaComercialPage() {
         <WhatWeDoSection />
         <DifferentiatorSection />
         <CTASection />
-      <section id="contacto" className="bg-[#0A0A0A] py-24 px-4">
+      <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
         <div className="max-w-2xl mx-auto">
           <p className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"
              style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
             ■ HABLEMOS
           </p>
-          <h2 className="text-5xl font-black uppercase text-white mb-4"
+          <h2 className="text-4xl font-black uppercase text-white mb-4"
               style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
             Sin Humo.<br />Sin Jerga.
           </h2>
-          <p className="text-[#938B82] mb-12 text-lg"
+          <p className="text-[#938B82] mb-8 text-sm"
              style={{ fontFamily: 'var(--font-barlow)' }}>
             Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
           </p>
-          <div className="[&_label]:text-white [&_input]:bg-white/5 [&_input]:border-white/10 [&_input]:text-white [&_input::placeholder]:text-white/30 [&_select]:bg-[#1B1917] [&_select]:border-white/10 [&_select]:text-white [&_textarea]:bg-white/5 [&_textarea]:border-white/10 [&_textarea]:text-white [&_textarea::placeholder]:text-white/30">
+          <div className="[&_label]:text-white/40 [&_input]:bg-transparent [&_input]:border-b [&_input]:border-white/20 [&_input]:rounded-none [&_input]:px-0 [&_input]:text-white [&_input::placeholder]:text-white/25 [&_select]:bg-transparent [&_select]:border-b [&_select]:border-white/20 [&_select]:rounded-none [&_select]:px-0 [&_select]:text-white [&_textarea]:bg-transparent [&_textarea]:border-b [&_textarea]:border-white/20 [&_textarea]:rounded-none [&_textarea]:px-0 [&_textarea]:text-white [&_textarea::placeholder]:text-white/25 [&_option]:bg-[#1B1917] [&_option]:text-white">
             <ContactForm defaultNecesidad="Consultoría Comercial" />
           </div>
         </div>
