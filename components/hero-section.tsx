@@ -24,8 +24,10 @@ const Play = () => (
 function RotatingWords() {
   const words = ["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]
   const [index, setIndex] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const interval = setInterval(() => {
       setIndex(prev => (prev + 1) % words.length)
     }, 2000)
@@ -34,17 +36,16 @@ function RotatingWords() {
 
   return (
     <span
-      key={index}
-      suppressHydrationWarning
       className="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl px-4 py-2 overflow-hidden"
       style={{
         fontFamily: "var(--font-barlow-condensed)",
         fontSize: "clamp(36px, 10vw, 110px)",
         lineHeight: "0.92",
-        animation: "slideUp 0.4s ease-out",
+        animation: mounted ? "slideUp 0.4s ease-out" : "none",
+        minWidth: "200px",
       }}
     >
-      {words[index]}
+      {mounted ? words[index] : words[0]}
     </span>
   )
 }
@@ -86,7 +87,6 @@ export function HeroSection() {
 
         {/* Main Heading */}
         <p
-          suppressHydrationWarning
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
