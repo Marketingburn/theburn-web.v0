@@ -1,7 +1,7 @@
 'use client'
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import RotatingText from "./RotatingText"
 import Image from "next/image"
 
 const ArrowRight = () => (
@@ -20,6 +20,33 @@ const Play = () => (
     <path d="M8 5v14l11-7z" />
   </svg>
 )
+
+function RotatingWords() {
+  const words = ["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex(prev => (prev + 1) % words.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <span
+      key={index}
+      className="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl px-4 py-2 overflow-hidden"
+      style={{
+        fontFamily: "var(--font-barlow-condensed)",
+        fontSize: "clamp(36px, 10vw, 110px)",
+        lineHeight: "0.92",
+        animation: "slideUp 0.4s ease-out",
+      }}
+    >
+      {words[index]}
+    </span>
+  )
+}
 
 const positioningPhrases = [
   "ESTRATEGIA, MARKETING Y DATOS EN UN EQUIPO",
@@ -62,18 +89,7 @@ export function HeroSection() {
         >
           <span className="block">Haz crecer tu</span>
           <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
-            <RotatingText
-              texts={["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]}
-              mainClassName="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl text-[clamp(36px,10vw,110px)] leading-[0.92] px-4 py-2 max-w-[calc(100vw-32px)] overflow-hidden"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
-            />
+            <RotatingWords />
           </span>
         </h1>
 

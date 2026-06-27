@@ -68,12 +68,12 @@ function DiagnosticoHero() {
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
       {/* Fire glow blurs */}
       <div
-        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none animate-fire-glow"
-        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.15 }}
+        className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.08 }}
       />
       <div
-        className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none animate-fire-glow-2"
-        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.12 }}
+        className="absolute bottom-1/3 right-1/4 w-[200px] h-[200px] rounded-full pointer-events-none animate-fire-glow-2"
+        style={{ background: "radial-gradient(circle, #FF4500 0%, transparent 70%)", opacity: 0.06 }}
       />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
