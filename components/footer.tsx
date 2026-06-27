@@ -11,7 +11,7 @@ const footerLinks = [
       { title: "Servicios", href: "/#features" },
       { title: "Diagnóstico", href: "/diagnostico" },
       { title: "Casos", href: "/#testimonials" },
-      { title: "Blog", href: "#" },
+      { title: "Blog", href: "/blog" },
     ],
   },
   {
