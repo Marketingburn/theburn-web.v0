@@ -53,7 +53,12 @@ export function CTASection() {
 
             <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-700 ease-out flex flex-col sm:flex-row items-start gap-4">
               <button
-                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const contactSection = document.getElementById('contacto')
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
                 className="group inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 bg-[#FF4500] hover:bg-[#e03e00] text-[#0A0A0A] rounded-full font-black text-base md:text-lg transition-all duration-300 hover:scale-105"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.03em" }}
               >
