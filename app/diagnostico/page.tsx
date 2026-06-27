@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { ContactSection } from "@/components/contact-section"
 import Image from "next/image"
 
 // ---------------------------------------------------------------------------
@@ -621,6 +622,7 @@ export default function DiagnosticoPage() {
         <FAQSection />
         <FinalCTA />
       </main>
+      <ContactSection defaultNecesidad="Diagnóstico Comercial" />
       <Footer />
     </div>
   )

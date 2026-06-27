@@ -6,16 +6,18 @@ import { Check } from 'lucide-react';
 interface ContactFormProps {
   isModal?: boolean;
   onSuccess?: () => void;
+  defaultNecesidad?: string;
 }
 
-export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
+export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nombre: '',
     empresa: '',
     email: '',
     telefono: '',
     tipoEmpresa: '',
-    necesidad: '',
+    necesidad: defaultNecesidad || '',
+    presupuesto: '',
     mensaje: '',
   });
 
@@ -52,7 +54,8 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
         email: '',
         telefono: '',
         tipoEmpresa: '',
-        necesidad: '',
+        necesidad: defaultNecesidad || '',
+        presupuesto: '',
         mensaje: '',
       });
 
@@ -202,11 +205,12 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           style={{ fontFamily: 'var(--font-barlow)' }}
         >
           <option value="">Selecciona una opción</option>
-          <option value="Empresa B2B">Empresa B2B</option>
-          <option value="E-commerce">E-commerce</option>
-          <option value="Estudio Jurídico">Estudio Jurídico</option>
-          <option value="Distribuidora">Distribuidora</option>
-          <option value="Retail">Retail</option>
+          <option value="E-commerce / Tienda online">E-commerce / Tienda online</option>
+          <option value="Servicios profesionales (abogados, consultoras)">Servicios profesionales (abogados, consultoras)</option>
+          <option value="Distribuidora / Industrial">Distribuidora / Industrial</option>
+          <option value="Retail / Comercio">Retail / Comercio</option>
+          <option value="Inmobiliaria / Construcción">Inmobiliaria / Construcción</option>
+          <option value="SaaS / Tecnología">SaaS / Tecnología</option>
           <option value="Otro">Otro</option>
         </select>
       </div>
@@ -235,6 +239,31 @@ export function ContactForm({ isModal = false, onSuccess }: ContactFormProps) {
           <option value="Automatización de Marketing">Automatización de Marketing</option>
           <option value="Consultoría Comercial">Consultoría Comercial</option>
           <option value="No sé por dónde empezar">No sé por dónde empezar</option>
+        </select>
+      </div>
+
+      {/* Presupuesto */}
+      <div>
+        <label
+          htmlFor="presupuesto"
+          className="block text-sm font-medium text-[#0A0A0A] mb-2"
+          style={{ fontFamily: 'var(--font-barlow)' }}
+        >
+          Presupuesto mensual disponible
+        </label>
+        <select
+          id="presupuesto"
+          name="presupuesto"
+          value={formData.presupuesto}
+          onChange={handleChange}
+          className="w-full border border-black/12 rounded-lg px-4 py-3 text-[#0A0A0A] bg-white focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all appearance-none"
+          style={{ fontFamily: 'var(--font-barlow)' }}
+        >
+          <option value="">Selecciona una opción</option>
+          <option value="Menos de $500.000 CLP">Menos de $500.000 CLP</option>
+          <option value="$500.000 – $1.000.000 CLP">$500.000 – $1.000.000 CLP</option>
+          <option value="$1.000.000 – $3.000.000 CLP">$1.000.000 – $3.000.000 CLP</option>
+          <option value="Más de $3.000.000 CLP">Más de $3.000.000 CLP</option>
         </select>
       </div>
 

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { ContactSection } from "@/components/contact-section"
 import { useContactModal } from "@/app/contact-context"
 
 // ---------------------------------------------------------------------------
@@ -614,6 +615,7 @@ export default function ConsultoriaComercialPage() {
       <WhatWeDoSection />
       <DifferentiatorSection />
       <CTASection />
+      <ContactSection defaultNecesidad="Consultoría Comercial" />
       <Footer />
     </>
   )

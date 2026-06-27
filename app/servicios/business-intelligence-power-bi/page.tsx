@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { ContactSection } from "@/components/contact-section"
 import { useContactModal } from "@/app/contact-context"
 
 // ---------------------------------------------------------------------------
@@ -926,6 +927,7 @@ export default function BIPage() {
         <UseCasesSection />
         <BICTA />
       </main>
+      <ContactSection defaultNecesidad="Business Intelligence / Power BI" />
       <Footer />
     </div>
   )
