@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 
 const services = [
   {
@@ -13,6 +14,7 @@ const services = [
     title: "Diagnóstico Comercial",
     description:
       "Analizamos tu negocio, tus números y tu equipo en 3 semanas. Entendemos dónde se pierden ventas y qué hay que ordenar primero.",
+    href: "/diagnostico",
   },
   {
     icon: (
@@ -24,6 +26,7 @@ const services = [
     title: "Business Intelligence & Power BI",
     description:
       "Dashboard conectado a tus datos reales: márgenes, stock, pipeline y conversión. Decisiones con números, no con corazonadas.",
+    href: "/servicios/business-intelligence-power-bi",
   },
   {
     icon: (
@@ -35,6 +38,7 @@ const services = [
     title: "Funnel Digital de Performance",
     description:
       "Diseño e implementación de tu canal de captación: paid media, landing pages y conversión optimizada para tu modelo de negocio.",
+    href: "/servicios/funnel-digital-performance",
   },
   {
     icon: (
@@ -46,6 +50,7 @@ const services = [
     title: "Automatización de Marketing",
     description:
       "Flujos de nurturing, seguimiento automático y calificación de leads. Tu equipo cierra; el sistema prospecta.",
+    href: "/servicios/automatizacion-marketing",
   },
   {
     icon: (
@@ -57,6 +62,7 @@ const services = [
     title: "Estrategia Comercial",
     description:
       "Definimos el proceso de ventas, los mensajes por segmento y el roadmap de crecimiento. Con métricas de seguimiento incluidas.",
+    href: "/servicios/estrategia-comercial",
   },
   {
     icon: (
@@ -68,12 +74,14 @@ const services = [
     title: "Implementación & Acompañamiento",
     description:
       "No entregamos un plan y nos vamos. Ejecutamos junto a tu equipo con reuniones semanales y ajustes en tiempo real.",
+    href: "/servicios/implementacion",
   },
 ]
 
 export function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -138,7 +146,15 @@ export function FeaturesSection() {
                 >
                   {service.title}
                 </h3>
-                <p className="text-[#938B82] text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>{service.description}</p>
+                <p className="text-[#938B82] text-sm leading-relaxed mb-6" style={{ fontFamily: "var(--font-barlow)" }}>{service.description}</p>
+                <button
+                  onClick={() => router.push(service.href)}
+                  className="inline-flex items-center gap-2 text-[#FF4500] text-sm font-bold uppercase tracking-wide hover:text-[#FF4500]/80 transition-colors duration-200 group/btn"
+                  style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                >
+                  Ver servicio
+                  <span className="group-hover/btn:translate-x-1 transition-transform duration-200">→</span>
+                </button>
               </div>
             ))}
           </div>

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { useContactModal } from "@/app/contact-context"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as /diagnostico)
@@ -62,6 +63,7 @@ function useInView(threshold = 0.15) {
 // ---------------------------------------------------------------------------
 
 function FunnelHero() {
+  const { openContactModal } = useContactModal()
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
       {/* Fire glow blurs */}
@@ -100,6 +102,7 @@ function FunnelHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
+                onClick={openContactModal}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -109,7 +112,7 @@ function FunnelHero() {
                 className="border border-[#E8E3DA] text-[#938B82] hover:bg-white hover:border-[#FF4500]/40 hover:text-[#0A0A0A] font-medium px-8 py-4 rounded-full text-base transition-all duration-200 hover:scale-105 bg-transparent cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow)" }}
                 onClick={() => {
-                  document.getElementById("que-construimos")?.scrollIntoView({ behavior: "smooth", block: "start" })
+                  document.getElementById("que-hacemos")?.scrollIntoView({ behavior: "smooth", block: "start" })
                 }}
               >
                 Ver qué construimos &nbsp;↓
@@ -398,7 +401,7 @@ const metrics = [
   },
   {
     abbr: "CAC",
-    label: "Costo de Adquisición de Cliente",
+    label: "Costo de Adquisici��n de Cliente",
     body: "El costo real de conseguir un cliente pagador, incluyendo medios y operaciones.",
   },
   {
@@ -514,6 +517,7 @@ function FunnelCTA() {
             El diagnóstico revela tu CPL actual, dónde se pierden tus leads y qué cambiar primero. Con datos reales, no suposiciones.
           </p>
           <button
+            onClick={openContactModal}
             className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 cursor-pointer shadow-lg"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
