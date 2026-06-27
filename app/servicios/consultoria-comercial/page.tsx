@@ -607,11 +607,12 @@ export default function ConsultoriaComercialPage() {
   return (
     <>
       <GlassmorphismNav />
-      <ConsultoriaHero />
-      <ProblemSection />
-      <WhatWeDoSection />
-      <DifferentiatorSection />
-      <CTASection />
+      <main>
+        <ConsultoriaHero />
+        <ProblemSection />
+        <WhatWeDoSection />
+        <DifferentiatorSection />
+        <CTASection />
       <section id="contacto" className="bg-[#0A0A0A] py-24 px-4">
         <div className="max-w-2xl mx-auto">
           <p className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"
