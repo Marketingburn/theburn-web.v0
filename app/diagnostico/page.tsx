@@ -89,7 +89,8 @@ function DiagnosticoHero() {
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Diagnóstico Comercial para <span className="text-[#FF4500]">Empresas</span> en Chile
+              Entiende tu negocio antes de{" "}
+              <span className="text-[#FF4500]">INVERTIR</span> en él.
             </h1>
 
             <p

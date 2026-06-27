@@ -87,7 +87,10 @@ export function HeroSection() {
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
-          <span className="block">Consultoría de Marketing Digital <span className="text-[#FF4500]">B2B</span> en Chile</span>
+          <span className="block">Haz crecer tu</span>
+          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
+            <RotatingWords />
+          </span>
         </h1>
 
         {/* Subheading */}
