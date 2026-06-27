@@ -602,7 +602,7 @@ function FinalCTA() {
           className="mt-8 text-xs text-[#938B82]"
           style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.12em" }}
         >
-          THEBURN.CL &nbsp;·&nbsp; SANTIAGO, CHILE &nbsp;·&nbsp; jordan@theburn.cl
+          THEBURN.CL &nbsp;·&nbsp; SANTIAGO, CHILE
         </p>
       </div>
     </section>

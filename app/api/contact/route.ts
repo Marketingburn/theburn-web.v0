@@ -73,7 +73,7 @@ export async function POST(request: Request) {
 
     // Auto-reply to the person who submitted
     await resend.emails.send({
-      from: 'Jordan Wells · The Burn <jordan@theburn.cl>',
+      from: 'The Burn <noreply@theburn.cl>',
       to: [email],
       subject: 'Recibimos tu mensaje — The Burn',
       html: `
@@ -99,8 +99,8 @@ export async function POST(request: Request) {
           <div style="background: #0A0A0A; padding: 20px 24px; border-radius: 12px; margin-bottom: 16px;">
             <p style="color: #938B82; font-size: 11px; letter-spacing: 2px; margin: 0 0 4px 0;">MENOS BLA, MÁS MARKETING.</p>
             <p style="color: #FFFFFF; font-size: 14px; margin: 0;">
-              Jordan Wells · The Burn<br>
-              <span style="color: #938B82;">jordan@theburn.cl · theburn.cl</span>
+              The Burn<br>
+              <span style="color: #938B82;">theburn.cl</span>
             </p>
           </div>
 

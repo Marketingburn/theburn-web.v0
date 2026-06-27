@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Suspense } from "react"
+import Script from "next/script"
 import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
@@ -73,6 +74,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="bg-background">
+      <head>
+        <Script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "vts56wttrq");
+            `,
+          }}
+        />
+      </head>
       <body className={`font-sans antialiased ${barlowCondensed.variable} ${barlow.variable} ${jetbrainsMono.variable}`}>
         <ContactProvider>
           <Suspense fallback={null}>

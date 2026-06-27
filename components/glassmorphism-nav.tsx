@@ -37,7 +37,7 @@ const navigation = [
   { name: "Servicios", href: null, isDropdown: true },
   { name: "Diagnóstico", href: "/diagnostico" },
   { name: "Casos", href: "/#testimonials" },
-  { name: "Blog", href: "#" },
+  { name: "Blog", href: "/blog" },
 ]
 
 export function GlassmorphismNav() {
