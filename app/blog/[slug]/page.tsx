@@ -5,6 +5,7 @@ import { getBlogPostBySlug, blogPosts } from "@/lib/blog-posts"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ChevronLeft } from "lucide-react"
+import styles from "./article.module.css"
 
 export const dynamicParams = true
 
@@ -96,85 +97,13 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         <div className="max-w-2xl mx-auto">
           <article
             dangerouslySetInnerHTML={{ __html: post.content }}
-            className="prose-article space-y-6"
+            className={styles.article}
             style={{
               fontFamily: "var(--font-barlow)",
               color: "#0A0A0A",
               lineHeight: "1.75",
             }}
           />
-          <style>{`
-            .prose-article h2 {
-              font-family: var(--font-barlow-condensed);
-              font-size: 32px;
-              font-weight: 900;
-              text-transform: uppercase;
-              color: #0a0a0a;
-              margin: 32px 0 16px 0;
-              line-height: 0.92;
-            }
-
-            .prose-article h3 {
-              font-family: var(--font-barlow-condensed);
-              font-size: 24px;
-              font-weight: 900;
-              text-transform: uppercase;
-              color: #0a0a0a;
-              margin: 24px 0 12px 0;
-              line-height: 0.92;
-            }
-
-            .prose-article p {
-              font-family: var(--font-barlow);
-              font-size: 16px;
-              color: #0a0a0a;
-              line-height: 1.75;
-              margin: 16px 0;
-            }
-
-            .prose-article ul {
-              list-style: disc;
-              margin-left: 24px;
-              margin: 16px 0;
-            }
-
-            .prose-article li {
-              font-family: var(--font-barlow);
-              font-size: 16px;
-              color: #0a0a0a;
-              line-height: 1.75;
-              margin: 8px 0;
-            }
-
-            .prose-article table {
-              width: 100%;
-              border-collapse: collapse;
-              margin: 24px 0;
-              border: 1px solid #e8e3da;
-            }
-
-            .prose-article th {
-              background-color: #0a0a0a;
-              color: white;
-              padding: 12px;
-              text-align: left;
-              font-family: var(--font-barlow-condensed);
-              font-weight: 700;
-            }
-
-            .prose-article td {
-              border: 1px solid #e8e3da;
-              padding: 12px;
-              font-family: var(--font-barlow);
-              font-size: 16px;
-              color: #0a0a0a;
-            }
-
-            .prose-article strong {
-              font-weight: 700;
-              color: #0a0a0a;
-            }
-          `}</style>
         </div>
       </section>
 

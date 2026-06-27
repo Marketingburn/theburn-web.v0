@@ -1,0 +1,70 @@
+.article h2 {
+  font-family: var(--font-barlow-condensed);
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin: 32px 0 16px 0;
+  line-height: 0.92;
+}
+
+.article h3 {
+  font-family: var(--font-barlow-condensed);
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin: 24px 0 12px 0;
+  line-height: 0.92;
+}
+
+.article p {
+  font-family: var(--font-barlow);
+  font-size: 16px;
+  color: #0a0a0a;
+  line-height: 1.75;
+  margin: 16px 0;
+}
+
+.article ul {
+  list-style: disc;
+  margin-left: 24px;
+  margin: 16px 0;
+}
+
+.article li {
+  font-family: var(--font-barlow);
+  font-size: 16px;
+  color: #0a0a0a;
+  line-height: 1.75;
+  margin: 8px 0;
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  border: 1px solid #e8e3da;
+}
+
+.article th {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-family: var(--font-barlow-condensed);
+  font-weight: 700;
+}
+
+.article td {
+  border: 1px solid #e8e3da;
+  padding: 12px;
+  font-family: var(--font-barlow);
+  font-size: 16px;
+  color: #0a0a0a;
+}
+
+.article strong {
+  font-weight: 700;
+  color: #0a0a0a;
+}
