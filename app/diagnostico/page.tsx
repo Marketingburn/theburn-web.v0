@@ -12,12 +12,12 @@ import Image from "next/image"
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <h1
+    <div
       className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm mb-6"
       style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}
     >
       {children}
-    </h1>
+    </div>
   )
 }
 
@@ -66,6 +66,7 @@ function useInView(threshold = 0.15) {
 function DiagnosticoHero() {
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
+      <h1 className="sr-only">Diagnóstico Comercial para Empresas B2B en Chile</h1>
       {/* Fire glow blurs */}
       <div
         className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
@@ -89,7 +90,8 @@ function DiagnosticoHero() {
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Diagnóstico Comercial para Empresas B2B en Chile
+              Entiende tu negocio antes de{" "}
+              <span className="text-[#FF4500]">INVERTIR</span> en él.
             </p>
 
             <p

@@ -64,6 +64,7 @@ const positioningPhrases = [
 export function HeroSection() {
   return (
     <section className="min-h-screen flex flex-col lg:flex-row items-start lg:items-center justify-between pt-24 pb-12 px-4 lg:px-0 w-full overflow-hidden relative bg-[#F5F1EA]">
+      <h1 className="sr-only">Consultoría de Marketing Digital B2B en Santiago Chile</h1>
       {/* Fire glow ambient blurs */}
       <div
         className="absolute rounded-full bg-[#FF4500] opacity-10 blur-[80px] w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] -top-20 left-1/2 -translate-x-1/2 lg:top-auto lg:left-auto lg:translate-x-0 pointer-events-none animate-fire-glow"
@@ -77,10 +78,10 @@ export function HeroSection() {
       {/* Left Content Column */}
       <div className="w-full lg:w-full flex flex-col gap-6 px-4 lg:px-0 items-start lg:items-center lg:justify-center z-10 animate-fade-in-hero lg:min-h-screen">
         {/* Badge */}
-        <h1 className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge lg:mx-auto" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm animate-fade-in-badge lg:mx-auto" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.05em" }}>
           <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0" />
           Consultoría Comercial &amp; Marketing — Chile
-        </h1>
+        </div>
 
         {/* Main Heading */}
         <p
