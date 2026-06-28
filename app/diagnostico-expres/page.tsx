@@ -109,8 +109,11 @@ export default function DiagnosticoExpres() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
   const [showLesson, setShowLesson] = useState(false)
+  const [expandedLesson, setExpandedLesson] = useState(false)
   const [quizComplete, setQuizComplete] = useState(false)
+  const [showLeadForm, setShowLeadForm] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
   const [formData, setFormData] = useState<FormData>({ nombre: '', email: '', telefono: '', empresa: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
@@ -126,8 +129,10 @@ export default function DiagnosticoExpres() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
       setShowLesson(false)
+      setExpandedLesson(false)
     } else {
       setQuizComplete(true)
+      setShowLeadForm(true)
     }
   }
 
@@ -212,7 +217,7 @@ export default function DiagnosticoExpres() {
               <div className="inline-block text-xs uppercase tracking-widest text-[#FF4500]" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
                 ■ HERRAMIENTA GRATUITA · THE BURN
               </div>
-              <h2 className="text-4xl md:text-6xl font-black uppercase text-white" style={{ fontFamily: 'var(--font-barlow-condensed)', lineHeight: '0.92' }}>
+              <h2 className="text-3xl md:text-6xl font-black uppercase text-white" style={{ fontFamily: 'var(--font-barlow-condensed)', lineHeight: '0.92' }}>
                 El Diagnóstico Exprés <span className="text-[#FF4500]">para tu empresa B2B</span>
               </h2>
               <p className="text-lg md:text-xl text-[#938B82]" style={{ fontFamily: 'var(--font-barlow)' }}>
@@ -265,7 +270,7 @@ export default function DiagnosticoExpres() {
                     key={option.id}
                     onClick={() => handleSelectOption(option.id)}
                     disabled={showLesson}
-                    className={`w-full p-4 text-left rounded-xl border-2 transition-all duration-200 font-medium ${
+                    className={`w-full p-3 text-left rounded-xl border-2 transition-all duration-200 font-medium text-sm ${
                       answers[currentQuestion] === option.id
                         ? 'bg-[#FF4500] border-[#FF4500] text-[#0A0A0A]'
                         : 'bg-white border-[#E8E3DA] text-[#0A0A0A] hover:border-[#FF4500]'
@@ -281,9 +286,18 @@ export default function DiagnosticoExpres() {
               {showLesson && (
                 <div className="bg-[#0A0A0A] border-l-4 border-[#FF4500] p-6 rounded-lg space-y-4" style={{ animation: 'fadeIn 0.3s ease-out' }}>
                   <div className="text-[#FF4500] text-xs font-mono font-bold">■ ¿SABÍAS QUE?</div>
-                  <p className="text-[#938B82] leading-relaxed" style={{ fontFamily: 'var(--font-barlow)' }}>
+                  <p className={`text-[#938B82] leading-relaxed text-sm ${!expandedLesson ? 'line-clamp-3' : ''}`}
+                     style={{ fontFamily: 'var(--font-barlow)' }}>
                     {questions[currentQuestion].lesson}
                   </p>
+                  {!expandedLesson && (
+                    <button
+                      onClick={() => setExpandedLesson(true)}
+                      className="text-[#FF4500] text-xs font-mono"
+                    >
+                      Leer más →
+                    </button>
+                  )}
                   <button
                     onClick={handleNextQuestion}
                     className="mt-6 px-6 py-3 bg-[#FF4500] text-[#0A0A0A] font-bold rounded-lg hover:opacity-90 transition-opacity text-sm"
@@ -298,8 +312,94 @@ export default function DiagnosticoExpres() {
         </section>
       )}
 
+      {/* Lead Form Before Results */}
+      {quizComplete && showLeadForm && !formSubmitted && (
+        <section className="bg-[#0A0A0A] py-20 px-6">
+          <div className="max-w-lg mx-auto text-center space-y-8">
+            <div className="text-5xl text-[#FF4500]" style={{ fontFamily: 'var(--font-jetbrains-mono)', letterSpacing: '0.5em' }}>
+              ■
+            </div>
+            <h2 className="text-4xl font-black uppercase text-white" style={{ fontFamily: 'var(--font-barlow-condensed)', lineHeight: '0.92' }}>
+              Tu diagnóstico está listo.
+            </h2>
+            <p className="text-[#938B82]" style={{ fontFamily: 'var(--font-barlow)' }}>
+              Déjanos tu email para enviarte el plan completo. El resultado lo ves ahora mismo.
+            </p>
+
+            <form onSubmit={async (e) => {
+              e.preventDefault()
+              setIsSubmitting(true)
+              try {
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    nombre: formData.nombre,
+                    email: formData.email,
+                    empresa: formData.empresa,
+                    asunto: `Diagnóstico Exprés - ${result}`,
+                    mensaje: `Quiz completado con score ${totalScore}/24 - Resultado: ${result}`,
+                    quizResult: result,
+                    quizScore: totalScore,
+                  }),
+                })
+                if (response.ok) {
+                  setFormSubmitted(true)
+                  setFormData({ nombre: '', email: '', telefono: '', empresa: '' })
+                }
+              } catch (error) {
+                console.error('Error submitting form:', error)
+              } finally {
+                setIsSubmitting(false)
+              }
+            }} className="space-y-6">
+              <input
+                type="text"
+                placeholder="Nombre completo *"
+                required
+                value={formData.nombre}
+                onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-[#2A2725] text-white placeholder-white/30 pb-3 focus:border-[#FF4500] outline-none transition-colors text-sm"
+                style={{ fontFamily: 'var(--font-barlow)' }}
+              />
+              <input
+                type="email"
+                placeholder="Email *"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-[#2A2725] text-white placeholder-white/30 pb-3 focus:border-[#FF4500] outline-none transition-colors text-sm"
+                style={{ fontFamily: 'var(--font-barlow)' }}
+              />
+              <input
+                type="text"
+                placeholder="Empresa *"
+                required
+                value={formData.empresa}
+                onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-[#2A2725] text-white placeholder-white/30 pb-3 focus:border-[#FF4500] outline-none transition-colors text-sm"
+                style={{ fontFamily: 'var(--font-barlow)' }}
+              />
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#FF4500] text-[#0A0A0A] font-black uppercase py-3 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50 text-sm"
+                style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+              >
+                {isSubmitting ? 'Enviando...' : 'Ver mi diagnóstico →'}
+              </button>
+
+              <p className="text-xs text-[#938B82]" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+                Sin spam. Resultado inmediato.
+              </p>
+            </form>
+          </div>
+        </section>
+      )}
+
       {/* Results Section */}
-      {quizComplete && !formSubmitted && (
+      {quizComplete && formSubmitted && (
         <section className="bg-[#0A0A0A] py-16 px-4 md:px-6">
           <div className="max-w-3xl mx-auto">
             <div className="space-y-8">
@@ -321,19 +421,30 @@ export default function DiagnosticoExpres() {
                 <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                   PLAN DE ACCIÓN {result === 'critical' ? 'INMEDIATO' : result === 'intermediate' ? 'PRIORITARIO' : 'ESTRATÉGICO'}
                 </h3>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {getPlanCards().map((card) => (
-                    <div key={card.num} className="bg-[#1B1917] border border-[#2A2725] rounded-lg p-6 space-y-3">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-black text-[#FF4500]">{card.num}</span>
-                        <span className="text-xs font-mono text-[#938B82]">· {card.time}</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {getPlanCards().map((card, idx) => (
+                    <div 
+                      key={card.num} 
+                      onClick={() => setExpandedCard(expandedCard === idx ? null : idx)}
+                      className="bg-[#1B1917] border border-[#2A2725] rounded-lg p-6 space-y-3 cursor-pointer hover:border-[#FF4500]/40 transition-all duration-200"
+                    >
+                      <div className="flex items-baseline justify-between">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-2xl font-black text-[#FF4500]">{card.num}</span>
+                          <span className="text-xs font-mono text-[#938B82]">· {card.time}</span>
+                        </div>
+                        <span className="text-[#FF4500] text-xs font-mono">
+                          {expandedCard === idx ? '▲' : '▼'}
+                        </span>
                       </div>
                       <h4 className="font-bold text-white text-sm" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
                         {card.title}
                       </h4>
-                      <p className="text-sm text-[#938B82] leading-relaxed" style={{ fontFamily: 'var(--font-barlow)' }}>
-                        {card.desc}
-                      </p>
+                      {expandedCard === idx && (
+                        <p className="text-sm text-[#938B82] leading-relaxed" style={{ fontFamily: 'var(--font-barlow)' }}>
+                          {card.desc}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -343,78 +454,10 @@ export default function DiagnosticoExpres() {
         </section>
       )}
 
-      {/* Form Section */}
-      {quizComplete && !formSubmitted && (
-        <section className="bg-[#F5F1EA] py-12 px-4 md:px-6 border-t border-[#FF4500]/20">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <div className="space-y-2">
-              <h3 className="text-3xl font-black uppercase text-[#0A0A0A]" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
-                Recibe tu plan completo por email
-              </h3>
-              <p className="text-[#938B82]" style={{ fontFamily: 'var(--font-barlow)' }}>
-                Te enviamos el análisis detallado de tus respuestas y el roadmap personalizado para tu empresa.
-              </p>
-            </div>
-
-            <form onSubmit={handleFormSubmit} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Nombre completo"
-                  required
-                  value={formData.nombre}
-                  onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                  className="w-full bg-transparent border-b-2 border-[#E8E3DA] text-[#0A0A0A] placeholder-[#938B82] pb-2 focus:border-[#FF4500] outline-none transition-colors"
-                  style={{ fontFamily: 'var(--font-barlow)' }}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email corporativo"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-transparent border-b-2 border-[#E8E3DA] text-[#0A0A0A] placeholder-[#938B82] pb-2 focus:border-[#FF4500] outline-none transition-colors"
-                  style={{ fontFamily: 'var(--font-barlow)' }}
-                />
-              </div>
-              <div>
-                <input
-                  type="tel"
-                  placeholder="Teléfono / WhatsApp"
-                  value={formData.telefono}
-                  onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
-                  className="w-full bg-transparent border-b-2 border-[#E8E3DA] text-[#0A0A0A] placeholder-[#938B82] pb-2 focus:border-[#FF4500] outline-none transition-colors"
-                  style={{ fontFamily: 'var(--font-barlow)' }}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Empresa"
-                  required
-                  value={formData.empresa}
-                  onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                  className="w-full bg-transparent border-b-2 border-[#E8E3DA] text-[#0A0A0A] placeholder-[#938B82] pb-2 focus:border-[#FF4500] outline-none transition-colors"
-                  style={{ fontFamily: 'var(--font-barlow)' }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#FF4500] text-[#0A0A0A] font-black uppercase py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
-                style={{ fontFamily: 'var(--font-barlow-condensed)' }}
-              >
-                {isSubmitting ? 'Enviando...' : 'Quiero mi plan completo →'}
-              </button>
-              <p className="text-xs text-[#938B82] text-center" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
-                Sin spam. Sin llamadas no solicitadas. Solo el análisis de tu diagnóstico.
-              </p>
-            </form>
-
-            {/* CTA Final */}
+      {/* CTA Final Section */}
+      {formSubmitted && (
+        <section className="bg-[#F5F1EA] py-12 px-4 md:px-6">
+          <div className="max-w-2xl mx-auto">
             <div className="bg-[#1B1917] border border-[#FF4500]/20 rounded-2xl p-8 space-y-4">
               <div className="text-[#FF4500] text-xs font-mono font-bold uppercase">■ SIGUIENTE PASO</div>
               <h4 className="text-2xl font-black uppercase text-white" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
@@ -430,7 +473,7 @@ export default function DiagnosticoExpres() {
               </div>
               <Link
                 href="/diagnostico"
-                className="inline-block w-full text-center bg-[#0A0A0A] text-white font-black uppercase py-3 rounded-lg hover:opacity-90 transition-opacity"
+                className="inline-block w-full text-center bg-[#0A0A0A] text-white font-black uppercase py-3 rounded-full hover:opacity-90 transition-opacity"
                 style={{ fontFamily: 'var(--font-barlow-condensed)' }}
               >
                 Agendar diagnóstico comercial →
