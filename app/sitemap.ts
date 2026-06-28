@@ -1,66 +1,75 @@
-import { MetadataRoute } from "next"
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://theburn.cl'
+  const currentDate = new Date()
+
   return [
     {
-      url: "https://theburn.cl",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: "https://theburn.cl/diagnostico",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/diagnostico`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: "https://theburn.cl/servicios/diagnostico-comercial",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: "https://theburn.cl/servicios/business-intelligence-power-bi",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/servicios/consultoria-comercial`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: "https://theburn.cl/servicios/funnel-digital-performance",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/servicios/business-intelligence-power-bi`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: "https://theburn.cl/servicios/automatizacion-marketing",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/servicios/funnel-digital-performance`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: "https://theburn.cl/servicios/consultoria-comercial",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://theburn.cl/casos",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: "https://theburn.cl/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.6,
+      url: `${baseUrl}/blog/que-es-un-diagnostico-comercial`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
-      url: "https://theburn.cl/contacto",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
+      url: `${baseUrl}/blog/cuanto-cuesta-power-bi-empresa-chile`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/como-crear-funnel-ventas-b2b-chile`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/que-es-costo-por-lead-como-calcularlo`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/consultoria-comercial-vs-agencia-marketing`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ]
 }
