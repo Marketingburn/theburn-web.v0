@@ -31,6 +31,12 @@ const services = [
     description: "Tu equipo cierra. El sistema prospecta.",
     href: "/servicios/automatizacion-marketing",
   },
+  {
+    icon: "⚡",
+    title: "Diagnóstico Exprés",
+    description: "Gratis · 3 minutos · Resultado inmediato",
+    href: "/diagnostico-expres",
+  },
 ]
 
 const navigation = [

@@ -6,13 +6,23 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { nombre, empresa, email, telefono, tipoEmpresa, necesidad, presupuesto, mensaje } = body;
+    const { nombre, empresa, email, telefono, tipoEmpresa, necesidad, presupuesto, mensaje, quizResult, quizScore, asunto } = body;
+
+    const isQuizLead = !!quizResult;
+
+    const resultLabel = {
+      critical: '🔴 PUNTOS CIEGOS CRÍTICOS',
+      intermediate: '🟡 BASES SÓLIDAS, SISTEMA INCOMPLETO',
+      ready: '🟢 LISTO PARA ESCALAR'
+    }[quizResult] || '';
 
     // Email to The Burn team
     await resend.emails.send({
       from: 'The Burn Web <noreply@theburn.cl>',
       to: ['marketing@theburn.cl'],
-      subject: `Nuevo contacto desde theburn.cl — ${tipoEmpresa}`,
+      subject: isQuizLead
+        ? `🎯 Nuevo lead Diagnóstico Exprés — ${resultLabel} — ${nombre}`
+        : `Nuevo contacto desde theburn.cl — ${tipoEmpresa || 'Sin tipo'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #F5F1EA; padding: 32px; border-radius: 16px;">
           
@@ -20,6 +30,14 @@ export async function POST(request: Request) {
             <p style="color: #FF4500; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px 0;">■ NUEVO CONTACTO · THEBURN.CL</p>
             <h1 style="color: #FFFFFF; font-size: 24px; margin: 0;">Nuevo lead desde el sitio web</h1>
           </div>
+
+          ${isQuizLead ? `
+          <div style="background: #0A0A0A; border-left: 4px solid #FF4500; padding: 20px 24px; border-radius: 8px; margin-bottom: 16px;">
+            <p style="color: #FF4500; font-size: 11px; letter-spacing: 2px; margin: 0 0 8px 0;">■ DIAGNÓSTICO EXPRÉS</p>
+            <p style="color: #FFFFFF; font-size: 20px; font-weight: 700; margin: 0 0 4px 0;">${resultLabel}</p>
+            <p style="color: #938B82; font-size: 14px; margin: 0;">Score: ${quizScore}/24 puntos</p>
+          </div>
+          ` : ''}
 
           <div style="background: #FFFFFF; padding: 24px; border-radius: 12px; margin-bottom: 16px;">
             <table style="width: 100%; border-collapse: collapse;">
@@ -75,26 +93,50 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: 'The Burn <noreply@theburn.cl>',
       to: [email],
-      subject: 'Recibimos tu mensaje — The Burn',
+      subject: isQuizLead
+        ? `Tu Diagnóstico Exprés está listo — The Burn`
+        : `Recibimos tu mensaje — The Burn`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #F5F1EA; padding: 32px; border-radius: 16px;">
           
           <div style="background: #0A0A0A; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
             <p style="color: #FF4500; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px 0;">■ THE BURN · CONSULTORÍA COMERCIAL & MARKETING</p>
-            <h1 style="color: #FFFFFF; font-size: 28px; margin: 0; line-height: 1.1;">RECIBIMOS TU MENSAJE.</h1>
+            <h1 style="color: #FFFFFF; font-size: 28px; margin: 0; line-height: 1.1;">${isQuizLead ? 'TU DIAGNÓSTICO EXPRÉS' : 'RECIBIMOS TU MENSAJE.'}</h1>
           </div>
+
+          ${isQuizLead ? `
+          <div style="background: #0A0A0A; padding: 24px; border-radius: 12px; margin-bottom: 16px;">
+            <p style="color: #FF4500; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px 0;">■ TU DIAGNÓSTICO EXPRÉS</p>
+            <h1 style="color: #FFFFFF; font-size: 28px; margin: 0 0 8px 0; line-height: 1.1;">${resultLabel}</h1>
+            <p style="color: #938B82; font-size: 14px; margin: 0;">Score: ${quizScore}/24 puntos</p>
+          </div>
+          ` : ''}
 
           <div style="background: #FFFFFF; padding: 24px; border-radius: 12px; margin-bottom: 16px;">
             <p style="color: #0A0A0A; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
               Hola <strong>${nombre}</strong>,
             </p>
+            ${isQuizLead ? `
+            <p style="color: #0A0A0A; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
+              Completaste el Diagnóstico Exprés de The Burn. En las próximas horas te enviamos el análisis completo de tus respuestas y tu roadmap personalizado para <strong>${empresa}</strong>.
+            </p>
+            ` : `
             <p style="color: #0A0A0A; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
               Recibimos tu solicitud de <strong>${empresa}</strong>. Te contactamos en menos de 24 horas hábiles.
             </p>
+            `}
             <p style="color: #938B82; font-size: 14px; line-height: 1.6; margin: 0;">
               Mientras tanto, si tienes urgencia puedes escribirnos directamente por WhatsApp al +56 9 3650 4772.
             </p>
           </div>
+
+          ${isQuizLead ? `
+          <div style="background: #FF4500; padding: 16px 24px; border-radius: 100px; text-align: center; margin-bottom: 16px;">
+            <a href="https://theburn.cl/diagnostico" style="color: #0A0A0A; font-weight: 700; text-decoration: none; font-size: 14px;">
+              Agendar diagnóstico comercial completo →
+            </a>
+          </div>
+          ` : ''}
 
           <div style="background: #0A0A0A; padding: 20px 24px; border-radius: 12px; margin-bottom: 16px;">
             <p style="color: #938B82; font-size: 11px; letter-spacing: 2px; margin: 0 0 4px 0;">MENOS BLA, MÁS MARKETING.</p>
