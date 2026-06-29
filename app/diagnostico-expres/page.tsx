@@ -268,14 +268,19 @@ export default function DiagnosticoExpres() {
                 {questions[currentQuestion].options.map((option) => (
                   <button
                     key={option.id}
-                    onClick={() => handleSelectOption(option.id)}
+                    onPointerDown={(e) => {
+                      e.preventDefault()
+                      if (!showLesson) {
+                        handleSelectOption(option.id)
+                      }
+                    }}
                     disabled={showLesson}
-                    className={`w-full p-3 text-left rounded-xl border-2 transition-all duration-200 font-medium text-sm ${
+                    className={`w-full p-5 text-left rounded-2xl border-2 transition-colors duration-150 font-medium text-base leading-snug min-h-[64px] flex items-center select-none ${
                       answers[currentQuestion] === option.id
                         ? 'bg-[#FF4500] border-[#FF4500] text-[#0A0A0A]'
-                        : 'bg-white border-[#E8E3DA] text-[#0A0A0A] hover:border-[#FF4500]'
-                    } ${showLesson ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                    style={{ fontFamily: 'var(--font-barlow)' }}
+                        : 'bg-white border-[#E8E3DA] text-[#0A0A0A] active:bg-[#FFF5F0] active:border-[#FF4500]'
+                    } ${showLesson ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'cursor-pointer touch-manipulation'}`}
+                    style={{ fontFamily: 'var(--font-barlow)', WebkitTapHighlightColor: 'transparent' }}
                   >
                     {option.text}
                   </button>
@@ -299,9 +304,12 @@ export default function DiagnosticoExpres() {
                     </button>
                   )}
                   <button
-                    onClick={handleNextQuestion}
-                    className="mt-6 px-6 py-3 bg-[#FF4500] text-[#0A0A0A] font-bold rounded-lg hover:opacity-90 transition-opacity text-sm"
-                    style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+                    onPointerDown={(e) => {
+                      e.preventDefault()
+                      handleNextQuestion()
+                    }}
+                    className="mt-4 w-full py-4 px-6 bg-[#FF4500] text-[#0A0A0A] font-bold rounded-xl text-sm text-center touch-manipulation select-none"
+                    style={{ fontFamily: 'var(--font-barlow-condensed)', WebkitTapHighlightColor: 'transparent' }}
                   >
                     Siguiente pregunta →
                   </button>
