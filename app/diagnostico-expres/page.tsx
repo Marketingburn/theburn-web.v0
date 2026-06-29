@@ -1,4 +1,4 @@
-Reemplazar el contenido completo de app/diagnostico-expres/page.tsx con este código:
+
 tsx'use client'
 
 import { useState } from 'react'
