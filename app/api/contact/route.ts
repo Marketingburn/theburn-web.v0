@@ -2,6 +2,39 @@ import { NextResponse } from 'next/server';
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
+async function addContactToBrevo(
+  apiKey: string,
+  email: string,
+  nombre: string,
+  empresa: string,
+  quizResult: string,
+  quizScore: number
+) {
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': apiKey,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        attributes: {
+          FIRSTNAME: nombre,
+          COMPANY: empresa,
+          QUIZ_RESULT: quizResult,
+          QUIZ_SCORE: quizScore,
+        },
+        listIds: [3],
+        updateEnabled: true,
+      }),
+    });
+  } catch (error) {
+    console.error('Error añadiendo contacto a Brevo:', error);
+  }
+}
+
 async function sendEmail(
   apiKey: string,
   to: string,
@@ -67,6 +100,17 @@ export async function POST(request: Request) {
     };
 
     const resultText = resultLabel[quizResult] || '';
+
+    if (isQuizLead) {
+      await addContactToBrevo(
+        BREVO_API_KEY,
+        email,
+        nombre,
+        empresa,
+        quizResult,
+        quizScore
+      );
+    }
 
     await sendEmail(
       BREVO_API_KEY,
