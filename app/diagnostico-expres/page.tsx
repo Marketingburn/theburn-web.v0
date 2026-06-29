@@ -1,9 +1,18 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { GlassmorphismNav } from '@/components/glassmorphism-nav'
 import { Footer } from '@/components/footer'
 import Link from 'next/link'
+
+const pushEvent = (eventName: string, params?: Record<string, unknown>) => {
+  if (typeof window !== 'undefined' && (window as any).dataLayer) {
+    (window as any).dataLayer.push({
+      event: eventName,
+      ...params,
+    })
+  }
+}
 
 const questions = [
   {
@@ -156,16 +165,36 @@ export default function DiagnosticoExpres() {
 
   const result = totalScore <= 8 ? 'critical' : totalScore <= 16 ? 'intermediate' : 'ready'
 
+  useEffect(() => {
+    pushEvent('quiz_started', {
+      quiz_name: 'diagnostico_expres',
+    })
+  }, [])
+
   const handleSelectOption = (optionId: string) => {
     if (selectedOption !== null) return
     setSelectedOption(optionId)
-    setAnswers(prev => [...prev, optionId])
+    const newAnswers = [...answers, optionId]
+    setAnswers(newAnswers)
+    
+    // Calcula el score con la nueva respuesta para trackear cuando se complete el quiz
+    const newTotalScore = newAnswers.reduce((sum, answer, index) => {
+      const option = questions[index]?.options.find(o => o.id === answer)
+      return sum + (option?.score || 0)
+    }, 0)
+    
     // Avanza automáticamente después de 800ms mostrando la selección
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(prev => prev + 1)
         setSelectedOption(null)
       } else {
+        // Cuando completa la última pregunta
+        const completionResult = newTotalScore <= 8 ? 'critical' : newTotalScore <= 16 ? 'intermediate' : 'ready'
+        pushEvent('quiz_completed', {
+          quiz_score: newTotalScore,
+          quiz_result: completionResult,
+        })
         setStep('leadform')
       }
     }, 800)
@@ -188,6 +217,11 @@ export default function DiagnosticoExpres() {
         }),
       })
       if (res.ok) {
+        pushEvent('lead_captured', {
+          lead_source: 'diagnostico_expres',
+          quiz_result: result,
+          quiz_score: totalScore,
+        })
         setStep('result')
       } else {
         setError('Error al enviar. Intenta de nuevo.')
@@ -432,6 +466,10 @@ export default function DiagnosticoExpres() {
                 </div>
                 <Link
                   href="/diagnostico"
+                  onClick={() => pushEvent('diagnostico_cta_click', {
+                    source: 'quiz_result',
+                    quiz_result: result,
+                  })}
                   className="block w-full text-center bg-[#FF4500] text-[#0A0A0A] font-black uppercase rounded-full touch-manipulation"
                   style={{
                     fontFamily: 'var(--font-barlow-condensed)',
