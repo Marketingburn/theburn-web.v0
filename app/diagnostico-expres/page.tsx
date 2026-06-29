@@ -251,22 +251,31 @@ export default function DiagnosticoExpres() {
                 </h3>
 
                 {/* Options */}
-                <div className="space-y-3" style={{ touchAction: 'manipulation' }}>
+                <div className="space-y-3">
                   {questions[currentQuestion].options.map(option => (
-                    <button
+                    <div
                       key={option.id}
+                      onTouchEnd={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        handleSelectOption(option.id)
+                      }}
                       onClick={() => handleSelectOption(option.id)}
-                      className={`w-full text-left rounded-2xl border-2 transition-colors duration-200 select-none flex items-center ${
+                      role="button"
+                      tabIndex={0}
+                      className={`w-full text-left rounded-2xl transition-colors duration-200 select-none flex items-center ${
                         selectedOption === option.id
-                          ? 'bg-[#FF4500] border-[#FF4500] text-[#0A0A0A]'
+                          ? 'bg-[#FF4500] text-[#0A0A0A]'
                           : selectedOption !== null
-                          ? 'bg-white border-[#E8E3DA] text-[#938B82] opacity-40'
-                          : 'bg-white border-[#E8E3DA] text-[#0A0A0A] active:bg-[#FFF5F0]'
+                          ? 'bg-white text-[#938B82] opacity-40'
+                          : 'bg-white text-[#0A0A0A]'
                       }`}
                       style={{
                         fontFamily: 'var(--font-barlow)',
                         touchAction: 'manipulation',
                         WebkitTapHighlightColor: 'transparent',
+                        WebkitUserSelect: 'none',
+                        userSelect: 'none',
                         padding: '20px',
                         minHeight: '64px',
                         display: 'flex',
@@ -274,13 +283,17 @@ export default function DiagnosticoExpres() {
                         fontSize: '15px',
                         lineHeight: '1.4',
                         cursor: selectedOption !== null ? 'default' : 'pointer',
+                        border: selectedOption === option.id
+                          ? '2px solid #FF4500'
+                          : '2px solid #E8E3DA',
+                        borderRadius: '16px',
                       }}
                     >
                       <span className="flex-1">{option.text}</span>
                       {selectedOption === option.id && (
-                        <span className="ml-3 flex-shrink-0 text-[#0A0A0A] font-black">✓</span>
+                        <span style={{ marginLeft: '12px', flexShrink: 0, fontWeight: 900 }}>✓</span>
                       )}
-                    </button>
+                    </div>
                   ))}
                 </div>
 
@@ -446,7 +459,7 @@ export default function DiagnosticoExpres() {
         * {
           -webkit-tap-highlight-color: transparent;
         }
-        button {
+        div[role="button"] {
           touch-action: manipulation;
         }
         @keyframes fadeIn {
