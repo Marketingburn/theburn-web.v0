@@ -142,8 +142,6 @@ export default function DiagnosticoExpres() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
-  const [showLesson, setShowLesson] = useState(false)
-  const [expandedLesson, setExpandedLesson] = useState(false)
   const [expandedCard, setExpandedCard] = useState<number | null>(null)
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
@@ -159,21 +157,18 @@ export default function DiagnosticoExpres() {
   const result = totalScore <= 8 ? 'critical' : totalScore <= 16 ? 'intermediate' : 'ready'
 
   const handleSelectOption = (optionId: string) => {
-    if (showLesson || selectedOption !== null) return
+    if (selectedOption !== null) return
     setSelectedOption(optionId)
     setAnswers(prev => [...prev, optionId])
-    setShowLesson(true)
-  }
-
-  const handleNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(prev => prev + 1)
-      setSelectedOption(null)
-      setShowLesson(false)
-      setExpandedLesson(false)
-    } else {
-      setStep('leadform')
-    }
+    // Avanza automáticamente después de 800ms mostrando la selección
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(prev => prev + 1)
+        setSelectedOption(null)
+      } else {
+        setStep('leadform')
+      }
+    }, 800)
   }
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -261,71 +256,35 @@ export default function DiagnosticoExpres() {
                     <button
                       key={option.id}
                       onClick={() => handleSelectOption(option.id)}
-                      className={`w-full text-left rounded-2xl border-2 select-none ${
+                      className={`w-full text-left rounded-2xl border-2 transition-colors duration-200 select-none flex items-center ${
                         selectedOption === option.id
                           ? 'bg-[#FF4500] border-[#FF4500] text-[#0A0A0A]'
-                          : showLesson
-                          ? 'bg-white border-[#E8E3DA] text-[#938B82] opacity-50 pointer-events-none'
-                          : 'bg-white border-[#E8E3DA] text-[#0A0A0A]'
+                          : selectedOption !== null
+                          ? 'bg-white border-[#E8E3DA] text-[#938B82] opacity-40'
+                          : 'bg-white border-[#E8E3DA] text-[#0A0A0A] active:bg-[#FFF5F0]'
                       }`}
                       style={{
                         fontFamily: 'var(--font-barlow)',
-                        WebkitTapHighlightColor: 'transparent',
                         touchAction: 'manipulation',
-                        padding: '18px 20px',
-                        minHeight: '60px',
+                        WebkitTapHighlightColor: 'transparent',
+                        padding: '20px',
+                        minHeight: '64px',
                         display: 'flex',
                         alignItems: 'center',
                         fontSize: '15px',
                         lineHeight: '1.4',
-                        cursor: 'pointer',
-                        border: selectedOption === option.id ? '2px solid #FF4500' : '2px solid #E8E3DA',
+                        cursor: selectedOption !== null ? 'default' : 'pointer',
                       }}
                     >
-                      {option.text}
+                      <span className="flex-1">{option.text}</span>
+                      {selectedOption === option.id && (
+                        <span className="ml-3 flex-shrink-0 text-[#0A0A0A] font-black">✓</span>
+                      )}
                     </button>
                   ))}
                 </div>
 
-                {/* Lesson */}
-                {showLesson && (
-                  <div className="bg-[#0A0A0A] border-l-4 border-[#FF4500] p-5 rounded-xl space-y-3">
-                    <p className="text-[#FF4500] text-xs font-bold" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>■ ¿SABÍAS QUE?</p>
-                    <p className={`text-[#938B82] text-sm leading-relaxed ${!expandedLesson ? 'line-clamp-3' : ''}`} style={{ fontFamily: 'var(--font-barlow)' }}>
-                      {questions[currentQuestion].lesson}
-                    </p>
-                    {!expandedLesson && (
-                      <button
-                        onPointerDown={(e) => { e.preventDefault(); setExpandedLesson(true) }}
-                        className="text-[#FF4500] text-xs touch-manipulation select-none"
-                        style={{ fontFamily: 'var(--font-jetbrains-mono)', WebkitTapHighlightColor: 'transparent' }}
-                      >
-                        Leer más →
-                      </button>
-                    )}
-                    <button
-                      onClick={handleNextQuestion}
-                      style={{
-                        fontFamily: 'var(--font-barlow-condensed)',
-                        WebkitTapHighlightColor: 'transparent',
-                        touchAction: 'manipulation',
-                        padding: '18px 24px',
-                        fontSize: '16px',
-                        width: '100%',
-                        marginTop: '12px',
-                        backgroundColor: '#FF4500',
-                        color: '#0A0A0A',
-                        fontWeight: '900',
-                        textTransform: 'uppercase',
-                        borderRadius: '12px',
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {currentQuestion < questions.length - 1 ? 'Siguiente pregunta →' : 'Ver mi diagnóstico →'}
-                    </button>
-                  </div>
-                )}
+
               </div>
             </div>
           </section>
