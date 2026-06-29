@@ -24,6 +24,12 @@ export function WhatsAppFloat() {
   }, [])
 
   const handleWhatsAppClick = () => {
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'whatsapp_click',
+        click_source: typeof window !== 'undefined' ? window.location.pathname : '',
+      })
+    }
     window.open(WHATSAPP_URL, '_blank')
   }
 
@@ -151,6 +157,14 @@ export function WhatsAppFloat() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                  (window as any).dataLayer.push({
+                    event: 'whatsapp_click',
+                    click_source: typeof window !== 'undefined' ? window.location.pathname : '',
+                  })
+                }
+              }}
               className="w-full block bg-[#25D366] text-white text-center py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-[#20BA5A] active:scale-95"
               style={{ fontFamily: 'var(--font-barlow)' }}
             >
