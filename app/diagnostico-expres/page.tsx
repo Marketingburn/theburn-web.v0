@@ -253,17 +253,10 @@ export default function DiagnosticoExpres() {
                 {/* Options */}
                 <div className="space-y-3">
                   {questions[currentQuestion].options.map(option => (
-                    <div
+                    <label
                       key={option.id}
-                      onTouchEnd={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        handleSelectOption(option.id)
-                      }}
-                      onClick={() => handleSelectOption(option.id)}
-                      role="button"
-                      tabIndex={0}
-                      className={`w-full text-left rounded-2xl transition-colors duration-200 select-none flex items-center ${
+                      htmlFor={`option-${option.id}`}
+                      className={`flex items-center gap-4 rounded-2xl cursor-pointer transition-colors duration-200 ${
                         selectedOption === option.id
                           ? 'bg-[#FF4500] text-[#0A0A0A]'
                           : selectedOption !== null
@@ -271,29 +264,31 @@ export default function DiagnosticoExpres() {
                           : 'bg-white text-[#0A0A0A]'
                       }`}
                       style={{
-                        fontFamily: 'var(--font-barlow)',
-                        touchAction: 'manipulation',
-                        WebkitTapHighlightColor: 'transparent',
-                        WebkitUserSelect: 'none',
-                        userSelect: 'none',
                         padding: '20px',
                         minHeight: '64px',
-                        display: 'flex',
-                        alignItems: 'center',
+                        border: selectedOption === option.id ? '2px solid #FF4500' : '2px solid #E8E3DA',
+                        borderRadius: '16px',
+                        fontFamily: 'var(--font-barlow)',
                         fontSize: '15px',
                         lineHeight: '1.4',
-                        cursor: selectedOption !== null ? 'default' : 'pointer',
-                        border: selectedOption === option.id
-                          ? '2px solid #FF4500'
-                          : '2px solid #E8E3DA',
-                        borderRadius: '16px',
+                        display: 'flex',
+                        alignItems: 'center',
                       }}
                     >
+                      <input
+                        type="radio"
+                        id={`option-${option.id}`}
+                        name={`question-${currentQuestion}`}
+                        value={option.id}
+                        checked={selectedOption === option.id}
+                        onChange={() => handleSelectOption(option.id)}
+                        style={{ display: 'none' }}
+                      />
                       <span className="flex-1">{option.text}</span>
                       {selectedOption === option.id && (
-                        <span style={{ marginLeft: '12px', flexShrink: 0, fontWeight: 900 }}>✓</span>
+                        <span style={{ marginLeft: '12px', flexShrink: 0, fontWeight: 900, fontSize: '18px' }}>✓</span>
                       )}
-                    </div>
+                    </label>
                   ))}
                 </div>
 
@@ -459,7 +454,7 @@ export default function DiagnosticoExpres() {
         * {
           -webkit-tap-highlight-color: transparent;
         }
-        div[role="button"] {
+        label[htmlFor] {
           touch-action: manipulation;
         }
         @keyframes fadeIn {
