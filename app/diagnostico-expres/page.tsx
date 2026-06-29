@@ -137,7 +137,7 @@ const resultConfig = {
   },
 }
 
-function DiagnosticoExpres() {
+export default function DiagnosticoExpres() {
   const [step, setStep] = useState<Step>('quiz')
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
