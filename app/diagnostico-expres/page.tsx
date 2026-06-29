@@ -1,5 +1,4 @@
-Reemplazar el contenido completo de app/diagnostico-expres/page.tsx con este código:
-tsx'use client'
+'use client'
 
 import { useState } from 'react'
 import { GlassmorphismNav } from '@/components/glassmorphism-nav'
@@ -138,7 +137,7 @@ const resultConfig = {
   },
 }
 
-export default function DiagnosticoExpres() {
+function DiagnosticoExpres() {
   const [step, setStep] = useState<Step>('quiz')
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
@@ -160,7 +159,7 @@ export default function DiagnosticoExpres() {
   const result = totalScore <= 8 ? 'critical' : totalScore <= 16 ? 'intermediate' : 'ready'
 
   const handleSelectOption = (optionId: string) => {
-    if (showLesson) return
+    if (showLesson || selectedOption !== null) return
     setSelectedOption(optionId)
     setAnswers(prev => [...prev, optionId])
     setShowLesson(true)
@@ -257,30 +256,30 @@ export default function DiagnosticoExpres() {
                 </h3>
 
                 {/* Options */}
-                <div className="space-y-3">
+                <div className="space-y-3" style={{ touchAction: 'manipulation' }}>
                   {questions[currentQuestion].options.map(option => (
                     <button
                       key={option.id}
-                      onPointerDown={(e) => {
-                        e.preventDefault()
-                        handleSelectOption(option.id)
-                      }}
-                      className={`w-full text-left rounded-2xl border-2 transition-colors duration-150 select-none touch-manipulation ${
+                      onClick={() => handleSelectOption(option.id)}
+                      className={`w-full text-left rounded-2xl border-2 select-none ${
                         selectedOption === option.id
                           ? 'bg-[#FF4500] border-[#FF4500] text-[#0A0A0A]'
                           : showLesson
                           ? 'bg-white border-[#E8E3DA] text-[#938B82] opacity-50 pointer-events-none'
-                          : 'bg-white border-[#E8E3DA] text-[#0A0A0A] active:bg-[#FFF5F0] active:border-[#FF4500]'
+                          : 'bg-white border-[#E8E3DA] text-[#0A0A0A]'
                       }`}
                       style={{
                         fontFamily: 'var(--font-barlow)',
                         WebkitTapHighlightColor: 'transparent',
-                        padding: '16px 20px',
-                        minHeight: '56px',
+                        touchAction: 'manipulation',
+                        padding: '18px 20px',
+                        minHeight: '60px',
                         display: 'flex',
                         alignItems: 'center',
                         fontSize: '15px',
                         lineHeight: '1.4',
+                        cursor: 'pointer',
+                        border: selectedOption === option.id ? '2px solid #FF4500' : '2px solid #E8E3DA',
                       }}
                     >
                       {option.text}
@@ -305,14 +304,22 @@ export default function DiagnosticoExpres() {
                       </button>
                     )}
                     <button
-                      onPointerDown={(e) => { e.preventDefault(); handleNextQuestion() }}
-                      className="w-full bg-[#FF4500] text-[#0A0A0A] font-black uppercase rounded-xl touch-manipulation select-none"
+                      onClick={handleNextQuestion}
                       style={{
                         fontFamily: 'var(--font-barlow-condensed)',
                         WebkitTapHighlightColor: 'transparent',
-                        padding: '16px 24px',
-                        fontSize: '15px',
-                        marginTop: '8px',
+                        touchAction: 'manipulation',
+                        padding: '18px 24px',
+                        fontSize: '16px',
+                        width: '100%',
+                        marginTop: '12px',
+                        backgroundColor: '#FF4500',
+                        color: '#0A0A0A',
+                        fontWeight: '900',
+                        textTransform: 'uppercase',
+                        borderRadius: '12px',
+                        border: 'none',
+                        cursor: 'pointer',
                       }}
                     >
                       {currentQuestion < questions.length - 1 ? 'Siguiente pregunta →' : 'Ver mi diagnóstico →'}
@@ -477,6 +484,12 @@ export default function DiagnosticoExpres() {
       <Footer />
 
       <style>{`
+        * {
+          -webkit-tap-highlight-color: transparent;
+        }
+        button {
+          touch-action: manipulation;
+        }
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
