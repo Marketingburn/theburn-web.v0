@@ -1,5 +1,4 @@
-
-tsx'use client'
+'use client'
 
 import { useState } from 'react'
 import { GlassmorphismNav } from '@/components/glassmorphism-nav'
@@ -138,7 +137,7 @@ const resultConfig = {
   },
 }
 
-export default function DiagnosticoExpres() {
+function DiagnosticoExpres() {
   const [step, setStep] = useState<Step>('quiz')
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
