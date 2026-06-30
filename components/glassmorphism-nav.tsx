@@ -131,13 +131,14 @@ export function GlassmorphismNav() {
         } ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         style={{
           transition: hasLoaded ? "all 0.5s ease-out" : "opacity 0.8s ease-out, transform 0.8s ease-out",
+          pointerEvents: "none",
         }}
       >
         <div className="w-[90vw] max-w-xs md:max-w-5xl mx-auto">
           <div className="bg-[#F5F1EA]/90 backdrop-blur-md border border-black/8 rounded-full px-4 py-2.5 md:px-6 md:py-2" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity duration-200 cursor-pointer">
+              <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity duration-200 cursor-pointer" style={{ pointerEvents: "auto" }}>
                 <Image src="/logo-theburn.png" alt="The Burn flame logo" width={28} height={28} className="w-7 h-7" />
                 <span
                   className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#0A0A0A]"
@@ -151,11 +152,11 @@ export function GlassmorphismNav() {
               <div className="hidden md:flex items-center space-x-1">
                 {navigation.map((item) =>
                   item.isDropdown ? (
-                    <div key={item.name} ref={dropdownRef} className="relative">
+                    <div key={item.name} ref={dropdownRef} className="relative" style={{ pointerEvents: "auto" }}>
                       <button
                         onClick={() => setIsServiciosOpen(!isServiciosOpen)}
                         className="text-[#938B82] hover:text-[#0A0A0A] transition-all duration-200 text-sm font-medium cursor-pointer px-4 py-2 rounded-lg hover:bg-white/50 flex items-center gap-1.5"
-                        style={{ fontFamily: "var(--font-barlow)" }}
+                        style={{ fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                       >
                         {item.name}
                         <ChevronDown
@@ -171,6 +172,7 @@ export function GlassmorphismNav() {
                             ? "opacity-100 translate-y-0 pointer-events-auto"
                             : "opacity-0 -translate-y-4 pointer-events-none"
                         }`}
+                        style={{ pointerEvents: isServiciosOpen ? "auto" : "none" }}
                       >
                         <div
                           className="w-[480px] bg-white rounded-2xl p-6 shadow-xl"
@@ -199,6 +201,7 @@ export function GlassmorphismNav() {
                                       }, 150)
                                     }}
                                     className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
+                                    style={{ pointerEvents: "auto" }}
                                   >
                                     <div className="text-lg mb-1 group-hover:scale-110 transition-transform duration-150">{service.icon}</div>
                                     <div className="text-sm font-semibold text-[#0A0A0A]" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -237,7 +240,7 @@ export function GlassmorphismNav() {
                               <button
                                 onClick={() => router.push("/diagnostico")}
                                 className="mt-4 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-4 py-2.5 rounded-full text-xs transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-2"
-                                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+                                style={{ fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
                               >
                                 Agendar Diagnóstico
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +257,7 @@ export function GlassmorphismNav() {
                       key={item.name}
                       onClick={() => scrollToSection(item.href!)}
                       className="text-[#938B82] hover:text-[#0A0A0A] transition-all duration-200 text-sm font-medium cursor-pointer px-4 py-2 rounded-lg hover:bg-white/50"
-                      style={{ fontFamily: "var(--font-barlow)" }}
+                      style={{ fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                     >
                       {item.name}
                     </button>
@@ -263,10 +266,10 @@ export function GlassmorphismNav() {
               </div>
 
               {/* Desktop CTA */}
-              <div className="hidden md:block">
+              <div className="hidden md:block" style={{ pointerEvents: "auto" }}>
                 <button
                   className="bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold px-6 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
-                  style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
+                  style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em", pointerEvents: "auto" }}
                   onClick={() => router.push("/diagnostico")}
                 >
                   Agendar Diagnóstico
@@ -284,6 +287,7 @@ export function GlassmorphismNav() {
                 }}
                 className="md:hidden text-[#0A0A0A] hover:scale-110 transition-transform duration-200 cursor-pointer"
                 aria-label="Toggle menu"
+                style={{ pointerEvents: "auto" }}
               >
                 <div className="relative w-6 h-6">
                   <Menu
@@ -305,23 +309,24 @@ export function GlassmorphismNav() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden relative">
+        <div className="md:hidden relative" style={{ pointerEvents: "auto" }}>
           <div
             className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${
               isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
             }`}
+            style={{ pointerEvents: isOpen ? "auto" : "none" }}
           >
             <div className="bg-[#F5F1EA]/95 backdrop-blur-md border border-black/8 rounded-2xl p-4 shadow-xl" style={{ borderColor: "rgba(0,0,0,0.08)" }}>
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) =>
                   item.isDropdown ? (
-                    <div key={item.name}>
+                    <div key={item.name} style={{ pointerEvents: "auto" }}>
                       <button
                         onClick={() => setIsMobileServiciosOpen(!isMobileServiciosOpen)}
                         className={`w-full text-left text-[#938B82] hover:text-[#0A0A0A] hover:bg-black/5 rounded-lg px-3 py-3 transition-all duration-300 font-medium cursor-pointer text-sm flex items-center justify-between ${
                           isOpen ? "animate-mobile-menu-item" : ""
                         }`}
-                        style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)" }}
+                        style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                       >
                         {item.name}
                         <ChevronDown
@@ -331,7 +336,7 @@ export function GlassmorphismNav() {
                       </button>
                       {/* Mobile Servicios submenu */}
                       {isMobileServiciosOpen && (
-                        <div className="pl-4 space-y-2 mt-2">
+                        <div className="pl-4 space-y-2 mt-2" style={{ pointerEvents: "auto" }}>
                           {services.map((service) => (
                             <button
                               key={service.title}
@@ -343,7 +348,7 @@ export function GlassmorphismNav() {
                                 }, 150)
                               }}
                               className="w-full text-left text-sm p-2 rounded-lg hover:bg-black/5 transition-all duration-150"
-                              style={{ fontFamily: "var(--font-barlow)" }}
+                              style={{ fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                             >
                               <div className="flex items-start gap-2">
                                 <span className="text-lg mt-0.5">{service.icon}</span>
@@ -366,7 +371,7 @@ export function GlassmorphismNav() {
                       className={`text-[#938B82] hover:text-[#0A0A0A] hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
                         isOpen ? "animate-mobile-menu-item" : ""
                       }`}
-                      style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)" }}
+                      style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                     >
                       {item.name}
                     </button>
@@ -377,7 +382,7 @@ export function GlassmorphismNav() {
                   className={`bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer w-full justify-center ${
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
-                  style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)" }}
+                  style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
                   onClick={() => router.push("/diagnostico")}
                 >
                   Agendar Diagnóstico
