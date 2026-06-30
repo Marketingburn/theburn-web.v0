@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check } from 'lucide-react';
+import { pushEvent } from '@/lib/analytics';
 
 interface ContactFormProps {
   isModal?: boolean;
@@ -46,6 +47,11 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
       });
 
       if (!response.ok) throw new Error('Error en el servidor');
+      
+      pushEvent('form_submitted', {
+        form_type: 'contact',
+        necesidad: formData.necesidad,
+      });
       
       setSuccess(true);
       setFormData({

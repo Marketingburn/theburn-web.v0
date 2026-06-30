@@ -4,15 +4,7 @@ import { useState, useEffect } from 'react'
 import { GlassmorphismNav } from '@/components/glassmorphism-nav'
 import { Footer } from '@/components/footer'
 import Link from 'next/link'
-
-const pushEvent = (eventName: string, params?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && (window as any).dataLayer) {
-    (window as any).dataLayer.push({
-      event: eventName,
-      ...params,
-    })
-  }
-}
+import { pushEvent } from '@/lib/analytics'
 
 const questions = [
   {
