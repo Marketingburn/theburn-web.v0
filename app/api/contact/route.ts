@@ -218,7 +218,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           email,
           attributes: { FIRSTNAME: nombre, COMPANY: empresa },
-          listIds: [4],
+          listIds: [5],
           updateEnabled: true,
         }),
       });
