@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
+import { pushEvent } from '@/lib/analytics'
 
 const WHATSAPP_URL = 'https://wa.me/56936504772?text=Hola%20The%20Burn%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico%20comercial.'
 
@@ -24,6 +25,9 @@ export function WhatsAppFloat() {
   }, [])
 
   const handleWhatsAppClick = () => {
+    pushEvent('whatsapp_click', {
+      click_source: typeof window !== 'undefined' ? window.location.pathname : '',
+    })
     window.open(WHATSAPP_URL, '_blank')
   }
 
@@ -151,6 +155,9 @@ export function WhatsAppFloat() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => pushEvent('whatsapp_click', {
+                click_source: typeof window !== 'undefined' ? window.location.pathname : '',
+              })}
               className="w-full block bg-[#25D366] text-white text-center py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-[#20BA5A] active:scale-95"
               style={{ fontFamily: 'var(--font-barlow)' }}
             >
