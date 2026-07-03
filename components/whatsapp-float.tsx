@@ -10,9 +10,21 @@ export function WhatsAppFloat() {
   const [showPopup, setShowPopup] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [hasShownPopup, setHasShownPopup] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Check if popup was already shown this session
+    // Detect mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    // Check if popup was already shown this session (desktop only)
+    if (isMobile) return
     const hasShown = sessionStorage.getItem('whatsapp_popup_shown')
     if (!hasShown) {
       const timer = setTimeout(() => {
@@ -22,7 +34,7 @@ export function WhatsAppFloat() {
       }, 8000)
       return () => clearTimeout(timer)
     }
-  }, [])
+  }, [isMobile])
 
   const handleWhatsAppClick = () => {
     pushEvent('whatsapp_click', {
@@ -37,8 +49,8 @@ export function WhatsAppFloat() {
 
   return (
     <>
-      {/* Popup overlay */}
-      {showPopup && (
+      {/* Popup overlay - desktop only */}
+      {showPopup && !isMobile && (
         <div
           className="fixed inset-0 z-[9998]"
           onClick={handlePopupClose}
@@ -47,63 +59,111 @@ export function WhatsAppFloat() {
 
       {/* WhatsApp Button */}
       <div
-        className="fixed bottom-6 right-6 z-[9999] group"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        className={isMobile ? '' : 'group'}
+        onMouseEnter={() => !isMobile && setShowTooltip(true)}
+        onMouseLeave={() => !isMobile && setShowTooltip(false)}
+        style={isMobile ? {
+          position: 'fixed',
+          bottom: '20px',
+          right: '16px',
+          zIndex: 9999,
+        } : {
+          position: 'fixed',
+          bottom: '24px',
+          right: '24px',
+          zIndex: 9999,
+        }}
       >
-        {/* Tooltip */}
-        <div
-          className={`absolute bottom-1/2 right-full mr-4 px-4 py-2 bg-[#0A0A0A] rounded-lg whitespace-nowrap transition-all duration-200 pointer-events-none ${
-            showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
-          }`}
-          style={{ fontFamily: 'var(--font-barlow)' }}
-        >
-          <p className="text-white text-sm font-medium">¿Hablamos por WhatsApp?</p>
-          {/* Arrow pointing right */}
+        {/* Tooltip - desktop only */}
+        {!isMobile && (
           <div
-            className="absolute top-1/2 -right-1 w-0 h-0 -translate-y-1/2"
-            style={{
-              borderLeft: '8px solid #0A0A0A',
-              borderTop: '6px solid transparent',
-              borderBottom: '6px solid transparent',
-            }}
-          />
-        </div>
-
-        {/* Main Button */}
-        <button
-          onClick={handleWhatsAppClick}
-          className="relative w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-whatsapp"
-          style={{
-            boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = '0 8px 30px rgba(37, 211, 102, 0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)'
-          }}
-          title="Contactar por WhatsApp"
-        >
-          {/* WhatsApp SVG Icon */}
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="absolute"
+            className={`absolute bottom-1/2 right-full mr-4 px-4 py-2 bg-[#0A0A0A] rounded-lg whitespace-nowrap transition-all duration-200 pointer-events-none ${
+              showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+            }`}
+            style={{ fontFamily: 'var(--font-barlow)' }}
           >
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-        </button>
+            <p className="text-white text-sm font-medium">¿Hablamos por WhatsApp?</p>
+            {/* Arrow pointing right */}
+            <div
+              className="absolute top-1/2 -right-1 w-0 h-0 -translate-y-1/2"
+              style={{
+                borderLeft: '8px solid #0A0A0A',
+                borderTop: '6px solid transparent',
+                borderBottom: '6px solid transparent',
+              }}
+            />
+          </div>
+        )}
+
+        {/* Main Button - desktop circle */}
+        {!isMobile ? (
+          <button
+            onClick={handleWhatsAppClick}
+            className="relative w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-whatsapp"
+            style={{
+              boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(37, 211, 102, 0.6)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)'
+            }}
+            title="Contactar por WhatsApp"
+          >
+            {/* WhatsApp SVG Icon */}
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="absolute"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </button>
+        ) : (
+          // Mobile pill button
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => pushEvent('whatsapp_click', {
+              click_source: typeof window !== 'undefined' ? window.location.pathname : '',
+            })}
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#25D366] text-white rounded-full font-medium transition-transform duration-150 hover:scale-105 active:scale-95"
+            style={{
+              fontFamily: 'var(--font-barlow)',
+              boxShadow: '0 4px 16px rgba(37, 211, 102, 0.35)',
+              fontSize: '12px',
+              letterSpacing: '0.02em',
+              fontWeight: 500,
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}
+          >
+            {/* WhatsApp Icon */}
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.928 1.227l-.36-.187C7.39 5.555 8.797 5 10.055 5 15.886 5 20.75 9.864 20.75 15.695c0 1.257-.556 2.664-1.484 3.668l-.191-.36a9.87 9.87 0 001.227-4.928c0-5.231-4.278-9.516-9.516-9.516" />
+            </svg>
+            <span>Hablar con experto</span>
+          </a>
+        )}
       </div>
 
-      {/* Popup Card */}
-      {showPopup && (
+      {/* Popup Card - desktop only */}
+      {showPopup && !isMobile && (
         <div
           className="fixed bottom-24 right-6 w-[300px] z-[9999] rounded-2xl overflow-hidden transition-all duration-300 animate-slide-up"
           style={{
@@ -196,12 +256,9 @@ export function WhatsAppFloat() {
           animation: slide-up 0.3s ease-out;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .fixed.bottom-24.right-6.w-\\[300px\\] {
-            bottom: 80px !important;
-            left: 12px !important;
-            right: 12px !important;
-            width: calc(100% - 24px) !important;
+            display: none !important;
           }
         }
       `}</style>
