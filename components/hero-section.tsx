@@ -87,7 +87,7 @@ export function HeroSection() {
 
         {/* Main Heading */}
         <p
-          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
+          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
           <span className="block">Haz crecer tu</span>
@@ -141,9 +141,9 @@ export function HeroSection() {
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
             {/* Marquee container - 2 duplicates for seamless loop */}
-            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
+            <div className="flex items-center h-full hover:pause-animation whitespace-nowrap" style={{ animation: "marquee 35s linear infinite", willChange: "transform" }}>
               {positioningPhrases.map((phrase, idx) => (
-                <div key={`phrase-1-${idx}`} className="flex items-center gap-4">
+                <div key={`phrase-1-${idx}`} className="flex items-center gap-4 flex-shrink-0">
                   <span
                     className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
                     style={{
@@ -153,12 +153,12 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-xs">■</span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0">■</span>
                 </div>
               ))}
               {/* Single duplicate for seamless loop */}
               {positioningPhrases.map((phrase, idx) => (
-                <div key={`phrase-2-${idx}`} className="flex items-center gap-4">
+                <div key={`phrase-2-${idx}`} className="flex items-center gap-4 flex-shrink-0">
                   <span
                     className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
                     style={{
@@ -168,7 +168,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-xs">■</span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0">■</span>
                 </div>
               ))}
             </div>
@@ -189,9 +189,9 @@ export function HeroSection() {
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
             {/* Marquee container - 2 duplicates for seamless loop */}
-            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
+            <div className="flex items-center h-full hover:pause-animation whitespace-nowrap" style={{ animation: "marquee 35s linear infinite", willChange: "transform" }}>
               {positioningPhrases.map((phrase, idx) => (
-                <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3">
+                <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3 flex-shrink-0">
                   <span
                     className="text-[11px] font-bold uppercase tracking-wider"
                     style={{
@@ -201,12 +201,12 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-[8px]">■</span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0">■</span>
                 </div>
               ))}
               {/* Single duplicate for seamless loop */}
               {positioningPhrases.map((phrase, idx) => (
-                <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3">
+                <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3 flex-shrink-0">
                   <span
                     className="text-[11px] font-bold uppercase tracking-wider"
                     style={{
@@ -216,7 +216,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-[8px]">■</span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0">■</span>
                 </div>
               ))}
             </div>
