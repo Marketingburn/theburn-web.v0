@@ -140,42 +140,37 @@ export function HeroSection() {
               className="absolute right-0 top-0 w-16 h-full z-20 pointer-events-none"
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            {/* Marquee container */}
+            {/* Marquee container - 2 duplicates for seamless loop */}
             <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
-              {/* First set of phrases */}
-              <div className="flex items-center gap-4 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-1-${idx}`} className="flex items-center gap-4">
-                    <span
-                      className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-xs">■</span>
-                  </div>
-                ))}
-              </div>
-              {/* Second set (seamless loop) */}
-              <div className="flex items-center gap-4 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-2-${idx}`} className="flex items-center gap-4">
-                    <span
-                      className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-xs">■</span>
-                  </div>
-                ))}
-              </div>
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-1-${idx}`} className="flex items-center gap-4">
+                  <span
+                    className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-xs">■</span>
+                </div>
+              ))}
+              {/* Single duplicate for seamless loop */}
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-2-${idx}`} className="flex items-center gap-4">
+                  <span
+                    className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-xs">■</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -193,42 +188,37 @@ export function HeroSection() {
               className="absolute right-0 top-0 w-8 h-full z-20 pointer-events-none"
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            {/* Marquee container */}
+            {/* Marquee container - 2 duplicates for seamless loop */}
             <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
-              {/* First set of phrases */}
-              <div className="flex items-center gap-3 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3">
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-[8px]">■</span>
-                  </div>
-                ))}
-              </div>
-              {/* Second set (seamless loop) */}
-              <div className="flex items-center gap-3 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3">
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-[8px]">■</span>
-                  </div>
-                ))}
-              </div>
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-[8px]">■</span>
+                </div>
+              ))}
+              {/* Single duplicate for seamless loop */}
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-[8px]">■</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
