@@ -129,7 +129,7 @@ export function HeroSection() {
 
         {/* Brand Positioning Marquee — Desktop */}
         <div className="w-full hidden sm:block overflow-hidden animate-fade-in-trust mt-12 sm:mt-16 lg:mt-0">
-          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "48px" }}>
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "auto" }}>
             {/* Left fade mask */}
             <div
               className="absolute left-0 top-0 w-16 h-full z-20 pointer-events-none"
@@ -153,7 +153,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-xs flex-shrink-0">■</span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0" style={{ marginLeft: "12px", marginRight: "12px" }}>■</span>
                 </div>
               ))}
               {/* Single duplicate for seamless loop */}
@@ -168,7 +168,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-xs flex-shrink-0">■</span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0" style={{ marginLeft: "12px", marginRight: "12px" }}>■</span>
                 </div>
               ))}
             </div>
@@ -177,7 +177,7 @@ export function HeroSection() {
 
         {/* Brand Positioning Marquee — Mobile */}
         <div className="w-full sm:hidden overflow-hidden animate-fade-in-trust mt-8">
-          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "40px" }}>
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "auto" }}>
             {/* Left fade mask */}
             <div
               className="absolute left-0 top-0 w-8 h-full z-20 pointer-events-none"
@@ -201,7 +201,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-[8px] flex-shrink-0">■</span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0" style={{ marginLeft: "10px", marginRight: "10px" }}>■</span>
                 </div>
               ))}
               {/* Single duplicate for seamless loop */}
@@ -216,7 +216,7 @@ export function HeroSection() {
                   >
                     {phrase}
                   </span>
-                  <span className="text-[#FF4500] text-[8px] flex-shrink-0">■</span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0" style={{ marginLeft: "10px", marginRight: "10px" }}>■</span>
                 </div>
               ))}
             </div>
