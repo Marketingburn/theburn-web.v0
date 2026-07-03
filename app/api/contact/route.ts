@@ -207,6 +207,23 @@ export async function POST(request: Request) {
       'The Burn'
     );
 
+    if (!isQuizLead && email) {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': BREVO_API_KEY,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          attributes: { FIRSTNAME: nombre, COMPANY: empresa },
+          listIds: [6],
+          updateEnabled: true,
+        }),
+      });
+    }
+
     return NextResponse.json({ success: true });
 
   } catch (error) {

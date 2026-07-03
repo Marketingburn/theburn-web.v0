@@ -87,7 +87,7 @@ export function HeroSection() {
 
         {/* Main Heading */}
         <p
-          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[0.92] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
+          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
           <span className="block">Haz crecer tu</span>
@@ -129,7 +129,7 @@ export function HeroSection() {
 
         {/* Brand Positioning Marquee — Desktop */}
         <div className="w-full hidden sm:block overflow-hidden animate-fade-in-trust mt-12 sm:mt-16 lg:mt-0">
-          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "48px" }}>
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "auto" }}>
             {/* Left fade mask */}
             <div
               className="absolute left-0 top-0 w-16 h-full z-20 pointer-events-none"
@@ -140,49 +140,44 @@ export function HeroSection() {
               className="absolute right-0 top-0 w-16 h-full z-20 pointer-events-none"
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            {/* Marquee container */}
-            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
-              {/* First set of phrases */}
-              <div className="flex items-center gap-4 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-1-${idx}`} className="flex items-center gap-4">
-                    <span
-                      className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-xs">■</span>
-                  </div>
-                ))}
-              </div>
-              {/* Second set (seamless loop) */}
-              <div className="flex items-center gap-4 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-2-${idx}`} className="flex items-center gap-4">
-                    <span
-                      className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-xs">■</span>
-                  </div>
-                ))}
-              </div>
+            {/* Marquee container - 2 duplicates for seamless loop */}
+            <div className="flex items-center h-full hover:pause-animation whitespace-nowrap" style={{ animation: "marquee 35s linear infinite", willChange: "transform" }}>
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-1-${idx}`} className="flex items-center gap-4 flex-shrink-0">
+                  <span
+                    className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0" style={{ marginLeft: "12px", marginRight: "12px" }}>■</span>
+                </div>
+              ))}
+              {/* Single duplicate for seamless loop */}
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-2-${idx}`} className="flex items-center gap-4 flex-shrink-0">
+                  <span
+                    className="text-[11px] lg:text-[13px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-xs flex-shrink-0" style={{ marginLeft: "12px", marginRight: "12px" }}>■</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Brand Positioning Marquee — Mobile */}
         <div className="w-full sm:hidden overflow-hidden animate-fade-in-trust mt-8">
-          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "40px" }}>
+          <div className="relative overflow-hidden w-full" style={{ borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)", height: "auto" }}>
             {/* Left fade mask */}
             <div
               className="absolute left-0 top-0 w-8 h-full z-20 pointer-events-none"
@@ -193,42 +188,37 @@ export function HeroSection() {
               className="absolute right-0 top-0 w-8 h-full z-20 pointer-events-none"
               style={{ maskImage: "linear-gradient(to left, black, transparent)" }}
             />
-            {/* Marquee container */}
-            <div className="flex items-center h-full hover:pause-animation" style={{ animation: "marquee 35s linear infinite" }}>
-              {/* First set of phrases */}
-              <div className="flex items-center gap-3 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3">
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-[8px]">■</span>
-                  </div>
-                ))}
-              </div>
-              {/* Second set (seamless loop) */}
-              <div className="flex items-center gap-3 whitespace-nowrap">
-                {positioningPhrases.map((phrase, idx) => (
-                  <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3">
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-wider"
-                      style={{
-                        fontFamily: "var(--font-barlow-condensed)",
-                        color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
-                      }}
-                    >
-                      {phrase}
-                    </span>
-                    <span className="text-[#FF4500] text-[8px]">■</span>
-                  </div>
-                ))}
-              </div>
+            {/* Marquee container - 2 duplicates for seamless loop */}
+            <div className="flex items-center h-full hover:pause-animation whitespace-nowrap" style={{ animation: "marquee 35s linear infinite", willChange: "transform" }}>
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-mobile-1-${idx}`} className="flex items-center gap-3 flex-shrink-0">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0" style={{ marginLeft: "10px", marginRight: "10px" }}>■</span>
+                </div>
+              ))}
+              {/* Single duplicate for seamless loop */}
+              {positioningPhrases.map((phrase, idx) => (
+                <div key={`phrase-mobile-2-${idx}`} className="flex items-center gap-3 flex-shrink-0">
+                  <span
+                    className="text-[11px] font-bold uppercase tracking-wider"
+                    style={{
+                      fontFamily: "var(--font-barlow-condensed)",
+                      color: (idx + 1) % 3 === 0 ? "#FF4500" : "#0A0A0A",
+                    }}
+                  >
+                    {phrase}
+                  </span>
+                  <span className="text-[#FF4500] text-[8px] flex-shrink-0" style={{ marginLeft: "10px", marginRight: "10px" }}>■</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

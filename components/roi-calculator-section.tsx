@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
@@ -34,6 +34,16 @@ export function ROICalculatorSection() {
     averageTicketCLP: 500_000,
   })
   const [isVisible, setIsVisible] = useState(false)
+
+  // Debounced slider updates - prevents recalculation lag
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
+  const updateInput = useCallback((key: string, value: number) => {
+    if (timeoutId) clearTimeout(timeoutId)
+    const id = setTimeout(() => {
+      setInputs((prev) => ({ ...prev, [key]: value }))
+    }, 100)
+    setTimeoutId(id)
+  }, [timeoutId])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -125,7 +135,7 @@ export function ROICalculatorSection() {
                   </label>
                   <Slider
                     value={[inputs.monthlySalesCLP]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, monthlySalesCLP: value }))}
+                    onValueChange={([value]) => updateInput("monthlySalesCLP", value)}
                     max={100_000_000}
                     min={1_000_000}
                     step={1_000_000}
@@ -145,7 +155,7 @@ export function ROICalculatorSection() {
                   </label>
                   <Slider
                     value={[inputs.currentConversionRate]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, currentConversionRate: value }))}
+                    onValueChange={([value]) => updateInput("currentConversionRate", value)}
                     max={20}
                     min={1}
                     step={0.5}
@@ -165,7 +175,7 @@ export function ROICalculatorSection() {
                   </label>
                   <Slider
                     value={[inputs.averageTicketCLP]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, averageTicketCLP: value }))}
+                    onValueChange={([value]) => updateInput("averageTicketCLP", value)}
                     max={5_000_000}
                     min={50_000}
                     step={50_000}
