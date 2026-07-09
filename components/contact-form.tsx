@@ -11,18 +11,18 @@ interface ContactFormProps {
 }
 
 const inputBase =
-  "w-full bg-[#FAF8F5] border border-[#E8E3DA] rounded-xl pl-11 pr-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#B8AFA4] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
+  "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-11 pr-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
 
 const selectBase =
-  "w-full bg-[#FAF8F5] border border-[#E8E3DA] rounded-xl pl-11 pr-10 py-3.5 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 appearance-none cursor-pointer";
+  "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-11 pr-10 py-3.5 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 appearance-none cursor-pointer";
 
 const labelBase =
-  "flex items-center gap-1.5 text-[11px] font-bold text-[#938B82] uppercase tracking-widest mb-2";
+  "flex items-center gap-1.5 text-[11px] font-bold text-[#0A0A0A] uppercase tracking-widest mb-2";
 
 function FieldIcon({ icon: Icon }: { icon: React.ComponentType<{ className?: string }> }) {
   return (
     <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
-      <Icon className="w-4 h-4 text-[#B8AFA4]" />
+      <Icon className="w-4 h-4 text-[#0A0A0A]/40" />
     </div>
   );
 }
@@ -247,7 +247,7 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
           <textarea
             id="mensaje" name="mensaje" value={formData.mensaje}
             onChange={handleChange} placeholder="Cuéntanos brevemente sobre tu empresa..." rows={4}
-            className="w-full bg-[#FAF8F5] border border-[#E8E3DA] rounded-xl pl-11 pr-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#B8AFA4] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 resize-none"
+            className="w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl px-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 resize-none"
           />
         </div>
       </div>
