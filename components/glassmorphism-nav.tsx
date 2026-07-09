@@ -32,6 +32,12 @@ const services = [
     href: "/servicios/automatizacion-marketing",
   },
   {
+    icon: "🔧",
+    title: "Consultoría Operacional (Lean Six Sigma)",
+    description: "Mide tus procesos. Gana más margen.",
+    href: "/servicios/consultoria-operacional",
+  },
+  {
     icon: "⚡",
     title: "Diagnóstico Exprés",
     description: "Gratis · 3 minutos · Resultado inmediato",

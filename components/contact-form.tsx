@@ -244,6 +244,7 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
           <option value="Funnel Digital">Funnel Digital</option>
           <option value="Automatización de Marketing">Automatización de Marketing</option>
           <option value="Consultoría Comercial">Consultoría Comercial</option>
+          <option value="Consultoría Operacional">Consultoría Operacional</option>
           <option value="No sé por dónde empezar">No sé por dónde empezar</option>
         </select>
       </div>
