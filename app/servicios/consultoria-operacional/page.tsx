@@ -679,9 +679,7 @@ export default function ConsultoriaOperacionalPage() {
             >
               Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
             </p>
-            <div className="[&_label]:text-white/40 [&_input]:bg-transparent [&_input]:border-b [&_input]:border-white/20 [&_input]:rounded-none [&_input]:px-0 [&_input]:text-white [&_input::placeholder]:text-white/25 [&_select]:bg-transparent [&_select]:border-b [&_select]:border-white/20 [&_select]:rounded-none [&_select]:px-0 [&_select]:text-white [&_textarea]:bg-transparent [&_textarea]:border-b [&_textarea]:border-white/20 [&_textarea]:rounded-none [&_textarea]:px-0 [&_textarea]:text-white [&_textarea::placeholder]:text-white/25 [&_option]:bg-[#1B1917] [&_option]:text-white">
               <ContactForm defaultNecesidad="Consultoría Operacional" />
-            </div>
           </div>
         </section>
       </main>
