@@ -80,17 +80,16 @@ export async function POST(request: Request) {
     const body = await request.json();
     const {
       nombre,
-      empresa,
       email,
-      telefono,
-      tipoEmpresa,
+      whatsapp,
+      web,
+      comentarios,
       necesidad,
-      presupuesto,
-      mensaje,
       quizResult,
       quizScore,
     } = body;
 
+    // For backward compatibility, treat form submissions as non-quiz leads
     const isQuizLead = !!quizResult;
 
     const resultLabel: Record<string, string> = {
@@ -117,7 +116,7 @@ export async function POST(request: Request) {
       'marketing@theburn.cl',
       isQuizLead
         ? `🎯 Nuevo lead Diagnóstico Exprés — ${resultText} — ${nombre}`
-        : `Nuevo contacto desde theburn.cl — ${tipoEmpresa || 'Sin tipo'}`,
+        : `Nuevo contacto desde theburn.cl — ${necesidad || 'Sin especificar'}`,
       `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #F5F1EA; padding: 32px; border-radius: 16px;">
         <div style="background: #0A0A0A; padding: 24px; border-radius: 12px; margin-bottom: 16px;">
           <p style="color: #FF4500; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px 0;">■ ${isQuizLead ? 'DIAGNÓSTICO EXPRÉS · THEBURN.CL' : 'NUEVO CONTACTO · THEBURN.CL'}</p>
@@ -135,32 +134,24 @@ export async function POST(request: Request) {
               <td style="padding: 12px 0; color: #0A0A0A; font-weight: 600;">${nombre || 'No indicado'}</td>
             </tr>
             <tr style="border-bottom: 1px solid #F5F1EA;">
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">EMPRESA</td>
-              <td style="padding: 12px 0; color: #0A0A0A; font-weight: 600;">${empresa || 'No indicado'}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #F5F1EA;">
               <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">EMAIL</td>
               <td style="padding: 12px 0; color: #FF4500; font-weight: 600;">${email}</td>
             </tr>
             <tr style="border-bottom: 1px solid #F5F1EA;">
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">TELÉFONO</td>
-              <td style="padding: 12px 0; color: #0A0A0A;">${telefono || 'No indicado'}</td>
-            </tr>
-            ${!isQuizLead ? `<tr style="border-bottom: 1px solid #F5F1EA;">
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">TIPO EMPRESA</td>
-              <td style="padding: 12px 0; color: #0A0A0A;">${tipoEmpresa || 'No indicado'}</td>
+              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">WHATSAPP</td>
+              <td style="padding: 12px 0; color: #0A0A0A;">${whatsapp || 'No indicado'}</td>
             </tr>
             <tr style="border-bottom: 1px solid #F5F1EA;">
+              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">WEB</td>
+              <td style="padding: 12px 0; color: #0A0A0A;">${web || 'No indicado'}</td>
+            </tr>
+            ${!isQuizLead ? `<tr style="border-bottom: 1px solid #F5F1EA;">
               <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">NECESIDAD</td>
               <td style="padding: 12px 0; color: #0A0A0A;">${necesidad || 'No indicado'}</td>
             </tr>
-            <tr style="border-bottom: 1px solid #F5F1EA;">
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">PRESUPUESTO</td>
-              <td style="padding: 12px 0; color: #0A0A0A;">${presupuesto || 'No indicado'}</td>
-            </tr>
             <tr>
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">MENSAJE</td>
-              <td style="padding: 12px 0; color: #0A0A0A;">${mensaje || 'Sin mensaje adicional'}</td>
+              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">COMENTARIOS</td>
+              <td style="padding: 12px 0; color: #0A0A0A;">${comentarios || 'Sin comentarios adicionales'}</td>
             </tr>` : ''}
           </table>
         </div>

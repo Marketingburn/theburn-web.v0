@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, User, Building2, Mail, Phone, Target, Wallet, MessageSquare, ChevronDown, Loader2 } from 'lucide-react';
+import { Check, User, Mail, MessageCircle, Globe, MessageSquare, Loader2 } from 'lucide-react';
 import { pushEvent } from '@/lib/analytics';
 
 interface ContactFormProps {
@@ -12,9 +12,6 @@ interface ContactFormProps {
 
 const inputBase =
   "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-11 pr-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
-
-const selectBase =
-  "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-11 pr-10 py-3.5 text-sm text-[#0A0A0A] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 appearance-none cursor-pointer";
 
 const labelBase =
   "flex items-center gap-1.5 text-[11px] font-bold text-[#0A0A0A] uppercase tracking-widest mb-2";
@@ -30,20 +27,18 @@ function FieldIcon({ icon: Icon }: { icon: React.ComponentType<{ className?: str
 export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nombre: '',
-    empresa: '',
     email: '',
-    telefono: '',
-    tipoEmpresa: '',
+    whatsapp: '',
+    web: '',
+    comentarios: '',
     necesidad: defaultNecesidad || '',
-    presupuesto: '',
-    mensaje: '',
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -69,8 +64,8 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
 
       setSuccess(true);
       setFormData({
-        nombre: '', empresa: '', email: '', telefono: '',
-        tipoEmpresa: '', necesidad: defaultNecesidad || '', presupuesto: '', mensaje: '',
+        nombre: '', email: '', whatsapp: '', web: '', comentarios: '',
+        necesidad: defaultNecesidad || '',
       });
 
       if (onSuccess) setTimeout(() => onSuccess(), 2000);
@@ -130,130 +125,68 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="nombre" className={labelBase}>Nombre completo *</label>
-          <div className="relative">
-            <FieldIcon icon={User} />
-            <input
-              type="text" id="nombre" name="nombre" value={formData.nombre}
-              onChange={handleChange} placeholder="Tu nombre" required
-              className={inputBase}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="empresa" className={labelBase}>Empresa *</label>
-          <div className="relative">
-            <FieldIcon icon={Building2} />
-            <input
-              type="text" id="empresa" name="empresa" value={formData.empresa}
-              onChange={handleChange} placeholder="Nombre de tu empresa" required
-              className={inputBase}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="email" className={labelBase}>Email *</label>
-          <div className="relative">
-            <FieldIcon icon={Mail} />
-            <input
-              type="email" id="email" name="email" value={formData.email}
-              onChange={handleChange} placeholder="tu@empresa.cl" required
-              className={inputBase}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="telefono" className={labelBase}>Teléfono</label>
-          <div className="relative">
-            <FieldIcon icon={Phone} />
-            <input
-              type="tel" id="telefono" name="telefono" value={formData.telefono}
-              onChange={handleChange} placeholder="+56 9 XXXX XXXX"
-              className={inputBase}
-            />
-          </div>
-        </div>
-      </div>
-
       <div>
-        <label htmlFor="tipoEmpresa" className={labelBase}>Tipo de empresa</label>
+        <label htmlFor="nombre" className={labelBase}>Nombre completo *</label>
         <div className="relative">
-          <FieldIcon icon={Building2} />
-          <select
-            id="tipoEmpresa" name="tipoEmpresa" value={formData.tipoEmpresa}
-            onChange={handleChange} className={selectBase}
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="E-commerce / Tienda online">E-commerce / Tienda online</option>
-            <option value="Servicios profesionales (abogados, consultoras)">Servicios profesionales (abogados, consultoras)</option>
-            <option value="Distribuidora / Industrial">Distribuidora / Industrial</option>
-            <option value="Retail / Comercio">Retail / Comercio</option>
-            <option value="Inmobiliaria / Construcción">Inmobiliaria / Construcción</option>
-            <option value="SaaS / Tecnología">SaaS / Tecnología</option>
-            <option value="Otro">Otro</option>
-          </select>
-          <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B8AFA4] pointer-events-none" />
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="necesidad" className={labelBase}>¿Qué necesitas? *</label>
-        <div className="relative">
-          <FieldIcon icon={Target} />
-          <select
-            id="necesidad" name="necesidad" value={formData.necesidad}
-            onChange={handleChange} className={selectBase} required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Diagnóstico Comercial">Diagnóstico Comercial</option>
-            <option value="Business Intelligence / Power BI">Business Intelligence / Power BI</option>
-            <option value="Funnel Digital">Funnel Digital</option>
-            <option value="Automatización de Marketing">Automatización de Marketing</option>
-            <option value="Consultoría Comercial">Consultoría Comercial</option>
-            <option value="Consultoría Operacional">Consultoría Operacional</option>
-            <option value="No sé por dónde empezar">No sé por dónde empezar</option>
-          </select>
-          <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B8AFA4] pointer-events-none" />
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="presupuesto" className={labelBase}>Presupuesto mensual</label>
-        <div className="relative">
-          <FieldIcon icon={Wallet} />
-          <select
-            id="presupuesto" name="presupuesto" value={formData.presupuesto}
-            onChange={handleChange} className={selectBase}
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Menos de $500.000 CLP">Menos de $500.000 CLP</option>
-            <option value="$500.000 – $1.000.000 CLP">$500.000 – $1.000.000 CLP</option>
-            <option value="$1.000.000 – $3.000.000 CLP">$1.000.000 – $3.000.000 CLP</option>
-            <option value="Más de $3.000.000 CLP">Más de $3.000.000 CLP</option>
-          </select>
-          <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B8AFA4] pointer-events-none" />
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="mensaje" className={labelBase}>Mensaje (opcional)</label>
-        <div className="relative">
-          <FieldIcon icon={MessageSquare} />
-          <textarea
-            id="mensaje" name="mensaje" value={formData.mensaje}
-            onChange={handleChange} placeholder="Cuéntanos brevemente sobre tu empresa..." rows={4}
-            className="w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl px-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 resize-none"
+          <FieldIcon icon={User} />
+          <input
+            type="text" id="nombre" name="nombre" value={formData.nombre}
+            onChange={handleChange} placeholder="Tu nombre" required
+            className={inputBase}
           />
         </div>
       </div>
 
+      <div>
+        <label htmlFor="email" className={labelBase}>Correo *</label>
+        <div className="relative">
+          <FieldIcon icon={Mail} />
+          <input
+            type="email" id="email" name="email" value={formData.email}
+            onChange={handleChange} placeholder="tu@empresa.cl" required
+            className={inputBase}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="whatsapp" className={labelBase}>WhatsApp *</label>
+        <div className="relative">
+          <FieldIcon icon={MessageCircle} />
+          <input
+            type="tel" id="whatsapp" name="whatsapp" value={formData.whatsapp}
+            onChange={handleChange} placeholder="+56 9 XXXX XXXX" required
+            className={inputBase}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="web" className={labelBase}>Web de tu empresa</label>
+        <div className="relative">
+          <FieldIcon icon={Globe} />
+          <input
+            type="text" id="web" name="web" value={formData.web}
+            onChange={handleChange} placeholder="tuempresa.cl"
+            className={inputBase}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="comentarios" className={labelBase}>Comentarios (opcional)</label>
+        <textarea
+          id="comentarios" name="comentarios" value={formData.comentarios}
+          onChange={handleChange} placeholder="Cuéntanos brevemente sobre tu empresa..." rows={4}
+          className="w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl px-4 py-3.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200 resize-none"
+        />
+      </div>
+
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm" style={{ fontFamily: 'var(--font-barlow)' }}>
+        <div
+          className="bg-[#EF4444]/10 border border-[#EF4444]/30 text-[#EF4444] px-4 py-3 rounded-xl text-sm"
+          style={{ fontFamily: 'var(--font-barlow)' }}
+        >
           {error}
         </div>
       )}
@@ -261,8 +194,8 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#FF4500] hover:bg-[#FF6B20] text-white font-bold py-3.5 px-6 rounded-full text-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 mt-6 disabled:opacity-70"
-        style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        className="w-full bg-[#FF4500] hover:bg-[#0A0A0A] text-white font-bold py-4 px-6 rounded-full text-sm uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+        style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
       >
         {loading ? (
           <>
@@ -270,7 +203,7 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
             Enviando...
           </>
         ) : (
-          'Enviar mensaje →'
+          <>Enviar mensaje →</>
         )}
       </button>
     </form>
