@@ -10,10 +10,10 @@ interface WhatsAppPopupFormProps {
 }
 
 const inputBase =
-  "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-10 pr-3 py-2.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
+  "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-9 pr-3 py-2 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
 
 const labelBase =
-  "flex items-center gap-1.5 text-[10px] font-bold text-[#0A0A0A] uppercase tracking-widest mb-1.5";
+  "flex items-center gap-1.5 text-[10px] font-bold text-[#0A0A0A] uppercase tracking-widest mb-1";
 
 function FieldIcon({ icon: Icon }: { icon: React.ComponentType<{ className?: string }> }) {
   return (
@@ -69,7 +69,7 @@ export function WhatsAppPopupForm({ onClose }: WhatsAppPopupFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-2">
       <div>
         <label htmlFor="wa-nombre" className={labelBase}>Nombre completo *</label>
         <div className="relative">
@@ -127,7 +127,7 @@ export function WhatsAppPopupForm({ onClose }: WhatsAppPopupFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold py-3 px-4 rounded-full text-sm transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+        className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold py-2.5 px-4 rounded-full text-sm transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}
       >
         {loading ? (
