@@ -82,12 +82,17 @@ export async function POST(request: Request) {
       nombre,
       email,
       whatsapp,
+      telefono,
+      empresa,
       web,
       comentarios,
       necesidad,
       quizResult,
       quizScore,
     } = body;
+
+    const telefonoFinal = telefono || whatsapp || 'No indicado';
+    const empresaFinal = empresa || 'No indicado';
 
     // For backward compatibility, treat form submissions as non-quiz leads
     const isQuizLead = !!quizResult;
@@ -105,7 +110,7 @@ export async function POST(request: Request) {
         BREVO_API_KEY,
         email,
         nombre,
-        empresa,
+        empresaFinal,
         quizResult,
         quizScore
       );
@@ -138,8 +143,8 @@ export async function POST(request: Request) {
               <td style="padding: 12px 0; color: #FF4500; font-weight: 600;">${email}</td>
             </tr>
             <tr style="border-bottom: 1px solid #F5F1EA;">
-              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">WHATSAPP</td>
-              <td style="padding: 12px 0; color: #0A0A0A;">${whatsapp || 'No indicado'}</td>
+              <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">TELÉFONO</td>
+              <td style="padding: 12px 0; color: #0A0A0A;">${telefonoFinal}</td>
             </tr>
             <tr style="border-bottom: 1px solid #F5F1EA;">
               <td style="padding: 12px 0; color: #938B82; font-size: 12px; letter-spacing: 1px;">WEB</td>
@@ -208,7 +213,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email,
-          attributes: { FIRSTNAME: nombre, COMPANY: empresa },
+          attributes: { FIRSTNAME: nombre, COMPANY: empresaFinal },
           listIds: [6],
           updateEnabled: true,
         }),
