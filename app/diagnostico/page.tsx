@@ -66,7 +66,7 @@ function useInView(threshold = 0.15) {
 function DiagnosticoHero() {
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
-      <h1 className="sr-only">Diagnóstico Comercial para Empresas B2B en Chile</h1>
+      <h1 className="sr-only">Diagnóstico Comercial y Marketing para Empresas B2B en Chile</h1>
       {/* Fire glow blurs */}
       <div
         className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
@@ -638,7 +638,7 @@ export default function DiagnosticoPage() {
                style={{ fontFamily: 'var(--font-barlow)' }}>
               Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
             </p>
-              <ContactForm defaultNecesidad="Diagnóstico Comercial" />
+              <ContactForm defaultNecesidad="Diagnóstico Comercial y Marketing" />
           </div>
         </section>
       </main>
