@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 const services = [
   {
@@ -60,7 +60,14 @@ export function GlassmorphismNav() {
   const [isMobileServiciosOpen, setIsMobileServiciosOpen] = useState(false)
   const lastScrollY = useRef(0)
   const router = useRouter()
+  const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdowns when route changes
+  useEffect(() => {
+    setIsServiciosOpen(false)
+    setIsMobileServiciosOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -171,92 +178,87 @@ export function GlassmorphismNav() {
                         />
                       </button>
 
-                      {/* Dropdown menu */}
-                      <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-out ${
-                          isServiciosOpen
-                            ? "opacity-100 translate-y-0 pointer-events-auto"
-                            : "opacity-0 -translate-y-4 pointer-events-none"
-                        }`}
-                        style={{ pointerEvents: isServiciosOpen ? "auto" : "none" }}
-                      >
-                        <div
-                          className="w-[480px] bg-white rounded-2xl p-6 shadow-xl"
-                          style={{
-                            border: "1px solid rgba(0,0,0,0.08)",
-                            boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
-                          }}
-                        >
-                          <div className="grid grid-cols-2 gap-6">
-                            {/* Left column - Services */}
-                            <div>
-                              <p
-                                className="text-[#938B82] text-xs uppercase tracking-widest mb-4 font-semibold"
-                                style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
-                              >
-                                SERVICIOS
-                              </p>
-                              <div className="space-y-3">
-                                {services.map((service) => (
-                                  <button
-                                    key={service.title}
-                                    onClick={() => {
-                                      setIsServiciosOpen(false)
-                                      setTimeout(() => {
-                                        router.push(service.href)
-                                      }, 150)
-                                    }}
-                                    className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
-                                    style={{ pointerEvents: "auto" }}
-                                  >
-                                    <div className="text-lg mb-1 group-hover:scale-110 transition-transform duration-150">{service.icon}</div>
-                                    <div className="text-sm font-semibold text-[#0A0A0A]" style={{ fontFamily: "var(--font-barlow)" }}>
-                                      {service.title}
-                                    </div>
-                                    <div className="text-xs text-[#938B82] mt-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                                      {service.description}
-                                    </div>
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-
-                            {/* Right column - Featured card */}
-                            <div
-                              className="bg-[#0A0A0A] rounded-xl p-5 flex flex-col justify-between"
-                              style={{ minHeight: "100%" }}
-                            >
+                      {/* Dropdown menu - only render in DOM when open */}
+                      {isServiciosOpen && (
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-out opacity-100 translate-y-0">
+                          <div
+                            className="w-[480px] bg-white rounded-2xl p-6 shadow-xl"
+                            style={{
+                              border: "1px solid rgba(0,0,0,0.08)",
+                              boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+                            }}
+                          >
+                            <div className="grid grid-cols-2 gap-6">
+                              {/* Left column - Services */}
                               <div>
                                 <p
-                                  className="text-[#FF4500] text-xs uppercase tracking-widest font-semibold mb-3"
+                                  className="text-[#938B82] text-xs uppercase tracking-widest mb-4 font-semibold"
                                   style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
                                 >
-                                  ■ PRIMER PASO
+                                  SERVICIOS
                                 </p>
-                                <h3
-                                  className="text-white font-bold text-base mb-2"
-                                  style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
-                                >
-                                  ¿Por dónde empezar?
-                                </h3>
-                                <p className="text-[#938B82] text-xs leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
-                                  El diagnóstico comercial muestra exactamente qué está frenando tu crecimiento.
-                                </p>
+                                <div className="space-y-3">
+                                  {services.map((service) => (
+                                    <button
+                                      key={service.title}
+                                      onClick={() => {
+                                        setIsServiciosOpen(false)
+                                        setTimeout(() => {
+                                          router.push(service.href)
+                                        }, 150)
+                                      }}
+                                      className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
+                                      style={{ pointerEvents: "auto" }}
+                                    >
+                                      <div className="text-lg mb-1 group-hover:scale-110 transition-transform duration-150">{service.icon}</div>
+                                      <div className="text-sm font-semibold text-[#0A0A0A]" style={{ fontFamily: "var(--font-barlow)" }}>
+                                        {service.title}
+                                      </div>
+                                      <div className="text-xs text-[#938B82] mt-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                                        {service.description}
+                                      </div>
+                                    </button>
+                                  ))}
+                                </div>
                               </div>
-                              <button
-                                onClick={() => router.push("/diagnostico")}
-                                className="mt-4 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-4 py-2.5 rounded-full text-xs transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-2"
-                                style={{ fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
+
+                              {/* Right column - Featured card */}
+                              <div
+                                className="bg-[#0A0A0A] rounded-xl p-5 flex flex-col justify-between"
+                                style={{ minHeight: "100%" }}
                               >
-                                Agendar Diagnóstico
-                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                                </svg>
-                              </button>
+                                <div>
+                                  <p
+                                    className="text-[#FF4500] text-xs uppercase tracking-widest font-semibold mb-3"
+                                    style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
+                                  >
+                                    ■ PRIMER PASO
+                                  </p>
+                                  <h3
+                                    className="text-white font-bold text-base mb-2"
+                                    style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
+                                  >
+                                    ¿Por dónde empezar?
+                                  </h3>
+                                  <p className="text-[#938B82] text-xs leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
+                                    El diagnóstico comercial muestra exactamente qué está frenando tu crecimiento.
+                                  </p>
+                                </div>
+                                <button
+                                  onClick={() => router.push("/diagnostico")}
+                                  className="mt-4 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-4 py-2.5 rounded-full text-xs transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-2"
+                                  style={{ fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
+                                >
+                                  Agendar Diagnóstico
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                                  </svg>
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   ) : (
                     <button
