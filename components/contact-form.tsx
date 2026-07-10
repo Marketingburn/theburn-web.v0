@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Check, User, Mail, MessageCircle, Globe, MessageSquare, Loader2 } from 'lucide-react';
 import { pushEvent } from '@/lib/analytics';
 
@@ -25,6 +26,7 @@ function FieldIcon({ icon: Icon }: { icon: React.ComponentType<{ className?: str
 }
 
 export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: ContactFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -62,13 +64,7 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
         necesidad: formData.necesidad,
       });
 
-      setSuccess(true);
-      setFormData({
-        nombre: '', email: '', whatsapp: '', web: '', comentarios: '',
-        necesidad: defaultNecesidad || '',
-      });
-
-      if (onSuccess) setTimeout(() => onSuccess(), 2000);
+      router.push('/gracias');
     } catch (err) {
       setError('Hubo un error al enviar. Escríbenos directamente a marketing@theburn.cl');
     } finally {
