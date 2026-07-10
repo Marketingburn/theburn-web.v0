@@ -9,6 +9,9 @@ interface WhatsAppPopupFormProps {
   onClose?: () => void;
 }
 
+const WHATSAPP_URL =
+  'https://wa.me/56936504772?text=Hola%20The%20Burn%2C%20acabo%20de%20dejar%20mis%20datos%20en%20el%20sitio.';
+
 const inputBase =
   "w-full bg-[#F5F1EA] border-2 border-[#E8E3DA] rounded-xl pl-9 pr-3 py-2 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:bg-white focus:ring-4 focus:ring-[#FF4500]/10 transition-all duration-200";
 
@@ -44,6 +47,10 @@ export function WhatsAppPopupForm({ onClose }: WhatsAppPopupFormProps) {
     setLoading(true);
     setError('');
 
+    // Abrir la pestaña ANTES del await, para que el navegador no la
+    // bloquee (los popups solo se permiten dentro del mismo gesto de click)
+    const waWindow = window.open('', '_blank');
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -61,8 +68,13 @@ export function WhatsAppPopupForm({ onClose }: WhatsAppPopupFormProps) {
         necesidad: 'Popup WhatsApp Flotante',
       });
 
+      if (waWindow) {
+        waWindow.location.href = WHATSAPP_URL;
+      }
+
       router.push('/gracias');
     } catch (err) {
+      if (waWindow) waWindow.close();
       setError('Hubo un error al enviar. Escríbenos directo a marketing@theburn.cl');
       setLoading(false);
     }
