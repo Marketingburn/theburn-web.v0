@@ -105,21 +105,23 @@ export function HeroSection() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 w-full animate-fade-in-buttons lg:justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto animate-fade-in-buttons lg:justify-center">
+          {/* Primary CTA - Full width on mobile, auto on desktop */}
           <Button
             size="lg"
             onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto bg-[#0A0A0A] text-white rounded-full px-8 py-4 text-lg font-bold transition-all duration-300 hover:bg-[#1B1917] hover:scale-105 hover:shadow-lg group cursor-pointer"
+            className="w-full sm:w-auto bg-[#FF4500] text-white rounded-full px-6 sm:px-8 py-4 sm:py-3.5 text-base sm:text-lg font-bold transition-all duration-300 hover:bg-[#0A0A0A] hover:scale-105 hover:shadow-lg group cursor-pointer min-h-[52px] sm:min-h-auto"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
             Agendar Diagnóstico
             <ArrowRight />
           </Button>
 
+          {/* Secondary CTA - Hidden on mobile, visible on sm+ */}
           <Button
             variant="outline"
             size="lg"
-            className="w-full sm:w-auto rounded-full px-8 py-4 text-lg font-medium border-[#E8E3DA] text-[#938B82] hover:bg-white hover:border-[#FF4500]/40 hover:text-[#0A0A0A] transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            className="hidden sm:flex w-auto rounded-full px-8 py-3.5 text-lg font-medium border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 hover:scale-105 group bg-white cursor-pointer"
             style={{ fontFamily: "var(--font-barlow)" }}
           >
             <Play />

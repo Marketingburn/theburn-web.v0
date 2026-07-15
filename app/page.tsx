@@ -8,10 +8,14 @@ import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { StickyMobileCTA } from "@/components/sticky-mobile-cta"
+import { QuickDiagnosticModal } from "@/components/quick-diagnostic-modal"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#F5F1EA] overflow-hidden">
+      <QuickDiagnosticModal />
+      <StickyMobileCTA />
       <main className="min-h-screen relative overflow-hidden">
         <div className="relative z-10">
           <GlassmorphismNav />
