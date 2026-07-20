@@ -24,7 +24,7 @@ export function FAQSection() {
     },
     {
       q: '¿Qué incluye el funnel de venta si contrato la implementación?',
-      a: 'CRM conectado, seguimiento automático de leads, WhatsApp, email y scripts de venta.',
+      a: 'Un roadmap inicial de los primeros 30 días, 3 acciones de mejora priorizadas y un plan para escalar el negocio.',
     },
   ]
 

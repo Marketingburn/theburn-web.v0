@@ -17,7 +17,7 @@ export function AuditSection() {
             'BITÁCORA 01 // Consultoría marketing y comercial',
             'BITÁCORA 02 // Power BI y datos (dashboards de ventas, costos y márgenes conectados a fuentes reales)',
             'BITÁCORA 03 // Publicidad digital (Meta, Google, LinkedIn)',
-            'BITÁCORA 04 // Funnel de venta y automatización (CRM, WhatsApp/Email automático, scripts de objeciones)',
+            'BITÁCORA 04 // Funnel de venta y automatización (Roadmap inicial de los primeros 30 días, 3 acciones de mejora priorizadas y un plan para escalar el negocio)',
             'BITÁCORA 05 // Mejora de procesos internos',
           ].map((item, idx) => (
             <div key={idx} className="flex gap-4">
