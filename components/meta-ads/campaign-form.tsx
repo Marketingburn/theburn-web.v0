@@ -1,156 +1,146 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, Building2, User, Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 interface CampaignFormProps {
-  onSuccess?: () => void
+  variant?: 'hero' | 'closing'
 }
 
-export function CampaignForm({ onSuccess }: CampaignFormProps) {
+export function CampaignForm({ variant = 'hero' }: CampaignFormProps) {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     nombre: '',
-    empresa: '',
-    email: '',
     whatsapp: '',
+    email: '',
   })
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    setError('')
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     setError('')
 
-    // Validación básica
-    if (!formData.nombre.trim() || !formData.email.trim() || !formData.whatsapp.trim()) {
-      setError('Por favor completa nombre, email y WhatsApp')
+    // Validation
+    if (!formData.nombre.trim() || !formData.whatsapp.trim() || !formData.email.trim()) {
+      setError('Todos los campos son requeridos')
+      setIsSubmitting(false)
       return
     }
 
-    setLoading(true)
-
     try {
-      // TODO: Conectar a API real cuando esté lista
-      // Por ahora solo simulamos
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      console.log('[v0] Form submitted:', {
-        ...formData,
-        source: 'meta-ads-campana',
-        timestamp: new Date().toISOString(),
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          whatsapp: formData.whatsapp,
+          email: formData.email,
+          necesidad: 'Diagnóstico Gratis - Meta Ads',
+        }),
       })
 
-      setSuccess(true)
-      setFormData({ nombre: '', empresa: '', email: '', whatsapp: '' })
+      if (!response.ok) throw new Error('Error al enviar')
 
-      if (onSuccess) {
-        setTimeout(onSuccess, 2000)
-      }
+      setIsSuccess(true)
+      setTimeout(() => {
+        router.push('/gracias')
+      }, 1500)
     } catch (err) {
-      setError('Hubo un error. Intenta de nuevo.')
-      setLoading(false)
+      setError('Error al enviar el formulario. Intenta de nuevo.')
+      setIsSubmitting(false)
     }
   }
 
-  if (success) {
+  if (isSuccess) {
     return (
-      <div className="text-center py-8">
-        <div className="mb-4 text-5xl">✓</div>
-        <h3 className="text-xl font-bold text-[#0A0A0A] mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
-          ¡Listo!
-        </h3>
-        <p className="text-[#938B82] text-sm" style={{ fontFamily: 'var(--font-barlow)' }}>
-          Te escribimos por WhatsApp en menos de 24 horas para coordinar tu diagnóstico gratuito.
+      <div className="text-center py-6">
+        <p className="text-[#0A0A0A] font-black text-lg mb-2" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+          ✓ Listo
+        </p>
+        <p className="text-[#D6862C]" style={{ fontFamily: 'var(--font-barlow)' }}>
+          Te escribimos por WhatsApp para coordinar tu diagnóstico.
         </p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} id={variant === 'closing' ? 'closing-form' : undefined} className="space-y-4">
       {/* Nombre */}
-      <div className="relative">
-        <User className="absolute left-3 top-1/2 -translate-y-1/2 text-[#938B82]" size={18} />
+      <div>
+        <label htmlFor="nombre" className="block text-[10px] font-black uppercase tracking-widest text-[#0A0A0A] mb-2" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+          Nombre
+        </label>
         <input
-          type="text"
+          id="nombre"
           name="nombre"
-          placeholder="Tu nombre"
+          type="text"
           value={formData.nombre}
           onChange={handleChange}
-          className="w-full bg-white border-2 border-[#E8E3DA] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all duration-200"
+          placeholder="Tu nombre completo"
+          className="w-full px-4 py-2.5 bg-[#F5F1EA] border-b-2 border-[#D6862C] text-[#0A0A0A] placeholder-[#B98B2E] focus:outline-none focus:border-[#FF4500]"
           style={{ fontFamily: 'var(--font-barlow)' }}
-          required
         />
       </div>
 
-      {/* Empresa */}
-      <div className="relative">
-        <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 text-[#938B82]" size={18} />
+      {/* WhatsApp */}
+      <div>
+        <label htmlFor="whatsapp" className="block text-[10px] font-black uppercase tracking-widest text-[#0A0A0A] mb-2" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+          WhatsApp
+        </label>
         <input
-          type="text"
-          name="empresa"
-          placeholder="Tu empresa (opcional)"
-          value={formData.empresa}
+          id="whatsapp"
+          name="whatsapp"
+          type="tel"
+          value={formData.whatsapp}
           onChange={handleChange}
-          className="w-full bg-white border-2 border-[#E8E3DA] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all duration-200"
+          placeholder="+56 9 XXXX XXXX"
+          className="w-full px-4 py-2.5 bg-[#F5F1EA] border-b-2 border-[#D6862C] text-[#0A0A0A] placeholder-[#B98B2E] focus:outline-none focus:border-[#FF4500]"
           style={{ fontFamily: 'var(--font-barlow)' }}
         />
       </div>
 
       {/* Email */}
-      <div className="relative">
-        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-[#938B82]" size={18} />
+      <div>
+        <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-widest text-[#0A0A0A] mb-2" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+          Email
+        </label>
         <input
-          type="email"
+          id="email"
           name="email"
-          placeholder="tu@email.com"
+          type="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full bg-white border-2 border-[#E8E3DA] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all duration-200"
+          placeholder="tu@empresa.cl"
+          className="w-full px-4 py-2.5 bg-[#F5F1EA] border-b-2 border-[#D6862C] text-[#0A0A0A] placeholder-[#B98B2E] focus:outline-none focus:border-[#FF4500]"
           style={{ fontFamily: 'var(--font-barlow)' }}
-          required
         />
       </div>
 
-      {/* WhatsApp */}
-      <div className="relative">
-        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-[#938B82]" size={18} />
-        <input
-          type="tel"
-          name="whatsapp"
-          placeholder="+56 9 XXXX XXXX"
-          value={formData.whatsapp}
-          onChange={handleChange}
-          className="w-full bg-white border-2 border-[#E8E3DA] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#0A0A0A] placeholder-[#938B82] focus:outline-none focus:border-[#FF4500] focus:ring-2 focus:ring-[#FF4500]/20 transition-all duration-200"
-          style={{ fontFamily: 'var(--font-barlow)' }}
-          required
-        />
-      </div>
+      {/* Error Message */}
+      {error && (
+        <p className="text-[#D6862C] text-sm font-bold" style={{ fontFamily: 'var(--font-barlow)' }}>
+          {error}
+        </p>
+      )}
 
-      {/* Error message */}
-      {error && <div className="text-red-600 text-xs p-2 bg-red-50 rounded-lg">{error}</div>}
-
-      {/* Submit button */}
+      {/* Submit Button */}
       <button
         type="submit"
-        disabled={loading}
-        className="w-full bg-[#FF4500] hover:bg-[#E63E00] text-white font-bold py-3 px-4 rounded-lg text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
+        disabled={isSubmitting}
+        className="w-full bg-[#FF4500] hover:bg-[#D6862C] text-white font-black py-3 px-4 uppercase tracking-widest transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}
       >
-        {loading ? (
-          <>
-            <Loader2 size={16} className="animate-spin" />
-            Reservando cupo...
-          </>
-        ) : (
-          'Quiero mi diagnóstico gratis'
-        )}
+        {isSubmitting ? 'Enviando...' : 'Quiero mi diagnóstico gratis'}
       </button>
     </form>
   )
