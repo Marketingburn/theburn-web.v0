@@ -8,7 +8,7 @@ export function HeroForm() {
       <div className="max-w-2xl mx-auto">
         {/* Eyebrow */}
         <div
-          className="inline-block px-3 py-1.5 bg-[#F1E9DD] rounded-full text-[#C93700] text-xs font-bold tracking-wider mb-6"
+          className="inline-block px-3 py-1.5 bg-[#F1E9DD] rounded-full text-[#D6862C] text-xs font-bold tracking-wider mb-6"
           style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
         >
           ✓ Diagnóstico gratuito — Cupos limitados

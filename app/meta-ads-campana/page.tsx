@@ -1,23 +1,27 @@
-import { HeaderBar } from '@/components/meta-ads/header-bar'
-import { HeroForm } from '@/components/meta-ads/hero-form'
-import { ProblemsSection } from '@/components/meta-ads/problems-section'
-import { ServicesSection } from '@/components/meta-ads/services-section'
-import { HowItWorks } from '@/components/meta-ads/how-it-works'
-import { CTAFinalSection } from '@/components/meta-ads/cta-final-section'
-import { StickyMetaAdsCTA } from '@/components/meta-ads/sticky-cta-mobile'
+import { AnnouncementBar } from '@/components/meta-ads/announcement-bar'
+import { HeroSection } from '@/components/meta-ads/hero-section'
+import { ProofSection } from '@/components/meta-ads/proof-section'
+import { ProblemsSectionRedesign } from '@/components/meta-ads/problems-section-redesign'
+import { AuditSection } from '@/components/meta-ads/audit-section'
+import { RiskReversal } from '@/components/meta-ads/risk-reversal'
+import { FAQSection } from '@/components/meta-ads/faq-section'
+import { ClosingSection } from '@/components/meta-ads/closing-section'
+import { MobileStickyFooter } from '@/components/meta-ads/mobile-sticky-footer'
 
 export default function MetaAdsCampanaPage() {
   return (
     <>
-      <HeaderBar />
-      <main className="pt-0">
-        <HeroForm />
-        <ProblemsSection />
-        <ServicesSection />
-        <HowItWorks />
-        <CTAFinalSection />
+      <AnnouncementBar />
+      <main className="pt-12">
+        <HeroSection />
+        <ProofSection />
+        <ProblemsSectionRedesign />
+        <AuditSection />
+        <RiskReversal />
+        <FAQSection />
+        <ClosingSection />
       </main>
-      <StickyMetaAdsCTA />
+      <MobileStickyFooter />
     </>
   )
 }
