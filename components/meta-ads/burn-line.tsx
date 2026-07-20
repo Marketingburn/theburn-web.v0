@@ -1,8 +1,33 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
+
 export function BurnLine() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('burn-line-ignite')
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <div className="w-full h-12 flex items-center justify-center py-4">
+    <div ref={containerRef} className="w-full h-12 flex items-center justify-center py-4 burn-line-ignite">
       <svg
         viewBox="0 0 1200 60"
         className="w-full h-auto"

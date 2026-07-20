@@ -1237,3 +1237,71 @@
     display: none !important;
   }
 }
+
+/* Burn animations - The Burn identity */
+@keyframes burnReveal {
+  from {
+    background: linear-gradient(90deg, transparent 0%, transparent 0%, #0A0A0A 0%, #0A0A0A 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  to {
+    background: linear-gradient(90deg, #0A0A0A 0%, #0A0A0A 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes burnLineIgnite {
+  from {
+    background: linear-gradient(90deg, #0A0A0A 0%, #0A0A0A 0%, transparent 0%, transparent 100%);
+  }
+  to {
+    background: linear-gradient(90deg, #0A0A0A 0%, #FF4500 50%, #FF4500 100%);
+  }
+}
+
+@keyframes brasaGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(255, 69, 0, 0.15);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .burn-reveal,
+  .burn-line-ignite,
+  .cta-brasa {
+    animation: none !important;
+  }
+}
+
+/* Apply animations */
+.burn-reveal {
+  animation: burnReveal 1.2s ease-out forwards;
+}
+
+.burn-line-ignite {
+  animation: burnLineIgnite 0.8s ease-in-out forwards;
+}
+
+.cta-brasa {
+  position: relative;
+}
+
+.cta-brasa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: brasaGlow 2s ease-in-out infinite;
+}
+
+.cta-brasa:hover::before {
+  animation: brasaGlow 1.5s ease-in-out infinite;
+}

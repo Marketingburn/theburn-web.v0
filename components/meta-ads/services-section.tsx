@@ -1,70 +1,75 @@
 'use client'
 
-import { BarChart3, TrendingUp, Megaphone, Settings } from 'lucide-react'
-
-const services = [
-  {
-    icon: BarChart3,
-    title: 'Diagnóstico Comercial',
-    description: 'Analizamos tu modelo de negocio, funnel de ventas y dónde se pierden oportunidades.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Business Intelligence',
-    description: 'Dashboards con datos reales. Sabes qué decisión tomar todos los días.',
-  },
-  {
-    icon: Megaphone,
-    title: 'Publicidad Inteligente',
-    description: 'Campañas con retorno medible. Meta Ads, Google Ads, LinkedIn. Lo que funciona.',
-  },
-  {
-    icon: Settings,
-    title: 'Procesos LEAN SIX SIGMA',
-    description: 'Optimizamos tu operación. Menos mermas, menos costos, más margen.',
-  },
-]
+import { BurnLine } from './burn-line'
 
 export function ServicesSection() {
-  const handleScroll = () => {
-    document.querySelector('[data-cta-final]')?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const services = [
+    {
+      title: 'Marketing de Performance',
+      description: 'Google Search y Performance Max, Meta Ads, LinkedIn Ads, landing pages B2B con foco en conversión, outreach directo.',
+    },
+    {
+      title: 'Procesos Comerciales',
+      description: 'Automatización de seguimiento de leads, CRM, WhatsApp y email automáticos, scripts de venta y manejo de objeciones.',
+    },
+    {
+      title: 'Business Intelligence',
+      description: 'Dashboards de ventas y pipeline, reporte unificado de campañas (Meta + Google + LinkedIn), conexión a ERP/Sheets/CRM, capacitación al equipo.',
+    },
+    {
+      title: 'Contenido y Autoridad',
+      description: 'LinkedIn corporativo con datos reales, sistema de contenido con IA, sin producción costosa.',
+    },
+  ]
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+    <section className="bg-[#F5F1EA] py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-black uppercase mb-12 text-[#0A0A0A]" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
-          Te ayudamos con
-        </h2>
+        {/* Section Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <p
+            className="text-[#D6862C] text-sm sm:text-base font-black uppercase tracking-widest mb-3"
+            style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
+          >
+            ■ ESTO ES LO QUE HACEMOS
+          </p>
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase text-[#0A0A0A] leading-tight"
+            style={{ fontFamily: 'var(--font-barlow-condensed)', letterSpacing: '-0.02em' }}
+          >
+            Esto es lo que hacemos cuando trabajas contigo
+          </h2>
+        </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {services.map((service, idx) => {
-            const Icon = service.icon
-            return (
-              <div key={idx} className="bg-[#F1E9DD] rounded-xl p-6 hover:shadow-lg transition-shadow duration-200">
-                <Icon size={28} className="text-[#FF4500] mb-4" />
-                <h3 className="font-bold text-[#0A0A0A] mb-2 text-base" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
+        <div className="space-y-8 sm:space-y-12">
+          {services.map((service, idx) => (
+            <div key={idx}>
+              {/* Burn Line */}
+              <BurnLine />
+
+              {/* Service Block */}
+              <div className="py-8 sm:py-10 px-6 sm:px-8 lg:px-10 bg-white">
+                <h3
+                  className="text-2xl sm:text-3xl font-black uppercase text-[#0A0A0A] mb-3"
+                  style={{ fontFamily: 'var(--font-barlow-condensed)', letterSpacing: '-0.01em' }}
+                >
                   {service.title}
                 </h3>
-                <p className="text-sm text-[#938B82] leading-relaxed" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <p
+                  className="text-base sm:text-lg text-[#0A0A0A] leading-relaxed"
+                  style={{ fontFamily: 'var(--font-barlow)', lineHeight: '1.6' }}
+                >
                   {service.description}
                 </p>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <button
-            onClick={handleScroll}
-            className="bg-[#FF4500] hover:bg-[#E63E00] text-white font-bold py-3 px-8 rounded-lg transition-all duration-200 hover:scale-105"
-            style={{ fontFamily: 'var(--font-barlow-condensed)' }}
-          >
-            Quiero mi diagnóstico gratis
-          </button>
+        {/* Closing Burn Line */}
+        <div className="mt-8 sm:mt-12">
+          <BurnLine />
         </div>
       </div>
     </section>
