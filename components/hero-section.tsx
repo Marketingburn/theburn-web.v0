@@ -85,47 +85,47 @@ export function HeroSection() {
           Consultoría Comercial &amp; Marketing — Chile
         </div>
 
-        {/* Main Heading */}
+        {/* Main Heading - Mobile optimized */}
         <p
-          className="font-barlow-condensed font-extrabold uppercase text-[clamp(40px,11vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
+          className="font-barlow-condensed font-extrabold uppercase text-[clamp(32px,9vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
-          <span className="block">Haz crecer tu</span>
-          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-2 lg:mt-3 lg:justify-center">
+          <span className="block">Haz crecer</span>
+          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-1 lg:mt-3 lg:justify-center">
             <RotatingWords />
           </span>
         </p>
 
-        {/* Subheading */}
+        {/* Subheading - Shorter for mobile */}
         <p 
-          className="text-[#938B82] text-base lg:text-lg leading-relaxed max-w-xl animate-fade-in-subheading font-normal lg:text-center" 
+          className="text-[#938B82] text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl animate-fade-in-subheading font-normal lg:text-center" 
           style={{ fontFamily: "var(--font-barlow)" }}
         >
-          The Burn diseña e implementa el sistema comercial y de marketing que tu empresa necesita para vender más y decidir con datos. Sin humo. Sin jerga.
+          Consultora que diseña e implementa sistemas de marketing B2B con datos reales. Sin humo. Sin jerga.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto animate-fade-in-buttons lg:justify-center">
-          {/* Primary CTA - Full width on mobile, auto on desktop */}
+        {/* CTA Buttons - Both visible on mobile */}
+        <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto animate-fade-in-buttons lg:justify-center">
+          {/* Primary CTA - Full width on mobile */}
           <Button
             size="lg"
             onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto bg-[#FF4500] text-white rounded-full px-6 sm:px-8 py-4 sm:py-3.5 text-base sm:text-lg font-bold transition-all duration-300 hover:bg-[#0A0A0A] hover:scale-105 hover:shadow-lg group cursor-pointer min-h-[52px] sm:min-h-auto"
+            className="w-full sm:w-auto bg-[#FF4500] text-white rounded-full px-5 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-bold transition-all duration-300 hover:bg-[#0A0A0A] hover:scale-105 hover:shadow-lg group cursor-pointer min-h-[44px] sm:min-h-auto flex items-center justify-center"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
             Agendar Diagnóstico
             <ArrowRight />
           </Button>
 
-          {/* Secondary CTA - Hidden on mobile, visible on sm+ */}
+          {/* Secondary CTA - Now visible on mobile too, but smaller */}
           <Button
             variant="outline"
             size="lg"
-            className="hidden sm:flex w-auto rounded-full px-8 py-3.5 text-lg font-medium border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 hover:scale-105 group bg-white cursor-pointer"
-            style={{ fontFamily: "var(--font-barlow)" }}
+            className="w-full sm:w-auto rounded-full px-5 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 hover:scale-105 group bg-white cursor-pointer flex items-center justify-center"
+            style={{ fontFamily: "var(--font-barlow)", fontWeight: 600 }}
           >
             <Play />
-            Ver cómo trabajamos
+            Ver cómo
           </Button>
         </div>
 
