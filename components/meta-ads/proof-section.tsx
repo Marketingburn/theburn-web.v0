@@ -38,7 +38,7 @@ export function ProofSection() {
               title: 'Gerente Comercial en Droguería Central',
             },
             {
-              quote: 'La integración de nuestro CRM con WhatsApp ha duplicado nuestra tasa de conversión en las primeras 48 horas de contacto.',
+              quote: 'Estuvimos años pagando por publicidad y lo veíamos como un gasto. A los 2 meses de trabajar con The Burn comenzamos a escalar la inversión.',
               author: 'Ricardo Soto',
               title: 'Director de Ventas en Valida Inmobiliaria',
             },

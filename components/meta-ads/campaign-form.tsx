@@ -13,6 +13,7 @@ export function CampaignForm({ variant = 'hero' }: CampaignFormProps) {
     nombre: '',
     whatsapp: '',
     email: '',
+    comentarios: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -44,6 +45,7 @@ export function CampaignForm({ variant = 'hero' }: CampaignFormProps) {
           nombre: formData.nombre,
           whatsapp: formData.whatsapp,
           email: formData.email,
+          comentarios: formData.comentarios,
           necesidad: 'Diagnóstico Gratis - Meta Ads',
         }),
       })
@@ -132,6 +134,27 @@ export function CampaignForm({ variant = 'hero' }: CampaignFormProps) {
           {error}
         </p>
       )}
+
+      {/* Submit Button */}
+      {/* Comentarios */}
+      <div>
+        <label htmlFor="comentarios" className="block text-[10px] font-black uppercase tracking-widest text-[#0A0A0A] mb-2" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+          ¿Cuál es tu problema actual?
+        </label>
+        <textarea
+          id="comentarios"
+          name="comentarios"
+          value={formData.comentarios}
+          onChange={(e) => {
+            setFormData((prev) => ({ ...prev, comentarios: e.target.value }))
+            setError('')
+          }}
+          placeholder="Cuéntanos qué desafío tienes..."
+          rows={3}
+          className="w-full px-4 py-2.5 bg-[#F5F1EA] border-b-2 border-[#D6862C] text-[#0A0A0A] placeholder-[#B98B2E] focus:outline-none focus:border-[#FF4500] resize-none"
+          style={{ fontFamily: 'var(--font-barlow)' }}
+        />
+      </div>
 
       {/* Submit Button */}
       <button
