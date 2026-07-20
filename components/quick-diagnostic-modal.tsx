@@ -112,12 +112,12 @@ export function QuickDiagnosticModal() {
 
           {/* Modal */}
           <div
-        className={`fixed z-[9995] rounded-2xl shadow-2xl bg-white overflow-hidden ${
-          isMobile
-            ? 'inset-x-4 bottom-20 max-h-[50vh] w-auto'
-            : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px]'
-        }`}
-      >
+            className={`fixed z-[9995] rounded-2xl shadow-2xl bg-white overflow-hidden ${
+              isMobile
+                ? 'inset-x-4 bottom-20 max-h-[50vh] w-auto'
+                : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px]'
+            }`}
+          >
         {/* Header */}
         <div className="bg-gradient-to-r from-[#0A0A0A] to-[#1B1917] p-4 sm:p-5 flex items-center justify-between">
           <div>
@@ -180,16 +180,15 @@ export function QuickDiagnosticModal() {
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="h-1 bg-[#E8E3DA]">
-          <div
-            className="h-full bg-[#FF4500] transition-all duration-300"
-            style={{
-              width: `${((currentStep + 1) / diagnosticQuestions.length) * 100}%`,
-            }}
-          />
-          </div>
-        </div>
+            {/* Progress bar */}
+            <div className="h-1 bg-[#E8E3DA]">
+              <div
+                className="h-full bg-[#FF4500] transition-all duration-300"
+                style={{
+                  width: `${((currentStep + 1) / diagnosticQuestions.length) * 100}%`,
+                }}
+              />
+            </div>
           </div>
         </>
       )}
