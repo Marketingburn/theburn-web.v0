@@ -110,8 +110,8 @@ export function QuickDiagnosticModal() {
             onClick={() => setIsOpen(false)}
           />
 
-      {/* Modal */}
-      <div
+          {/* Modal */}
+          <div
         className={`fixed z-[9995] rounded-2xl shadow-2xl bg-white overflow-hidden ${
           isMobile
             ? 'inset-x-4 bottom-20 max-h-[50vh] w-auto'
@@ -190,7 +190,7 @@ export function QuickDiagnosticModal() {
           />
           </div>
         </div>
-      </div>
+          </div>
         </>
       )}
     </>
