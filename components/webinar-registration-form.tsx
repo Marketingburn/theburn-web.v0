@@ -1,0 +1,28 @@
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Check, Loader2 } from 'lucide-react'
+
+const selectClass = 'w-full rounded-2xl border border-black/10 bg-[#F5F1EA] px-4 py-3.5 text-sm text-[#0A0A0A] outline-none transition focus:border-[#FF4500]'
+const inputClass = 'w-full rounded-2xl border border-black/10 bg-[#F5F1EA] px-4 py-3.5 text-sm text-[#0A0A0A] placeholder:text-[#938B82] outline-none transition focus:border-[#FF4500]'
+
+export function WebinarRegistrationForm() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  const [form, setForm] = useState({ nombre: '', empresa: '', cargo: '', email: '', whatsapp: '', equipo: '', clientes: '', sku: '', desafio: '', informacion: [] as string[] })
+  const update = (name: string, value: string) => setForm((current) => ({ ...current, [name]: value }))
+  const toggleInfo = (value: string) => setForm((current) => ({ ...current, informacion: current.informacion.includes(value) ? current.informacion.filter((item) => item !== value) : [...current.informacion, value] }))
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); setLoading(true); setError('')
+    try {
+      const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, comentarios: `Webinar: equipo ${form.equipo}; clientes ${form.clientes}; SKU ${form.sku}; información: ${form.informacion.join(', ')}; desafío: ${form.desafio}`, necesidad: 'Taller Ejecutivo - De Sell Out a Prioridades Comerciales' }) })
+      if (!response.ok) throw new Error('request failed')
+      setSent(true); setTimeout(() => router.push('/gracias'), 1300)
+    } catch { setError('No pudimos enviar tu solicitud. Intenta nuevamente.') } finally { setLoading(false) }
+  }
+  if (sent) return <div className="rounded-[2rem] border border-black/10 bg-white p-8 text-center sm:p-12"><div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#FF4500] text-white"><Check /></div><h3 className="mt-6 text-4xl font-black uppercase" style={{ fontFamily: 'var(--font-barlow-condensed)' }}>Cupo solicitado.</h3><p className="mt-3 text-[#6f6963]" style={{ fontFamily: 'var(--font-barlow)' }}>Te contactaremos para confirmar tu participación.</p></div>
+  return <form onSubmit={submit} className="rounded-[2rem] border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(10,10,10,0.06)] sm:p-10" style={{ fontFamily: 'var(--font-barlow)' }}><div className="grid gap-4 sm:grid-cols-2"><input className={inputClass} required placeholder="Nombre y apellido *" value={form.nombre} onChange={(e) => update('nombre', e.target.value)} /><input className={inputClass} required placeholder="Empresa *" value={form.empresa} onChange={(e) => update('empresa', e.target.value)} /><input className={inputClass} placeholder="Cargo" value={form.cargo} onChange={(e) => update('cargo', e.target.value)} /><input className={inputClass} required type="email" placeholder="Email corporativo *" value={form.email} onChange={(e) => update('email', e.target.value)} /><input className={inputClass} required type="tel" placeholder="Teléfono *" value={form.whatsapp} onChange={(e) => update('whatsapp', e.target.value)} /><select className={selectClass} required value={form.equipo} onChange={(e) => update('equipo', e.target.value)}><option value="">Equipo comercial *</option>{['Solo yo', '2–4', '5–10', '11–20', '+20'].map((x) => <option key={x}>{x}</option>)}</select><select className={selectClass} required value={form.clientes} onChange={(e) => update('clientes', e.target.value)}><option value="">Clientes activos *</option>{['Menos de 20', '20–50', '51–100', '101–500', '+500'].map((x) => <option key={x}>{x}</option>)}</select><select className={selectClass} required value={form.sku} onChange={(e) => update('sku', e.target.value)}><option value="">Productos / SKU *</option>{['Menos de 20', '20–100', '101–500', '501–2.000', '+2.000'].map((x) => <option key={x}>{x}</option>)}</select></div><fieldset className="mt-8"><legend className="mb-3 text-sm font-bold text-[#0A0A0A]">¿Qué información manejan actualmente?</legend><div className="grid gap-2 sm:grid-cols-2">{['Ventas por cliente', 'Ventas por producto', 'Stock', 'Sell Out', 'ERP', 'Power BI', 'Excel / reportes internos'].map((item) => <label key={item} className="flex cursor-pointer items-center gap-3 rounded-xl border border-black/10 px-3 py-2.5 text-sm"><input type="checkbox" checked={form.informacion.includes(item)} onChange={() => toggleInfo(item)} className="h-4 w-4 accent-[#FF4500]" />{item}</label>)}</div></fieldset><div className="mt-6 grid gap-4 sm:grid-cols-2 sm:items-end"><select className={selectClass} required value={form.desafio} onChange={(e) => update('desafio', e.target.value)}><option value="">Principal desafío comercial *</option>{['Priorizar cartera', 'Identificar oportunidades', 'Rotación / stock', 'Gestión comercial', 'Indicadores', 'Ventas estancadas', 'Otro'].map((x) => <option key={x}>{x}</option>)}</select><button disabled={loading} className="flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#FF4500] px-6 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#0A0A0A] disabled:opacity-60" type="submit" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>{loading ? <><Loader2 className="h-4 w-4 animate-spin" /> Enviando</> : 'Solicitar mi cupo →'}</button></div>{error && <p className="mt-4 text-sm font-bold text-[#C93700]">{error}</p>}</form>
+}
