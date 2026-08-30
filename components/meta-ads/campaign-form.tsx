@@ -156,11 +156,11 @@ export function CampaignForm({ variant = 'hero' }: CampaignFormProps) {
         />
       </div>
 
-      {/* Submit Button */}
+      {/* Submit Button - Brasa glow on hover */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#FF4500] hover:bg-[#D6862C] text-white font-black py-3 px-4 uppercase tracking-widest transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-[#FF4500] hover:bg-[#D6862C] text-white font-black py-3 px-4 uppercase tracking-widest transition-colors disabled:opacity-60 disabled:cursor-not-allowed cta-brasa relative z-10"
         style={{ fontFamily: 'var(--font-barlow-condensed)' }}
       >
         {isSubmitting ? 'Enviando...' : 'Quiero mi diagnóstico gratis'}

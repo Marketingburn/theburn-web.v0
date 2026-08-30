@@ -1,11 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { X } from 'lucide-react'
 import { pushEvent } from '@/lib/analytics'
 import { WhatsAppPopupForm } from '@/components/whatsapp-popup-form'
 
 export function WhatsAppFloat() {
+  const pathname = usePathname()
   const [showForm, setShowForm] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -28,6 +30,8 @@ export function WhatsAppFloat() {
       return () => clearTimeout(timer)
     }
   }, [isMobile])
+
+  if (pathname === '/webinar') return null
 
   const handleOpenForm = () => {
     pushEvent('whatsapp_click', {
