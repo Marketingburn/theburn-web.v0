@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Taller Ejecutivo online para transformar datos de clientes, productos, ventas y stock en prioridades concretas.',
   openGraph: {
     title: 'De Sell Out a Prioridades Comerciales | The Burn',
-    description: '03 septiembre · 20:00 hrs · Online · Hora Chile',
+    description: 'Martes 8 de septiembre de 2026 · 20:00 hrs · Online · Hora Chile',
     type: 'website',
     locale: 'es_CL',
   },
