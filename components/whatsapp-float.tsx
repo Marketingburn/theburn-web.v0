@@ -31,7 +31,7 @@ export function WhatsAppFloat() {
     }
   }, [isMobile])
 
-  if (pathname === '/webinar') return null
+  if (pathname.startsWith('/webinar')) return null
 
   const handleOpenForm = () => {
     pushEvent('whatsapp_click', {
