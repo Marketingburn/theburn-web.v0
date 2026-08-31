@@ -30,7 +30,7 @@ export function WebinarRegistrationForm({ dark = false }: { dark?: boolean }) {
       const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, comentarios: `Webinar: equipo ${form.equipo}; clientes ${form.clientes}; SKU ${form.sku}; información: ${form.informacion}; desafío: ${form.desafio}`, necesidad: 'Taller Ejecutivo - De Sell Out a Prioridades Comerciales' }) })
       if (!response.ok) throw new Error('request failed')
       setSent(true)
-      setTimeout(() => router.push('/webinar/gracias'), 1300)
+      router.push('/webinar/gracias')
     } catch { setError('No pudimos enviar tu solicitud. Intenta nuevamente.') } finally { setLoading(false) }
   }
   if (sent) return <div className={`rounded-[2rem] border p-8 text-center sm:p-12 ${dark ? 'border-white/10 bg-white/5' : 'border-black/10 bg-white'}`}><div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#FF4500] text-white"><Check /></div><h3 className={`mt-6 text-4xl font-black uppercase ${dark ? 'text-white' : 'text-[#0A0A0A]'}`} style={{ fontFamily: 'var(--font-barlow-condensed)' }}>Cupo solicitado.</h3><p className={`mt-3 ${dark ? 'text-white/65' : 'text-[#6f6963]'}`} style={{ fontFamily: 'var(--font-barlow)' }}>Te contactaremos para confirmar tu participación.</p></div>
