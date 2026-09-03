@@ -1,6 +1,44 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
+
+// Sends an email via Brevo when its key is present (production), otherwise
+// falls back to Resend (available in preview). Throws only if neither works.
+async function deliverEmail(to: string, subject: string, html: string, fromName = 'The Burn') {
+  const brevoKey = process.env.BREVO_API_KEY;
+  if (brevoKey) {
+    return sendEmail(brevoKey, to, subject, html, fromName);
+  }
+
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey) {
+    const resend = new Resend(resendKey);
+    // theburn.cl is verified in Brevo (production) but may not be verified in
+    // the Resend account used for previews, so use Resend's shared sender.
+    const { error } = await resend.emails.send({
+      from: `${fromName} <onboarding@resend.dev>`,
+      to: [to],
+      subject,
+      html,
+    });
+    if (error) throw new Error(JSON.stringify(error));
+    return { success: true };
+  }
+
+  throw new Error('No email transport configured (missing BREVO_API_KEY and RESEND_API_KEY)');
+}
+
+// Confirmation to the lead is best-effort: if the transport rejects the
+// recipient (e.g. unverified sender domain on Resend), we still keep the
+// submission successful because the team notification already went out.
+async function deliverConfirmation(to: string, subject: string, html: string, fromName = 'The Burn') {
+  try {
+    await deliverEmail(to, subject, html, fromName);
+  } catch (error) {
+    console.error('No se pudo enviar el correo de confirmación al lead:', error);
+  }
+}
 
 async function addContactToBrevo(
   apiKey: string,
@@ -69,8 +107,8 @@ export async function POST(request: Request) {
   try {
     const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
-    if (!BREVO_API_KEY) {
-      console.error('BREVO_API_KEY no configurada');
+    if (!BREVO_API_KEY && !process.env.RESEND_API_KEY) {
+      console.error('No email transport configured (BREVO_API_KEY / RESEND_API_KEY)');
       return NextResponse.json(
         { error: 'Configuración de email no disponible' },
         { status: 500 }
@@ -105,7 +143,7 @@ export async function POST(request: Request) {
 
     const resultText = resultLabel[quizResult] || '';
 
-    if (isQuizLead) {
+    if (isQuizLead && BREVO_API_KEY) {
       await addContactToBrevo(
         BREVO_API_KEY,
         email,
@@ -116,8 +154,7 @@ export async function POST(request: Request) {
       );
     }
 
-    await sendEmail(
-      BREVO_API_KEY,
+    await deliverEmail(
       'marketing@theburn.cl',
       isQuizLead
         ? `🎯 Nuevo lead Diagnóstico Exprés — ${resultText} — ${nombre}`
@@ -168,8 +205,7 @@ export async function POST(request: Request) {
       'The Burn Web'
     );
 
-    await sendEmail(
-      BREVO_API_KEY,
+    await deliverConfirmation(
       email,
       isQuizLead
         ? 'Tu Diagnóstico Exprés está listo — The Burn'
@@ -203,7 +239,7 @@ export async function POST(request: Request) {
       'The Burn'
     );
 
-    if (!isQuizLead && email) {
+    if (!isQuizLead && email && BREVO_API_KEY) {
       await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers: {
