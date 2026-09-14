@@ -66,7 +66,6 @@ const positioningPhrases = [
 export function HeroSection() {
   return (
     <section className="min-h-screen flex flex-col lg:flex-row items-start lg:items-center justify-between pt-24 pb-12 px-4 lg:px-0 w-full overflow-hidden relative bg-[#F5F1EA]">
-      <h1 className="sr-only">Consultoría de Marketing Digital B2B en Santiago Chile</h1>
       {/* Fire glow ambient blurs */}
       <div
         className="absolute rounded-full bg-[#FF4500] opacity-10 blur-[80px] w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] -top-20 left-1/2 -translate-x-1/2 lg:top-auto lg:left-auto lg:translate-x-0 pointer-events-none animate-fire-glow"
@@ -86,15 +85,15 @@ export function HeroSection() {
         </div>
 
         {/* Main Heading - Mobile optimized */}
-        <p
+        <h1
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(32px,9vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
-          <span className="block">Haz crecer</span>
+          <span className="block">Consultoría comercial B2B</span>
           <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-1 lg:mt-3 lg:justify-center">
             <RotatingWords />
           </span>
-        </p>
+        </h1>
 
         {/* Subheading - Shorter for mobile */}
         <p 
