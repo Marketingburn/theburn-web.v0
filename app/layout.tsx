@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Suspense } from "react"
 import Script from "next/script"
 import "./globals.css"
@@ -36,10 +36,18 @@ export const metadata: Metadata = {
   description:
     "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Santiago, Chile.",
   generator: "v0.app",
-  charset: "UTF-8",
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   metadataBase: new URL("https://theburn.cl"),
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
+  // Google Search Console verification: no hay token verificado en este proyecto.
+  // Para activarlo, agrega aquí `verification: { google: "TU_TOKEN" }` con el
+  // token real obtenido en https://search.google.com/search-console, o usa el
+  // método de verificación por DNS/registro del dominio. Sitemap a enviar:
+  // https://theburn.cl/sitemap.xml
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
@@ -53,10 +61,10 @@ export const metadata: Metadata = {
     description: "Sistemas de crecimiento comercial con inteligencia de negocio y automatización de marketing.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "The Burn",
+        alt: "The Burn - Consultoría Comercial B2B",
       },
     ],
   },
@@ -64,7 +72,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@theburn",
     creator: "@theburn",
+    images: ["/og-image.png"],
   },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
 }
 
 const organizationJsonLd = {
@@ -74,7 +89,7 @@ const organizationJsonLd = {
   alternateName: "The Burn SpA",
   url: "https://theburn.cl",
   logo: "https://theburn.cl/logo-theburn.png",
-  image: "https://theburn.cl/og-image.jpg",
+  image: "https://theburn.cl/og-image.png",
   description:
     "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing.",
   address: {

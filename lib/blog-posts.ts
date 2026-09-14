@@ -23,7 +23,8 @@ export const blogPosts: BlogPost[] = [
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
     excerpt: "Un diagnóstico comercial analiza el proceso de ventas y los márgenes para identificar qué frena el crecimiento.",
-    content: `<h2>¿Qué es un diagnóstico comercial?</h2>
+    content: `<blockquote><p><strong>Respuesta rápida:</strong> Un diagnóstico comercial es un análisis estructurado del proceso de ventas, la rentabilidad y los canales de captación de una empresa, que identifica con datos qué está frenando su crecimiento antes de proponer soluciones.</p></blockquote>
+<h2>¿Qué es un diagnóstico comercial?</h2>
 <p>Un diagnóstico comercial es un análisis estructurado del sistema de ventas y marketing de una empresa. Su objetivo es identificar con datos reales qué está frenando el crecimiento: cuellos de botella en el proceso comercial, falta de métricas, mensajes desalineados con el mercado o canales de captación que no convierten.</p>
 <p>A diferencia de una auditoría contable o financiera, el diagnóstico comercial se enfoca en tres áreas específicas:</p>
 <ul>
@@ -58,7 +59,7 @@ export const blogPosts: BlogPost[] = [
 <h2>¿Qué diferencia a un diagnóstico comercial de una consultoría tradicional?</h2>
 <p>La diferencia principal es el punto de partida. Una consultoría tradicional suele proponer soluciones antes de entender el problema real. Un diagnóstico comercial primero entiende cómo funciona el negocio hoy — con sus datos, su equipo y su mercado — y solo después define qué implementar.</p>
 <p>En más de diez años trabajando con empresas B2B en Chile, rara vez el problema declarado por la gerencia es el problema real. El diagnóstico lo confirma o lo corrige con datos.</p>
-<p>Si tu empresa está en Santiago y quieres profundizar en cómo trabaja este tipo de acompañamiento, revisa <a href="/blog/consultora-comercial-santiago">qué hace una consultora comercial en Santiago</a>. Y si el objetivo final es vender más, este diagnóstico suele ser el primer paso dentro de una guía más amplia sobre <a href="/blog/como-aumentar-ventas-b2b-chile-2026">cómo aumentar las ventas B2B en Chile</a>.</p>
+ <p>Si tu empresa está en Santiago y quieres profundizar en cómo trabaja este tipo de acompañamiento, revisa <a href="/blog/consultora-comercial-santiago">qué hace una consultora comercial en Santiago</a>. Y si el objetivo final es vender más, este diagnóstico suele ser el primer paso dentro de una guía más amplia sobre <a href="/blog/como-aumentar-ventas-b2b-chile-2026">cómo aumentar las ventas B2B en Chile</a>. Si ya tienes claro que necesitas acompañamiento continuo y no solo un análisis puntual, conoce en detalle nuestro servicio de <a href="/servicios/consultoria-comercial">consultoría comercial</a>.</p>
 
 <h2>Preguntas frecuentes sobre el diagnóstico comercial</h2>
 <h3>¿Necesito tener los datos organizados antes de empezar?</h3>
@@ -80,7 +81,8 @@ export const blogPosts: BlogPost[] = [
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
     excerpt: "El costo real de Power BI no está en la licencia sino en la implementación. Guía con precios referenciales 2026.",
-    content: `<h2>¿Cuánto cuesta implementar Power BI en una empresa en Chile?</h2>
+    content: `<blockquote><p><strong>Respuesta rápida:</strong> El costo de Power BI en una empresa chilena no está principalmente en la licencia de Microsoft, sino en la implementación: modelamiento de datos, conexión de fuentes y diseño de dashboards. Esta guía explica qué factores determinan ese precio.</p></blockquote>
+<h2>¿Cuánto cuesta implementar Power BI en una empresa en Chile?</h2>
 <p>Power BI es la herramienta de business intelligence más usada por empresas medianas en Chile. Pero su costo real no está en la licencia — está en la implementación. Este artículo explica qué factores determinan el precio y qué debería incluir un proyecto de Power BI bien ejecutado.</p>
 
 <h2>¿Qué es Power BI y para qué sirve en una empresa?</h2>
@@ -132,7 +134,7 @@ export const blogPosts: BlogPost[] = [
 <h2>¿Cuándo tiene sentido invertir en Power BI?</h2>
 <p>Power BI tiene sentido cuando la empresa ya genera datos pero no los está leyendo. Si las decisiones se toman con el Excel de alguien, si no se conoce el margen real por producto, o si el reporte de ventas se arma manualmente cada lunes, la inversión en Power BI se recupera rápido.</p>
 <p>No tiene sentido implementarlo si la empresa no tiene datos suficientes o si no existe voluntad del equipo de usarlos. En ese caso, el diagnóstico comercial previo es el primer paso correcto.</p>
-<p>Si el problema de fondo son las decisiones comerciales y no solo la falta de dashboards, conviene revisar primero <a href="/blog/como-aumentar-ventas-b2b-chile-2026">cómo aumentar las ventas B2B en Chile</a> antes de invertir en la herramienta.</p>
+ <p>Si el problema de fondo son las decisiones comerciales y no solo la falta de dashboards, conviene revisar primero <a href="/blog/como-aumentar-ventas-b2b-chile-2026">cómo aumentar las ventas B2B en Chile</a> antes de invertir en la herramienta. Si ya sabes que necesitas tableros conectados a tu pipeline y márgenes, revisa cómo trabajamos <a href="/power-bi-ventas">Power BI para ventas</a> o el servicio completo de <a href="/servicios/business-intelligence-power-bi">Business Intelligence & Power BI</a>.</p>
 
 <h2>Preguntas frecuentes sobre Power BI en Chile</h2>
 <h3>¿Puedo usar Power BI con Excel?</h3>
@@ -154,7 +156,8 @@ export const blogPosts: BlogPost[] = [
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
     excerpt: "Un funnel B2B lleva al prospecto desde que descubre tu empresa hasta que firma. Guía práctica paso a paso.",
-    content: `<h2>¿Cómo crear un funnel de ventas B2B en Chile paso a paso?</h2>
+    content: `<blockquote><p><strong>Respuesta rápida:</strong> Un funnel de ventas B2B es la secuencia de etapas que lleva a un prospecto desde que descubre la empresa hasta que firma un contrato, calificándolo en el camino para que llegue al equipo comercial listo para cerrar.</p></blockquote>
+<h2>¿Cómo crear un funnel de ventas B2B en Chile paso a paso?</h2>
 <p>Un funnel de ventas B2B es el sistema que lleva a un prospecto desde que descubre tu empresa hasta que firma un contrato. En Chile, la mayoría de las empresas B2B no tiene este sistema: depende de referidos, llamadas en frío o presencia en ferias. Esta guía explica cómo construirlo paso a paso.</p>
 
 <h2>¿Qué es un funnel de ventas B2B?</h2>
@@ -229,7 +232,7 @@ export const blogPosts: BlogPost[] = [
 <p>Sí, usando SEO y outreach directo, pero los tiempos son más largos. El SEO tarda entre 3 y 6 meses en generar tráfico significativo.</p>
 <h3>¿Qué CRM recomiendas para B2B en Chile?</h3>
 <p>HubSpot tiene una versión gratuita funcional para empresas que están empezando. Para equipos más grandes, Salesforce o Pipedrive son alternativas válidas.</p>
-<p>Si el funnel ya trae leads pero el equipo comercial no logra ordenar el seguimiento, revisa esta guía sobre <a href="/blog/implementacion-procesos-comerciales">implementación de procesos comerciales</a>. Y si el objetivo es conectar marketing con resultados de venta de forma continua, este artículo sobre <a href="/blog/agencia-marketing-comercial-b2b-chile">agencia de marketing y comercial B2B en Chile</a> profundiza en ese modelo integrado.</p>`,
+ <p>Si el funnel ya trae leads pero el equipo comercial no logra ordenar el seguimiento, revisa esta guía sobre <a href="/blog/implementacion-procesos-comerciales">implementación de procesos comerciales</a>. Y si el objetivo es conectar marketing con resultados de venta de forma continua, este artículo sobre <a href="/blog/agencia-marketing-comercial-b2b-chile">agencia de marketing y comercial B2B en Chile</a> profundiza en ese modelo integrado. Conoce también nuestro servicio de <a href="/servicios/funnel-digital-performance">Funnel Digital de Performance</a> o la landing de <a href="/agencia-marketing-ventas-b2b">agencia de marketing y ventas B2B</a>.</p>`,
   },
   {
     slug: "que-es-costo-por-lead-como-calcularlo",
@@ -241,7 +244,8 @@ export const blogPosts: BlogPost[] = [
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
     excerpt: "El CPL mide cuánto cuesta cada lead calificado. Fórmula, benchmarks Chile 2026 y cómo reducirlo.",
-    content: `<h2>¿Qué es el costo por lead (CPL) y cómo calcularlo?</h2>
+    content: `<blockquote><p><strong>Respuesta rápida:</strong> El costo por lead (CPL) se calcula dividiendo la inversión total en un canal de captación entre el número de leads generados en ese período. Es la métrica base para saber si una campaña de marketing B2B es rentable.</p></blockquote>
+<h2>¿Qué es el costo por lead (CPL) y cómo calcularlo?</h2>
 <p>El costo por lead (CPL) es una de las métricas más importantes del marketing digital B2B. Indica cuánto dinero invierte una empresa en conseguir cada contacto que podría convertirse en cliente. Sin este dato, es imposible saber si una campaña es rentable o no.</p>
 
 <h2>Definición de costo por lead (CPL)</h2>
@@ -309,7 +313,8 @@ export const blogPosts: BlogPost[] = [
 <h3>¿El CPL varía por temporada?</h3>
 <p>Sí. En períodos de alta competencia (fin de año, campañas masivas) el costo por clic sube y el CPL aumenta. En períodos de baja actividad puede bajar.</p>
 <h3>¿Puedo comparar el CPL entre Google Ads y LinkedIn Ads?</h3>
-<p>Se pueden comparar los números, pero hay que considerar que el lead de LinkedIn suele estar más calificado que el de Google. Un CPL más alto en LinkedIn puede ser más rentable si la tasa de cierre es mayor.</p>`,
+<p>Se pueden comparar los números, pero hay que considerar que el lead de LinkedIn suele estar más calificado que el de Google. Un CPL más alto en LinkedIn puede ser más rentable si la tasa de cierre es mayor.</p>
+<p>Si el CPL baja pero las ventas no crecen, el problema puede estar más adelante en el embudo. Revisa nuestra guía sobre <a href="/blog/como-aumentar-ventas-b2b-chile-2026">cómo aumentar las ventas B2B en Chile</a> o conoce el servicio de <a href="/servicios/funnel-digital-performance">Funnel Digital de Performance</a>.</p>`,
   },
   {
     slug: "consultoria-comercial-vs-agencia-marketing",
@@ -321,7 +326,8 @@ export const blogPosts: BlogPost[] = [
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
     excerpt: "La diferencia entre diseñar el proceso de ventas y ejecutar campañas. Cuándo usar cada una.",
-    content: `<h2>Consultoría comercial vs agencia de marketing: ¿cuál necesita tu empresa?</h2>
+    content: `<blockquote><p><strong>Respuesta rápida:</strong> Una consultoría comercial diseña y ordena el proceso de ventas interno; una agencia de marketing ejecuta campañas de captación externa. Necesitas la primera cuando el problema es de proceso, y la segunda cuando el proceso ya funciona pero falta demanda.</p></blockquote>
+<h2>Consultoría comercial vs agencia de marketing: ¿cuál necesita tu empresa?</h2>
 <p>Muchas empresas B2B en Chile contratan una agencia de marketing esperando que resuelva un problema que en realidad es comercial. O contratan una consultoría esperando que les traiga clientes sin tener el proceso de ventas ordenado. Esta confusión cuesta dinero y tiempo. Este artículo explica la diferencia y cuándo usar cada una.</p>
 
 <h2>¿Qué hace una consultoría comercial?</h2>
@@ -351,6 +357,7 @@ export const blogPosts: BlogPost[] = [
 <p>El entregable de una agencia de marketing son resultados de campaña: impresiones, clics, leads generados, costo por lead.</p>
 
 <h2>Diferencias clave entre consultoría comercial y agencia de marketing</h2>
+<div class="table-wrap">
 <table>
 <tr>
 <th>Aspecto</th>
@@ -383,6 +390,7 @@ export const blogPosts: BlogPost[] = [
 <td>CPL, ROAS, tráfico</td>
 </tr>
 </table>
+</div>
 
 <h2>¿Cuándo necesita tu empresa una consultoría comercial?</h2>
 <p>Una empresa necesita una consultoría comercial cuando el problema está en el proceso de ventas interno:</p>
@@ -418,7 +426,7 @@ export const blogPosts: BlogPost[] = [
 <p>No. La agencia genera leads, pero el cierre es responsabilidad del equipo comercial interno. Sin un proceso de ventas ordenado, los leads generados por la agencia no se convierten.</p>
     <h3>¿Cuánto cuesta una consultoría comercial en Chile?</h3>
 <p>Los precios varían según el alcance. En The Burn, el punto de entrada es el diagnóstico comercial a $500.000 CLP, que incluye tres semanas de análisis y un roadmap de 90 días.</p>
-<p>Si ya tienes claro que necesitas una consultora comercial, revisa la comparativa de <a href="/blog/mejores-consultoras-comerciales-chile-2026">mejores consultoras comerciales en Chile</a> o, si tu empresa está en la Región Metropolitana, la guía específica sobre <a href="/blog/consultora-comercial-santiago">consultora comercial en Santiago</a>.</p>`,
+ <p>Si ya tienes claro que necesitas una consultora comercial, revisa la comparativa de <a href="/blog/mejores-consultoras-comerciales-chile-2026">mejores consultoras comerciales en Chile</a> o, si tu empresa está en la Región Metropolitana, la guía específica sobre <a href="/blog/consultora-comercial-santiago">consultora comercial en Santiago</a>. También puedes conocer directamente nuestro servicio de <a href="/servicios/consultoria-comercial">consultoría comercial</a> o la landing de <a href="/consultoria-comercial-b2b">consultoría comercial B2B</a>.</p>`,
   },
   {
     slug: "mejores-consultoras-comerciales-chile-2026",
@@ -648,7 +656,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Conclusión</h2>
 <p>La pregunta correcta no es "¿cuál es la consultora comercial más famosa?", sino <strong>"qué parte de nuestro sistema comercial necesitamos cambiar"</strong>.</p>
-<p>Si todavía no puedes responder esa pregunta, comienza por un diagnóstico. The Burn trabaja precisamente desde ahí: primero revisa proceso comercial, marketing y datos; luego prioriza qué conviene implementar.</p>
+<p>Si todavía no puedes responder esa pregunta, comienza por un diagnóstico. The Burn trabaja precisamente desde ahí: primero revisa proceso comercial, marketing y datos; luego prioriza qué conviene implementar. Si tu empresa está en Santiago, revisa también nuestra guía sobre <a href="/blog/consultora-comercial-santiago">consultora comercial en Santiago</a> o el servicio de <a href="/servicios/consultoria-comercial">consultoría comercial</a>.</p>
 <p><strong>¿Quieres descubrir dónde está perdiendo oportunidades tu empresa?</strong></p>
 <p><a href="/diagnostico">Conoce el Diagnóstico Comercial y Marketing de The Burn</a></p>
 
@@ -830,7 +838,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Conclusión</h2>
 <p>Contratar una consultora comercial no debería ser el primer paso para "hacer más cosas". Debería servir para entender <strong>qué actividad realmente mueve ventas y qué parte del sistema está frenando crecimiento.</strong></p>
-<p>Si tu empresa vende, pero no puede explicar con claridad por qué gana, por qué pierde y qué debería hacer para mejorar, comienza por el diagnóstico.</p>
+<p>Si tu empresa vende, pero no puede explicar con claridad por qué gana, por qué pierde y qué debería hacer para mejorar, comienza por el diagnóstico. Conoce también nuestra landing dedicada a <a href="/consultora-comercial-santiago">consultora comercial en Santiago</a> y el servicio completo de <a href="/servicios/consultoria-comercial">consultoría comercial</a>.</p>
 <p><a href="/diagnostico">Conoce el Diagnóstico Comercial y Marketing de The Burn</a></p>`,
   },
   {
@@ -1053,7 +1061,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Conclusión</h2>
 <p>Un proceso comercial bien implementado hace algo muy valioso: <strong>convierte ventas en un sistema que la empresa puede observar, gestionar y mejorar.</strong></p>
-<p>Si hoy cada vendedor tiene su propio método, antes de contratar más personas o invertir más en marketing conviene ordenar el sistema.</p>
+<p>Si hoy cada vendedor tiene su propio método, antes de contratar más personas o invertir más en marketing conviene ordenar el sistema. Conoce la landing de <a href="/implementacion-procesos-comerciales">implementación de procesos comerciales</a> o revisa cómo se conecta con <a href="/automatizacion-comercial">automatización comercial</a> una vez que el proceso está definido.</p>
 <p><a href="/diagnostico">Agenda un Diagnóstico Comercial y Marketing con The Burn</a></p>`,
   },
   {
@@ -1211,6 +1219,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Conclusión</h2>
 <p>El objetivo de una agencia de marketing y comercial no es producir más actividad. Es construir un sistema donde puedas responder: <strong>qué inversión genera oportunidades, qué oportunidades se convierten y qué deberíamos hacer para mejorar.</strong></p>
+<p>Conoce nuestra landing de <a href="/agencia-marketing-ventas-b2b">agencia de marketing y ventas B2B</a> o el servicio de <a href="/servicios/funnel-digital-performance">Funnel Digital de Performance</a>.</p>
 <p><a href="/">Conoce cómo trabaja The Burn</a></p>`,
   },
   {
@@ -1434,6 +1443,7 @@ export const blogPosts: BlogPost[] = [
 <h2>Conclusión</h2>
 <p>Aumentar ventas B2B no consiste en elegir entre "marketing" o "ventas". Consiste en encontrar la restricción actual del sistema y resolverla.</p>
 <p>Cuando marketing, proceso comercial, automatización y datos están conectados, la empresa puede hacer algo que antes parecía imposible: <strong>explicar por qué está creciendo y qué debería hacer para seguir creciendo.</strong></p>
+<p>Revisa nuestra <a href="/estrategia-comercial">estrategia comercial</a> o la <a href="/consultoria-comercial-b2b">consultoría comercial B2B</a> como puntos de partida para ordenar este sistema.</p>
 <p><a href="/diagnostico">Empieza con el Diagnóstico Comercial y Marketing de The Burn</a></p>`,
   },
 ]

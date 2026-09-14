@@ -139,3 +139,27 @@ export const transactionalLandings: TransactionalLanding[] = [
 ]
 
 export const transactionalLandingBySlug = Object.fromEntries(transactionalLandings.map((landing) => [landing.slug, landing])) as Record<string, TransactionalLanding>
+
+export function buildLandingMetadata(slug: string) {
+  const landing = transactionalLandingBySlug[slug]
+  const url = `https://theburn.cl/${landing.slug}`
+  return {
+    title: landing.title,
+    description: landing.description,
+    robots: "index, follow",
+    alternates: { canonical: `/${landing.slug}` },
+    openGraph: {
+      title: landing.title,
+      description: landing.description,
+      url,
+      type: "website" as const,
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: landing.title }],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title: landing.title,
+      description: landing.description,
+      images: ["/og-image.png"],
+    },
+  }
+}

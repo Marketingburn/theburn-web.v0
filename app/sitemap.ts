@@ -79,6 +79,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/autor/javier-troncoso`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
     ...[
       'consultora-comercial-santiago',
       'consultoria-comercial-b2b',

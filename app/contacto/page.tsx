@@ -1,4 +1,5 @@
 import { ContactForm } from '@/components/contact-form';
+import { TrackedLink } from '@/components/tracked-link';
 
 export const metadata = {
   title: 'Contacto | The Burn',
@@ -44,17 +45,27 @@ export default function ContactPage() {
             ¿Urgencia? Contacta directamente
           </p>
           <div className="space-y-3">
-            <a
+            <TrackedLink
               href="https://wa.me/56936504772?text=Hola%20The%20Burn%2C%20quiero%20agendar%20mi%20diagnóstico%20comercial"
               target="_blank"
               rel="noopener noreferrer"
+              event="whatsapp_click"
+              eventParams={{ source: "contacto" }}
               className="inline-block text-[#FF4500] font-bold text-lg hover:text-[#FFFFFF] hover:bg-[#FF4500] px-6 py-2 rounded-full transition-all"
               style={{ fontFamily: 'var(--font-barlow-condensed)' }}
             >
               WhatsApp: +56 9 3650 4772 →
-            </a>
+            </TrackedLink>
             <p className="text-[#938B82] text-sm" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
-              marketing@theburn.cl · Santiago, Chile
+              <TrackedLink
+                href="mailto:marketing@theburn.cl"
+                event="email_click"
+                eventParams={{ source: "contacto" }}
+                className="hover:text-[#FF4500] underline underline-offset-2"
+              >
+                marketing@theburn.cl
+              </TrackedLink>{" "}
+              · Santiago, Chile
             </p>
           </div>
         </div>

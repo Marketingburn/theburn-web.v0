@@ -4,6 +4,8 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import { TrackedLink } from "@/components/tracked-link"
 import type { TransactionalLanding as LandingData } from "@/lib/transactional-landings"
 
 const siteUrl = "https://theburn.cl"
@@ -17,6 +19,7 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
     provider: { "@type": "ProfessionalService", name: "The Burn", url: siteUrl },
     areaServed: { "@type": "Country", name: "Chile" },
     url: `${siteUrl}/${landing.slug}`,
+    image: `${siteUrl}/og-image.png`,
   }
 
   return (
@@ -27,11 +30,15 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
       <main>
         <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-24 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:px-10 lg:pb-28 lg:pt-36">
           <div>
+            <Breadcrumbs
+              className="mb-5"
+              items={[{ name: "Inicio", href: "/" }, { name: landing.eyebrow.split("·")[0].trim(), href: "/#servicios" }, { name: landing.h1 }]}
+            />
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.22em] text-[#e5532d]">{landing.eyebrow}</p>
             <h1 className="max-w-4xl text-balance font-sans text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">{landing.h1}</h1>
             <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-[#57534e]">{landing.intro}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#contacto" className="inline-flex items-center gap-2 rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-[#f5f1ea] transition hover:bg-[#e5532d]">Conversemos sobre tu negocio <ArrowRight className="size-4" /></a>
+              <TrackedLink href="#contacto" event="cta_click" eventParams={{ cta: "conversemos", landing: landing.slug }} className="inline-flex items-center gap-2 rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-[#f5f1ea] transition hover:bg-[#e5532d]">Conversemos sobre tu negocio <ArrowRight className="size-4" /></TrackedLink>
               <a href="#metodo" className="inline-flex items-center rounded-full border border-[#171717]/20 px-6 py-3 text-sm font-semibold hover:border-[#e5532d] hover:text-[#e5532d]">Ver cómo trabajamos</a>
             </div>
           </div>
@@ -65,7 +72,7 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
 
         <section id="contacto" className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[.75fr_1.25fr] lg:px-10 lg:py-28"><div><p className="font-mono text-xs uppercase tracking-[0.18em] text-[#e5532d]">Siguiente paso</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] md:text-6xl">Cuéntanos dónde está el nudo.</h2><p className="mt-6 max-w-md leading-7 text-[#57534e]">Partimos entendiendo tu negocio, tus prioridades y los datos que ya tienes. Sin recetas genéricas.</p></div><ContactForm defaultNecesidad={landing.need} /></section>
 
-        <section className="border-t border-[#171717]/10"><div className="mx-auto max-w-7xl px-6 py-12 lg:px-10"><p className="font-mono text-xs uppercase tracking-[0.18em] text-[#78716c]">También puede interesarte</p><div className="mt-5 flex flex-wrap gap-3">{landing.related.map((link) => <Link key={link.href} href={link.href} className="rounded-full border border-[#171717]/20 px-4 py-2 text-sm hover:border-[#e5532d] hover:text-[#e5532d]">{link.label} <ArrowRight className="ml-1 inline size-3" /></Link>)}</div></div></section>
+        <section className="border-t border-[#171717]/10"><div className="mx-auto max-w-7xl px-6 py-12 lg:px-10"><p className="font-mono text-xs uppercase tracking-[0.18em] text-[#78716c]">También puede interesarte</p><div className="mt-5 flex flex-wrap gap-3">{landing.related.map((link) => <TrackedLink key={link.href} href={link.href} event="service_click" eventParams={{ service: link.label, from: landing.slug }} className="rounded-full border border-[#171717]/20 px-4 py-2 text-sm hover:border-[#e5532d] hover:text-[#e5532d]">{link.label} <ArrowRight className="ml-1 inline size-3" /></TrackedLink>)}</div></div></section>
       </main>
       <Footer />
     </div>
