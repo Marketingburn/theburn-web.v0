@@ -67,6 +67,31 @@ export const metadata: Metadata = {
   },
 }
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "The Burn",
+  alternateName: "The Burn SpA",
+  url: "https://theburn.cl",
+  logo: "https://theburn.cl/logo-theburn.png",
+  image: "https://theburn.cl/og-image.jpg",
+  description:
+    "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Santiago",
+    addressCountry: "CL",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Chile",
+  },
+  email: "marketing@theburn.cl",
+  telephone: "+56936504772",
+  sameAs: [],
+  priceRange: "$$",
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,6 +100,12 @@ export default function RootLayout({
   return (
     <html lang="es" className="bg-background">
       <head>
+        {/* Organization / LocalBusiness structured data */}
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -89,7 +120,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* Clarity */}
         <Script
-          type="text/javascript"
+          id="clarity-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){

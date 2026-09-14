@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as other service pages)
@@ -916,6 +917,13 @@ function BICTA() {
 export default function BIPage() {
   return (
     <div className="min-h-screen bg-[#F5F1EA] overflow-hidden">
+      <BreadcrumbSchema
+        items={[
+          { name: "Inicio", path: "" },
+          { name: "Servicios", path: "/#servicios" },
+          { name: "Business Intelligence & Power BI", path: "/servicios/business-intelligence-power-bi" },
+        ]}
+      />
       <GlassmorphismNav />
       <main>
         <BIHero />

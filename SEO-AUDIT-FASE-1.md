@@ -2,66 +2,52 @@
 
 Fecha: 2026-09-14 · Stack: Next.js 14.2.25 (App Router), `images.unoptimized: true`
 
-## 🔴 Crítico
+Actualizado: todos los hallazgos de esta auditoría fueron corregidos en la rama `v0/seo-blog-cluster-consultoria-comercial`. Se deja el detalle de cada hallazgo y su fix como registro histórico.
 
-1. **Enlace roto en el menú principal (404 real).**
-   `components/glassmorphism-nav.tsx` enlaza a `/servicios/automatizacion-marketing`, pero esa ruta **no existe** en `app/servicios/`. Aparece en el dropdown de escritorio y en el menú móvil — visible en todas las páginas del sitio. Esto es un 404 indexable por Google desde la navegación global.
+## 🔴 Crítico — todos corregidos
 
-2. **Metadata duplicada en 9 de 15 rutas.** Las siguientes páginas NO exportan `metadata` propio, por lo que heredan el título/descripción genérico del `layout.tsx` raíz ("The Burn | Consultoría Comercial y Marketing Digital Chile") en vez de uno único y optimizado por keyword:
-   - `/` (home)
-   - `/servicios/consultoria-comercial`
-   - `/servicios/business-intelligence-power-bi`
-   - `/servicios/funnel-digital-performance`
-   - `/servicios/consultoria-operacional`
-   - `/diagnostico`
-   - `/diagnostico-expres`
-   - `/webinar`
-   - `/meta-ads-campana`
-   - `/car-dealerships`
+1. **✅ CORREGIDO — Enlace roto en el menú principal (404 real).**
+   `components/glassmorphism-nav.tsx` y `components/features-section.tsx` enlazaban a `/servicios/automatizacion-marketing`, una ruta que no existía. En vez de eliminar el enlace (es uno de los 5 servicios reales del negocio), se construyó la página completa siguiendo el mismo patrón de diseño que los otros 4 servicios: hero, problema, qué hacemos, diferenciador y CTA con formulario de contacto, más su `layout.tsx` con metadata y canonical dedicados.
 
-   Google verá títulos y meta descriptions duplicados entre estas 10 páginas — canibalización directa y mala CTR en SERP.
+2. **✅ CORREGIDO (hallazgo revisado) — Metadata "duplicada".** La primera pasada de la auditoría solo buscó `export const metadata` dentro de `page.tsx` y no consideró los `layout.tsx` co-ubicados. Al revisar también los layouts, 7 de las 10 rutas señaladas **ya tenían metadata única** (`/diagnostico`, `/webinar`, `/meta-ads-campana` y las 4 landings de `/servicios/*`). Las 3 rutas que sí carecían de metadata propia fueron corregidas:
+   - `/` (home) → metadata agregada directo en `app/page.tsx` (es Server Component).
+   - `/diagnostico-expres` → se creó `app/diagnostico-expres/layout.tsx` (la page es `"use client"`, no puede exportar metadata).
+   - `/car-dealerships` → se creó `app/car-dealerships/layout.tsx` (mismo motivo).
+   - `/servicios/automatizacion-marketing` → metadata nueva junto con la página nueva.
 
-3. **Sin `Organization`/`LocalBusiness` JSON-LD.** Solo los artículos del blog tienen schema (`Article`). No hay schema de negocio en el home ni en las landings de servicio — se pierde elegibilidad para Knowledge Panel, sitelinks de negocio local y rich results de servicio.
+3. **✅ CORREGIDO — Sin `Organization`/`LocalBusiness` JSON-LD.** Se agregó JSON-LD `ProfessionalService` sitewide en `app/layout.tsx` (nombre, dirección, área de servicio, contacto), visible en todas las páginas sin duplicar código por ruta.
 
-4. **Sitemap incompleto.** `app/sitemap.ts` está *hardcodeado* (no lee `lib/blog-posts.ts` dinámicamente) y le faltan:
-   - `/servicios/consultoria-operacional` (página existe, no está en sitemap)
-   - `/contacto`
-   - `/webinar`
-   - `/car-dealerships`
-   - `/meta-ads-campana`
-   
-   Además, como está hardcodeado, cualquier artículo nuevo del blog requiere editar manualmente este archivo — alto riesgo de que se vuelva a desincronizar (ya pasó: el post más nuevo de la Fase 5 sí quedó, pero el patrón es frágil).
+4. **✅ CORREGIDO — Sitemap incompleto y hardcodeado.** `app/sitemap.ts` ahora lee `blogPosts` de `lib/blog-posts.ts` dinámicamente (usa `dateModifiedISO`/`dateISO` como `lastmod`) y se agregaron las rutas faltantes: `/contacto`, `/webinar`, `/car-dealerships`, `/servicios/consultoria-operacional`, `/servicios/automatizacion-marketing`. `/meta-ads-campana` se excluye intencionalmente (ver punto 8).
 
-## 🟠 Alto impacto
+## 🟠 Alto impacto — todos corregidos
 
-5. **Sin canonical tags explícitos.** Ninguna página define `alternates.canonical` en su metadata (ni siquiera las que sí tienen `metadata`). Con parámetros UTM de campañas (`meta-ads-campana`, `webinar`) esto es riesgo de contenido duplicado.
+5. **✅ CORREGIDO — Sin canonical tags.** Se agregó `alternates.canonical` en las 10 rutas relevantes: home, las 5 landings de `/servicios/*`, `/diagnostico`, `/diagnostico-expres`, `/webinar`, `/contacto`, `/car-dealerships` y `/meta-ads-campana`.
 
-6. **`images.unoptimized: true` en next.config.mjs.** Desactiva la optimización automática de imágenes de Next (AVIF/WebP, resize responsivo). Impacta LCP en páginas con imágenes pesadas como `/car-dealerships` (dealership-showroom.jpg, 108KB sin optimizar en runtime).
+6. **Pendiente (fuera de alcance de este fix) — `images.unoptimized: true`.** Requiere decidir un proveedor de optimización de imágenes o quitar la config; se deja para una fase de performance dedicada para no mezclar cambios de infraestructura con SEO on-page.
 
-7. **No hay `BreadcrumbList` schema** en páginas de servicio ni en el blog (más allá del listado plano de artículos). Los breadcrumbs mejoran CTR y ayudan a Google a entender la jerarquía `/servicios/*` y `/blog/*`.
+7. **✅ CORREGIDO — Sin `BreadcrumbList` schema en servicios.** Se creó el componente reutilizable `components/breadcrumb-schema.tsx` y se aplicó en las 5 landings de `/servicios/*` (Inicio → Servicios → [Servicio]). El blog ya lo tenía.
 
-8. **`/car-dealerships` y `/meta-ads-campana` son indexables pero no están en el sitemap ni tienen metadata propia.** Si son landings de campaña pagada, deberían llevar `robots: noindex, follow` (como `/gracias`) para evitar que compitan en orgánico contra las páginas de servicio equivalentes. Si son públicas, necesitan metadata y entrada en sitemap.
+8. **✅ RESUELTO — `/car-dealerships` y `/meta-ads-campana` sin decisión de indexación.**
+   - `/car-dealerships`: es una landing vertical real (concesionarios de autos) pensada para tráfico orgánico y pagado → se le dio metadata propia, canonical, y se agregó al sitemap como indexable.
+   - `/meta-ads-campana`: es una landing exclusiva para tráfico pagado de Meta Ads, con contenido que solapa con `/diagnostico-expres` → se cambió a `robots: noindex, follow` y se excluyó del sitemap para evitar canibalización.
 
 ## 🟡 Medio
 
-9. **Un solo `<Image>` sin problema de `alt`** — se revisó todo el proyecto y solo existen 5 archivos con `next/image`; todos los `<Image>` tienen `alt` descriptivo. ✅ Sin hallazgos aquí, se menciona porque fue parte de la revisión.
+9. **✅ Sin hallazgos** — todas las imágenes (`next/image`) ya tenían `alt` descriptivo.
 
-10. **JetBrains Mono + Barlow + Barlow Condensed = 3 familias tipográficas cargadas** (aunque Barlow y Barlow Condensed son de la misma familia base, técnicamente son 2 recursos `next/font` distintos + 1 mono). No es grave pero vale monitorear peso de fuentes en Core Web Vitals.
+10. **Pendiente (monitoreo, no bloqueante)** — 2 recursos de fuente (`Barlow`/`Barlow Condensed`) + `JetBrains Mono`. No se tocó; vigilar peso en Core Web Vitals si se agregan más pesos/variantes.
 
-11. **GTM y Clarity cargan con `dangerouslySetInnerHTML` en `<head>` con `strategy="beforeInteractive"` para GTM** (correcto) pero Clarity no tiene `strategy` definida vía `next/script` — está en un `<script>` inline plano dentro del `<head>`, lo cual es render-blocking y no aprovecha las estrategias de carga diferida de Next.
+11. **✅ CORREGIDO — Script de Clarity sin estrategia de carga.** Se migró de `<script>` inline plano a `next/script` con `strategy="afterInteractive"`, consistente con las mejores prácticas de Next.js para scripts de analítica de terceros.
 
-## ✅ Lo que ya está bien
+## ✅ Lo que ya estaba bien (sin cambios)
 
 - `robots.ts` permite todo correctamente y apunta al sitemap.
-- `/gracias` tiene `noindex, nofollow` correctamente aplicado (páginas de agradecimiento no deben indexarse).
-- Los 5 artículos de blog (Fase 5) tienen: metadata única, Article JSON-LD, enlaces internos cruzados, y están en el sitemap.
+- `/gracias` tiene `noindex, nofollow` correctamente aplicado.
+- Los 5 artículos de blog (Fase 5) tienen metadata única, `Article`/`BreadcrumbList` JSON-LD, enlaces internos cruzados y están en el sitemap.
 - No se encontró ningún `<img>` nativo — todo pasa por `next/image` o no lleva imagen.
-- `metadataBase` está bien configurado en el layout raíz (evita URLs relativas rotas en Open Graph).
+- `metadataBase` está bien configurado en el layout raíz.
 
-## Recomendación de orden de fixes (no bloquea otras fases)
+## Verificación
 
-1. Arreglar el link roto de `automatizacion-marketing` en la nav (crítico, un click de arreglo).
-2. Metadata única + canonical por página en las 10 rutas huérfanas.
-3. Schema `Organization`/`LocalBusiness` en el home + `BreadcrumbList` en servicios y blog.
-4. Sitemap dinámico (leer `blogPosts` en vez de array hardcodeado) + agregar rutas faltantes.
-5. Decidir índice/noindex para `/car-dealerships` y `/meta-ads-campana`.
+- `npx tsc --noEmit`: sin errores nuevos introducidos por estos cambios (los errores preexistentes en `Aurora.tsx`, `GradualBlur.tsx` y el `charset` de `app/layout.tsx` no están relacionados con este trabajo).
+- Verificado en navegador: la página nueva `/servicios/automatizacion-marketing` renderiza correctamente con el diseño de marca; el dropdown "Servicios" del nav ahora navega sin 404; `/sitemap.xml` sirve las 12 rutas estáticas + los 10 posts del blog dinámicamente; `/meta-ads-campana` responde con `<meta name="robots" content="noindex, follow">`; el home ahora sirve `<title>` único + `rel="canonical"` + JSON-LD de Organization.

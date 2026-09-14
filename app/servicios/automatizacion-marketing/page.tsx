@@ -7,7 +7,7 @@ import { ContactForm } from "@/components/contact-form"
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 // ---------------------------------------------------------------------------
-// Shared micro-components (same pattern as other service pages)
+// Shared micro-components (identical pattern to other service pages)
 // ---------------------------------------------------------------------------
 
 function Badge({ children }: { children: React.ReactNode }) {
@@ -63,10 +63,10 @@ function useInView(threshold = 0.15) {
 // HERO
 // ---------------------------------------------------------------------------
 
-function ConsultoriaHero() {
+function AutomatizacionHero() {
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
-      <h1 className="sr-only">Consultoría Comercial B2B en Santiago — Proceso de Ventas</h1>
+      <h1 className="sr-only">Automatización de Marketing para Empresas B2B en Chile</h1>
       {/* Fire glow blurs */}
       <div
         className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
@@ -84,27 +84,27 @@ function ConsultoriaHero() {
           <div>
             <Badge>
               <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0 inline-block" />
-              SERVICIO · CONSULTORÍA COMERCIAL
+              SERVICIO · AUTOMATIZACIÓN DE MARKETING
             </Badge>
 
             <p
               className="text-5xl sm:text-6xl md:text-7xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.9" }}
             >
-              Vender más no es trabajar más. Es trabajar con un{" "}
-              <span className="text-[#FF4500]">PROCESO.</span>
+              Tu equipo cierra. El sistema{" "}
+              <span className="text-[#FF4500]">PROSPECTA.</span>
             </p>
 
             <p
               className="text-base sm:text-lg text-[#938B82] leading-relaxed mb-10 max-w-lg"
               style={{ fontFamily: "var(--font-barlow)" }}
             >
-              Ordenamos tu proceso comercial desde la prospección hasta el cierre. Definimos métricas, roles y el sistema que hace que tu equipo venda aunque tú no estés mirando.
+              Implementamos flujos automáticos de nurturing, seguimiento y calificación de leads por email y WhatsApp. Ningún prospecto se enfría esperando que alguien le escriba.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
                 className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
               >
@@ -117,12 +117,12 @@ function ConsultoriaHero() {
                   document.getElementById("que-hacemos")?.scrollIntoView({ behavior: "smooth", block: "start" })
                 }}
               >
-                Ver qué hacemos &nbsp;↓
+                Ver qué automatizamos &nbsp;↓
               </button>
             </div>
           </div>
 
-          {/* Right — before / after comparison card */}
+          {/* Right — automation flow visualization card */}
           <div className="flex justify-center lg:justify-end">
             <div
               className="bg-[#1B1917] rounded-xl w-full max-w-sm overflow-hidden transition-transform duration-500 hover:scale-[1.01]"
@@ -134,160 +134,66 @@ function ConsultoriaHero() {
                   className="text-[#FF4500] text-xs font-bold uppercase tracking-wider"
                   style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.1em" }}
                 >
-                  SIN PROCESO &nbsp;·&nbsp; CON PROCESO
+                  FLUJO DE NURTURING ACTIVO
                 </span>
               </div>
 
-              <div className="p-5 space-y-5">
-                {/* Before row */}
-                <div className="bg-[#0A0A0A]/60 rounded-lg p-4 border border-white/[0.06]">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className="text-[9px] uppercase tracking-widest text-[#938B82]"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      ANTES
-                    </span>
-                    <div className="h-px flex-1 bg-[#2A2725]" />
-                    <span
-                      className="text-[9px] text-[#938B82]/60"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      SIN SISTEMA
-                    </span>
-                  </div>
-                  <p
-                    className="text-white text-sm leading-snug"
-                    style={{ fontFamily: "var(--font-barlow)" }}
+              <div className="p-5 space-y-3">
+                {[
+                  { step: "LEAD ENTRA", detail: "Formulario web / WhatsApp", status: "done" },
+                  { step: "EMAIL 1 · BIENVENIDA", detail: "Enviado a los 5 minutos", status: "done" },
+                  { step: "SCORE AUTOMÁTICO", detail: "Segmentado por interés e industria", status: "done" },
+                  { step: "WHATSAPP · SEGUIMIENTO", detail: "Recordatorio a las 48 horas", status: "active" },
+                  { step: "ENTREGA A VENDEDOR", detail: "Solo leads calificados (score > 7)", status: "pending" },
+                ].map(({ step, detail, status }) => (
+                  <div
+                    key={step}
+                    className="rounded-lg p-3.5"
+                    style={{
+                      background: status === "active" ? "linear-gradient(135deg, rgba(255,69,0,0.1) 0%, rgba(214,134,44,0.06) 100%)" : "rgba(10,10,10,0.4)",
+                      border: status === "active" ? "1px solid rgba(255,69,0,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                    }}
                   >
-                    Cada venta depende de una persona
-                  </p>
-                  {/* Risk indicators */}
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {["Vendedor estrella", "Sin pipeline", "Cierres inconsistentes"].map((tag) => (
+                    <div className="flex items-center gap-2 mb-1">
                       <span
-                        key={tag}
-                        className="text-[#FF4500]/70 text-[9px] px-2 py-0.5 rounded border border-[#FF4500]/20 bg-[#FF4500]/5"
-                        style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{
+                          background: status === "done" ? "#4ADE80" : status === "active" ? "#FF4500" : "#2A2725",
+                        }}
+                      />
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-wider"
+                        style={{
+                          fontFamily: "var(--font-jetbrains-mono)",
+                          color: status === "pending" ? "#938B82" : "#FFFFFF",
+                        }}
                       >
-                        {tag}
+                        {step}
                       </span>
-                    ))}
+                    </div>
+                    <p
+                      className="text-[#938B82] text-xs pl-3.5"
+                      style={{ fontFamily: "var(--font-barlow)" }}
+                    >
+                      {detail}
+                    </p>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                {/* Arrow divider */}
-                <div className="flex items-center justify-center">
-                  <div className="h-px flex-1 bg-[#2A2725]" />
-                  <span
-                    className="mx-3 text-[#FF4500] text-lg leading-none"
-                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                  >
-                    ↓
-                  </span>
-                  <div className="h-px flex-1 bg-[#2A2725]" />
-                </div>
-
-                {/* After row */}
-                <div
-                  className="rounded-lg p-4"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(255,69,0,0.08) 0%, rgba(214,134,44,0.05) 100%)",
-                    border: "1px solid rgba(255,69,0,0.25)",
-                  }}
+              <div className="flex justify-between items-center px-5 py-3 border-t border-white/[0.06]">
+                <p
+                  className="text-[#938B82]/50 text-[8px]"
+                  style={{ fontFamily: "var(--font-jetbrains-mono)" }}
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className="text-[9px] uppercase tracking-widest text-[#FF4500]"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      DESPUÉS
-                    </span>
-                    <div className="h-px flex-1 bg-[#FF4500]/20" />
-                    <span
-                      className="text-[9px] text-[#FF4500]/60"
-                      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                    >
-                      CON SISTEMA
-                    </span>
-                  </div>
-                  <p
-                    className="text-white text-sm leading-snug"
-                    style={{ fontFamily: "var(--font-barlow)" }}
-                  >
-                    El sistema prospecta, el equipo cierra
-                  </p>
-                  {/* Success indicators */}
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {["Proceso documentado", "Pipeline visible", "Cierre predecible"].map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[#FF4500] text-[9px] px-2 py-0.5 rounded border border-[#FF4500]/30 bg-[#FF4500]/10"
-                        style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Pipeline stages visual */}
-                <div>
-                  <p
-                    className="text-[#938B82] text-[9px] uppercase tracking-widest mb-2"
-                    style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.1em" }}
-                  >
-                    Pipeline por Etapa
-                  </p>
-                  <div className="space-y-1.5">
-                    {[
-                      { stage: "PROSPECTO",    pct: 100, count: "48 leads"  },
-                      { stage: "CALIFICADO",   pct: 62,  count: "30 leads"  },
-                      { stage: "PROPUESTA",    pct: 38,  count: "18 leads"  },
-                      { stage: "NEGOCIACIÓN",  pct: 21,  count: "10 leads"  },
-                      { stage: "CIERRE",       pct: 13,  count: "6 leads"   },
-                    ].map(({ stage, pct, count }) => (
-                      <div key={stage} className="flex items-center gap-2">
-                        <span
-                          className="text-[#938B82] text-[8px] w-20 flex-shrink-0"
-                          style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                        >
-                          {stage}
-                        </span>
-                        <div className="flex-1 h-1.5 bg-[#2A2725] rounded-full overflow-hidden">
-                          <div
-                            className="h-full rounded-full"
-                            style={{
-                              width: `${pct}%`,
-                              background: "linear-gradient(to right, #FF4500, #D6862C)",
-                            }}
-                          />
-                        </div>
-                        <span
-                          className="text-[#938B82] text-[8px] w-14 text-right flex-shrink-0"
-                          style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                        >
-                          {count}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center pt-1 border-t border-white/[0.06]">
-                  <p
-                    className="text-[#938B82]/50 text-[8px]"
-                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                  >
-                    THEBURN.CL · SANTIAGO, CHILE
-                  </p>
-                  <span
-                    className="text-[#FF4500] text-[8px]"
-                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                  >
-                    ■ PROCESO ACTIVO
-                  </span>
-                </div>
+                  THEBURN.CL · SANTIAGO, CHILE
+                </p>
+                <span
+                  className="text-[#FF4500] text-[8px]"
+                  style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                >
+                  ■ AUTOMATIZACIÓN ACTIVA
+                </span>
               </div>
             </div>
           </div>
@@ -321,32 +227,32 @@ function ProblemSection() {
             className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-5"
             style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.92" }}
           >
-            Tu mejor vendedor se va y la empresa{" "}
-            <span className="text-[#FF4500]">TIEMBLA.</span>
+            Cada lead que no respondes a tiempo se{" "}
+            <span className="text-[#FF4500]">ENFRÍA.</span>
           </h2>
           <p
             className="text-base sm:text-lg text-[#938B82] max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: "var(--font-barlow)" }}
           >
-            Cuando las ventas dependen de personas y no de procesos, no tienes un equipo comercial. Tienes dependencia.
+            Si el seguimiento depende de que una persona se acuerde de escribir, estás perdiendo ventas por pura logística.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              title: "Sin proceso definido",
-              body: "Cada vendedor hace las cosas a su manera. No hay forma de saber qué funciona.",
+              title: "Leads sin seguimiento",
+              body: "Un prospecto interesado espera horas o días por una respuesta. Para entonces, ya eligió a otro.",
               delay: "delay-0",
             },
             {
-              title: "Sin métricas de pipeline",
-              body: "No sabes en qué etapa se pierden los clientes ni por qué.",
+              title: "Todos los leads iguales",
+              body: "Sin segmentación, tu equipo pierde tiempo con prospectos fríos en vez de cerrar a los calientes.",
               delay: "delay-150",
             },
             {
-              title: "Sin mensajes por segmento",
-              body: "El mismo pitch para todos los prospectos. Conversión baja, costo alto.",
+              title: "Seguimiento manual no escala",
+              body: "A más volumen de leads, más se cae el seguimiento uno a uno. El sistema debe hacerlo por ti.",
               delay: "delay-300",
             },
           ].map(({ title, body, delay }) => (
@@ -387,33 +293,33 @@ function WhatWeDoSection() {
   const steps = [
     {
       num: "01",
-      title: "Mapeo del proceso actual",
-      body: "Cómo prospecta, califica, propone y cierra tu equipo hoy. Dónde se pierde cada venta.",
+      title: "Mapeo de flujos actuales",
+      body: "Revisamos cómo entran tus leads hoy y dónde se pierde el seguimiento.",
     },
     {
       num: "02",
-      title: "Diseño del proceso ideal",
-      body: "Etapas claras, responsables definidos y criterios de avance. Adaptado a tu ciclo de venta.",
+      title: "Diseño de secuencias",
+      body: "Email y WhatsApp automáticos por etapa: bienvenida, nurturing, reactivación.",
     },
     {
       num: "03",
-      title: "Mensajes por segmento",
-      body: "Propuesta de valor específica para cada tipo de cliente. Lo que le importa a cada uno.",
+      title: "Scoring automático",
+      body: "Cada lead recibe un puntaje según interés y comportamiento, sin que nadie lo revise a mano.",
     },
     {
       num: "04",
-      title: "Métricas y CRM",
-      body: "Definimos qué medir en cada etapa y lo configuramos en tu herramienta, o te recomendamos una.",
+      title: "Integración con tu CRM",
+      body: "Los leads calificados llegan directo a tu equipo de ventas, listos para cerrar.",
     },
     {
       num: "05",
-      title: "Capacitación del equipo",
-      body: "El proceso sirve solo si el equipo lo usa. Acompañamos la adopción.",
+      title: "Pruebas y ajuste de mensajes",
+      body: "Medimos apertura, clics y respuesta. Ajustamos el copy hasta que convierta.",
     },
     {
       num: "06",
-      title: "Seguimiento mensual",
-      body: "Revisamos métricas, ajustamos mensajes y escalamos lo que funciona.",
+      title: "Reporte mensual",
+      body: "Cuántos leads entraron, cuántos se calificaron y cuántos cerraron. Con números, no con impresiones.",
     },
   ]
 
@@ -435,8 +341,8 @@ function WhatWeDoSection() {
             className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance leading-none"
             style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.92" }}
           >
-            Un proceso comercial que{" "}
-            <span className="text-[#FF4500]">ESCALA.</span>
+            Un sistema que prospecta{" "}
+            <span className="text-[#FF4500]">SOLO.</span>
           </h2>
         </div>
 
@@ -484,16 +390,16 @@ function DifferentiatorSection() {
 
   const pillars = [
     {
-      title: "Ejecutamos junto a tu equipo",
-      body: "No entregamos un PDF y nos vamos. Estamos en las reuniones, en las llamadas y en los números.",
+      title: "Sin perder el tono humano",
+      body: "Los mensajes automáticos suenan a tu marca, no a un bot genérico. Personalizamos cada secuencia.",
     },
     {
-      title: "Adaptado a tu modelo",
-      body: "No hay un proceso estándar. Lo construimos según tu ciclo de venta, tu mercado y tu equipo.",
+      title: "Conectado a lo que ya usas",
+      body: "Trabajamos con tu CRM, WhatsApp Business y email actuales. No te obligamos a migrar de plataforma.",
     },
     {
-      title: "Métricas desde el día uno",
-      body: "Cada acción tiene un indicador. Si no se puede medir, no lo hacemos.",
+      title: "El sistema queda contigo",
+      body: "Al terminar, tú operas los flujos o nosotros los mantenemos. Tu decides el nivel de acompañamiento.",
     },
   ]
 
@@ -514,8 +420,8 @@ function DifferentiatorSection() {
             className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white text-balance leading-none"
             style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.92" }}
           >
-            No somos una agencia. Somos el socio que se{" "}
-            <span className="text-[#FF4500]">METE A LA CANCHA.</span>
+            Automatización que no se siente{" "}
+            <span className="text-[#FF4500]">AUTOMATIZADA.</span>
           </h2>
         </div>
 
@@ -544,13 +450,33 @@ function DifferentiatorSection() {
             </div>
           ))}
         </div>
+
+        {/* Intermediate dark CTA band */}
+        <div
+          className={`mt-14 rounded-2xl px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-6 border border-[#2A2725] transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          style={{ background: "#1B1917" }}
+        >
+          <p
+            className="font-black uppercase text-xl sm:text-2xl text-balance leading-tight"
+            style={{ fontFamily: "var(--font-barlow-condensed)", color: "#FF4500" }}
+          >
+            ¿Cuántos leads se te enfrían cada semana?
+          </p>
+          <button
+            onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
+            className="flex-shrink-0 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-8 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 cursor-pointer whitespace-nowrap"
+            style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
+          >
+            Agendar Diagnóstico &nbsp;→
+          </button>
+        </div>
       </div>
     </section>
   )
 }
 
 // ---------------------------------------------------------------------------
-// CTA
+// CTA BANNER
 // ---------------------------------------------------------------------------
 
 function CTASection() {
@@ -579,17 +505,17 @@ function CTASection() {
             className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance leading-none mb-6"
             style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.92" }}
           >
-            ¿Tu equipo vende? ¿O espera que los clientes{" "}
-            <span className="text-[#FF4500]">LLEGUEN?</span>
+            Deja que el sistema prospecte mientras tu equipo{" "}
+            <span className="text-[#FF4500]">CIERRA.</span>
           </h2>
           <p
             className="text-base sm:text-lg text-[#938B82] mb-10 leading-relaxed"
             style={{ fontFamily: "var(--font-barlow)" }}
           >
-            En 30 minutos te mostramos exactamente qué está frenando tu proceso comercial y qué haríamos para solucionarlo.
+            En el diagnóstico revisamos tus flujos actuales de seguimiento y te mostramos exactamente dónde se están enfriando tus leads.
           </p>
           <button
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
             className="bg-[#0A0A0A] hover:bg-[#1B1917] text-white font-bold px-10 py-5 rounded-full text-lg transition-all duration-300 hover:scale-105 cursor-pointer"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
@@ -605,42 +531,48 @@ function CTASection() {
 // PAGE
 // ---------------------------------------------------------------------------
 
-export default function ConsultoriaComercialPage() {
+export default function AutomatizacionMarketingPage() {
   return (
     <>
       <BreadcrumbSchema
         items={[
           { name: "Inicio", path: "" },
           { name: "Servicios", path: "/#servicios" },
-          { name: "Consultoría Comercial", path: "/servicios/consultoria-comercial" },
+          { name: "Automatización de Marketing", path: "/servicios/automatizacion-marketing" },
         ]}
       />
       <GlassmorphismNav />
       <main>
-        <ConsultoriaHero />
+        <AutomatizacionHero />
         <ProblemSection />
         <WhatWeDoSection />
         <DifferentiatorSection />
         <CTASection />
-      <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
-        <div className="max-w-2xl mx-auto">
-          <p className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"
-             style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
-            ■ HABLEMOS
-          </p>
-          <h2 className="text-4xl font-black uppercase text-white mb-4"
-              style={{ fontFamily: 'var(--font-barlow-condensed)' }}>
-            Sin Humo.<br />Sin Jerga.
-          </h2>
-          <p className="text-[#938B82] mb-8 text-sm"
-             style={{ fontFamily: 'var(--font-barlow)' }}>
-            Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
-          </p>
-            <ContactForm defaultNecesidad="Consultoría Comercial" />
-        </div>
-      </section>
-    </main>
-    <Footer />
+        <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
+          <div className="max-w-2xl mx-auto">
+            <p
+              className="text-[#FF4500] text-xs uppercase tracking-widest mb-4"
+              style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+            >
+              ■ HABLEMOS
+            </p>
+            <h2
+              className="text-4xl font-black uppercase text-white mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              Sin Humo.<br />Sin Jerga.
+            </h2>
+            <p
+              className="text-[#938B82] mb-8 text-sm"
+              style={{ fontFamily: "var(--font-barlow)" }}
+            >
+              Cuéntanos tu caso. Te respondemos en menos de 24 horas hábiles.
+            </p>
+            <ContactForm defaultNecesidad="Automatización de Marketing" />
+          </div>
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }

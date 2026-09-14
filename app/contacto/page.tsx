@@ -3,6 +3,9 @@ import { ContactForm } from '@/components/contact-form';
 export const metadata = {
   title: 'Contacto | The Burn',
   description: 'Contáctanos para agendar tu diagnóstico comercial gratuito. Consultoría de marketing digital y automatización en Santiago, Chile.',
+  alternates: {
+    canonical: 'https://theburn.cl/contacto',
+  },
 };
 
 export default function ContactPage() {
