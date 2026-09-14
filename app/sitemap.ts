@@ -79,6 +79,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    ...[
+      'consultora-comercial-santiago',
+      'consultoria-comercial-b2b',
+      'implementacion-procesos-comerciales',
+      'agencia-marketing-ventas-b2b',
+      'estrategia-comercial',
+      'automatizacion-comercial',
+      'power-bi-ventas',
+    ].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    })),
   ]
 
   // `/meta-ads-campana` is intentionally excluded: it's a noindex landing
