@@ -1,16 +1,18 @@
 "use client"
 
-import { LinkedinIcon } from "lucide-react"
+import { LinkedinIcon, type LucideIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-const footerLinks = [
+type FooterLink = { title: string; href: string; icon?: LucideIcon }
+
+const footerLinks: { label: string; links: FooterLink[] }[] = [
   {
     label: "Empresa",
     links: [
       { title: "Servicios", href: "/#features" },
       { title: "Diagnóstico", href: "/diagnostico" },
-      { title: "Casos", href: "/#testimonials" },
+      { title: "Casos", href: "/casos" },
       { title: "Blog", href: "/blog" },
     ],
   },

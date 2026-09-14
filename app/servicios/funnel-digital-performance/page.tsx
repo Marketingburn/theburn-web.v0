@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as /diagnostico)
@@ -536,6 +537,13 @@ function FunnelCTA() {
 export default function FunnelDigitalPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Inicio", path: "" },
+          { name: "Servicios", path: "/#servicios" },
+          { name: "Funnel Digital de Performance", path: "/servicios/funnel-digital-performance" },
+        ]}
+      />
       <GlassmorphismNav />
       <main>
         <FunnelHero />

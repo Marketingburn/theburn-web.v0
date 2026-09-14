@@ -59,7 +59,7 @@ export function ContactForm({ isModal = false, onSuccess, defaultNecesidad }: Co
 
       if (!response.ok) throw new Error('Error en el servidor');
 
-      pushEvent('form_submitted', {
+      pushEvent('contact_form_submit', {
         form_type: 'contact',
         necesidad: formData.necesidad,
       });

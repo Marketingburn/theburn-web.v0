@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (same pattern as other service pages)
@@ -549,6 +550,165 @@ function DifferentiatorSection() {
 }
 
 // ---------------------------------------------------------------------------
+// CLUSTER HUB — pillar page connecting the full commercial consulting topic
+// ---------------------------------------------------------------------------
+
+function ClusterHubSection() {
+  const { ref, visible } = useInView()
+
+  const connections = [
+    {
+      title: "Marketing",
+      body: "La estrategia comercial define a quién dirigirse y con qué mensaje. Marketing ejecuta la captación y genera demanda alineada con ese foco.",
+      href: "/agencia-marketing-ventas-b2b",
+      label: "Agencia de marketing y ventas B2B",
+    },
+    {
+      title: "CRM",
+      body: "Un proceso comercial bien diseñado necesita un CRM que lo refleje: etapas, criterios de calificación y datos que el equipo realmente use.",
+      href: "/implementacion-procesos-comerciales",
+      label: "Implementación de procesos comerciales",
+    },
+    {
+      title: "Automatización",
+      body: "Cuando el proceso ya está ordenado, automatizar seguimiento y tareas repetitivas libera tiempo comercial sin perder control.",
+      href: "/automatizacion-comercial",
+      label: "Automatización comercial",
+    },
+    {
+      title: "Business Intelligence",
+      body: "Los datos comerciales solo son útiles si se convierten en decisiones. Power BI conecta pipeline, conversión y margen en una sola lectura.",
+      href: "/power-bi-ventas",
+      label: "Power BI para ventas",
+    },
+  ]
+
+  const relatedServices = [
+    { label: "Estrategia Comercial", href: "/estrategia-comercial" },
+    { label: "Consultora Comercial en Santiago", href: "/consultora-comercial-santiago" },
+    { label: "Consultoría Comercial B2B", href: "/consultoria-comercial-b2b" },
+    { label: "Consultoría Operacional", href: "/servicios/consultoria-operacional" },
+    { label: "Funnel Digital de Performance", href: "/servicios/funnel-digital-performance" },
+    { label: "Business Intelligence & Power BI", href: "/servicios/business-intelligence-power-bi" },
+  ]
+
+  const relatedContent = [
+    { label: "¿Qué es un diagnóstico comercial?", href: "/blog/que-es-un-diagnostico-comercial" },
+    { label: "Consultora comercial en Santiago: qué hace y cómo elegirla", href: "/blog/consultora-comercial-santiago" },
+    { label: "17 mejores consultoras comerciales en Chile [2026]", href: "/blog/mejores-consultoras-comerciales-chile-2026" },
+    { label: "Implementación de procesos comerciales: guía B2B", href: "/blog/implementacion-procesos-comerciales" },
+    { label: "Cómo aumentar las ventas B2B en Chile", href: "/blog/como-aumentar-ventas-b2b-chile-2026" },
+    { label: "Consultoría comercial vs agencia de marketing", href: "/blog/consultoria-comercial-vs-agencia-marketing" },
+  ]
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-20 sm:py-28 px-4 bg-[#F5F1EA]"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div
+          className={`mb-14 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <Badge>
+            <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0 inline-block" />
+            EL SISTEMA COMPLETO
+          </Badge>
+          <h2
+            className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance leading-none max-w-4xl"
+            style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.92" }}
+          >
+            Consultoría comercial es el centro que conecta{" "}
+            <span className="text-[#FF4500]">TODO LO DEMÁS.</span>
+          </h2>
+          <p
+            className="text-base sm:text-lg text-[#5A5650] mt-6 max-w-2xl leading-relaxed"
+            style={{ fontFamily: "var(--font-barlow)" }}
+          >
+            No trabajamos la estrategia comercial aislada del resto del negocio. Así se conecta con marketing, CRM, automatización y datos.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {connections.map(({ title, body, href, label }, i) => (
+            <div
+              key={title}
+              className={`rounded-2xl p-6 border border-[#E8E3DA] bg-white transition-all duration-700 hover:border-[#FF4500]/30 flex flex-col ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
+              <h3
+                className="text-lg font-black uppercase text-[#0A0A0A] mb-2"
+                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+              >
+                {title}
+              </h3>
+              <p
+                className="text-[#938B82] text-sm leading-relaxed mb-4 flex-1"
+                style={{ fontFamily: "var(--font-barlow)" }}
+              >
+                {body}
+              </p>
+              <a
+                href={href}
+                className="text-[#FF4500] text-sm font-bold uppercase inline-flex items-center gap-1"
+                style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
+              >
+                {label} &nbsp;→
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <h3
+              className="text-xl font-black uppercase text-[#0A0A0A] mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              Servicios relacionados
+            </h3>
+            <ul className="space-y-2">
+              {relatedServices.map(({ label, href }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="text-[#5A5650] hover:text-[#FF4500] text-sm underline underline-offset-2"
+                    style={{ fontFamily: "var(--font-barlow)" }}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3
+              className="text-xl font-black uppercase text-[#0A0A0A] mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              Contenido relacionado
+            </h3>
+            <ul className="space-y-2">
+              {relatedContent.map(({ label, href }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="text-[#5A5650] hover:text-[#FF4500] text-sm underline underline-offset-2"
+                    style={{ fontFamily: "var(--font-barlow)" }}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ---------------------------------------------------------------------------
 // CTA
 // ---------------------------------------------------------------------------
 
@@ -607,12 +767,20 @@ function CTASection() {
 export default function ConsultoriaComercialPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Inicio", path: "" },
+          { name: "Servicios", path: "/#servicios" },
+          { name: "Consultoría Comercial", path: "/servicios/consultoria-comercial" },
+        ]}
+      />
       <GlassmorphismNav />
       <main>
         <ConsultoriaHero />
         <ProblemSection />
         <WhatWeDoSection />
         <DifferentiatorSection />
+        <ClusterHubSection />
         <CTASection />
       <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
         <div className="max-w-2xl mx-auto">

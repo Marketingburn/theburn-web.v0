@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { HeroSection } from "@/components/hero-section"
 import { ProblemSolutionSection } from "@/components/problem-solution-section"
@@ -10,6 +11,15 @@ import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
 import { StickyMobileCTA } from "@/components/sticky-mobile-cta"
 import { QuickDiagnosticModal } from "@/components/quick-diagnostic-modal"
+
+export const metadata: Metadata = {
+  title: "Consultoría Comercial y Marketing Digital en Chile | The Burn",
+  description:
+    "Sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Diagnóstico gratuito para empresas en Santiago, Chile.",
+  alternates: {
+    canonical: "https://theburn.cl",
+  },
+}
 
 export default function HomePage() {
   return (

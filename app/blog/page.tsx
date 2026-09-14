@@ -3,25 +3,42 @@ import Link from "next/link"
 import { blogPosts } from "@/lib/blog-posts"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
   title: "Blog | The Burn - Marketing B2B y Estrategia Comercial Chile",
   description: "Recursos para crecer sin humo. Artículos sobre diagnóstico comercial, Power BI, funnels digitales y estrategia B2B en Chile.",
+  robots: "index, follow",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Blog | The Burn - Marketing B2B y Estrategia Comercial Chile",
     description: "Recursos para crecer sin humo. Artículos sobre diagnóstico comercial, Power BI, funnels digitales y estrategia B2B en Chile.",
+    url: "/blog",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "The Burn Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | The Burn - Marketing B2B y Estrategia Comercial Chile",
+    description: "Recursos para crecer sin humo. Artículos sobre diagnóstico comercial, Power BI, funnels digitales y estrategia B2B en Chile.",
+    images: ["/og-image.png"],
   },
 }
 
 export default function BlogPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Inicio", path: "" }, { name: "Blog", path: "/blog" }]} />
       <GlassmorphismNav />
       <h1 className="sr-only">Blog de Marketing B2B y Estrategia Comercial Chile</h1>
 
       {/* Hero Section */}
       <section className="min-h-[400px] flex items-center justify-center px-4 py-24 bg-[#F5F1EA]">
         <div className="max-w-4xl mx-auto text-center">
+          <Breadcrumbs className="justify-center flex mb-6" items={[{ name: "Inicio", href: "/" }, { name: "Blog" }]} />
           {/* Badge */}
           <div
             className="inline-flex items-center px-4 py-2 rounded-full bg-white border border-[#E8E3DA] text-[#938B82] text-sm mb-6 mx-auto"

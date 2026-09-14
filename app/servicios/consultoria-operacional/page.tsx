@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components (identical pattern to other service pages)
@@ -652,6 +653,13 @@ function CTASection() {
 export default function ConsultoriaOperacionalPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Inicio", path: "" },
+          { name: "Servicios", path: "/#servicios" },
+          { name: "Consultoría Operacional", path: "/servicios/consultoria-operacional" },
+        ]}
+      />
       <GlassmorphismNav />
       <main>
         <OperacionalHero />
