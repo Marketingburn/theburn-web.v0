@@ -24,12 +24,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
 
+  const url = `/blog/${post.slug}`
+
   return {
     title: `${post.title} | The Burn Blog`,
     description: post.metaDescription,
+    robots: "index, follow",
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
+      type: "article",
+      url,
       title: post.title,
       description: post.metaDescription,
+      publishedTime: post.dateISO,
+      modifiedTime: post.dateModifiedISO || post.dateISO,
+      authors: [post.author],
     },
   }
 }
@@ -41,8 +52,62 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
     notFound()
   }
 
+  const canonicalUrl = `https://theburn.cl/blog/${post.slug}`
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.metaDescription,
+        datePublished: post.dateISO,
+        dateModified: post.dateModifiedISO || post.dateISO,
+        author: {
+          "@type": "Person",
+          name: post.author,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "The Burn",
+          url: "https://theburn.cl",
+        },
+        mainEntityOfPage: canonicalUrl,
+        url: canonicalUrl,
+        inLanguage: "es-CL",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: "https://theburn.cl",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: "https://theburn.cl/blog",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.title,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GlassmorphismNav />
 
       {/* Article Header */}
