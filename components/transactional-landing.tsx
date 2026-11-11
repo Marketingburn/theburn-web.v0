@@ -25,14 +25,14 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
   return (
     <div className="min-h-screen overflow-hidden bg-[#f5f1ea] text-[#171717]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <BreadcrumbSchema items={[{ name: "Inicio", path: "" }, { name: landing.eyebrow.split("·")[0].trim(), path: "/#servicios" }, { name: landing.h1, path: `/${landing.slug}` }]} />
+      <BreadcrumbSchema items={[{ name: "Inicio", path: "" }, { name: landing.eyebrow.split("·")[0].trim(), path: "/servicios/consultoria-comercial" }, { name: landing.h1, path: `/${landing.slug}` }]} />
       <GlassmorphismNav />
       <main>
         <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-24 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:px-10 lg:pb-28 lg:pt-36">
           <div>
             <Breadcrumbs
               className="mb-5"
-              items={[{ name: "Inicio", href: "/" }, { name: landing.eyebrow.split("·")[0].trim(), href: "/#servicios" }, { name: landing.h1 }]}
+              items={[{ name: "Inicio", href: "/" }, { name: landing.eyebrow.split("·")[0].trim(), href: "/servicios/consultoria-comercial" }, { name: landing.h1 }]}
             />
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.22em] text-[#e5532d]">{landing.eyebrow}</p>
             <h1 className="max-w-4xl text-balance font-sans text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">{landing.h1}</h1>
@@ -61,6 +61,23 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
             <div className="grid gap-0 border-t border-[#171717]/20">{landing.method.map((step, index) => <div key={step} className="grid gap-4 border-b border-[#171717]/20 py-6 sm:grid-cols-[4rem_1fr] sm:items-start"><span className="font-mono text-sm text-[#e5532d]">0{index + 1}</span><p className="max-w-xl text-xl leading-8">{step}</p></div>)}</div>
           </div>
         </section>
+
+        {landing.deliverables && (
+          <section className="border-t border-[#171717]/10 bg-white">
+            <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-2 lg:px-10">
+              <div>
+                <h2 className="text-3xl font-semibold tracking-tight">Qué recibe tu equipo</h2>
+                <ul className="mt-6 space-y-4">{landing.deliverables.map(item => <li key={item} className="flex gap-3 leading-7"><Check className="mt-1 size-5 shrink-0 text-[#e5532d]" />{item}</li>)}</ul>
+              </div>
+              <div>
+                <h2 className="text-3xl font-semibold tracking-tight">Alcance, plazos e inversión</h2>
+                <p className="mt-6 leading-8 text-[#57534e]">{landing.scope}</p>
+                <Link href="/diagnostico" className="mt-6 inline-flex font-semibold text-[#b83a1c] underline underline-offset-4">Ver qué incluye el diagnóstico comercial</Link>
+                {landing.resource && <p className="mt-4"><Link href={landing.resource.href} className="text-sm underline underline-offset-4">{landing.resource.label}</Link></p>}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="bg-[#171717] text-[#f5f1ea]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24"><p className="font-mono text-xs uppercase tracking-[0.18em] text-[#f0825c]">Qué buscamos construir</p><div className="mt-10 grid gap-10 md:grid-cols-3">{landing.outcomes.map((outcome, index) => <div key={outcome} className="border-t border-[#f5f1ea]/25 pt-5"><div className="mb-7 text-[#f0825c]">{index === 0 ? <Target className="size-6" /> : index === 1 ? <Workflow className="size-6" /> : <Gauge className="size-6" />}</div><p className="text-xl leading-8">{outcome}</p></div>)}</div></div>

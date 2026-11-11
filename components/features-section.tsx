@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const services = [
   {
@@ -62,7 +62,7 @@ const services = [
     title: "Estrategia Comercial",
     description:
       "Definimos el proceso de ventas, los mensajes por segmento y el roadmap de crecimiento. Con métricas de seguimiento incluidas.",
-    href: "/servicios/estrategia-comercial",
+    href: "/estrategia-comercial",
   },
   {
     icon: (
@@ -82,7 +82,6 @@ const services = [
 export function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const router = useRouter()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -115,8 +114,7 @@ export function FeaturesSection() {
               className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-[#0A0A0A] text-balance mb-4 sm:mb-6"
               style={{ fontFamily: "var(--font-barlow-condensed)", lineHeight: "0.95" }}
             >
-              Un sistema que trabaja. No un{" "}
-              <span className="text-[#FF4500]">PDF</span> que se archiva.
+              Servicios de consultoría comercial y <span className="text-[#FF4500]">marketing B2B</span>.
             </h2>
             <p className="text-base sm:text-lg text-[#938B82] max-w-2xl leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
               Combinamos inteligencia de negocio, marketing de performance y automatización en un solo sistema adaptado a tu empresa.
@@ -148,14 +146,15 @@ export function FeaturesSection() {
                   {service.title}
                 </h3>
                 <p className="text-[#938B82] text-sm leading-relaxed mb-6" style={{ fontFamily: "var(--font-barlow)" }}>{service.description}</p>
-                <button
-                  onClick={() => router.push(service.href)}
+                <Link
+                  href={service.href}
+                  aria-label={`Ver ${service.title}`}
                   className="inline-flex items-center gap-2 text-[#FF4500] text-sm font-bold uppercase tracking-wide hover:text-[#FF4500]/80 transition-colors duration-200 group/btn"
                   style={{ fontFamily: "var(--font-barlow-condensed)" }}
                 >
                   Ver servicio
                   <span className="group-hover/btn:translate-x-1 transition-transform duration-200">→</span>
-                </button>
+                </Link>
               </div>
             ))}
           </div>

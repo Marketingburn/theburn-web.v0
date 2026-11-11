@@ -13,9 +13,9 @@ import { StickyMobileCTA } from "@/components/sticky-mobile-cta"
 import { QuickDiagnosticModal } from "@/components/quick-diagnostic-modal"
 
 export const metadata: Metadata = {
-  title: "Consultoría Comercial y Marketing Digital en Chile | The Burn",
+  title: "Consultoría Comercial y Marketing B2B en Chile | The Burn",
   description:
-    "Sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Diagnóstico gratuito para empresas en Santiago, Chile.",
+    "Conectamos marketing, ventas y datos para empresas B2B en Chile. Diagnóstico comercial de 3 semanas por $500.000 + IVA y roadmap de implementación.",
   alternates: {
     canonical: "https://theburn.cl",
   },
