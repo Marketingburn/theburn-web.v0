@@ -5,6 +5,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
 import Image from "next/image"
+import Link from "next/link"
 
 // ---------------------------------------------------------------------------
 // Shared micro-components
@@ -66,7 +67,6 @@ function useInView(threshold = 0.15) {
 function DiagnosticoHero() {
   return (
     <section className="min-h-screen flex items-center px-4 py-24 relative bg-[#F5F1EA] overflow-hidden">
-      <h1 className="sr-only">Diagnóstico Comercial y Marketing para Empresas B2B en Chile</h1>
       {/* Fire glow blurs */}
       <div
         className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none animate-fire-glow"
@@ -81,6 +81,7 @@ function DiagnosticoHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center pt-16">
           {/* Left */}
           <div>
+            <h1 className="mb-5 text-2xl font-bold text-[#0A0A0A]" style={{ fontFamily: "var(--font-barlow-condensed)" }}>Diagnóstico comercial y marketing para empresas B2B en Chile</h1>
             <Badge>
               <span className="w-2 h-2 bg-[#FF4500] rounded-sm mr-2 flex-shrink-0 inline-block" />
               PRIMER PASO &nbsp;·&nbsp; $500.000 CLP &nbsp;·&nbsp; 3 SEMANAS
@@ -623,6 +624,15 @@ export default function DiagnosticoPage() {
         <IncludesSection />
         <InvestmentSection />
         <FAQSection />
+        <section className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-3xl font-bold" style={{ fontFamily: "var(--font-barlow-condensed)" }}>Del diagnóstico a la implementación</h2>
+          <p className="mt-4 max-w-3xl leading-7 text-[#57534e]">El roadmap define qué conviene resolver primero. Según los hallazgos, podemos acompañar a tu equipo en estas áreas:</p>
+          <ul className="mt-6 flex flex-wrap gap-4">
+            <li><Link href="/consultoria-comercial-b2b" className="underline underline-offset-4">Consultoría comercial B2B</Link></li>
+            <li><Link href="/implementacion-procesos-comerciales" className="underline underline-offset-4">Implementación de procesos comerciales</Link></li>
+            <li><Link href="/automatizacion-comercial" className="underline underline-offset-4">Automatización comercial</Link></li>
+          </ul>
+        </section>
         <FinalCTA />
         <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
           <div className="max-w-2xl mx-auto">

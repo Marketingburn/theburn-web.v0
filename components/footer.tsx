@@ -1,6 +1,6 @@
 "use client"
 
-import { LinkedinIcon, type LucideIcon } from "lucide-react"
+import { type LucideIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -17,9 +17,13 @@ const footerLinks: { label: string; links: FooterLink[] }[] = [
     ],
   },
   {
-    label: "Redes",
+    label: "Consultoría B2B",
     links: [
-      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
+      { title: "Consultoría comercial B2B", href: "/consultoria-comercial-b2b" },
+      { title: "Procesos comerciales", href: "/implementacion-procesos-comerciales" },
+      { title: "Automatización comercial", href: "/automatizacion-comercial" },
+      { title: "Estrategia comercial", href: "/estrategia-comercial" },
+      { title: "Power BI para ventas", href: "/power-bi-ventas" },
     ],
   },
   {

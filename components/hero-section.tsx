@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import Link from "next/link"
 
 const ArrowRight = () => (
   <svg
@@ -20,35 +19,6 @@ const Play = () => (
     <path d="M8 5v14l11-7z" />
   </svg>
 )
-
-function RotatingWords() {
-  const words = ["Negocio", "Pipeline", "Equipo", "Estrategia", "Rentabilidad"]
-  const [index, setIndex] = useState(0)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % words.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <span
-      className="inline-flex items-center bg-[#FF4500] text-white font-barlow-condensed font-extrabold uppercase rounded-xl px-4 py-2 overflow-hidden"
-      style={{
-        fontFamily: "var(--font-barlow-condensed)",
-        fontSize: "clamp(36px, 10vw, 110px)",
-        lineHeight: "0.92",
-        animation: mounted ? "slideUp 0.4s ease-out" : "none",
-        minWidth: "200px",
-      }}
-    >
-      {mounted ? words[index] : words[0]}
-    </span>
-  )
-}
 
 const positioningPhrases = [
   "ESTRATEGIA, MARKETING Y DATOS EN UN EQUIPO",
@@ -89,10 +59,8 @@ export function HeroSection() {
           className="font-barlow-condensed font-extrabold uppercase text-[clamp(32px,9vw,120px)] leading-[1.0] text-[#0A0A0A] w-full block animate-fade-in-heading lg:text-center"
           style={{ fontFamily: "var(--font-barlow-condensed)" }}
         >
-          <span className="block">Consultoría comercial B2B</span>
-          <span className="flex items-center flex-wrap gap-2 lg:gap-3 mt-1 lg:mt-3 lg:justify-center">
-            <RotatingWords />
-          </span>
+          <span className="block">Consultoría comercial</span>
+          <span className="block text-[#FF4500]">y marketing B2B en Chile</span>
         </h1>
 
         {/* Subheading - Shorter for mobile */}
@@ -100,7 +68,7 @@ export function HeroSection() {
           className="text-[#938B82] text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl animate-fade-in-subheading font-normal lg:text-center" 
           style={{ fontFamily: "var(--font-barlow)" }}
         >
-          Consultora que diseña e implementa sistemas de marketing B2B con datos reales. Sin humo. Sin jerga.
+          Conectamos marketing, ventas y datos: proceso comercial, CRM, captación y seguimiento para que tu equipo sepa qué oportunidades llegan y cuáles se convierten en clientes.
         </p>
 
         {/* CTA Buttons - Both visible on mobile */}
@@ -108,23 +76,22 @@ export function HeroSection() {
           {/* Primary CTA - Full width on mobile */}
           <Button
             size="lg"
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+            asChild
             className="w-full sm:w-auto bg-[#FF4500] text-white rounded-full px-5 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-bold transition-all duration-300 hover:bg-[#0A0A0A] hover:scale-105 hover:shadow-lg group cursor-pointer min-h-[44px] sm:min-h-auto flex items-center justify-center"
             style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em" }}
           >
-            Agendar Diagnóstico
-            <ArrowRight />
+            <Link href="/diagnostico">Agendar Diagnóstico<ArrowRight /></Link>
           </Button>
 
           {/* Secondary CTA - Now visible on mobile too, but smaller */}
           <Button
+            asChild
             variant="outline"
             size="lg"
             className="w-full sm:w-auto rounded-full px-5 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 hover:scale-105 group bg-white cursor-pointer flex items-center justify-center"
             style={{ fontFamily: "var(--font-barlow)", fontWeight: 600 }}
           >
-            <Play />
-            Ver cómo
+            <Link href="#features"><Play />Ver servicios</Link>
           </Button>
         </div>
 

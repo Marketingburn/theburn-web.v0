@@ -240,9 +240,9 @@ export function AITeamSection() {
 
               <div className="p-5 bg-white rounded-xl border-l-4 border-[#FF4500]">
                 <p className="text-[#0A0A0A] font-medium text-sm leading-relaxed" style={{ fontFamily: "var(--font-barlow)" }}>
-                  &ldquo;El diagnóstico nos mostró en 3 semanas lo que no habíamos visto en 3 años. Ahora sabemos exactamente de dónde viene cada peso que entra.&rdquo;
+                  El diagnóstico entrega un mapa del proceso comercial, un análisis del negocio y un roadmap de 90 días con prioridades y métricas.
                 </p>
-                <p className="text-[#938B82] text-xs mt-2" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>— Carlos M., Gerente General</p>
+                <p className="text-[#938B82] text-xs mt-2" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>ENTREGABLES DEL DIAGNÓSTICO COMERCIAL</p>
               </div>
             </div>
 

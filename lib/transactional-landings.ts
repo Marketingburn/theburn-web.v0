@@ -14,6 +14,9 @@ export type TransactionalLanding = {
   related: { label: string; href: string }[]
   faq: { question: string; answer: string }[]
   need: string
+  deliverables?: string[]
+  scope?: string
+  resource?: { label: string; href: string }
 }
 
 export const transactionalLandings: TransactionalLanding[] = [
@@ -49,11 +52,14 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Win rate", "Pipeline coverage", "Tiempo por etapa", "Ticket y margen por segmento"],
     related: [{ label: "Funnel Digital de Performance", href: "/servicios/funnel-digital-performance" }, { label: "Power BI", href: "/servicios/business-intelligence-power-bi" }, { label: "Artículos de consultoría comercial", href: "/blog" }],
     faq: [{ question: "¿Sirve para equipos comerciales pequeños?", answer: "Sí. El sistema se adapta al nivel de madurez y a la cantidad de oportunidades que realmente gestiona el equipo." }, { question: "¿Trabajan sobre nuestro CRM?", answer: "Partimos con las herramientas y datos existentes, evaluando qué debe ordenarse antes de recomendar cambios." }, { question: "¿Pueden ayudar con la definición de segmentos?", answer: "Sí. La segmentación y el cliente ideal son parte de las decisiones que sostienen un proceso B2B." }],
+    deliverables: ["Criterios de cliente ideal y calificación compartidos por marketing y ventas", "Pipeline con etapas, responsables y criterios de avance", "Indicadores de conversión, ciclo de venta y calidad de oportunidades", "Rutina de revisión comercial y prioridades de implementación"],
+    scope: "Empezamos con un diagnóstico de 3 semanas por $500.000 CLP + IVA. La implementación se cotiza según el proceso, las herramientas y las integraciones que necesite tu empresa. Trabajamos de forma remota en Chile o presencial en Santiago según el proyecto.",
+    resource: { label: "Cómo aumentar las ventas B2B: guía de diagnóstico", href: "/blog/como-aumentar-ventas-b2b-chile-2026" },
     need: "Consultoría comercial B2B",
   },
   {
     slug: "implementacion-procesos-comerciales",
-    title: "Implementación de Procesos Comerciales | The Burn",
+    title: "Implementación de Procesos Comerciales B2B en Chile | The Burn",
     description: "Implementación de procesos comerciales para ordenar etapas, roles, métricas y rutinas de ventas en empresas B2B.",
     h1: "Implementación de procesos comerciales que el equipo sí puede usar",
     eyebrow: "Procesos comerciales · Implementación",
@@ -66,6 +72,9 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Adopción del proceso", "Cumplimiento de próximos pasos", "Conversión por etapa", "Tiempo de respuesta comercial"],
     related: [{ label: "Consultoría Operacional", href: "/servicios/consultoria-operacional" }, { label: "Automatización de Marketing", href: "/servicios/automatizacion-marketing" }, { label: "Diagnóstico", href: "/diagnostico" }],
     faq: [{ question: "¿Implementan procesos desde cero?", answer: "Sí, y también podemos ordenar procesos existentes que crecieron sin una estructura común." }, { question: "¿Incluye capacitación al equipo?", answer: "La adopción forma parte de la implementación: las herramientas deben poder ser entendidas y usadas por quienes venden." }, { question: "¿Cuánto se puede estandarizar?", answer: "Estandarizamos lo repetible sin eliminar el criterio necesario para ventas complejas." }],
+    deliverables: ["Mapa del proceso actual y del proceso objetivo", "Playbook con etapas, criterios de entrada y salida, roles y tiempos de seguimiento", "Requisitos de configuración del CRM, campos y tareas prioritarias", "Plan de adopción del equipo con indicadores y revisiones de uso"],
+    scope: "El diagnóstico inicial dura 3 semanas y cuesta $500.000 CLP + IVA. A partir de sus hallazgos acordamos alcance, herramientas y calendario de implementación. El plazo depende de las integraciones, los datos y la disponibilidad del equipo; no requiere cambiar de CRM por defecto.",
+    resource: { label: "Guía paso a paso para implementar un proceso comercial B2B", href: "/blog/implementacion-procesos-comerciales" },
     need: "Implementación de procesos comerciales",
   },
   {
@@ -100,6 +109,9 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Margen por segmento", "Mix de clientes y productos", "Tasa de retención", "Conversión de oportunidades prioritarias"],
     related: [{ label: "Consultoría Comercial", href: "/servicios/consultoria-comercial" }, { label: "Consultoría Operacional", href: "/servicios/consultoria-operacional" }, { label: "Diagnóstico", href: "/diagnostico" }],
     faq: [{ question: "¿La estrategia comercial reemplaza el plan de marketing?", answer: "No. Define el foco comercial que debe orientar marketing, ventas y decisiones de oferta." }, { question: "¿Pueden trabajar con información incompleta?", answer: "Sí. Partimos declarando supuestos y priorizamos la información que más valor aporta para decidir." }, { question: "¿La estrategia incluye un plan de ejecución?", answer: "La estrategia termina en prioridades y próximos pasos concretos, no solo en un documento." }],
+    deliverables: ["Priorización de segmentos y propuesta de valor", "Objetivos comerciales e indicadores de seguimiento", "Roadmap con acciones, responsables y prioridades"],
+    scope: "Partimos con el diagnóstico comercial de 3 semanas. El alcance de la estrategia y su implementación se acuerda según la situación de tu empresa.",
+    resource: { label: "Consultoría comercial y agencia de marketing: cuándo necesitas cada una", href: "/blog/consultoria-comercial-vs-agencia-marketing" },
     need: "Estrategia comercial",
   },
   {

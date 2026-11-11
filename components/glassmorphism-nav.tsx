@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 const services = [
   {
@@ -48,7 +48,7 @@ const services = [
 const navigation = [
   { name: "Servicios", href: null, isDropdown: true },
   { name: "Diagnóstico", href: "/diagnostico" },
-  { name: "Casos", href: "/#testimonials" },
+  { name: "Casos", href: "/casos" },
   { name: "Blog", href: "/blog" },
 ]
 
@@ -59,7 +59,6 @@ export function GlassmorphismNav() {
   const [isServiciosOpen, setIsServiciosOpen] = useState(false)
   const [isMobileServiciosOpen, setIsMobileServiciosOpen] = useState(false)
   const lastScrollY = useRef(0)
-  const router = useRouter()
   const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -114,27 +113,6 @@ export function GlassmorphismNav() {
       return () => document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [isServiciosOpen])
-
-  const scrollToSection = (href: string) => {
-    if (href === "#") return
-    if (href.startsWith("/")) {
-      router.push(href)
-      setIsOpen(false)
-      setIsServiciosOpen(false)
-      return
-    }
-    const element = document.querySelector(href)
-    if (element) {
-      const rect = element.getBoundingClientRect()
-      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop
-      const elementAbsoluteTop = rect.top + currentScrollY
-      const navbarHeight = 100
-      const targetPosition = Math.max(0, elementAbsoluteTop - navbarHeight)
-      window.scrollTo({ top: targetPosition, behavior: "smooth" })
-    }
-    setIsOpen(false)
-    setIsServiciosOpen(false)
-  }
 
   return (
     <>
@@ -199,15 +177,11 @@ export function GlassmorphismNav() {
                                 </p>
                                 <div className="space-y-3">
                                   {services.map((service) => (
-                                    <button
+                                    <Link
                                       key={service.title}
-                                      onClick={() => {
-                                        setIsServiciosOpen(false)
-                                        setTimeout(() => {
-                                          router.push(service.href)
-                                        }, 150)
-                                      }}
-                                      className="w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
+                                      href={service.href}
+                              onClick={() => { setIsOpen(false); setIsServiciosOpen(false); setIsMobileServiciosOpen(false) }}
+                                      className="block w-full text-left p-3 rounded-lg hover:bg-[#F5F1EA] transition-all duration-150 group"
                                       style={{ pointerEvents: "auto" }}
                                     >
                                       <div className="text-lg mb-1 group-hover:scale-110 transition-transform duration-150">{service.icon}</div>
@@ -217,7 +191,7 @@ export function GlassmorphismNav() {
                                       <div className="text-xs text-[#938B82] mt-0.5" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
                                         {service.description}
                                       </div>
-                                    </button>
+                                    </Link>
                                   ))}
                                 </div>
                               </div>
@@ -244,8 +218,9 @@ export function GlassmorphismNav() {
                                     El diagnóstico comercial muestra exactamente qué está frenando tu crecimiento.
                                   </p>
                                 </div>
-                                <button
-                                  onClick={() => router.push("/diagnostico")}
+                                <Link
+                                  href="/diagnostico"
+                                  onClick={() => setIsServiciosOpen(false)}
                                   className="mt-4 bg-[#FF4500] hover:bg-[#FF6B20] text-[#0A0A0A] font-bold px-4 py-2.5 rounded-full text-xs transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-2"
                                   style={{ fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
                                 >
@@ -253,7 +228,7 @@ export function GlassmorphismNav() {
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                                   </svg>
-                                </button>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -261,30 +236,32 @@ export function GlassmorphismNav() {
                       )}
                     </div>
                   ) : (
-                    <button
+                    <Link
                       key={item.name}
-                      onClick={() => scrollToSection(item.href!)}
+                      href={item.href!}
+                      onClick={() => setIsOpen(false)}
                       className="text-[#938B82] hover:text-[#0A0A0A] transition-all duration-200 text-sm font-medium cursor-pointer px-4 py-2 rounded-lg hover:bg-white/50"
                       style={{ fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                     >
                       {item.name}
-                    </button>
+                    </Link>
                   )
                 )}
               </div>
 
               {/* Desktop CTA */}
               <div className="hidden md:block" style={{ pointerEvents: "auto" }}>
-                <button
+                <Link
                   className="bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold px-6 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer text-sm"
                   style={{ fontFamily: "var(--font-barlow-condensed)", letterSpacing: "0.02em", pointerEvents: "auto" }}
-                  onClick={() => router.push("/diagnostico")}
+                  href="/diagnostico"
+                  onClick={() => setIsOpen(false)}
                 >
                   Agendar Diagnóstico
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
 
               {/* Mobile Menu Button */}
@@ -346,16 +323,11 @@ export function GlassmorphismNav() {
                       {isMobileServiciosOpen && (
                         <div className="pl-4 space-y-2 mt-2" style={{ pointerEvents: "auto" }}>
                           {services.map((service) => (
-                            <button
+                            <Link
                               key={service.title}
-                              onClick={() => {
-                                setIsOpen(false)
-                                setIsMobileServiciosOpen(false)
-                                setTimeout(() => {
-                                  router.push(service.href)
-                                }, 150)
-                              }}
-                              className="w-full text-left text-sm p-2 rounded-lg hover:bg-black/5 transition-all duration-150"
+                              href={service.href}
+                              onClick={() => { setIsOpen(false); setIsServiciosOpen(false); setIsMobileServiciosOpen(false) }}
+                              className="block w-full text-left text-sm p-2 rounded-lg hover:bg-black/5 transition-all duration-150"
                               style={{ fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                             >
                               <div className="flex items-start gap-2">
@@ -367,37 +339,39 @@ export function GlassmorphismNav() {
                                   </div>
                                 </div>
                               </div>
-                            </button>
+                            </Link>
                           ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <button
+                    <Link
                       key={item.name}
-                      onClick={() => scrollToSection(item.href!)}
+                      href={item.href!}
+                      onClick={() => setIsOpen(false)}
                       className={`text-[#938B82] hover:text-[#0A0A0A] hover:bg-black/5 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer text-sm ${
                         isOpen ? "animate-mobile-menu-item" : ""
                       }`}
                       style={{ animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms", fontFamily: "var(--font-barlow)", pointerEvents: "auto" }}
                     >
                       {item.name}
-                    </button>
+                    </Link>
                   )
                 )}
                 <div className="h-px bg-black/10 my-2" />
-                <button
+                <Link
                   className={`bg-[#0A0A0A] hover:bg-[#FF4500] text-white hover:text-[#0A0A0A] font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer w-full justify-center ${
                     isOpen ? "animate-mobile-menu-item" : ""
                   }`}
                   style={{ animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms", fontFamily: "var(--font-barlow-condensed)", pointerEvents: "auto" }}
-                  onClick={() => router.push("/diagnostico")}
+                  href="/diagnostico"
+                  onClick={() => setIsOpen(false)}
                 >
                   Agendar Diagnóstico
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
