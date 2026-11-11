@@ -19,6 +19,7 @@ const footerLinks: { label: string; links: FooterLink[] }[] = [
   {
     label: "Consultoría B2B",
     links: [
+      { title: "Marketing y ventas B2B", href: "/agencia-marketing-ventas-b2b" },
       { title: "Consultoría comercial B2B", href: "/consultoria-comercial-b2b" },
       { title: "Procesos comerciales", href: "/implementacion-procesos-comerciales" },
       { title: "Automatización comercial", href: "/automatizacion-comercial" },

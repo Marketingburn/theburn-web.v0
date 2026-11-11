@@ -74,7 +74,9 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
   const sameCategory = blogPosts.filter((p) => p.category === post.category && p.slug !== post.slug)
   const otherPosts = blogPosts.filter((p) => p.category !== post.category && p.slug !== post.slug)
   const relatedPosts = [...sameCategory, ...otherPosts].slice(0, 3)
-  const relatedService = categoryToService[post.category]
+  const relatedService = post.slug === "consultoria-comercial-vs-agencia-marketing"
+    ? categoryToService["Marketing B2B"]
+    : categoryToService[post.category]
 
   const canonicalUrl = `https://theburn.cl/blog/${post.slug}`
 

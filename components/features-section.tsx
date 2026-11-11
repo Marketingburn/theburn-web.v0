@@ -5,6 +5,13 @@ import Link from "next/link"
 
 const services = [
   {
+    icon: <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6h18l-7 8v5l-4 2v-7L3 6z" /></svg>,
+    tag: "Marketing B2B",
+    title: "Marketing y ventas B2B en Chile",
+    description: "Conectamos captación, CRM y seguimiento comercial para medir qué contactos se convierten en reuniones, propuestas y clientes.",
+    href: "/agencia-marketing-ventas-b2b",
+  },
+  {
     icon: (
       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

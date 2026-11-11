@@ -9,6 +9,12 @@ import { usePathname } from "next/navigation"
 const services = [
   {
     icon: "🎯",
+    title: "Marketing y Ventas B2B",
+    description: "Conecta captación, CRM y ventas.",
+    href: "/agencia-marketing-ventas-b2b",
+  },
+  {
+    icon: "🎯",
     title: "Consultoría Comercial",
     description: "Vende con un proceso claro.",
     href: "/servicios/consultoria-comercial",
