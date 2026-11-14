@@ -32,9 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "The Burn | Consultoría Comercial y Marketing Digital Chile",
+  title: "The Burn | Consultora Comercial B2B en Chile",
   description:
-    "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing. Santiago, Chile.",
+    "Consultora comercial B2B en Chile. Conectamos estrategia comercial, marketing, ventas y datos con implementación y un roadmap claro de crecimiento.",
   generator: "v0.app",
   robots: "index, follow",
   metadataBase: new URL("https://theburn.cl"),
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
     locale: "es_CL",
     url: "https://theburn.cl",
     siteName: "The Burn",
-    title: "The Burn | Consultoría Comercial y Marketing Digital",
-    description: "Sistemas de crecimiento comercial con inteligencia de negocio y automatización de marketing.",
+    title: "The Burn | Consultora Comercial B2B en Chile",
+    description: "Conectamos estrategia comercial, marketing, ventas y datos para empresas B2B en Chile.",
     images: [
       {
         url: "/og-image.png",
@@ -91,7 +91,7 @@ const organizationJsonLd = {
   logo: "https://theburn.cl/logo-theburn.png",
   image: "https://theburn.cl/og-image.png",
   description:
-    "Consultora chilena que implementa sistemas de crecimiento comercial con inteligencia de negocio, funnel digital y automatización de marketing.",
+    "Consultora comercial B2B en Chile que conecta estrategia, marketing, ventas y datos con implementación.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Santiago",
