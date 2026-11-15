@@ -430,14 +430,14 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "mejores-consultoras-comerciales-chile-2026",
-    title: "17 mejores consultoras comerciales en Chile para empresas B2B [2026]",
-    metaDescription: "Comparativa 2026 de 17 consultoras comerciales en Chile: estrategia de ventas, procesos, CRM, RevOps, marketing B2B, prospección y analítica.",
+    title: "17 mejores consultoras comerciales en Chile (2026)",
+    metaDescription: "Compara 17 consultoras comerciales en Chile por especialidad, método y encaje B2B. Una guía para elegir según el desafío de ventas de tu empresa.",
     category: "Consultoría",
     date: "13 de septiembre de 2026",
     dateISO: "2026-09-13",
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
-    excerpt: "Comparativa de 17 consultoras y agencias con foco comercial que operan en Chile, según especialidad y tipo de empresa.",
+    excerpt: "Compara 17 consultoras comerciales en Chile según su especialidad y encaje para empresas B2B.",
     content: `<blockquote>
 <p><strong>Respuesta rápida:</strong> Si buscas una <strong>consultora comercial en Chile</strong>, no existe una única alternativa que sea la mejor para todas las empresas. La elección depende de si tu problema principal está en la estrategia comercial, el proceso de ventas, la generación de demanda, el CRM, RevOps, la prospección, la capacitación del equipo o la analítica.</p>
 <p>En esta guía comparamos <strong>17 consultoras y agencias con foco comercial que operan en Chile</strong>. La selección se construyó revisando su propuesta pública, especialización, tipo de implementación y encaje para empresas B2B. No es un ranking pagado ni está ordenado de mejor a peor.</p>
