@@ -86,7 +86,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "The Burn",
-  alternateName: "The Burn SpA",
+  legalName: "THE BURN SpA",
   url: "https://theburn.cl",
   logo: "https://theburn.cl/logo-theburn.png",
   image: "https://theburn.cl/og-image.png",
@@ -116,7 +116,7 @@ export default function RootLayout({
     <html lang="es" className="bg-background">
       <head>
         {/* Organization / LocalBusiness structured data */}
-        <Script
+        <script
           id="organization-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
