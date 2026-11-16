@@ -35,6 +35,8 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Conversión por etapa", "Duración del ciclo de venta", "Cobertura y calidad del pipeline", "Margen por cliente o línea"],
     related: [{ label: "Consultoría Comercial", href: "/servicios/consultoria-comercial" }, { label: "Diagnóstico comercial", href: "/diagnostico" }, { label: "Contacto", href: "/contacto" }],
     faq: [{ question: "¿Trabajan solo con empresas de Santiago?", answer: "La operación puede ser remota o presencial según el proyecto, pero conocemos especialmente el contexto comercial de empresas B2B en Santiago y Chile." }, { question: "¿La consultoría incluye implementación?", answer: "Sí. El foco está en convertir el análisis en decisiones, herramientas y rutinas que el equipo pueda usar." }, { question: "¿Qué necesitan para comenzar?", answer: "Una conversación sobre el negocio, sus objetivos, el proceso actual y los datos comerciales disponibles." }],
+    deliverables: ["Mapa del proceso comercial actual y principales puntos de fuga", "Etapas, responsables y criterios para avanzar cada oportunidad", "Indicadores prioritarios y plan de acción acordado con la gerencia"],
+    scope: "Comenzamos con un diagnóstico de 3 semanas por $500.000 CLP + IVA. Trabajamos de forma remota en Chile o presencial en Santiago según el proyecto. La implementación se cotiza por separado.",
     need: "Consultora comercial en Santiago",
   },
   {
@@ -140,6 +142,8 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Tiempo de respuesta", "Tareas automatizadas", "Oportunidades sin próximo paso", "Calidad y completitud de datos"],
     related: [{ label: "Automatización de Marketing", href: "/servicios/automatizacion-marketing" }, { label: "Procesos Comerciales", href: "/implementacion-procesos-comerciales" }, { label: "Power BI", href: "/power-bi-ventas" }],
     faq: [{ question: "¿Qué herramientas automatizan?", answer: "Evaluamos las herramientas que ya usas y el flujo real antes de recomendar integraciones o cambios." }, { question: "¿La automatización reemplaza al equipo comercial?", answer: "No. Libera tiempo operativo para que el equipo se concentre en conversaciones y decisiones de mayor valor." }, { question: "¿Pueden comenzar con un proceso puntual?", answer: "Sí. Priorizamos un caso acotado que permita validar impacto y adopción." }],
+    deliverables: ["Mapa del flujo comercial actual, responsables y puntos de decisión", "Priorización de tareas repetitivas según impacto, frecuencia y riesgos", "Requisitos de datos, herramientas y controles para implementar el flujo", "Indicadores de seguimiento y plan de adopción para el equipo"],
+    scope: "Partimos con el diagnóstico comercial de 3 semanas por $500.000 CLP + IVA. El diseño y la implementación posteriores se cotizan según el proceso y las herramientas involucradas.",
     need: "Automatización comercial",
   },
   {
@@ -157,6 +161,8 @@ export const transactionalLandings: TransactionalLanding[] = [
     metrics: ["Ventas y margen", "Conversión por etapa", "Forecast y cobertura", "Rendimiento por segmento o vendedor"],
     related: [{ label: "Business Intelligence & Power BI", href: "/servicios/business-intelligence-power-bi" }, { label: "Consultoría Comercial", href: "/servicios/consultoria-comercial" }, { label: "Consultoría Operacional", href: "/servicios/consultoria-operacional" }],
     faq: [{ question: "¿Necesitamos tener Power BI instalado?", answer: "No necesariamente. Revisamos tu contexto actual y definimos el camino más adecuado para conectar y visualizar los datos." }, { question: "¿Pueden integrar varias fuentes?", answer: "Sí. El modelamiento y la calidad de las fuentes son parte central de un dashboard útil." }, { question: "¿El tablero se adapta a nuestro negocio?", answer: "Sí. Partimos de las decisiones comerciales y no de una plantilla genérica de indicadores." }],
+    deliverables: ["Definición de las preguntas comerciales que debe responder el tablero", "Inventario de fuentes disponibles y revisión de calidad de datos", "Propuesta de indicadores y vistas para ventas, margen y oportunidades", "Criterios de actualización, acceso y uso del tablero por el equipo"],
+    scope: "El alcance, las fuentes a conectar y las licencias necesarias se definen según el proyecto. Los costos de licencias y servicios de terceros se informan en la propuesta.",
     need: "Power BI para ventas",
   },
 ]
