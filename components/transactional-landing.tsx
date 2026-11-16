@@ -11,6 +11,13 @@ import type { TransactionalLanding as LandingData } from "@/lib/transactional-la
 const siteUrl = "https://theburn.cl"
 
 export function TransactionalLanding({ landing }: { landing: LandingData }) {
+  const parent = landing.slug === "power-bi-ventas"
+    ? { name: "Business Intelligence y Power BI", path: "/servicios/business-intelligence-power-bi" }
+    : landing.slug === "consultora-comercial-santiago"
+      ? { name: "Consultoría comercial", path: "/servicios/consultoria-comercial" }
+      : null
+  const schemaBreadcrumbs = [{ name: "Inicio", path: "" }, ...(parent ? [parent] : []), { name: landing.h1, path: `/${landing.slug}` }]
+  const visibleBreadcrumbs = [{ name: "Inicio", href: "/" }, ...(parent ? [{ name: parent.name, href: parent.path }] : []), { name: landing.h1 }]
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -25,14 +32,14 @@ export function TransactionalLanding({ landing }: { landing: LandingData }) {
   return (
     <div className="min-h-screen overflow-hidden bg-[#f5f1ea] text-[#171717]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <BreadcrumbSchema items={[{ name: "Inicio", path: "" }, { name: landing.eyebrow.split("·")[0].trim(), path: "/servicios/consultoria-comercial" }, { name: landing.h1, path: `/${landing.slug}` }]} />
+      <BreadcrumbSchema items={schemaBreadcrumbs} />
       <GlassmorphismNav />
       <main>
         <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-24 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:px-10 lg:pb-28 lg:pt-36">
           <div>
             <Breadcrumbs
               className="mb-5"
-              items={[{ name: "Inicio", href: "/" }, { name: landing.eyebrow.split("·")[0].trim(), href: "/servicios/consultoria-comercial" }, { name: landing.h1 }]}
+              items={visibleBreadcrumbs}
             />
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.22em] text-[#e5532d]">{landing.eyebrow}</p>
             <h1 className="max-w-4xl text-balance font-sans text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">{landing.h1}</h1>
