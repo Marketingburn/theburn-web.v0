@@ -12,7 +12,6 @@ const footerLinks: { label: string; links: FooterLink[] }[] = [
     links: [
       { title: "Servicios", href: "/#features" },
       { title: "Diagnóstico", href: "/diagnostico" },
-      { title: "Casos", href: "/casos" },
       { title: "Blog", href: "/blog" },
     ],
   },
@@ -53,6 +52,7 @@ export function Footer() {
           <p className="text-[#938B82] text-sm" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.08em" }}>
             MENOS BLA, MÁS MARKETING.
           </p>
+          <p className="text-[#938B82] text-sm">The Burn y <a className="underline hover:text-white" href="https://www.agenciapyme.cl/">AgencIA Pyme</a> son marcas de THE BURN SpA.</p>
           <p className="text-[#2A2725] text-xs hidden md:block" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
             © {new Date().getFullYear()} THE BURN SpA · SANTIAGO, CHILE · THEBURN.CL
           </p>
