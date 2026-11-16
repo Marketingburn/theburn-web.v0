@@ -12,7 +12,6 @@ const footerLinks: { label: string; links: FooterLink[] }[] = [
     links: [
       { title: "Servicios", href: "/#features" },
       { title: "Diagnóstico", href: "/diagnostico" },
-      { title: "Casos", href: "/casos" },
       { title: "Blog", href: "/blog" },
     ],
   },
@@ -20,7 +19,7 @@ const footerLinks: { label: string; links: FooterLink[] }[] = [
     label: "Consultoría B2B",
     links: [
       { title: "Marketing y ventas B2B", href: "/agencia-marketing-ventas-b2b" },
-      { title: "Consultoría comercial B2B", href: "/consultoria-comercial-b2b" },
+      { title: "Consultoría comercial B2B", href: "/servicios/consultoria-comercial" },
       { title: "Procesos comerciales", href: "/implementacion-procesos-comerciales" },
       { title: "Automatización comercial", href: "/automatizacion-comercial" },
       { title: "Estrategia comercial", href: "/estrategia-comercial" },

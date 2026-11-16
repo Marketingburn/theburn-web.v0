@@ -26,7 +26,7 @@ const phases = [
       </svg>
     ),
     description: "Activamos los sistemas acordados: Power BI, funnel digital, automatizaciones. Adaptado a tu empresa, no un template.",
-    deliverable: "Fee mensual + % sobre resultados",
+    deliverable: "Alcance y honorarios según proyecto",
   },
   {
     id: 3,

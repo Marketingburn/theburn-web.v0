@@ -5,7 +5,6 @@ import { ProblemSolutionSection } from "@/components/problem-solution-section"
 import { FeaturesSection } from "@/components/features-section"
 import { AITeamSection } from "@/components/ai-team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
-import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
@@ -34,7 +33,6 @@ export default function HomePage() {
           <FeaturesSection />
           <AITeamSection />
           <TestimonialsSection />
-          <ROICalculatorSection />
           <CTASection />
           <section id="contacto" className="bg-[#0A0A0A] py-16 px-4">
             <div className="max-w-2xl mx-auto">

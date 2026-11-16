@@ -43,18 +43,11 @@ const services = [
     description: "Mide tus procesos. Gana más margen.",
     href: "/servicios/consultoria-operacional",
   },
-  {
-    icon: "⚡",
-    title: "Diagnóstico Exprés",
-    description: "Gratis · 3 minutos · Resultado inmediato",
-    href: "/diagnostico-expres",
-  },
 ]
 
 const navigation = [
   { name: "Servicios", href: null, isDropdown: true },
   { name: "Diagnóstico", href: "/diagnostico" },
-  { name: "Casos", href: "/casos" },
   { name: "Blog", href: "/blog" },
 ]
 

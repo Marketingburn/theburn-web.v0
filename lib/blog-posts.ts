@@ -1066,14 +1066,14 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "agencia-marketing-comercial-b2b-chile",
-    title: "Agencia de marketing y comercial B2B en Chile: cómo funciona un modelo integrado",
-    metaDescription: "Qué hace una agencia de marketing y comercial B2B, cómo conecta marketing con ventas, qué métricas debe medir y cuándo conviene contratar una en Chile.",
+    title: "Cómo integrar marketing y ventas B2B: guía práctica",
+    metaDescription: "Aprende a conectar marketing y ventas B2B: calificación de leads, CRM, pipeline y métricas para mejorar la coordinación comercial.",
     category: "Marketing B2B",
     date: "13 de septiembre de 2026",
     dateISO: "2026-09-13",
     author: "Javier Troncoso",
     authorRole: "Co-founder, The Burn SpA",
-    excerpt: "Cómo un modelo de agencia de marketing y comercial conecta demanda, CRM y ventas en empresas B2B de Chile.",
+    excerpt: "Una guía para conectar demanda, CRM y ventas y medir el avance de las oportunidades comerciales.",
     content: `<blockquote>
 <p><strong>Respuesta rápida:</strong> Una agencia de marketing y comercial B2B no debería limitarse a generar clics o formularios. Su función es conectar adquisición con el proceso que transforma esos contactos en oportunidades y clientes. Eso implica trabajar sobre varias capas: <strong>Demanda → Conversión → Calificación → CRM → Seguimiento → Pipeline → Venta → Analítica</strong>. Este modelo es especialmente útil para empresas B2B con tickets medios o altos, ciclos de venta largos y equipos comerciales que necesitan una fuente predecible de oportunidades.</p>
 </blockquote>
