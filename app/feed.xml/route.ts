@@ -1,5 +1,7 @@
 import { blogPosts } from "@/lib/blog-posts"
 
+export const dynamic = "force-static"
+
 const baseUrl = "https://theburn.cl"
 
 function escapeXml(value: string) {

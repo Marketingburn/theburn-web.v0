@@ -11,8 +11,9 @@ export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const caso = getCaseStudyBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const caso = getCaseStudyBySlug(slug)
   if (!caso) {
     return { title: "Caso no encontrado" }
   }
@@ -35,8 +36,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
  * Plantilla técnica para casos de éxito. No se renderizan casos hasta que
  * existan datos reales en lib/casos.ts — ver Fase 15 de SEO-IMPLEMENTATION.md.
  */
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const caso = getCaseStudyBySlug(params.slug)
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const caso = getCaseStudyBySlug(slug)
 
   if (!caso) {
     notFound()

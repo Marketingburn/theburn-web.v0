@@ -1,0 +1,939 @@
+{
+ "/agencia-marketing-ventas-b2b": {
+  "title": "Agencia de Marketing B2B en Chile | Marketing y Ventas — The Burn",
+  "description": "Agencia de marketing B2B en Chile: conectamos captación, CRM y seguimiento comercial. Diagnóstico de 3 semanas y plan para convertir leads en oportunidades.",
+  "canonical": "https://theburn.cl/agencia-marketing-ventas-b2b",
+  "robots": "index, follow",
+  "ogTitle": "Agencia de Marketing B2B en Chile | Marketing y Ventas — The Burn",
+  "h1": [
+   "Agencia de marketing B2B en Chile que conecta marketing con ventas"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/agencia-marketing-comercial-b2b-chile",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/automatizacion-comercial": {
+  "title": "Automatización Comercial y Marketing | The Burn",
+  "description": "Automatización comercial para ordenar seguimiento, marketing, datos y tareas repetitivas sin perder control del proceso.",
+  "canonical": "https://theburn.cl/automatizacion-comercial",
+  "robots": "index, follow",
+  "ogTitle": "Automatización Comercial y Marketing | The Burn",
+  "h1": [
+   "Automatización comercial para que ninguna oportunidad dependa de la memoria"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/automatizacion-marketing",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/autor/javier-troncoso": {
+  "title": "Javier Troncoso | Autor en The Burn",
+  "description": "Perfil de Javier Troncoso, Co-founder, The Burn SpA. Artículos sobre consultoría comercial, procesos de ventas, marketing B2B y Business Intelligence.",
+  "canonical": "https://theburn.cl/autor/javier-troncoso",
+  "robots": "index, follow",
+  "ogTitle": "Javier Troncoso | The Burn",
+  "h1": [
+   "Javier Troncoso"
+  ],
+  "h2count": 1,
+  "jsonld": [
+   "Person",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/agencia-marketing-comercial-b2b-chile",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/consultora-comercial-santiago",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/implementacion-procesos-comerciales",
+   "/blog/mejores-consultoras-comerciales-chile-2026",
+   "/blog/que-es-costo-por-lead-como-calcularlo",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/agencia-marketing-comercial-b2b-chile": {
+  "title": "Cómo integrar marketing y ventas B2B: guía práctica | The Burn Blog",
+  "description": "Aprende a conectar marketing y ventas B2B: calificación de leads, CRM, pipeline y métricas para mejorar la coordinación comercial.",
+  "canonical": "https://theburn.cl/blog/agencia-marketing-comercial-b2b-chile",
+  "robots": "index, follow",
+  "ogTitle": "Cómo integrar marketing y ventas B2B: guía práctica",
+  "h1": [
+   "Cómo integrar marketing y ventas B2B: guía práctica"
+  ],
+  "h2count": 11,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/blog/como-aumentar-ventas-b2b-chile-2026": {
+  "title": "Cómo aumentar las ventas B2B en Chile: guía completa y sistema de diagnóstico [2026] | The Burn Blog",
+  "description": "Guía 2026 para aumentar ventas B2B en Chile conectando estrategia, marketing, proceso comercial, CRM, automatización, RevOps y Business Intelligence.",
+  "canonical": "https://theburn.cl/blog/como-aumentar-ventas-b2b-chile-2026",
+  "robots": "index, follow",
+  "ogTitle": "Cómo aumentar las ventas B2B en Chile: guía completa y sistema de diagnóstico [2026]",
+  "h1": [
+   "Cómo aumentar las ventas B2B en Chile: guía completa y sistema de diagnóstico [2026]"
+  ],
+  "h2count": 25,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/agencia-marketing-comercial-b2b-chile",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/implementacion-procesos-comerciales",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/como-crear-funnel-ventas-b2b-chile": {
+  "title": "¿Cómo crear un funnel de ventas B2B en Chile paso a paso? | The Burn Blog",
+  "description": "Un funnel B2B lleva al prospecto desde que descubre tu empresa hasta que firma. Guía práctica paso a paso.",
+  "canonical": "https://theburn.cl/blog/como-crear-funnel-ventas-b2b-chile",
+  "robots": "index, follow",
+  "ogTitle": "¿Cómo crear un funnel de ventas B2B en Chile paso a paso?",
+  "h1": [
+   "¿Cómo crear un funnel de ventas B2B en Chile paso a paso?"
+  ],
+  "h2count": 9,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/agencia-marketing-comercial-b2b-chile",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/implementacion-procesos-comerciales",
+   "/blog/que-es-costo-por-lead-como-calcularlo",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/blog/consultora-comercial-santiago": {
+  "title": "Consultora comercial en Santiago: qué hace, cómo elegir y cuándo contratarla | The Burn Blog",
+  "description": "Guía para elegir una consultora comercial en Santiago: servicios, procesos, CRM, métricas, señales de alerta y criterios para contratar en 2026.",
+  "canonical": "https://theburn.cl/blog/consultora-comercial-santiago",
+  "robots": "index, follow",
+  "ogTitle": "Consultora comercial en Santiago: qué hace, cómo elegir y cuándo contratarla",
+  "h1": [
+   "Consultora comercial en Santiago: qué hace, cómo elegir y cuándo contratarla"
+  ],
+  "h2count": 11,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/blog/mejores-consultoras-comerciales-chile-2026",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/consultora-comercial-santiago",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/consultoria-comercial-vs-agencia-marketing": {
+  "title": "Consultoría comercial vs agencia de marketing: ¿cuál necesita tu empresa? | The Burn Blog",
+  "description": "La diferencia entre diseñar el proceso de ventas y ejecutar campañas. Cuándo usar cada una.",
+  "canonical": "https://theburn.cl/blog/consultoria-comercial-vs-agencia-marketing",
+  "robots": "index, follow",
+  "ogTitle": "Consultoría comercial vs agencia de marketing: ¿cuál necesita tu empresa?",
+  "h1": [
+   "Consultoría comercial vs agencia de marketing: ¿cuál necesita tu empresa?"
+  ],
+  "h2count": 9,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/consultora-comercial-santiago",
+   "/blog/mejores-consultoras-comerciales-chile-2026",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/cuanto-cuesta-power-bi-empresa-chile": {
+  "title": "¿Cuánto cuesta implementar Power BI en una empresa en Chile? | The Burn Blog",
+  "description": "El costo real de Power BI no está en la licencia sino en la implementación. Guía con precios referenciales 2026.",
+  "canonical": "https://theburn.cl/blog/cuanto-cuesta-power-bi-empresa-chile",
+  "robots": "index, follow",
+  "ogTitle": "¿Cuánto cuesta implementar Power BI en una empresa en Chile?",
+  "h1": [
+   "¿Cuánto cuesta implementar Power BI en una empresa en Chile?"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/que-es-costo-por-lead-como-calcularlo",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/business-intelligence-power-bi",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/implementacion-procesos-comerciales": {
+  "title": "Implementación de procesos comerciales: guía B2B paso a paso [2026] | The Burn Blog",
+  "description": "Cómo implementar un proceso comercial B2B: pipeline, etapas, SLA, CRM, automatización, KPIs, forecast y plan de implementación de 90 días.",
+  "canonical": "https://theburn.cl/blog/implementacion-procesos-comerciales",
+  "robots": "index, follow",
+  "ogTitle": "Implementación de procesos comerciales: guía B2B paso a paso [2026]",
+  "h1": [
+   "Implementación de procesos comerciales: guía B2B paso a paso [2026]"
+  ],
+  "h2count": 19,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/mejores-consultoras-comerciales-chile-2026": {
+  "title": "17 mejores consultoras comerciales en Chile (2026) | The Burn Blog",
+  "description": "Compara 17 consultoras comerciales en Chile por especialidad, método y encaje B2B. Una guía para elegir según el desafío de ventas de tu empresa.",
+  "canonical": "https://theburn.cl/blog/mejores-consultoras-comerciales-chile-2026",
+  "robots": "index, follow",
+  "ogTitle": "17 mejores consultoras comerciales en Chile (2026)",
+  "h1": [
+   "17 mejores consultoras comerciales en Chile (2026)"
+  ],
+  "h2count": 8,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/consultora-comercial-santiago",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog/que-es-costo-por-lead-como-calcularlo": {
+  "title": "¿Qué es el costo por lead (CPL) y cómo calcularlo? | The Burn Blog",
+  "description": "El CPL mide cuánto cuesta cada lead calificado. Fórmula, benchmarks Chile 2026 y cómo reducirlo.",
+  "canonical": "https://theburn.cl/blog/que-es-costo-por-lead-como-calcularlo",
+  "robots": "index, follow",
+  "ogTitle": "¿Qué es el costo por lead (CPL) y cómo calcularlo?",
+  "h1": [
+   "¿Qué es el costo por lead (CPL) y cómo calcularlo?"
+  ],
+  "h2count": 8,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/blog/que-es-un-diagnostico-comercial": {
+  "title": "¿Qué es un diagnóstico comercial y cuándo lo necesita una empresa? | The Burn Blog",
+  "description": "Un diagnóstico comercial analiza el proceso de ventas y los márgenes para identificar qué frena el crecimiento.",
+  "canonical": "https://theburn.cl/blog/que-es-un-diagnostico-comercial",
+  "robots": "index, follow",
+  "ogTitle": "¿Qué es un diagnóstico comercial y cuándo lo necesita una empresa?",
+  "h1": [
+   "¿Qué es un diagnóstico comercial y cuándo lo necesita una empresa?"
+  ],
+  "h2count": 6,
+  "jsonld": [
+   "BlogPosting+BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/autor/javier-troncoso",
+   "/blog",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/consultora-comercial-santiago",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/implementacion-procesos-comerciales",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/blog": {
+  "title": "Blog | The Burn - Marketing B2B y Estrategia Comercial Chile",
+  "description": "Recursos para crecer sin humo. Artículos sobre diagnóstico comercial, Power BI, funnels digitales y estrategia B2B en Chile.",
+  "canonical": "https://theburn.cl/blog",
+  "robots": "index, follow",
+  "ogTitle": "Blog | The Burn - Marketing B2B y Estrategia Comercial Chile",
+  "h1": [
+   "Blog de Marketing B2B y Estrategia Comercial Chile"
+  ],
+  "h2count": 1,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/agencia-marketing-comercial-b2b-chile",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/como-crear-funnel-ventas-b2b-chile",
+   "/blog/consultora-comercial-santiago",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/blog/cuanto-cuesta-power-bi-empresa-chile",
+   "/blog/implementacion-procesos-comerciales",
+   "/blog/mejores-consultoras-comerciales-chile-2026",
+   "/blog/que-es-costo-por-lead-como-calcularlo",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/car-dealerships": {
+  "title": "Marketing y Automatización para Automotoras | The Burn",
+  "description": "Sistema de captación y seguimiento omnicanal para concesionarios de autos en Chile: leads calificados, respuesta automática por WhatsApp e Instagram, cero tyre kickers.",
+  "canonical": "https://theburn.cl/car-dealerships",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Never Miss Another Lead"
+  ],
+  "h2count": 5,
+  "jsonld": [],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/casos": {
+  "title": "Casos de Éxito | The Burn",
+  "description": "Casos de éxito de The Burn en consultoría comercial B2B, procesos de ventas y automatización en Chile.",
+  "canonical": "https://theburn.cl/casos",
+  "robots": "noindex, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Casos de éxito"
+  ],
+  "h2count": 0,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/consultora-comercial-santiago": {
+  "title": "Consultora Comercial en Santiago | The Burn",
+  "description": "Consultora comercial en Santiago para ordenar ventas B2B, pipeline y prioridades de crecimiento con datos y ejecución.",
+  "canonical": "https://theburn.cl/consultora-comercial-santiago",
+  "robots": "index, follow",
+  "ogTitle": "Consultora Comercial en Santiago | The Burn",
+  "h1": [
+   "Consultora comercial en Santiago para ordenar y hacer crecer tus ventas"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/contacto",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/consultoria-comercial-b2b": {
+  "title": "Consultoría Comercial B2B en Chile | The Burn",
+  "description": "Consultoría comercial B2B para ordenar ciclos de venta complejos, pipeline, forecast y coordinación entre marketing y ventas.",
+  "canonical": "https://theburn.cl/consultoria-comercial-b2b",
+  "robots": "index, follow",
+  "ogTitle": "Consultoría Comercial B2B en Chile | The Burn",
+  "h1": [
+   "Consultoría comercial B2B para vender con un proceso, no con suerte"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/business-intelligence-power-bi",
+   "/servicios/consultoria-comercial",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/contacto": {
+  "title": "Contacto | The Burn",
+  "description": "Contáctanos para agendar tu diagnóstico comercial gratuito. Consultoría de marketing digital y automatización en Santiago, Chile.",
+  "canonical": "https://theburn.cl/contacto",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Conversemos sobre tu negocio"
+  ],
+  "h2count": 0,
+  "jsonld": [],
+  "internalLinks": [
+   "/favicon.svg"
+  ]
+ },
+ "/diagnostico-expres": {
+  "title": "Diagnóstico Exprés Gratis | 3 Minutos | The Burn",
+  "description": "Responde 6 preguntas sobre tu proceso comercial y recibe un resultado inmediato con las brechas que más te están frenando. Gratis, sin registro.",
+  "canonical": "https://theburn.cl/diagnostico-expres",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Diagnóstico Exprés gratuito para empresas B2B en Chile"
+  ],
+  "h2count": 1,
+  "jsonld": [],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/diagnostico": {
+  "title": "Diagnóstico Comercial para Empresas en Chile | The Burn",
+  "description": "Analizamos tu negocio en 3 semanas: márgenes, pipeline, proceso comercial y marketing. Roadmap de crecimiento con datos reales. $500.000 CLP + IVA.",
+  "canonical": "https://theburn.cl/diagnostico",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Diagnóstico comercial y marketing para empresas B2B en Chile"
+  ],
+  "h2count": 7,
+  "jsonld": [],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/estrategia-comercial": {
+  "title": "Estrategia Comercial para Empresas B2B | The Burn",
+  "description": "Estrategia comercial para definir foco, segmentos, propuesta de valor, canales y prioridades de crecimiento B2B.",
+  "canonical": "https://theburn.cl/estrategia-comercial",
+  "robots": "index, follow",
+  "ogTitle": "Estrategia Comercial para Empresas B2B | The Burn",
+  "h1": [
+   "Estrategia comercial para decidir dónde crecer y cómo hacerlo"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial",
+   "/servicios/consultoria-operacional"
+  ]
+ },
+ "/gracias": {
+  "title": "Gracias | The Burn",
+  "description": "Recibimos tus datos. Te contactamos en menos de 24 horas hábiles.",
+  "robots": "noindex, nofollow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "¡Gracias! Ya tenemos tus datos."
+  ],
+  "h2count": 1,
+  "jsonld": [],
+  "internalLinks": [
+   "/",
+   "/favicon.svg"
+  ]
+ },
+ "/implementacion-procesos-comerciales": {
+  "title": "Implementación de Procesos Comerciales B2B en Chile | The Burn",
+  "description": "Implementación de procesos comerciales para ordenar etapas, roles, métricas y rutinas de ventas en empresas B2B.",
+  "canonical": "https://theburn.cl/implementacion-procesos-comerciales",
+  "robots": "index, follow",
+  "ogTitle": "Implementación de Procesos Comerciales B2B en Chile | The Burn",
+  "h1": [
+   "Implementación de procesos comerciales que el equipo sí puede usar"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/implementacion-procesos-comerciales",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/automatizacion-marketing",
+   "/servicios/consultoria-comercial",
+   "/servicios/consultoria-operacional"
+  ]
+ },
+ "/": {
+  "title": "Consultora Comercial B2B en Chile | The Burn",
+  "description": "Conectamos estrategia comercial, marketing, ventas y datos para empresas B2B en Chile. Diagnóstico de 3 semanas con un roadmap claro de implementación.",
+  "canonical": "https://theburn.cl",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Consultoría comercial y marketing B2B en Chile"
+  ],
+  "h2count": 5,
+  "jsonld": [],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/automatizacion-marketing",
+   "/servicios/business-intelligence-power-bi",
+   "/servicios/consultoria-comercial",
+   "/servicios/consultoria-operacional",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/meta-ads-campana": {
+  "title": "Diagnóstico Gratis - 3 Cupos Limitados | The Burn",
+  "description": "Buscamos 3 dueños de empresa que quieran ordenar y escalar. Diagnóstico comercial gratis de 30 min, sin compromiso.",
+  "canonical": "https://theburn.cl/meta-ads-campana",
+  "robots": "noindex, follow",
+  "ogTitle": "Diagnóstico Gratis - 3 Cupos Limitados | The Burn",
+  "h1": [
+   "Buscamos 3 dueños de empresas que quieran ordenar y escalar"
+  ],
+  "h2count": 5,
+  "jsonld": [],
+  "internalLinks": [
+   "/favicon.svg"
+  ]
+ },
+ "/power-bi-ventas": {
+  "title": "Power BI para Ventas y Gestión Comercial | The Burn",
+  "description": "Power BI para ventas: dashboards comerciales conectados a pipeline, conversión, margen, stock y decisiones de negocio.",
+  "canonical": "https://theburn.cl/power-bi-ventas",
+  "robots": "index, follow",
+  "ogTitle": "Power BI para Ventas y Gestión Comercial | The Burn",
+  "h1": [
+   "Power BI para ventas: convierte tus datos comerciales en decisiones"
+  ],
+  "h2count": 7,
+  "jsonld": [
+   "Service",
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/business-intelligence-power-bi",
+   "/servicios/consultoria-comercial",
+   "/servicios/consultoria-operacional"
+  ]
+ },
+ "/servicios/automatizacion-marketing": {
+  "title": "Automatización de Marketing Chile | Nurturing y Leads B2B | The Burn",
+  "description": "Implementamos flujos automáticos de nurturing, seguimiento y calificación de leads por email y WhatsApp. Tu equipo cierra; el sistema prospecta.",
+  "canonical": "https://theburn.cl/servicios/automatizacion-marketing",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Automatización de Marketing para Empresas B2B en Chile"
+  ],
+  "h2count": 5,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/servicios/business-intelligence-power-bi": {
+  "title": "Consultoría Power BI Chile | Dashboards para empresas | The Burn",
+  "description": "Implementamos dashboards Power BI conectados a tus datos reales: márgenes, stock, pipeline y conversión. Decisiones con números, no con corazonadas.",
+  "canonical": "https://theburn.cl/servicios/business-intelligence-power-bi",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Consultoría Power BI para Empresas en Chile"
+  ],
+  "h2count": 6,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/servicios/consultoria-comercial": {
+  "title": "Consultoría Comercial Chile | Proceso de Ventas B2B | The Burn",
+  "description": "Ordenamos tu proceso comercial, definimos métricas de pipeline y construimos el roadmap de crecimiento. Estrategia con ejecución, no solo un PDF.",
+  "canonical": "https://theburn.cl/servicios/consultoria-comercial",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Consultoría Comercial B2B en Santiago — Proceso de Ventas"
+  ],
+  "h2count": 6,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/blog/como-aumentar-ventas-b2b-chile-2026",
+   "/blog/consultora-comercial-santiago",
+   "/blog/consultoria-comercial-vs-agencia-marketing",
+   "/blog/implementacion-procesos-comerciales",
+   "/blog/mejores-consultoras-comerciales-chile-2026",
+   "/blog/que-es-un-diagnostico-comercial",
+   "/consultora-comercial-santiago",
+   "/consultoria-comercial-b2b",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/business-intelligence-power-bi",
+   "/servicios/consultoria-comercial",
+   "/servicios/consultoria-operacional",
+   "/servicios/funnel-digital-performance"
+  ]
+ },
+ "/servicios/consultoria-operacional": {
+  "title": "Consultoría Operacional Lean Six Sigma Chile | Margen y Procesos B2B | The Burn",
+  "description": "Mapeamos tus procesos con metodología Lean Six Sigma y dashboards Power BI. Identificamos dónde pierdes margen y tiempo, y te damos los números para decidir.",
+  "canonical": "https://theburn.cl/servicios/consultoria-operacional",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Consultoría Operacional Lean Six Sigma para Empresas B2B en Chile"
+  ],
+  "h2count": 5,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/servicios/funnel-digital-performance": {
+  "title": "Funnel Digital de Ventas Chile | Marketing Performance | The Burn",
+  "description": "Diseñamos e implementamos tu funnel de captación y conversión: paid media, landing pages y automatización. Más leads, mejor calificados.",
+  "canonical": "https://theburn.cl/servicios/funnel-digital-performance",
+  "robots": "index, follow",
+  "ogTitle": "The Burn | Consultora Comercial B2B en Chile",
+  "h1": [
+   "Funnel Digital de Ventas B2B Chile — Leads Calificados"
+  ],
+  "h2count": 5,
+  "jsonld": [
+   "BreadcrumbList"
+  ],
+  "internalLinks": [
+   "/",
+   "/agencia-marketing-ventas-b2b",
+   "/automatizacion-comercial",
+   "/blog",
+   "/diagnostico",
+   "/estrategia-comercial",
+   "/favicon.svg",
+   "/implementacion-procesos-comerciales",
+   "/power-bi-ventas",
+   "/servicios/consultoria-comercial"
+  ]
+ },
+ "/webinar/gracias": {
+  "title": "Registro confirmado | Taller The Burn",
+  "description": "Confirma los próximos pasos para participar en el taller de The Burn.",
+  "canonical": "https://theburn.cl/webinar",
+  "robots": "noindex, nofollow",
+  "ogTitle": "De Sell Out a Prioridades Comerciales | The Burn",
+  "h1": [
+   "Falta un paso."
+  ],
+  "h2count": 0,
+  "jsonld": [],
+  "internalLinks": [
+   "/favicon.svg"
+  ]
+ },
+ "/webinar": {
+  "title": "De Sell Out a Prioridades Comerciales | The Burn",
+  "description": "Taller Ejecutivo online para transformar datos de clientes, productos, ventas y stock en prioridades concretas.",
+  "canonical": "https://theburn.cl/webinar",
+  "robots": "index, follow",
+  "ogTitle": "De Sell Out a Prioridades Comerciales | The Burn",
+  "h1": [
+   "De sell out a"
+  ],
+  "h2count": 5,
+  "jsonld": [],
+  "internalLinks": [
+   "/favicon.svg"
+  ]
+ }
+}
