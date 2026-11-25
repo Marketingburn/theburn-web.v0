@@ -1,90 +1,54 @@
-"use client"
-
-import { type LucideIcon } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
+import { Logo } from "@/components/site/logo"
+import { EMAIL, footerNav } from "@/lib/site-nav"
 
-type FooterLink = { title: string; href: string; icon?: LucideIcon }
-
-const footerLinks: { label: string; links: FooterLink[] }[] = [
-  {
-    label: "Empresa",
-    links: [
-      { title: "Servicios", href: "/#features" },
-      { title: "Diagnóstico", href: "/diagnostico" },
-      { title: "Blog", href: "/blog" },
-    ],
-  },
-  {
-    label: "Consultoría B2B",
-    links: [
-      { title: "Marketing y ventas B2B", href: "/agencia-marketing-ventas-b2b" },
-      { title: "Consultoría comercial B2B", href: "/servicios/consultoria-comercial" },
-      { title: "Procesos comerciales", href: "/implementacion-procesos-comerciales" },
-      { title: "Automatización comercial", href: "/automatizacion-comercial" },
-      { title: "Estrategia comercial", href: "/estrategia-comercial" },
-      { title: "Power BI para ventas", href: "/power-bi-ventas" },
-    ],
-  },
-  {
-    label: "Legal",
-    links: [
-      { title: "Santiago, Chile", href: "#" },
-      { title: "theburn.cl", href: "/" },
-    ],
-  },
-]
-
+// Footer del rediseño. Se mantiene el nombre `Footer` porque lo importan todas las páginas.
 export function Footer() {
   return (
-    <footer className="w-full bg-[#0A0A0A] border-t border-[#2A2725] px-6 py-12 lg:py-16">
-      <div className="max-w-6xl mx-auto grid gap-8 xl:grid-cols-3 xl:gap-8">
-        <div className="space-y-4">
-          <div className="flex items-center gap-2.5">
-            <Image src="/logo-theburn.png" alt="The Burn logo" width={32} height={32} className="w-8 h-8" />
-            <span
-              className="text-2xl font-black uppercase tracking-wider text-white"
-              style={{ fontFamily: "var(--font-barlow-condensed)" }}
-            >
-              THE BURN
-            </span>
-          </div>
-          <p className="text-[#938B82] text-sm" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: "0.08em" }}>
-            MENOS BLA, MÁS MARKETING.
+    <footer data-tb className="border-t border-ink bg-ink text-cream">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:px-8 lg:grid-cols-[1.3fr_2fr]">
+        <div>
+          <Logo className="text-cream" />
+          <p className="mt-6 font-heading text-4xl font-extrabold uppercase md:text-5xl">
+            Menos bla,
+            <span className="block text-burn">más marketing.</span>
           </p>
-          <p className="text-[#2A2725] text-xs hidden md:block" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-            © {new Date().getFullYear()} THE BURN SpA · SANTIAGO, CHILE · THEBURN.CL
-          </p>
+          <ul className="mt-8 grid gap-1">
+            <li>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="inline-flex min-h-11 items-center text-cream/85 transition-colors duration-150 hover:text-burn"
+              >
+                {EMAIL}
+              </a>
+            </li>
+            {/* TODO(Jordan): agregar las URL reales de LinkedIn e Instagram */}
+          </ul>
         </div>
 
-        <div className="grid grid-cols-3 gap-8 xl:col-span-2">
-          {footerLinks.map((section) => (
-            <div key={section.label}>
-              <h3 className="text-xs uppercase tracking-widest text-[#938B82] font-semibold mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                {section.label}
-              </h3>
-              <ul className="space-y-2 text-sm">
+        <div className="grid gap-10 sm:grid-cols-3">
+          {footerNav.map((section) => (
+            <nav key={section.label} aria-label={section.label}>
+              <p className="font-mono text-xs tracking-widest text-cream/60 uppercase">{section.label}</p>
+              <ul className="mt-4 grid">
                 {section.links.map((link) => (
-                  <li key={link.title}>
+                  <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-[#938B82]/60 hover:text-white inline-flex items-center gap-1.5 transition-colors duration-200"
-                      style={{ fontFamily: "var(--font-barlow)" }}
+                      className="inline-flex min-h-10 items-center py-1 text-[15px] leading-snug text-cream/80 transition-colors duration-150 hover:text-burn"
                     >
-                      {link.icon && <link.icon className="w-3.5 h-3.5" />}
-                      {link.title}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
       </div>
-
-      <div className="md:hidden max-w-6xl mx-auto mt-8">
-        <p className="text-[#2A2725] text-xs" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-          © {new Date().getFullYear()} THE BURN SpA · SANTIAGO, CHILE
+      <div className="border-t border-cream/10">
+        <p className="mx-auto max-w-7xl px-5 py-6 font-mono text-[11px] tracking-widest text-cream/60 uppercase md:px-8">
+          © {new Date().getFullYear()} The Burn SpA · Santiago, Chile
         </p>
       </div>
     </footer>

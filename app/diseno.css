@@ -1,0 +1,351 @@
+/*
+ * The Burn · sistema visual del rediseño (2026-11).
+ * Se carga después de globals.css. Mientras conviven páginas nuevas y antiguas,
+ * todo lo nuevo vive aquí y las animaciones llevan el prefijo tb- para no chocar
+ * con los keyframes heredados.
+ */
+
+@theme inline {
+  --font-heading: var(--font-barlow-condensed);
+}
+
+@theme {
+  --text-display: clamp(3.5rem, 2.2rem + 6.4vw, 8.5rem);
+  --text-display--line-height: 0.86;
+  --text-title: clamp(2.5rem, 1.7rem + 3.6vw, 5rem);
+  --text-title--line-height: 0.92;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.5;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #1b1917;
+  --color-cream: #f5f1ea;
+  --color-paper: #fbf8f3;
+  --color-burn: #ff4500;
+  --color-burn-text: #c23500; /* naranja para texto chico sobre crema (AA) */
+  --color-chart-line: #d9d1c4;
+  --color-smoke: #6b645c; /* gris cálido con contraste AA sobre crema */
+}
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* En capa base para que las utilidades de Tailwind (text-cream, etc.) puedan sobrescribirlo */
+@layer base {
+  [data-tb] {
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  [data-tb] ::selection {
+    background: var(--color-burn);
+    color: var(--color-ink);
+  }
+  [data-tb] :focus-visible {
+    outline: 2px solid var(--color-burn);
+    outline-offset: 3px;
+  }
+}
+
+/* Grilla de carta náutica */
+.chart-grid {
+  background-image:
+    linear-gradient(to right, rgb(10 10 10 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(10 10 10 / 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.chart-grid-dark {
+  background-image:
+    linear-gradient(to right, rgb(245 241 234 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(245 241 234 / 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Botón: presión física */
+.btn-press {
+  cursor: pointer;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms var(--ease-out),
+    color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out);
+}
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ───────── Galeón ───────── */
+.ship-bob {
+  animation: tb-bob 9s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+@keyframes tb-bob {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.2deg);
+  }
+}
+
+.fog {
+  animation: tb-fog 26s ease-in-out infinite alternate;
+}
+@keyframes tb-fog {
+  from {
+    transform: translateX(-4%);
+  }
+  to {
+    transform: translateX(4%);
+  }
+}
+
+/* Bordes que se funden con el fondo */
+.ship-mask {
+  -webkit-mask-image: radial-gradient(ellipse 54% 57% at 52% 48%, #000 52%, transparent 98%);
+  mask-image: radial-gradient(ellipse 54% 57% at 52% 48%, #000 52%, transparent 98%);
+}
+.ship-mask-dark {
+  -webkit-mask-image: radial-gradient(ellipse 56% 60% at 50% 48%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 56% 60% at 50% 48%, #000 60%, transparent 100%);
+}
+
+/* Aparece desde la niebla (superficie de marketing) */
+.ship-emerge {
+  opacity: 0;
+  transform: translateX(24px) scale(0.98);
+  animation: tb-emerge 1400ms var(--ease-out) 200ms forwards;
+}
+@keyframes tb-emerge {
+  to {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+
+/* Se enciende al entrar en pantalla: de brasa apagada a fuego */
+.ship-ignite {
+  opacity: 0.25;
+  transition: opacity 1600ms var(--ease-out);
+}
+[data-lit="true"] .ship-ignite {
+  opacity: 1;
+}
+.fire-glow {
+  opacity: 0;
+}
+[data-lit="true"] .fire-glow {
+  animation: tb-glow 2.4s ease-in-out 1.2s infinite alternate;
+}
+@keyframes tb-glow {
+  0% {
+    opacity: 0.2;
+  }
+  35% {
+    opacity: 0.55;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.ember {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--color-burn);
+  box-shadow: 0 0 8px 2px rgb(255 69 0 / 0.55);
+  opacity: 0;
+  animation: tb-ember var(--t, 6s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes tb-ember {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--x, 20px), -520px, 0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Cinta de frases */
+.marquee-track {
+  animation: tb-marquee 48s linear infinite;
+}
+@keyframes tb-marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ───────── Entradas (superficie de marketing: 600-800 ms permitido) ───────── */
+.hero-line {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(0.25em);
+  animation: tb-line-in 800ms var(--ease-out) forwards;
+  animation-delay: calc(150ms + var(--i, 0) * 80ms);
+}
+@keyframes tb-line-in {
+  to {
+    clip-path: inset(0 0 -10% 0);
+    transform: translateY(0);
+  }
+}
+.hero-fade {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: tb-fade-up 700ms var(--ease-out) forwards;
+  animation-delay: 380ms;
+}
+@keyframes tb-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Revelado al hacer scroll (una vez) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ───────── Menú: desplegable de servicios y panel móvil (UI: < 300 ms) ───────── */
+.tb-pop {
+  transform-origin: top left;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+.tb-pop[data-open="false"] {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.97);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 140ms var(--ease-out),
+    transform 140ms var(--ease-out),
+    visibility 0s linear 140ms;
+}
+.tb-pop[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tb-overlay[data-state="open"] {
+  animation: tb-fade-in 200ms var(--ease-out);
+}
+.tb-overlay[data-state="closed"] {
+  animation: tb-fade-out 150ms var(--ease-out);
+}
+.tb-sheet[data-state="open"] {
+  animation: tb-sheet-in 260ms var(--ease-out);
+}
+.tb-sheet[data-state="closed"] {
+  animation: tb-sheet-out 200ms var(--ease-out);
+}
+@keyframes tb-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes tb-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes tb-sheet-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes tb-sheet-out {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Hover solo en dispositivos con puntero fino */
+@media (hover: hover) and (pointer: fine) {
+  .tb-nudge {
+    transition: transform 200ms var(--ease-out);
+  }
+  .group:hover .tb-nudge {
+    transform: translate(2px, -2px);
+  }
+  .group:hover .tb-nudge-x {
+    transform: translateX(2px);
+  }
+}
+
+/* Movimiento reducido: más suave, no cero */
+@media (prefers-reduced-motion: reduce) {
+  .ship-bob,
+  .fog,
+  .marquee-track {
+    animation: none;
+  }
+  .ember {
+    animation: none;
+    display: none;
+  }
+  .hero-line {
+    clip-path: none;
+    transform: none;
+    opacity: 0;
+    animation: tb-fade-only 500ms var(--ease-out) forwards;
+  }
+  .hero-fade {
+    transform: none;
+    animation-name: tb-fade-only;
+  }
+  .reveal {
+    transform: none;
+  }
+  .ship-emerge {
+    transform: none;
+    animation: tb-fade-only 600ms var(--ease-out) forwards;
+  }
+  [data-lit="true"] .fire-glow {
+    animation: none;
+    opacity: 0.35;
+  }
+  .tb-pop,
+  .tb-pop[data-open="false"] {
+    transform: none;
+  }
+  .tb-sheet[data-state="open"],
+  .tb-sheet[data-state="closed"] {
+    animation-name: tb-fade-in;
+  }
+  .tb-sheet[data-state="closed"] {
+    animation-name: tb-fade-out;
+  }
+  @keyframes tb-fade-only {
+    to {
+      opacity: 1;
+    }
+  }
+}
