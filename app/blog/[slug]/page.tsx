@@ -17,8 +17,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = getBlogPostBySlug(slug)
 
   if (!post) {
     return {
@@ -64,8 +65,9 @@ const categoryToService: Record<string, { label: string; href: string; ctaLabel:
   Growth: { label: "Implementación de procesos comerciales", href: "/implementacion-procesos-comerciales", ctaLabel: "Ver implementación de procesos comerciales" },
 }
 
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug)
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = getBlogPostBySlug(slug)
 
   if (!post) {
     notFound()
