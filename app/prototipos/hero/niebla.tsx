@@ -47,7 +47,7 @@ export function HeroNiebla() {
       <div className="sticky top-0 h-svh overflow-hidden bg-cream">
         <motion.div className="absolute inset-0 origin-[74%_60%]" style={{ transform: imgTransform }}>
           <Image
-            src="/images/galeon-amanecer.jpg"
+            src="/images/galeon-amanecer-hd.jpg"
             alt="Galeón español del siglo XVII navegando entre la bruma al amanecer"
             fill
             priority
