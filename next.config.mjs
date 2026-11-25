@@ -5,6 +5,10 @@ const nextConfig = {
     // Quitar esta opción cuando el rediseño los reemplace.
     ignoreBuildErrors: true,
   },
+  images: {
+    // 90 para fotos a pantalla completa (el hero); 75 por defecto para el resto
+    qualities: [75, 90],
+  },
   // Se activó la optimización de imágenes de Next (antes unoptimized: true) para servir
   // WebP/AVIF del tamaño justo. Todas las imágenes son locales; no hace falta remotePatterns.
 }

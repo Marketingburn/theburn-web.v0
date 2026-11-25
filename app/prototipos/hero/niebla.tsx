@@ -19,7 +19,7 @@ export function HeroNiebla() {
   const p = useTransform(scrollYProgress, (v) => v)
 
   // Cámara: acercamiento hacia el barco
-  const scale = useTransform(p, [0, 1], [1, reduce ? 1 : 1.22])
+  const scale = useTransform(p, [0, 1], [1, reduce ? 1 : 1.1])
   const imgTransform = useMotionTemplate`scale(${scale})`
 
   // Niebla delantera: se abre hacia los lados
@@ -52,6 +52,7 @@ export function HeroNiebla() {
             fill
             priority
             sizes="100vw"
+            quality={90}
             className="object-cover object-[74%_50%]"
           />
         </motion.div>
@@ -63,12 +64,16 @@ export function HeroNiebla() {
         />
 
         {/* Niebla delantera */}
+        {/* closest-side: el degradado llega a transparente antes del borde de su caja, sin cortes */}
         <motion.div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-[70%]" style={{ transform: fogLT, opacity: fogOpacity }}>
-          <div className="fog absolute inset-0 bg-[radial-gradient(60%_45%_at_60%_70%,rgb(255_255_255/0.9),transparent)]" />
+          <div className="fog absolute top-[38%] left-[8%] h-[62%] w-[92%] bg-[radial-gradient(closest-side,rgb(255_255_255/0.85),rgb(255_255_255/0.4)_55%,transparent)]" />
         </motion.div>
         <motion.div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-[70%]" style={{ transform: fogRT, opacity: fogOpacity }}>
-          <div className="fog absolute inset-0 bg-[radial-gradient(55%_45%_at_40%_72%,rgb(250_246_240/0.95),transparent)] [animation-delay:-11s]" />
+          <div className="fog absolute top-[44%] left-0 h-[56%] w-[92%] bg-[radial-gradient(closest-side,rgb(250_246_240/0.9),rgb(250_246_240/0.4)_55%,transparent)] [animation-delay:-11s]" />
         </motion.div>
+
+        {/* Grano de película: disimula el escalado de la foto y el banding del cielo */}
+        <div aria-hidden className="tb-grain pointer-events-none absolute inset-0" />
 
         {/* Velo de entrada: la escena aparece desde la bruma */}
         <div aria-hidden className="tb-veil pointer-events-none absolute inset-0 bg-cream" />

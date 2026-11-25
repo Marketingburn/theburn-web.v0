@@ -85,8 +85,9 @@ export function Hero() {
           </div>
           {/* Bruma que pasa por delante de la línea de flotación */}
           <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-[6%] h-1/3">
-            <div className="fog absolute inset-0 bg-[radial-gradient(60%_50%_at_40%_60%,rgb(245_241_234/0.9),transparent)]" />
-            <div className="fog absolute inset-0 bg-[radial-gradient(45%_40%_at_75%_70%,rgb(255_255_255/0.6),transparent)] [animation-delay:-13s]" />
+            {/* closest-side: sin bordes cortados aunque la caja se mueva */}
+            <div className="fog absolute inset-y-0 left-[4%] w-[76%] bg-[radial-gradient(closest-side,rgb(245_241_234/0.9),transparent)]" />
+            <div className="fog absolute top-[20%] bottom-0 left-[45%] w-[52%] bg-[radial-gradient(closest-side,rgb(255_255_255/0.6),transparent)] [animation-delay:-13s]" />
           </div>
         </div>
       </div>
