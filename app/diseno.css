@@ -45,6 +45,11 @@
     outline: 2px solid var(--color-burn);
     outline-offset: 3px;
   }
+  /* Anula el word-break: break-word heredado (corta palabras a la mitad en móvil) */
+  [data-tb] * {
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
 }
 
 /* Grilla de carta náutica */
