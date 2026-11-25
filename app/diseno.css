@@ -107,27 +107,11 @@
 }
 
 /* Bordes que se funden con el fondo */
-.ship-mask {
-  -webkit-mask-image: radial-gradient(ellipse 54% 57% at 52% 48%, #000 52%, transparent 98%);
-  mask-image: radial-gradient(ellipse 54% 57% at 52% 48%, #000 52%, transparent 98%);
-}
 .ship-mask-dark {
   -webkit-mask-image: radial-gradient(ellipse 56% 60% at 50% 48%, #000 60%, transparent 100%);
   mask-image: radial-gradient(ellipse 56% 60% at 50% 48%, #000 60%, transparent 100%);
 }
 
-/* Aparece desde la niebla (superficie de marketing) */
-.ship-emerge {
-  opacity: 0;
-  transform: translateX(24px) scale(0.98);
-  animation: tb-emerge 1400ms var(--ease-out) 200ms forwards;
-}
-@keyframes tb-emerge {
-  to {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
-}
 
 /* Se enciende al entrar en pantalla: de brasa apagada a fuego */
 .ship-ignite {
@@ -329,10 +313,6 @@
   .reveal {
     transform: none;
   }
-  .ship-emerge {
-    transform: none;
-    animation: tb-fade-only 600ms var(--ease-out) forwards;
-  }
   [data-lit="true"] .fire-glow {
     animation: none;
     opacity: 0.35;
@@ -361,4 +341,14 @@
   background-size: 220px 220px;
   opacity: 0.16;
   mix-blend-mode: overlay;
+}
+
+/* Hero: la escena aparece desde la bruma (superficie de marketing) */
+.tb-veil {
+  animation: tb-veil-out 1600ms var(--ease-out) 150ms forwards;
+}
+@keyframes tb-veil-out {
+  to {
+    opacity: 0;
+  }
 }
